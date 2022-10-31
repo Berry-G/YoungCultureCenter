@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사물함신청</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/css/tempus-dominus.css" rel="stylesheet"
+    rossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <link href="css/lockerres.css" rel="stylesheet">
+  <link href="css/header.css" rel="stylesheet">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <!-- 로고 이미지 -->
+      <a href="#"><img src="icon/ycc_logo.png" alt="Young문화센터로고" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 헤더 드롭다운 -->
+      <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">시설안내</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">오시는 길</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">교육강좌</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">강좌신청안내</a></li>
+              <li><a class="dropdown-item" href="#">강좌일정</a></li>
+              <li><a class="dropdown-item" href="#">강좌검색</a></li>
+              <li><a class="dropdown-item" href="#">통합검색</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">시설예약</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">대관이용안내</a></li>
+              <li><a class="dropdown-item" href="#">대관현황</a></li>
+              <li><a class="dropdown-item" href="#">대관신청</a></li>
+              <li><a class="dropdown-item" href="#">사물함신청</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">커뮤니티</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">수강상세</a></li>
+              <li><a class="dropdown-item" href="#">동아리</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">이용안내</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">공지사항</a></li>
+              <li><a class="dropdown-item" href="#">이벤트/행사</a></li>
+              <li><a class="dropdown-item" href="#">자주하는질문</a></li>
+              <li><a class="dropdown-item" href="#">1:1문의</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 로그인 / 회원가입 -->
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">로그인</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">회원가입</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+</head>
+
+<body>
+
+  <div class="container w-75 pt-5">
+    <form class="form">
+      <div class="col fs-3 fw-bold">사물함 신청
+        <hr>
+      </div>
+      <!--col 사물함 신청-->
+      <div class="row justify-content-md-start">
+        <div class="col-md-3 fs-4">사물함 위치
+        </div>
+        <!--col 사물함 위치-->
+        <div class="row">
+        <select class="form-select-sm col-4" aria-label="lockerLo">
+          <option selected>본관 1층</option>
+          <option value="1">본관 2층</option>
+          <option value="2">본관 3층</option>
+          <option value="3">수영장 로비</option>
+          <option value="4">강당 입구</option>
+        </select> <!-- select 사물함 위치-->
+        </div>
+      </div>
+      <!--row 사물함 위치-->
+      <!-- 기간별 조회 박스 -->
+      <div class="row">
+      <div class="container p-3 text-start ">
+        <h4 class="col">신청일자</h4>
+        <div class="row">
+          <div class="col-md-7 mb-3">
+            <div class="row">
+              <input class="form-control-md col-5 " type="date" value="startDate" />
+              <label class="col-1 pl-2">~</label>
+              <input class="form-control-md col-5" type="date" value="endDate" />
+            </div>
+          </div>
+          </div>
+          <div class="col-md-2 mb-3 text-center" >
+            <button type="submit" class="btn btn-primary">조회</button>
+          </div>
+        </div>
+      </div>
+      <!--row 신청일자-->
+    </form>
+
+
+
+    <div class="container w-100 mt-2 p-5 " style="overflow:auto; border: 1px solid #4f565d;">
+      <ol>
+        <li class="row row-horizon">
+          <ol class="lockers btn-primary">
+            <li class="locker">
+              <input type="checkbox" id="1" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="1">1</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="2" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="2">2</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="3" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="3">3</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="4" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="4">4</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="5" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="5">5</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="6" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="6">6</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" disabled id="7" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="7">7</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="8" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="8">8</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="9" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="9">9</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="10" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="10">10</label>
+            </li>
+            <!--locker-->
+          </ol>
+          <!--lockers-->
+        </li>
+        <!--row-->
+        <li class="row">
+          <ol class="lockers">
+            <li class="locker">
+              <input type="checkbox" id="11" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="11">11</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="12" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="12">12</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="13" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="13">13</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="14" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="14">14</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="15" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="15">15</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="16" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="16">16</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="17" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="17">17</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="18" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="18">18</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="19" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="19">19</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="20" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="20">20</label>
+            </li>
+            <!--locker-->
+          </ol>
+          <!--lockers-->
+        </li>
+        <!--row-->
+        <li class="row">
+          <ol class="lockers">
+            <li class="locker">
+              <input type="checkbox" disabled id="21" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="21">21</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="22" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="22">22</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="23" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="23">23</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="24" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="24">24</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="25" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="25">25</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="26" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="26">26</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" disabled id="27" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="27">27</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="28" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="28">28</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="29" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="29">29</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="30" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="30">30</label>
+            </li>
+            <!--locker-->
+          </ol>
+          <!--lockers-->
+        </li>
+        <!--row-->
+        <li class="row">
+          <ol class="lockers">
+            <li class="locker">
+              <input type="checkbox" id="31" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="31">31</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="32" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="32">32</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="33" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="33">33</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="34" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="34">34</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="35" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="35">35</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="36" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="36">36</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="37" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="37">37</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="38" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="38">38</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" disabled id="39" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="39">39</label>
+            </li>
+            <!--locker-->
+            <li class="locker">
+              <input type="checkbox" id="40" name="locker" onclick="checkOnlyOne(this)" />
+              <label for="40">40</label>
+            </li>
+            <!--locker-->
+          </ol>
+          <!--lockers-->
+        </li>
+        <!--row-->
+      </ol>
+      <!--ol - 1-->
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="fs-4 pt-3 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #1971fd;"
+            class="bi bi-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+          </svg>
+          사용가능
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="fs-4 pt-3  mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #4f565d" class="bi bi-square-fill"
+            viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+          </svg>
+          사용중
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="fs-4 pt-3  mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #1d8956;"
+            class="bi bi-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+          </svg>
+          선택
+        </div>
+      </div>
+    </div>
+  </div> <!-- container -->
+  <!-- Modal -->
+  <!-- 모달 버튼  -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <div class="text-center">
+    <button type="button" class="btn btn-primary m-5 col-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      확인
+    </button>
+  </div>
+  <!-- 모달창 -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">
+            정보 확인 안내
+          </h1>
+        </div>
+        <div class="modal-body text-center">
+          <div class="d-flex justify-content-center">
+            <table class="table container-fluid border">
+              <tbody>
+                <tr>
+                  <th scope="row" class="col-sm-4">이름</th>
+                  <td>
+                    <div class="col-sm-8"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">사물함 위치</th>
+                  <td>
+                    <div class="col-sm-8"></div>
+                    본관 1층 사물함​
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">사물함번호</th>
+                  <td>
+                    <div class="col-sm-8"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">이용일</th>
+                  <td>
+                    <div class="col-sm-8"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">결제금액</th>
+                  <td>
+                    <div class="col-sm-8"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>해당 정보가 맞으십니까?</p>
+        </div>
+
+        <div class="modal-footer" style="justify-content: center;">
+          <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">
+            취소
+          </button>
+          <button type="button" class="btn btn-primary">결제</button>
+        </div>
+      </div>
+    </div>
+  </div> <!-- container 1-->
+  <script type="text/javascript">
+    function checkOnlyOne(element) {
+
+      const checkboxes
+        = document.getElementsByName("locker");
+
+      checkboxes.forEach((cb) => {
+        cb.checked = false;
+      })
+
+      element.checked = true;
+    }
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/js/tempus-dominus.js"
+    crossorigin="anonymous"></script>
+</body>
+<div class="bg-light mt-5 border-top border-1">
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center my-1">
+      <p class="col-md-4 mb-0 text-muted">
+        <img class="img-fluid" src="icon/ycc_logo.png" style="width: 100px; height: 100px;"><br>
+        서울특별시 서초구 서초4 서초대로77길<br>
+        Tel : 02-123-1234 / Fax : 02-123-1235<br>
+        사업자등록번호 : 123-80-12345<br>
+        김영채 최나리 전수정 김성호 최선혜 최연희 김지호<br>
+        <br>
+        &copy; YOUNG’teve Jobs All rights reserved
+      </p>
+
+      <a href="/"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        스크롤하는 이미지 구현 부
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+      </ul>
+    </footer>
+  </div>
+</div>
+
+</html>
