@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보수정</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="css/header.css" rel="stylesheet">
+    <style>
+        tr {
+            vertical-align: middle !important;
+        }
+
+        @media (max-width: 767px) {
+            #w-28 {
+                width: 28%;
+            }
+        }
+    </style>
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <!-- 로고 이미지 -->
+            <a href="#"><img src="img/영문화센터로고.png" alt="Young문화센터로고" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 헤더 드롭다운 -->
+            <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">시설안내</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">교육강좌</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">강좌신청안내</a></li>
+                            <li><a class="dropdown-item" href="#">강좌일정</a></li>
+                            <li><a class="dropdown-item" href="#">강좌검색</a></li>
+                            <li><a class="dropdown-item" href="#">통합검색</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">시설예약</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">대관이용안내</a></li>
+                            <li><a class="dropdown-item" href="#">대관현황</a></li>
+                            <li><a class="dropdown-item" href="#">대관신청</a></li>
+                            <li><a class="dropdown-item" href="#">사물함신청</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">커뮤니티</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">수강상세</a></li>
+                            <li><a class="dropdown-item" href="#">동아리</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">이용안내</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">공지사항</a></li>
+                            <li><a class="dropdown-item" href="#">이벤트/행사</a></li>
+                            <li><a class="dropdown-item" href="#">자주하는질문</a></li>
+                            <li><a class="dropdown-item" href="#">1:1문의</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 로그인 / 회원가입 -->
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="loginForm_final.html">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">회원가입</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>회원정보수정</h2><hr>
+        <!-- 회원정보수정 -->
+        <table class="table table-group-divider text-center">
+            <tbody>
+                <colgroup>
+                    <col width="15%" class="bg-light" id="w-28">
+                </colgroup>
+                <!-- 아이디 -->
+                <tr>
+                    <th class="col">아이디</th>
+                    <td>
+                        <input type="text" class="form-control-plaintext" id="id" data-rule-required="true"
+                            maxlength="20" value="ezenit" readonly>
+                    </td>
+                </tr>
+                <!-- 이름 -->
+                <tr>
+                    <th class="col">이름</th>
+                    <td>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <input type="text" class="form-control-plaintext onlyHangul" id="name"
+                                    data-rule-required="true" placeholder="한글입력" maxlength="10" value="이젠" readonly>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- 비밀번호 -->
+                <tr>
+                    <th class="col">비밀번호</th>
+                    <td>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" id="password" name="excludeHangul"
+                                    data-rule-required="true" placeholder="8~15자, 영문+숫자 입력" maxlength="20">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- 비밀번호확인 -->
+                <tr>
+                    <th class="col">비밀번호확인</th>
+                    <td>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <input type="password" class="form-control" id="passwordCheck" data-rule-required="true"
+                                    maxlength="20">
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <!-- 성별 -->
+                <tr>
+                    <th class="col">성별</th>
+                    <th class="text-start">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="option1" checked disabled>
+                            <label class="form-check-label" for="inlineRadio1">남</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2" disabled>
+                            <label class="form-check-label" for="inlineRadio2">여</label>
+                        </div>
+                    </th>
+                </tr>
+                <!-- 이메일 -->
+                <tr>
+                    <th class="col">이메일</th>
+                    <td>
+                        <!-- <input type="text" class="form-control-plaintext" value="ezen@gmail.com" readonly> -->
+                        <div class="row g-1">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="divEmai" maxlength="40" value="ezen"
+                                    readonly>
+                            </div>
+                            <div class="col-md-5">
+                                <div>
+                                    <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
+                                    <div class="input-group">
+                                        <div class="input-group-text">@</div>
+                                        <select class="form-select" aria-label="Default select example" disabled>
+                                            <option></option>
+                                            <option value="1">naver.com</option>
+                                            <option value="2" selected>gmail.com</option>
+                                            <option value="3">hanmail.net</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-3 text-start d-grid d-md-block">
+                                <button type="submit" class="btn btn-primary">인증하기</button>
+                            </div> -->
+                        </div>
+                    </td>
+                </tr>
+                <!-- 이메일인증 -->
+                <!-- <tr>
+                    <th class="col">이메일 인증</th>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="email" data-rule-required="true"
+                                    placeholder="인증번호6자리" maxlength="10">
+                            </div>
+                        </div>
+                    </td>
+                </tr> -->
+                <!-- 휴대전화 -->
+                <tr>
+                    <th class="col">휴대폰</th>
+                    <td>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <input type="tel" class="form-control onlyNumber" id="phoneNumber"
+                                    data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- 주소 -->
+                <tr>
+                    <th class="col">주소</th>
+                    <td>
+                        <div class="row g-1">
+                            <div class="col-md-12">
+                                <div class="row g-1">
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-4 text-start d-grid d-md-block">
+                                        <input class="btn btn-primary" onclick="sample6_execDaumPostcode()"
+                                            type="button" value="우편번호검색">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row g-1">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="sample6_address" placeholder="도로명주소"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="sample6_detailAddress"
+                                            placeholder="상세주소를 입력해주세요.">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="hidden" class="form-control" id="sample6_extraAddress"
+                                            placeholder="참고항목.">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 버튼 -->
+        <div class="row gap-1 justify-content-between">
+            <div class="col-sm-auto">
+                <div class="d-grid gap-1 d-sm-block">
+                    <a class="btn btn-primary" href="#" role="button">수정</a>
+                    <a class="btn btn-secondary" href="#" role="button">취소</a>
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <div class="d-grid d-sm-block">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        회원탈퇴
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">탈퇴안내</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <p class="text-danger">| 회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요. |</p>
+                        <li>회원 탈퇴 시 온라인과 오프라인을 통한 센터의 이용이 불가합니다.</li>
+                        <li>회원 탈퇴 시 매출관리를 위한 결제내역을 제외한 회원의 개인정보(ID, 이름, 생년월일, 휴대전화번호, 주소, 자택전화번호 등)가 삭제되어 해당 정보를 통한 조회가 불가능하게 되며, 재가입시 이전 수강정보는 복원되지 않습니다.</li> 
+                        <li>탈퇴된 사용자의 ID는 재사용할 수 없습니다.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <a href="mypage3.html" type="button" class="btn btn-danger">탈퇴</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function getvalue() {
+            var idx = document.getElementById('name').value;
+            var url = '?name=' + idx;
+            location.href = "join_member3.html" + url;
+        }
+
+
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === 'R') {
+
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+                        document.getElementById("sample6_extraAddress").value = extraAddr;
+
+                    } else {
+                        document.getElementById("sample6_extraAddress").value = '';
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('sample6_postcode').value = data.zonecode;
+                    document.getElementById("sample6_address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("sample6_detailAddress").focus();
+                }
+            }).open();
+        }
+
+    </script>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+        </script>
+</body>
+
+
+<!-- footer 시작 -->
+<div class="bg-light mt-5 border-top border-1">
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center my-1">
+
+            <p class="col-md-4 mb-0 text-muted">
+                <img class="img-fluid" src="img/영문화센터로고.png" style="width: 100px; height: 100px;"><br>
+                서울특별시 서초구 서초4 서초대로77길<br>
+                Tel : 02-123-1234 / Fax : 02-123-1235<br>
+                사업자등록번호 : 123-80-12345<br>
+                김영채 최나리 전수정 김성호 최선혜 최연희 김지호<br>
+                <br>
+                &copy; YOUNG’teve Jobs All rights reserved
+            </p>
+
+            <a href="/"
+                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                스크롤하는 이미지 구현 부
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+        </footer>
+    </div>
+</div>
+
+</html>
