@@ -59,7 +59,7 @@ ol {
   overflow: hidden;
 }
 .seat input[type=checkbox]:disabled + label:after {
-  
+
   position: absolute;
   top: 4px;
   left: 50%;
