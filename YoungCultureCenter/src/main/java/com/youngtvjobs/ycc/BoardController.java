@@ -17,14 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 			return "board/eventBoard";
 		}
 		
-		@RequestMapping("/postEdite")
-		public String postEdite() {
-			return "board/postEdite";
+		@RequestMapping("/postEdit")
+		public String postEdit() {
+			return "board/postEdit";
 		}
 		
 		@RequestMapping("/writePage")
 		public String writePage() {
 			return "board/writePage";
+		}
+		
+		@RequestMapping("/postView")
+		public String postView() {
+			return "board/postView";
 		}
 	
 	
