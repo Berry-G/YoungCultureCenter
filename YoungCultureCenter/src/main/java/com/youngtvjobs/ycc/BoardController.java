@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 		public String noticeBoard() {
 			return "board/noticeBoard";
 		}
-		
+		 
 		@RequestMapping("/eventBoard")
 		public String eventBoard() {
 			return "board/eventBoard";
