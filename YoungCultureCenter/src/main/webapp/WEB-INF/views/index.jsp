@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- 부트스트랩 실행 코드 -->
-	<link rel="stylesheet" href="/resources/css/bootstrap.min.css" type="text/css">
+ 	<link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
 	<title>YOUNG 문화 센터</title>
 </head>
 <body>
@@ -19,7 +19,8 @@
 			<footer class="d-flex flex-wrap justify-content-between align-items-center my-1" >
 
 					<p class="col-md-4 mb-0 text-muted">
-							<img class="img-fluid" src="/resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br>
+							<!-- <img class="img-fluid" src="/resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br> -->
+							<img class="img-fluid" src="resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br>
 							서울특별시 서초구 서초4 서초대로77길<br>
 							Tel : 02-123-1234 / Fax : 02-123-1235<br>
 							사업자등록번호 : 123-80-12345<br>
