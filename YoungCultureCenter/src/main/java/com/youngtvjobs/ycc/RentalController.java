@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/rental")
 public class RentalController {
 
-	@GetMapping("/studyroom")
+	@GetMapping("/readingroom")
 	public String readingRoom() {
-		return "rental/studyRoom";
+		return "rental/readingRoom";
+	}
+	
+	@GetMapping("/place")
+	public String rentalPlace() {
+		return "rental/place";
 	}
 }
