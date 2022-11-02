@@ -26,4 +26,24 @@ public class MemberController {
 	public String login()	{
 		return "member/loginForm";
 	}
+	
+	@RequestMapping("/mypage")
+	public String mypage1()	{
+		return "member/mypage1";
+	}
+	
+	@RequestMapping("/mypage/mypage2")
+	public String mypage2()	{
+		return "member/mypage2";
+	}
+	
+	@RequestMapping("/mypage/mypage3")
+	public String mypage3()	{
+		return "member/mypage3";
+	}
+	
+	@RequestMapping("/mypage/mypage4")
+	public String mypage4()	{
+		return "member/mypage4";
+	}
 }
