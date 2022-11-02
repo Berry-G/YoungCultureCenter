@@ -20,7 +20,6 @@
         }
     </style>
 </head>
-
 <body>
 	<!-- header include -->
 	<%@ include file="/WEB-INF/views/header.jsp" %>
@@ -35,15 +34,13 @@
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label">아이디</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="user_id" 
-                            id="user_id" placeholder="아이디를 입력해주세요." autofocus required>
+                            <input type="text" class="form-control" name="user_id" id="user_id" placeholder="아이디를 입력해주세요." autofocus required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label">비밀번호</label>
                         <div class="col-sm-9">
-                        	<input type="password" class="form-control" name="user_pwd" 
-                        	id="user_pwd" placeholder="비밀번호를 입력해주세요." required>
+                        	<input type="password" class="form-control" name="user_pwd" id="user_pwd" placeholder="비밀번호를 입력해주세요." required>
                         </div>    	   					
                     </div>
                     <fieldset class="row mb-3">
@@ -90,9 +87,7 @@
 	<!-- footer include -->
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        
+    <script src="resources/js/bootstrap.bundle.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         function login() {
             frm = document.loginform
@@ -110,28 +105,4 @@
         }
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

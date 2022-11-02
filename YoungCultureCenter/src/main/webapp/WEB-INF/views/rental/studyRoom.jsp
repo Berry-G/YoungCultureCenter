@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>독서실 예약</title>
 
-	<link rel="stylesheet" href="<c:url value = '/resources/css/bootstrap.min.css'/>">
-	<link rel="stylesheet" href="<c:url value = '/resources/css/studyRoom.css'/>">
-			
-	<script type="text/javascript" src="<c:url value = '/resources/js/bootstrap.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value = '/resources/js/bootstrap.bundle.min.js'/>"></script>	
-	<script type="text/javascript" src="<c:url value = '/resources/js/studyRoom.js'/>"></script>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css"/>
+	<link rel="stylesheet" href="resources/css/studyRoom.css" type="text/css"/>
 	
+			
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/js/studyRoom.js"></script>
+
     <style>
       th {
         background-color: bisque !important;

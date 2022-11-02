@@ -22,7 +22,7 @@ public class ClubController
 	@RequestMapping("/club/board")
 	public String clubBoard()
 	{
-		return "club/board";
+		return "club/club_board";
 	}
 
 	@RequestMapping("club/board/view")
