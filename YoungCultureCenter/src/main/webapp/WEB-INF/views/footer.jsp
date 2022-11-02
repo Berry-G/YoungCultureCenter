@@ -1,10 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="ko">
+
+<!-- 부트스트랩 실행 코드 -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
 <!-- footer 시작 -->
 <div class="bg-light mt-5 border-top border-1">
 	<div class="container">
+	
 		<footer	class="d-flex flex-wrap justify-content-between align-items-center my-1">
+		<!-- 부트스트랩 실행 코드 -->
+		<script src="resources/js/bootstrap.bundle.min.js"></script>
 			<p class="col-md-4 mb-0 text-muted">
-				<img class="img-fluid" src="../../../resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br> 
+				<img class="img-fluid" src="resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br> 
 				서울특별시 서초구 서초4 서초대로77길<br> Tel : 02-123-1234 / Fax : 02-123-1235<br>
 				사업자등록번호 : 123-80-12345<br> 
 				김영채 최나리 전수정 김성호 최선혜 김지호 최연희<br><br>
@@ -20,5 +31,8 @@
 				<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
 			</ul>
 		</footer>
+		
 	</div>
 </div>
+
+</html>
