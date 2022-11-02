@@ -3,6 +3,7 @@ package com.youngtvjobs.ycc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+//회원관리 컨트롤러
 @Controller
 public class MemeberController {
 	
