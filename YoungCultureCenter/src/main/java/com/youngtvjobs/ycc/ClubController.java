@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClubController
 {
 
-	@RequestMapping("/club/main")
+	@RequestMapping("/club")
 	public String clubMain()
 	{
-		return "club/main";
+		return "club/clubmain";
 	}
 	
 	@RequestMapping("/club/create")
