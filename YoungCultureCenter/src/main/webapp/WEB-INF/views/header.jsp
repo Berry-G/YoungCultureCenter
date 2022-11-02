@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="ko">
 
 <!-- 부트스트랩 실행 코드 -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 
 <header>
 	<!-- 부트스트랩 실행 코드 -->
@@ -15,7 +12,7 @@
 	<nav class="navbar navbar-expand-lg bg-light">
 	  <div class="container-fluid">
 			<!-- 로고 이미지 -->
-			<a href="#"><img src="resources/img/main_img/logo.png" alt="Young문화센터로고" class="logo"></a> 
+			<a href="#"><img src="resources/img/main_img/logo.png" alt="Young문화센터로고" class="logo" style="width: 40px; height: 40px;"></a> 
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -25,7 +22,7 @@
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
 						<ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">오시는 길</a></li>
+	            <li><a class="dropdown-item" href="map">오시는 길</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item dropdown">
@@ -79,4 +76,3 @@
 	</nav>
 	
 </header>
-</html>
