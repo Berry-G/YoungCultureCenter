@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
 		<!-- 로고 이미지 -->
-		<a href="#"><img src="resources/img/main_img/logo.png" alt="Young문화센터로고" class="logo"></a> 
+		<a href="/ycc"><img src="resources/img/main_img/logo.png" alt="Young문화센터로고" class="logo"></a> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -39,7 +39,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">수강상세</a></li>
-            <li><a class="dropdown-item" href="#">동아리</a></li>
+            <li><a class="dropdown-item" href="club">동아리</a></li>
           </ul>
         </li>
 				<li class="nav-item dropdown">
