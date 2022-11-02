@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,21 +11,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>YOUNG문화체육센터</title>
 		<!-- 부트스트랩 실행 코드 -->
-		<link rel="stylesheet" href="/src/main/resources/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="/src/main/resources/css/main.css">
+		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 	</head>
 
 
 	<body>
 
 		<!-- 부트스트랩 실행 코드 -->
-		<script src="/src/main/resources/js/bootstrap.bundle.min.js"></script>
+		<script src="resources/js/bootstrap.bundle.min.js"></script>
 
 		<!-- header -->
 		<nav class="navbar navbar-expand-lg bg-light">
 			<div class="container-fluid">
 				<!-- 로고 이미지 -->
-				<a href="#"><img src="..\resources\img\main_img\logo.png" alt="Young문화센터로고" class="logo"></a>
+				<a href="#"><img src="resources\img\main_img\logo.png" alt="Young문화센터로고" class="logo"></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
 					aria-label="Toggle navigation">
@@ -37,7 +38,7 @@
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false">시설안내</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">오시는 길</a></li>
+								<li><a class="dropdown-item" href="<c:url value='/map'/>" >오시는 길</a></li>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
@@ -116,13 +117,13 @@
 			</div>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="..\resources\img\slide\health.jpg" class="img-fluid" alt="달리기 수업 바로가기">
+					<img src="resources\img\slide\health.jpg" class="img-fluid" alt="달리기 수업 바로가기">
 				</div>
 				<div class="carousel-item">
-					<img src="..\resources\img\slide\baking.jpg" class="img-fluid" alt="베이킹 수업 바로가기">
+					<img src="resources\img\slide\baking.jpg" class="img-fluid" alt="베이킹 수업 바로가기">
 				</div>
 				<div class="carousel-item">
-					<img src="..\resources\img\slide\coingclass.png" class="img-fluid" alt="코딩수업 바로가기">
+					<img src="resources\img\slide\coingclass.png" class="img-fluid" alt="코딩수업 바로가기">
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -143,15 +144,15 @@
 		<div class="bannergroup">
 			<div class="banner_list">
 				<ul id="header_navi" style="text-align: center;">
-					<li><a href=""><img class="quik_img" src="..\resources\img\main_img\application_icon.png"
+					<li><a href=""><img class="quik_img" src="resources\img\main_img\application_icon.png"
 								alt="수강신청" /><span>수강신청</span></a></li>
-					<li><a href=""><img class="quik_img" src="..\resources\img\main_img\rental_icon.png"
+					<li><a href=""><img class="quik_img" src="resources\img\main_img\rental_icon.png"
 								alt="대관신청" /><span>대관신청</span></a></li>
-					<li><a href=""><img class="quik_img" src="..\resources\img\main_img\club_icon.png"
+					<li><a href=""><img class="quik_img" src="resources\img\main_img\club_icon.png"
 								alt="동아리" /><span>동아리</span></a></li>
-					<li><a href=""><img class="quik_img" src="..\resources\img\main_img\Locker_icon.png"
+					<li><a href=""><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
 								alt="사물함신청" /><span>사물함신청</span></a></li>
-					<li><a href=""><img class="quik_img" src="..\resources\img\main_img\map_icon.png"
+					<li><a href=""><img class="quik_img" src="resources\img\main_img\map_icon.png"
 								alt="찾아오시는 길" /><span>찾아오시는 길</span></a></li>
 				</ul>
 			</div><!-- // banner_list -->
@@ -261,7 +262,7 @@
 			<footer class="d-flex flex-wrap justify-content-between align-items-center my-1">
 
 				<p class="col-md-4 mb-0 text-muted">
-					<img class="img-fluid" src="..\resources\img\main_img\logo.png"
+					<img class="img-fluid" src="resources\img\main_img\logo.png"
 						style="width: 100px; height: 100px;"><br>
 					서울특별시 서초구 서초4 서초대로77길<br>
 					Tel : 02-123-1234 / Fax : 02-123-1235<br>

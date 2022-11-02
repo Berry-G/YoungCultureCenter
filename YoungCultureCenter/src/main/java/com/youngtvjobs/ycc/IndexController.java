@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //홈페이지 메인 컨트롤러
 public class IndexController
 {
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public String index()
 	{
-		return "index";
+		return "index-1";
+	}
+	
+	@RequestMapping("/map")
+	public String map()
+	{
+		return "map_page/map";
 	}
 
 }
