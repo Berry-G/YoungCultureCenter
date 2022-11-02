@@ -21,7 +21,7 @@
 		<!-- 부트스트랩 실행 코드 -->
 		<script src="resources/js/bootstrap.bundle.min.js"></script>
 
-		<!-- header -->
+		<!-- header inlcude -->
 		<%@include file ="header.jsp" %>
 
 		<!-- 슬라이드 배너 -->
@@ -183,7 +183,7 @@
 	</body>
 
 
-	<!-- footer 시작 -->
+	<!-- footer incldue -->
 	<%@include file ="footer.jsp" %>
 
 </html>
