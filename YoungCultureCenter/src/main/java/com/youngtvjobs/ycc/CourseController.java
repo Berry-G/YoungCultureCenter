@@ -10,4 +10,9 @@ public class CourseController {
 	public String courseSearch() {
 		return "/course/search";
 	}
+
+	@RequestMapping("/course/detail")
+	public String courseDetail() {
+		return "/course/coursedetail";
+	}
 }
