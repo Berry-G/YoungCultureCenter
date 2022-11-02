@@ -12,7 +12,7 @@
 		<title>YOUNG문화체육센터</title>
 		<!-- 부트스트랩 실행 코드 -->
 		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/main_page.css">
 		<!-- 슬라이드 배너 -->
 		<style>
 			/* 슬라이드 배너 이미지 크기 */
