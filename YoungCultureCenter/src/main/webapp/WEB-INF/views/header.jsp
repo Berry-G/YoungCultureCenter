@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
 		<!-- 로고 이미지 -->
-		<a href="#"><img src="../../../resources/img/main_img/logo.png" alt="Young문화센터로고" class="logo"></a> 
+		<a href="#"><img src="resources/img/main_img/logo.png" alt="Young문화센터로고" class="logo"></a> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +14,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
 					<ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">오시는 길</a></li>
+            <li><a class="dropdown-item" href="map">오시는 길</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
