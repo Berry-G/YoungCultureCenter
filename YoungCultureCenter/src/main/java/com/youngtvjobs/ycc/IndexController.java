@@ -7,10 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class IndexController
 {
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public String index()
 	{
-		return "index";
+		return "index-1";
+	}
+	
+	@RequestMapping("/map")
+	public String map()
+	{
+		return "map_page/map";
 	}
 
 }
