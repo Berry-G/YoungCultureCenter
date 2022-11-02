@@ -189,14 +189,10 @@
             var innerWidth = window.innerWidth;
             innerWidth <= "1280" ? changeClassName() : changeClassName2();
         };
-    </script>
+        
+        <script src="resources/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+   
    
 <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
