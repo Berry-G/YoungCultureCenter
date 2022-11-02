@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 //회원관리 컨트롤러
 @Controller
-public class MemeberController {
+public class MemberController {
 	
 	@RequestMapping("/joincheck")
 	public String joincheck() {
