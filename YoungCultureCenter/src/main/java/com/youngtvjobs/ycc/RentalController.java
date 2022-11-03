@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RentalController
 {
 	//독서실 대여
-	@RequestMapping("rental/studyroom")
+	@RequestMapping("/rental/studyroom")
 	public String studyRoom()
 	{
 		return "rental/studyRoom";
@@ -19,7 +19,7 @@ public class RentalController
 		return "rental/lockerinfo";
 	}
 	//대관신청
-	@RequestMapping("rental/place")
+	@RequestMapping("/rental/place")
 	public String rentalPlace()
 	{
 		return "rental/place";
