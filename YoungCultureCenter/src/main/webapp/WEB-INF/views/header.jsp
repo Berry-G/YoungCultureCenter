@@ -37,14 +37,14 @@
 	            <li><a class="dropdown-item" href="#">대관이용안내</a></li>
 	            <li><a class="dropdown-item" href="rental/place">대관현황</a></li>
 	            <li><a class="dropdown-item" href="rental/studyRoom">독서실예약</a></li>
-							<li><a class="dropdown-item" href="rental/ lockerinfo">사물함신청</a></li>
+							<li><a class="dropdown-item" href="rental/lockerinfo">사물함신청</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
 	          <ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="course/detail">수강상세</a></li>
-	            <li><a class="dropdown-item" href="#">동아리</a></li>
+	            <li><a class="dropdown-item" href="club">동아리</a></li>
 	          </ul>
 	        </li>
 					<li class="nav-item dropdown">
@@ -61,7 +61,7 @@
 	      	<!-- 로그인 / 회원가입 -->
 			<ul class="nav justify-content-end ms-auto">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/login">로그인</a>
+					<a class="nav-link active" aria-current="page" href="member/loginForm">로그인</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="member/signin1">회원가입</a>
