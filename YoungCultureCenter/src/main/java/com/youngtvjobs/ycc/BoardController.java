@@ -49,5 +49,11 @@ public class BoardController
 	public String inquiryEdit() {
 		return "board/inquiryEdit";
 	}
+	
+	//자주 묻는 질문(FAQ)
+	@RequestMapping("/board/faq")
+	public String faq() {
+		return "board/faq";
+	}
 
 }
