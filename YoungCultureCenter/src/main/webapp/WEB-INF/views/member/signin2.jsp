@@ -8,6 +8,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+	  <!-- head & meta tag include -->
+    <%@include file="/WEB-INF/views/metahead.jsp"%>
 <title>회원정보입력</title>
 	
 </head>

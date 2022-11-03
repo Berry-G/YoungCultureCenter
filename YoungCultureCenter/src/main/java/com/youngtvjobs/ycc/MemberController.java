@@ -46,4 +46,9 @@ public class MemberController {
 	public String mypage4()	{
 		return "member/mypage4";
 	}
+	//마이페이지5 : id/pw 찾기
+	@RequestMapping("/mypage/mypage5")
+	public String mypage5() {
+		return "member/mypage5";
+	}
 }
