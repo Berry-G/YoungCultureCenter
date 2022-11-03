@@ -78,7 +78,7 @@
 				<td>
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input type="text" class="form-control" id="divEmai" maxlength="40" value="ezen" readonly>
+							<input type="text" class="form-control" id="divEmai" maxlength="40" value="ezen" disabled>
 						</div>
 						<div class="col-md-5">
 							<div>
@@ -146,7 +146,7 @@
 		<div class="row gap-1 justify-content-between">
 			<div class="col-sm-auto">
 				<div class="d-grid gap-1 d-sm-block">
-					<a class="btn btn-primary" href="/ycc" role="button">수정</a> 
+					<a class="btn btn-primary" href="/ycc" role="button" onclick="modifying();">수정</a> 
 					<a class="btn btn-secondary" href="/ycc" role="button">취소</a>
 				</div>
 			</div>
@@ -159,8 +159,7 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -171,8 +170,8 @@
 					<p class="text-danger">| 회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요. |</p>
 					<ul>
 						<li>회원 탈퇴 시 온라인과 오프라인을 통한 센터의 이용이 불가합니다.</li>
-						<li>회원 탈퇴 시 매출관리를 위한 결제내역을 제외한 회원의 개인정보(ID, 이름, 생년월일, 휴대전화번호,
-						주소, 자택전화번호 등)가 삭제되어 해당 정보를 통한 조회가 불가능하게 되며, 재가입시 이전 수강정보는 복원되지 않습니다.</li>
+						<li>회원 탈퇴 시 매출관리를 위한 결제내역을 제외한 회원의 개인정보(ID, 이름, 생년월일, 휴대전화번호, 주소, 자택전화번호 등)가 삭제되어
+						해당 정보를 통한 조회가 불가능하게 되며, 재가입시 이전 수강정보는 복원되지 않습니다.</li>
 						<li>탈퇴된 사용자의 ID는 재사용할 수 없습니다.</li>
 					</ul>
 				</div>
@@ -192,12 +191,14 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<script>
+	function modifying() {
+		alert("수정이 완료되었습니다.");
+	}
 	function getvalue() {
 		var idx = document.getElementById('name').value;
 		var url = '?name=' + idx;
-		location.href = "join_member3.html" + url;
+		location.href = "/ycc/mypage/mypage2" + url;
 	}
-	
 	function sample6_execDaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {

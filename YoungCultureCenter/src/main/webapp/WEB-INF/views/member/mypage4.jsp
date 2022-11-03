@@ -26,28 +26,28 @@
 					<th class="col" id="w-17">상태</th>
 				</thead>
 				<tr>
-					<td><a href="#">초코칩 쿠키 만들기</a></td>
+					<td><a href="/ycc/course/detail">초코칩 쿠키 만들기</a></td>
 					<td id="d-col">이젠</td>
 					<td>2022-10-01 ~ 2022-11-07</td>
 					<td id="d-col">25000</td>
 					<td>수강중</td>
 				</tr>
 				<tr>
-					<td><a href="#">(산대특)_AI플랫폼 활용 이커머스 웹서비스 개발_육성</a></td>
+					<td><a href="/ycc/course/detail">(산대특)_AI플랫폼 활용 이커머스 웹서비스 개발_육성</a></td>
 					<td id="d-col">추호진</td>
 					<td>2022-08-10 ~ 2023-01-11</td>
 					<td id="d-col">6,851,200원 (전액지원)</td>
 					<td>수강중</td>
 				</tr>
 				<tr>
-					<td><a href="#">초코칩 쿠키 만들기</a></td>
+					<td><a href="/ycc/course/detail">초코칩 쿠키 만들기</a></td>
 					<td id="d-col">이젠</td>
 					<td>2022-03-01 ~ 2022-10-07</td>
 					<td id="d-col">5000</td>
 					<td>수강완료</td>
 				</tr>
 				<tr>
-					<td><a href="#">초코칩 쿠키 만들기</a></td>
+					<td><a href="/ycc/course/detail">초코칩 쿠키 만들기</a></td>
 					<td id="d-col">이젠</td>
 					<td>2022-03-01 ~ 2022-10-07</td>
 					<td id="d-col">5000</td>
@@ -56,7 +56,8 @@
 			</tbody>
 		</table>
 		<div class="d-grid gap-1 d-sm-block text-center">
-			<a href="/ycc" class="btn btn-primary">홈으로</a> <a href="/course/search" class="btn btn-primary">다른강좌보기</a>
+			<a href="/ycc" class="btn btn-primary">홈으로</a>
+			<a href="/ycc/course/search" class="btn btn-primary">다른강좌보기</a>
 		</div>
 	</div>
 

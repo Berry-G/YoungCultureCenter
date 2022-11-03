@@ -89,8 +89,8 @@
 			</div>
 		</div>
 		<div class="d-grid gap-2 d-sm-block text-center mt-3">
-			<a class="btn btn-primary" href="#" role="button">수강신청</a> 
-			<a class="btn btn-primary" href="#" role="button">목록</a>
+			<a class="btn btn-primary" href="/ycc/course/regcomplete" role="button">수강신청</a> 
+			<a class="btn btn-primary" href="/ycc/course/search" role="button">목록</a>
 		</div><hr>
 
 		<!-- tab -->
@@ -273,8 +273,7 @@
 			</div>
 
 			<!-- 수강후기 -->
-			<div class="container-md tab-pane fade" id="profile-tab-pane"
-				role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+			<div class="container-md tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
 				<div class="row">
 					<!-- 별점 -->
 					<h6>| 평균평점</h6>
