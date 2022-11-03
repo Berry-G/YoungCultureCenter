@@ -15,7 +15,7 @@
 	    </button>
 			<!-- 헤더 드롭다운 -->
 	    <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
-	      <ul class="navbar-nav">
+	      <ul class="navbar-nav mx-auto w-25">
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
 						<ul class="dropdown-menu">
@@ -57,10 +57,9 @@
 	          </ul>
 	        </li>
 	      </ul>
-	    </div>
-	
-			<!-- 로그인 / 회원가입 -->
-			<ul class="nav justify-content-end">
+	      
+	      	<!-- 로그인 / 회원가입 -->
+			<ul class="nav justify-content-end ms-auto">
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="#">로그인</a>
 				</li>
@@ -68,6 +67,9 @@
 					<a class="nav-link" href="#">회원가입</a>
 				</li>
 			</ul>
+	    </div>
+	
+
 	
 	  </div>
 	</nav>
