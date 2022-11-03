@@ -25,4 +25,9 @@ public class CourseController {
 	public String courseSchedule() {
 		return "/course/courseSchedule";
 	}
+
+	@RequestMapping("/course/regcomplete")
+	public String courseRegComplete() {
+		return "/course/courseRegComplete";
+	}
 }
