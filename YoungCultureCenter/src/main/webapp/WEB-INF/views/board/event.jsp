@@ -4,19 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이벤트 게시판</title>
-<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
+<!-- head & meta tag include -->
+    <%@include file="/WEB-INF/views/metahead.jsp"%>
+    <title>Young문화센터 - 이벤트/행사 게시판</title>
 </head>
-<body>
+
+  <body>
   <!-- header inlcude -->
 <%@include file="/WEB-INF/views/header.jsp"%>
   <!--start container-->
   <div class="container">
     <br>
-    <h3>이벤트 게시판</h3>
+    <h3>이벤트/행사 게시판</h3>
     <hr /><br>
     <div class="input-group" style="width: 200px; margin-left:80%; padding-bottom: 20px;">
       <select class="form-select form-select-sm" aria-label=".form-select-sm example"
@@ -119,13 +118,11 @@
       <input type="text" class="form-control" aria-label="title" aria-describedby="basic-addon1" style="width: 300px;">
       <button type="button" class="btn btn-primary" style="margin-left: 10px;">검색</button>
     </div>
-  </div>
+  </div> <!--end of container-->
   <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
-  <!--end of container-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
+  
+  
 </body>
 
 </html>

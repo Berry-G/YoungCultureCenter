@@ -32,10 +32,10 @@ public class BoardController
 		return "board/write";
 	}
 
-	@RequestMapping("/board/view")
+	@RequestMapping("/board/post")
 	public String postView()
 	{
-		return "board/view";
+		return "board/post";
 	}
 	
 	//나의 문의 내역
