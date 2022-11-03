@@ -2,8 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <header>
-	<!-- 부트스트랩 실행 코드 -->
-	<script src="resources/js/bootstrap.bundle.min.js"></script>
+	
 
 	<!-- header -->
 	<nav class="navbar navbar-expand-lg bg-light">
@@ -27,7 +26,7 @@
 	    
 			<!-- 헤더 드롭다운 -->
 	    <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
-	      <ul class="navbar-nav mx-auto w-25">
+	      <ul class="navbar-nav mx-auto">
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">시설안내</a>
 						<ul class="dropdown-menu">
