@@ -13,10 +13,10 @@ public class RentalController
 		return "rental/studyRoom";
 	}
 	//사물함 대여
-	@RequestMapping("rental/locker")
+	@RequestMapping("/rental/lockerinfo")
 	public String readingRoom()
 	{
-		return "rental/locker";
+		return "rental/lockerinfo";
 	}
 	//대관신청
 	@RequestMapping("rental/place")
@@ -24,4 +24,5 @@ public class RentalController
 	{
 		return "rental/place";
 	}
+	
 }

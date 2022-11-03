@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController {
 	//회원약관동의
-	@RequestMapping("/signin")
+	@RequestMapping("/member/signin1")
 	public String joincheck() {
 		return "member/signin1";
 	}
 	//회원가입
-	@RequestMapping("/signin/signin2")
+	@RequestMapping("/member/signin2")
 	public String joinmember()	{
 		return "member/signin2";
 	}
 	//회원가입 결과
-	@RequestMapping("/signin/signin3")
+	@RequestMapping("/member/signin3")
 	public String joinresult()	{
 		return "member/signin3";
 	}
