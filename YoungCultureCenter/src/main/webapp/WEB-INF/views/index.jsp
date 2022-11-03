@@ -43,7 +43,7 @@
 			</div>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="resources\img\slide\health.jpg" class="img_size01" alt="달리기 수업 바로가기">
+					<img src="resources\img\slide\Youngculturecenter.png" class="img_size01" alt="Youngculture바로가기">
 				</div>
 				<div class="carousel-item">
 					<img src="resources\img\slide\baking.jpg" class="img_size01" alt="베이킹 수업 바로가기">
