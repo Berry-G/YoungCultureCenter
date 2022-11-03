@@ -76,7 +76,7 @@
 								alt="대관신청" /><span>대관신청</span></a></li>
 					<li><a href="/ycc/club"><img class="quik_img" src="resources\img\main_img\club_icon.png"
 								alt="동아리" /><span>동아리</span></a></li>
-					<li><a href="/ycc/rental/lockerinfo"><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
+					<li><a href="/ycc/rental/locker"><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
 								alt="사물함신청" /><span>사물함신청</span></a></li>
 					<li><a href="/ycc/map"><img class="quik_img" src="resources\img\main_img\map_icon.png"
 								alt="찾아오시는 길" /><span>찾아오시는 길</span></a></li>
