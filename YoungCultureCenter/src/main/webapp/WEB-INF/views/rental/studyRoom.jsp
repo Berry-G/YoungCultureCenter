@@ -5,17 +5,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>독서실 예약</title>
+    <!-- head & meta tag include -->
+    <%@include file="/WEB-INF/views/metahead.jsp"%>
 
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css"/>
-	<link rel="stylesheet" href="resources/css/studyRoom.css" type="text/css"/>
-	
-			
-	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="resources/js/studyRoom.js"></script>
+	<link rel="stylesheet" href="/ycc/resources/css/studyRoom.css" type="text/css"/>	
+	<script type="text/javascript" src="/ycc/resources/js/studyRoom.js"></script>
+
+    <title>독서실 예약</title>
 
     <style>
       th {
