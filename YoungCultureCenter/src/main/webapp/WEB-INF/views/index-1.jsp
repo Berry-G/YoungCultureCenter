@@ -70,21 +70,22 @@
 		<div class="bannergroup">
 			<div class="banner_list">
 				<ul id="header_navi" style="text-align: center;">
-					<li><a href=""><img class="quik_img" src="resources\img\main_img\application_icon.png"
-								alt="수강신청" /><span>수강신청</span></a></li>
-					<li><a href=""><img class="quik_img" src="resources\img\main_img\rental_icon.png"
+					<li><a href="/ycc/course/courseinfo"><img class="quik_img" src="resources\img\main_img\application_icon.png"
+								alt="수강신청" /><span>강좌신청안내</span></a></li>
+					<li><a href="/ycc/rental/place"><img class="quik_img" src="resources\img\main_img\rental_icon.png"
 								alt="대관신청" /><span>대관신청</span></a></li>
-					<li><a href=""><img class="quik_img" src="resources\img\main_img\club_icon.png"
+					<li><a href="/ycc/club"><img class="quik_img" src="resources\img\main_img\club_icon.png"
 								alt="동아리" /><span>동아리</span></a></li>
-					<li><a href=""><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
+					<li><a href="/ycc/rental/lockerinfo"><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
 								alt="사물함신청" /><span>사물함신청</span></a></li>
-					<li><a href=""><img class="quik_img" src="resources\img\main_img\map_icon.png"
+					<li><a href="/ycc/map"><img class="quik_img" src="resources\img\main_img\map_icon.png"
 								alt="찾아오시는 길" /><span>찾아오시는 길</span></a></li>
 				</ul>
 			</div><!-- // banner_list -->
 		</div><!-- // bannergroup -->
 
-
+		<!-- 통합검색 -->
+				
 
 		<!-- 공지사항, 행사/이벤트, 캘린더 -->
 		<div class="container" style="display: flex; ">
@@ -100,7 +101,7 @@
 									<a class="nav-link active" aria-current="page" href="#"><b>공지사항</b></a>
 								</li>
 								<li class="nav-item ms-auto">
-									<a class="nav-link" href="#">더보기</a>
+									<a class="nav-link" href="/ycc/board/notice">더보기</a>
 								</li>
 							</ul>
 							<!-- 공지사항 글 -->
@@ -143,7 +144,7 @@
 								<a class="nav-link active" aria-current="page" href="#"><b>행사/이벤트</b></a>
 							</li>
 							<li class="nav-item ms-auto">
-								<a class="nav-link" href="#">더보기</a>
+								<a class="nav-link" href="/ycc/board/event">더보기</a>
 							</li>
 						</ul>
 						<!-- 행사/이벤트 글 -->
