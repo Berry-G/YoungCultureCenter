@@ -7,17 +7,11 @@
 <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
   <!--summernote-->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css"> <!-- header-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
-  <script>
-    $('.summernote').summernote({
-      height: 400,
-      lang: "ko-KR",
-
-    });
-  </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js">	</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+  
   <%
   	String noticeURI = request.getParameter("board");
   	String eventURI = request.getParameter("board");
@@ -35,6 +29,13 @@
     <input type="text" class="form-control mb-3" placeholder="제목을 입력해주세요" aria-label="title"
       aria-describedby="basic-addon1">
     <textarea class="summernote mb-3" name="editordata"></textarea>
+    <script>
+    $('.summernote').summernote({
+      height: 400,
+      lang: "ko-KR"
+
+    });
+  </script>
     <div class="input-group mb-3 mt-3">
       <input type="file" class="form-control" id="inputGroupFile02">
       <label class="input-group-text" for="inputGroupFile02">Upload</label>
