@@ -6,10 +6,17 @@
     <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
     
+    <!--summernote-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js">	</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
     
     <title>1:1 문의 작성하기</title>
   </head>
   <body>
+  
+  
   
       <!-- include header -->
 <%@include file="/WEB-INF/views/header.jsp"%>
@@ -59,12 +66,25 @@
               placeholder="제목을 입력해주세요"
             /></li>
             <li>
-              <textarea
+<!--   썸머노트 스마트 에디터로 교체           
+
+ <textarea
           class="form-control"
           aria-label="With textarea"
           style="height: 400px; margin-bottom: 10px"
           placeholder="내용을 입력하세요"
-        ></textarea>
+        ></textarea> -->
+        
+        <textarea class="summernote" name="editordata" 
+        style="margin-bottom: 30px;" placeholder="내용을 입력하세요">
+        </textarea>
+        <script>
+            $('.summernote').summernote({
+                height: 400,
+                lang: "ko-KR",
+
+            });
+        </script>
             </li>
             <li>
               <div class="mb-3">
