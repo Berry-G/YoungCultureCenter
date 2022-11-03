@@ -109,8 +109,7 @@
 								<div id="menu3" class="tab-pane in active">
 									<ul class="line fs14">
 										<li>
-											<a href="/office/gfac/board/gfac_notice/484/view.do" target="_self">2022
-												아트프라이즈 강남 운영 용역 선정 공고</a>
+											<a href="/ycc/board/post" target="_self">저 오늘 치과갑니다</a>
 										</li>
 										<li>
 											<a href="/office/gfac/board/gfac_notice/482/view.do" target="_self">2022
