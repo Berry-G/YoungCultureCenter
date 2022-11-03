@@ -3,12 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 부트스트랩 CSS only -->
-    <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
+<head>
+	<!-- head & meta tag include -->
+    <%@include file="/WEB-INF/views/metahead.jsp"%>
     <!-- 커스텀 스타일 (재정의) -->
     <link rel="stylesheet" href="<c:url value='/resources/css/courseSearch.css' />">
 <title>YOUNG문화체육센터</title>
