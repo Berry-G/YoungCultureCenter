@@ -45,7 +45,7 @@ public class BoardController
 	}
 	
 	//1:1 문의 작성 페이지
-	@RequestMapping("board/inquiry/edit")
+	@RequestMapping("/board/inquiry/edit")
 	public String inquiryEdit() {
 		return "board/inquiryEdit";
 	}
