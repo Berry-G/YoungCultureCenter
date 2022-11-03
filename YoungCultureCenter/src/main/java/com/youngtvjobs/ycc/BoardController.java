@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController
 {
 
-	@RequestMapping("/board/noticeBoard")
+	@RequestMapping("/board/notice")
 	public String noticeBoard()
 	{
-		return "board/noticeBoard";
+		return "board/notice";
 	}
 
-	@RequestMapping("/board/eventBoard")
+	@RequestMapping("/board/event")
 	public String eventBoard()
 	{
-		return "board/eventBoard";
+		return "board/event";
 	}
 
-	@RequestMapping("/board/postEdit")
+	@RequestMapping("/board/edit")
 	public String postEdit()
 	{
-		return "board/postEdit";
+		return "board/edit";
 	}
 
-	@RequestMapping("/board/writePage")
+	@RequestMapping("/board/write")
 	public String writePage()
 	{
-		return "board/writePage";
+		return "board/write";
 	}
 
-	@RequestMapping("/board/postView")
+	@RequestMapping("/board/view")
 	public String postView()
 	{
-		return "board/postView";
+		return "board/view";
 	}
 	
 	@RequestMapping("/board/inquiryhistory")
