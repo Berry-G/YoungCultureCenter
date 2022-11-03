@@ -13,7 +13,6 @@
 <%@include file="/WEB-INF/views/header.jsp"%>
 
   <div class="container">
-    <div class="container">
       <form action="https://search.naver.com/search.naver" method="GET">
         <div class="row mt-5 mb-4">
           <div class="col-10">
@@ -25,9 +24,8 @@
           </div>
         </div>
       </form>
-    </div>
 
-    <div class="row" style="text-align: center; justify-content: space-between;">
+    <div class="row pt-3" style="text-align: center; justify-content: space-between;">
       <div class="col-4 col-md-2">
         <button type="button" class="btn btn-primary">전체보기</button>
       </div>
@@ -46,23 +44,19 @@
       <div class="col-4 col-md-2">
         <button type="button" class="btn btn-primary">FAQ</button>
       </div>
-      <div class="container">
-        <select class="form-select" aria-label="Default select example"
-          style="width: 20%; float: right; margin-top: 10px;">
-          <option selected>정렬기준</option>
-          <option value="1">최신순</option>
-          <option value="2">조회순</option>
-          <option value="3">인기순</option>
-        </select>
-      </div>
+        
     </div>
-  </div>
-
-
   
-    <div class="container">
         <table class="table table-hover">
-            <h1 class="pb-5">전체보기</h1>
+            <h1 class="pb-5" style="margin-top:30px">전체보기</h1>
+            
+            <select class="form-select mt-1" aria-label="Default select example"
+	          style="width: 10%; float: right;">
+	          <option selected>정렬기준</option>
+	          <option value="1">최신순</option>
+	          <option value="2">조회순</option>
+	          <option value="3">인기순</option>
+        	</select>
 
             <thead>
                 <tr>
@@ -113,7 +107,6 @@
                     <td>211</td>
                 </tr>
                 <tr>
-                <tr>
                     <th scope="row">설립 5주년 이벤트</th>
                     <td>관리자</td>
                     <td>2022-09-01</td>
@@ -121,7 +114,6 @@
                 </tr>
             </tbody>
         </table>
-        <div class="container">
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
@@ -138,17 +130,16 @@
                 </ul>
             </nav>
 
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="bottomsearch d-flex" style="margin-left: 20%; margin-top:50px";">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                    style=" margin-right: 10px;">
+                    style=" width: 90px; margin-right: 10px;">
                     <option value="1">제목</option>
                     <option value="2">작성자</option>
                 </select>
-                <input type="text" class="form-control" aria-label="title" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" aria-label="title" aria-describedby="basic-addon1" style="width:500px;">
                 <button type="button" class="btn btn-primary" style="margin-left: 10px;">검색</button>
             </div>
         </div>
-    </div>
   <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
   
