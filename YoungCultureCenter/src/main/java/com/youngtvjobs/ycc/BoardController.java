@@ -38,9 +38,16 @@ public class BoardController
 		return "board/view";
 	}
 	
-	@RequestMapping("/board/inquiryhistory")
+	//나의 문의 내역
+	@RequestMapping("/board/inquiry/history")
 	public String inquiryHistory() {
 		return "board/inquiryHistory";
+	}
+	
+	//1:1 문의 작성 페이지
+	@RequestMapping("board/inquiry/edit")
+	public String inquiryEdit() {
+		return "board/inquiryEdit";
 	}
 
 }
