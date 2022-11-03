@@ -10,7 +10,7 @@
 	  <div class="container-fluid">
 			<!-- 로고 이미지 -->
 			<a href="#"><img src="/ycc/resources/img/main_img/logo.png" alt="Young문화센터로고" style="width: 40px; height: 40px;"></a> 
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 			<!-- 헤더 드롭다운 -->

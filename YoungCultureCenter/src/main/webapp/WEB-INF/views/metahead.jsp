@@ -11,5 +11,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- 부트스트랩 실행 코드 -->
-<link rel="stylesheet" type="text/css" href="/ycc/resources/css/bootstrap.min.css">
+<link href="/ycc/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<script src="/ycc/resources/js/bootstrap.min.js"></script>
 <script src="/ycc/resources/js/bootstrap.bundle.min.js"></script>
