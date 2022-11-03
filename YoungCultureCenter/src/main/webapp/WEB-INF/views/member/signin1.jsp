@@ -135,7 +135,7 @@
         </textarea>
     </div>
             <div class="form-check pt-3">
-                <input class="form-check-input" type="checkbox" value="" id="provisionYn" checked>
+                <input class="form-check-input" type="checkbox" value="" id="provisionYn" >
                 <label class="form-check-label" for="provision">
                     (필수)동의합니다.
                 </label>
@@ -157,13 +157,13 @@
 4. 귀하는 개인정보 수집 · 이용에 동의하지 않으실 수 있습니다. 동의 거부시에도 회원가입은 가능하나 서비스는제한될 수 있습니다. (단, 회원가입을 위한 최소한의 정보인 필수정보는 미입력시 회원가입 불가)
   </textarea>
                 <div class="form-check pt-3">
-                    <input class="form-check-input" type="checkbox" value="" id="memberInfoYn" checked>
+                    <input class="form-check-input" type="checkbox" value="" id="memberInfoYn" >
                     <label class="form-check-label" for="memberInfo">
                         (필수) 동의합니다.
                     </label>
                 </div>
                 <div class="form-check pt-3">
-                    <input class="form-check-input" type="checkbox" value="" id="TmemberInfoYn" checked>
+                    <input class="form-check-input" type="checkbox" value="" id="TmemberInfoYn" >
                     <label class="form-check-label" for="memberInfo">
                         모든 약관에 동의합니다.
                     </label>
@@ -171,8 +171,8 @@
             </div>
             <div class="row">
                 <div class="col text-center">
-                    <a href="join_member2.html" class="btn btn-primary" role="button">확인</a>
-                    <a href="#" class="btn btn-secondary" role="button">취소</a>
+                    <a href="/ycc/member/signin2" class="btn btn-primary" role="button">확인</a>
+                    <a href="/ycc/" class="btn btn-secondary" role="button">취소</a>
                 </div>
             </div>
         </div>
