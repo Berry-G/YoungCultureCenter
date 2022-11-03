@@ -13,6 +13,17 @@
 	    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
+	    
+	    <!-- 헤더 search창 -->
+	    <nav class="navbar bg-light">
+		  <div class="container-fluid">
+		    <form class="d-flex" role="search">
+		      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		      <button class="btn btn-outline-success" type="submit" onclick="location.href='/ycc/search'">Search</button>
+		    </form>
+		  </div>
+		</nav>
+	    
 			<!-- 헤더 드롭다운 -->
 	    <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
 	      <ul class="navbar-nav mx-auto w-25">
@@ -36,7 +47,7 @@
 						<ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="/ycc/rental/place">대관신청</a></li>
 	            <li><a class="dropdown-item" href="/ycc/rental/studyroom">독서실예약</a></li>
-							<li><a class="dropdown-item" href="/ycc/rental/lockerinfo">사물함신청</a></li>
+							<li><a class="dropdown-item" href="/ycc/rental/locker">사물함신청</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item dropdown">
