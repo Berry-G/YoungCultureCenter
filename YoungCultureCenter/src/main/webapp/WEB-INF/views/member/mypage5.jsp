@@ -103,7 +103,8 @@
 					</div>
 					<hr>
 					<div class="d-grid d-sm-block text-end">
-						<button type="submit" class="btn btn-primary">아이디찾기</button>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">아이디찾기</button>
 					</div>
 				</form>
 			</div>
@@ -147,7 +148,7 @@
 						<p>등록된 이메일 주소를 기억하지 못할 경우 관리자에게 연락 주십시오.</p>
 					</div>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-						<button type="submit" class="btn btn-primary me-md-2">비밀번호찾기</button>
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">비밀번호찾기</button>
 					</div>
 				</form>
 			</div>
@@ -156,5 +157,44 @@
 
 	<!-- footer include -->
 	<%@ include file="/WEB-INF/views/footer.jsp"%>
+	
+	<!-- 아이디찾기 Modal -->
+	<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="exampleModalLabel1">Modal title</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body text-center">
+	        <p class="fs-5"><b>abcdef***</b></p>
+	       	<p>개인정보 보호를 위해 아이디의 일부만 노출됩니다.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <a href="/ycc/login" type="button" class="btn btn-primary">로그인하기</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 비밀번호찾기 Modal -->
+	<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="exampleModalLabel2">Modal title</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body text-center">
+	        <p>재설정된 비밀번호가 <b class="fs-5">e-mail로 전송</b>되었습니다.</p>
+	        <p>로그인 후 비밀번호를 변경해주세요.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <a href="/ycc/login" type="button" class="btn btn-primary">로그인하기</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>
