@@ -15,8 +15,14 @@ public class CourseController {
 	public String coursedetail() {
 		return "/course/coursedetail";
 	}
+	
 	@RequestMapping("/course/courseinfo")
 	public String courseinfo() {
 		return "/course/courseinfo";
+	}
+	
+	@RequestMapping("/course/schedule")
+	public String courseSchedule() {
+		return "/course/courseSchedule";
 	}
 }
