@@ -45,7 +45,7 @@
                 <option value="Class">교육강좌</option>
                 <option value="Etc">기타</option>
               </select>
-              <select
+<!--          	<select
               name="inq_type_sub"
               class="form-select form-select-sm"
               style="display: inline;width: 30%;"
@@ -54,7 +54,7 @@
               <option value="Refund">결제 취소, 환불</option>
               <option value="Application Inquiry">영수증 발급</option>
               <option value="Ticket Inquiry">결제수단 변경</option>
-            </select>
+            </select> -->
               </div>
             </li>
             <hr>
@@ -76,12 +76,26 @@
         ></textarea> -->
         
         <textarea class="summernote" name="editordata" 
-        style="margin-bottom: 30px;" placeholder="내용을 입력하세요">
+        style="margin-bottom: 30px;">
         </textarea>
         <script>
             $('.summernote').summernote({
-                height: 400,
+            	placeholder:"내용을 입력하세요",
+                height: 600,
                 lang: "ko-KR",
+                disableResizeEditor: true,	// 크기 조절 삭제
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+                    ['color', ['forecolor','color']],
+                    ['table', ['table']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert',['picture','link','video']],
+                    ['view',['help']]
+                  ]
 
             });
         </script>
