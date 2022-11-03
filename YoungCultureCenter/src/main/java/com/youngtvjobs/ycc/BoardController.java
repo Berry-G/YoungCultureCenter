@@ -37,5 +37,10 @@ public class BoardController
 	{
 		return "board/postView";
 	}
+	
+	@RequestMapping("/board/inquiryhistory")
+	public String inquiryHistory() {
+		return "board/inquiryHistory";
+	}
 
 }
