@@ -4,18 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post Edit</title>
-<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css' />">
+<!-- head & meta tag include -->
+    <%@include file="/WEB-INF/views/metahead.jsp"%>
 
 <!--summernote-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css">
-    <!-- header-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+    <script>
+    $('.summernote').summernote({
+        height: 400,
+        lang: "ko-KR",
+
+    });
+</script>
+<title>Young문화센터 - 게시글 수정</title>
 </head>
 <body>
 <body>
@@ -44,24 +48,16 @@
 
                         <div class="position-absolute bottom-0 end-0 m-3">
                             <a href="notice" class="btn btn-outline-secondary">목록으로</a>
-                            <a href="modify?bno=${board.bno}" class="btn btn-outline-success">등록하기</a>
+                            <a href="modify?bno=${board.bno}" class="btn btn-outline-success"  onClick="javascript:history.back();">등록하기</a>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-    </div>
+    </div><!--container end-->
     <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
-<script>
-    $('.summernote').summernote({
-        height: 400,
-        lang: "ko-KR",
 
-    });
-</script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+ 
 </body>
 </html>
