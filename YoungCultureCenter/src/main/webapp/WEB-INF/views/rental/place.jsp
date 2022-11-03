@@ -59,10 +59,8 @@
       </div>
       <div class="col-12 col-md-6">
         <p>
-
-          <label for="select" class="mt-3 mb-5">
             <h4>대관 장소 선택</h4>
-          </label>
+   
           <select id="select">
             <option value="">장소 선택</option>
             <optgroup label="외부">
@@ -94,12 +92,30 @@
           <label for="datetime-local">
             <h4>대여 일자 지정</h4>
           </label>
-          <input type="datetime-local" id="datetime-local" name="rday" onchange="printDate()">
+          <input type="date" id="datetime-local" name="rday" onchange="printDate(), setMinValue()">
+          
+        </p>
+        <p>
+          <label for="select_time" class="mt-1 mb-3">
+            <h4>대관 시간 선택</h4>
+          </label>
+          <select id="select_time" onchange="handleOnChange(this)">
+            <option value="">시간 선택</option>
+            <option value="">06:10 - 08:00</option>
+            <option value="">08:10 - 10:00</option>
+            <option value="">10:10 - 12:00</option>
+            <option value="">12:10 - 14:00</option>
+            <option value="">14:10 - 16:00</option>
+            <option value="">16:10 - 18:00</option>
+            <option value="">18:10 - 20:00</option>
+            <option value="">20:10 - 22:00</option>
+          </select>
+        </p>
+        
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             신청하기
           </button>
-        </p>
         <!--대관 장소 선택 끝-->
       </div>
     </div>
@@ -177,7 +193,9 @@
               </tr>
               <tr>
                 <th>이용 시간</th>
-                <td colspan="3">16:00 ~ 18:00</td>
+                <td colspan="3">
+                  <div id="rtime"></div>
+                </td>
               </tr>
             </table>
           </div>
@@ -203,6 +221,18 @@
       }
     }
     function printDate() { const date = document.getElementById('datetime-local').value; document.getElementById("rsdate").innerText = date; }
+  </script>
+  <script>
+    function handleOnChange(e) {
+      // 선택된 데이터의 텍스트값 가져오기
+      const text = e.options[e.selectedIndex].text;
+
+      console.log(e.options);
+
+      // 선택한 텍스트 출력
+      document.getElementById('rtime').innerText
+        = text;
+    }
   </script>
 <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
