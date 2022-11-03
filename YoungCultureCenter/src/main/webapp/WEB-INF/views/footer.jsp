@@ -10,7 +10,7 @@
 		<!-- 부트스트랩 실행 코드 -->
 		<script src="resources/js/bootstrap.bundle.min.js"></script>
 			<p class="col-md-4 mb-0 text-muted">
-				<img class="img-fluid" src="resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br> 
+				<img class="img-fluid" src="/ycc/resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br> 
 				서울특별시 서초구 서초4 서초대로77길<br> Tel : 02-123-1234 / Fax : 02-123-1235<br>
 				사업자등록번호 : 123-80-12345<br> 
 				김영채 최나리 전수정 김성호 최선혜 김지호 최연희<br><br>
