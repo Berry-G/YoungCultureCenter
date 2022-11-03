@@ -139,8 +139,8 @@
 
   <div class="row">
     <div class="col text-center pt-5">
-      <a href="javascript:getvalue()" class="btn btn-primary" role="button">회원가입</a>
-      <a href="#" class="btn btn-secondary" role="button">취소</a>
+      <a href="/ycc/member/signin3" class="btn btn-primary" role="button">회원가입</a>
+      <a href="/ycc/" class="btn btn-secondary" role="button">취소</a>
     </div>
   </div>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
