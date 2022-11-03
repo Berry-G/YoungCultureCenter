@@ -26,8 +26,9 @@
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">교육강좌</a>
 						<ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="/ycc/course/courseinfo">강좌신청안내</a></li>
+	            <li><a class="dropdown-item" href="/ycc/course/schedule">강좌일정</a></li>
 	            <li><a class="dropdown-item" href="/ycc/course/search">강좌검색</a></li>
-							<li><a class="dropdown-item" href="/ycc/search">통합검색</a></li>
+				<li><a class="dropdown-item" href="/ycc/search">통합검색</a></li>
 	          </ul>
 	        </li>
 					<li class="nav-item dropdown">
