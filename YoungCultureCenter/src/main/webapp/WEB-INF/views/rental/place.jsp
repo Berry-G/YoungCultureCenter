@@ -7,55 +7,13 @@
 <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
 
-<title>Rental Place</title>
+<title>Young문화센터 - 대관신청</title>
 </head>
 <body>
 <!-- header inlcude -->
 <%@include file="/WEB-INF/views/header.jsp"%>
 
-<body>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">정보확인 안내</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h7>정보확인</h7>
-          <div class="container-fluid">
-            <table class="table">
-              <tr>
-                <th>이름</th>
-                <td colspan="3">김지호</td>
-              </tr>
-              <tr>
-                <th>시설명</th>
-                <td colspan="3">강당</td>
-              </tr>
-              <tr>
-                <th>예약 날짜</th>
-                <td colspan="3" onchange="printDate()">
-                  <div id="rsdate"></div>
-                </td>
-              </tr>
-              <tr>
-                <th>이용 시간</th>
-                <td colspan="3">16:00 ~ 18:00</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <button type="button" class="btn btn-primary">확인</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-    
+
   <div class="container">
     <div class="rentalnotice  border border-dark" style="margin: 20px auto 30px auto">
       <ol class="fs-7">
@@ -68,8 +26,8 @@
       </ol>
     </div>
 
-    <div class="row mb-3" style="display: flex;">
-      <div class="col-6 " id="change">
+    <div class="row mb-3">
+      <div class="col-12 col-md-6 " id="change">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="embed-responsive embed-responsive-4by3">
             <div class="carousel-inner">
@@ -99,57 +57,58 @@
           </button>
         </div>
       </div>
-      <!--대여 장소 이미지-->
+      <div class="col-12 col-md-6">
+        <p>
 
-      <!-- style="background-image: url(auditorium.jpg); background-size: cover;"-->
+          <label for="select" class="mt-3 mb-5">
+            <h4>대관 장소 선택</h4>
+          </label>
+          <select id="select">
+            <option value="">장소 선택</option>
+            <optgroup label="외부">
+              <option value="">테니스장A</option>
+              <option value="">축구장</option>
+              <option value="">농구장</option>
+            </optgroup>
+            <optgroup label="1층">
+              <option value="">101호</option>
+              <option value="">강당</option>
+              <option value="">다목적실</option>
+            </optgroup>
+            <optgroup label="2층">
+              <option value="">201호</option>
+              <option value="">202호</option>
+              <option value="">203호</option>
+            </optgroup>
+            <optgroup label="3층">
+              <option value="">301호</option>
+              <option value="">302호</option>
+              <option value="">소강당</option>
+            </optgroup>
+          </select>
+        </p>
 
-      <div class="image-box col-6 " id="change2">
-        <img src="<%=request.getContextPath()%>/resources/img/rental/auditorium.jpg">
+
+        <!--추후 개발 시 수정할 부분(yyyy-mm-dd 에서 '-'제거 , T~ 제거)-->
+        <p>
+          <label for="datetime-local">
+            <h4>대여 일자 지정</h4>
+          </label>
+          <input type="datetime-local" id="datetime-local" name="rday" onchange="printDate()">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            신청하기
+          </button>
+        </p>
+        <!--대관 장소 선택 끝-->
       </div>
     </div>
   </div>
+
   <div class="container">
     <!--대관 장소 선택 시작-->
-    <p>
-      <label for="select" style="margin-top: 20px;">대관 장소 선택</label>
-      <select id="select">
-        <option value="">장소 선택</option>
-        <optgroup label="외부">
-          <option value="">테니스장A</option>
-          <option value="">축구장</option>
-          <option value="">농구장</option>
-        </optgroup>
-        <optgroup label="1층">
-          <option value="">101호</option>
-          <option value="">강당</option>
-          <option value="">다목적실</option>
-        </optgroup>
-        <optgroup label="2층">
-          <option value="">201호</option>
-          <option value="">202호</option>
-          <option value="">203호</option>
-        </optgroup>
-        <optgroup label="3층">
-          <option value="">301호</option>
-          <option value="">302호</option>
-          <option value="">소강당</option>
-        </optgroup>
-      </select>
-    </p>
-    <!--대관 장소 선택 끝-->
-
-    <!--추후 개발 시 수정할 부분(yyyy-mm-dd 에서 '-'제거 , T~ 제거)-->
-    <p>
-      <label for="datetime-local">대여 일자 지정</label>
-      <input type="datetime-local" id="datetime-local" name="rday" onchange="printDate()">
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        신청하기
-      </button>
-    </p>
 
     <div class="rentaldatearea">
-      <div id="rsdate"></div>
       <h5>00건의 예약이 있습니다.</h5>
     </div>
 
@@ -186,7 +145,65 @@
       </tbody>
     </table>
   </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">정보확인 안내</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <table class="table">
+              <tr>
+                <h4>대여 장소</h4>
+                <img src="<%=request.getContextPath()%>/resources/img/rental/auditorium.jpg" class="img-fluid">
+              </tr>
+              <tr>
+                <th>이름</th>
+                <td colspan="3">김지호</td>
+              </tr>
+              <tr>
+                <th>시설명</th>
+                <td colspan="3">강당</td>
+              </tr>
+              <tr>
+                <th>예약 날짜</th>
+                <td colspan="3" onchange="printDate()">
+                  <div id="rsdate"></div>
+                </td>
+              </tr>
+              <tr>
+                <th>이용 시간</th>
+                <td colspan="3">16:00 ~ 18:00</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-primary">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+<script>//현재 시간보다 이전의 시간은 선택할 수 없는 기능
+    let dateElement = document.getElementById('datetime-local');
+    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    dateElement.value = date;
+    dateElement.setAttribute("min", date);
+
+    function setMinValue() {
+      if (dateElement.value < date) {
+        alert('현재 시간보다 이전의 날짜는 설정할 수 없습니다.');
+        dateElement.value = date;
+      }
+    }
+    function printDate() { const date = document.getElementById('datetime-local').value; document.getElementById("rsdate").innerText = date; }
+  </script>
 <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
