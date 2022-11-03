@@ -8,7 +8,7 @@ public class CourseController {
 
 	@RequestMapping("/course/search")
 	public String courseSearch() {
-		return "/course/search";
+		return "/course/courseSearch";
 	}
 	
 	@RequestMapping("/course/detail")
