@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>	
-	<link href="<c:url value="/ycc/resources/css/bootstrap.min.css" />" rel="stylesheet">
+	
 	<link href="/ycc/resources/css/lockerinfo.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 	 <%@include file="/WEB-INF/views/metahead.jsp"%>

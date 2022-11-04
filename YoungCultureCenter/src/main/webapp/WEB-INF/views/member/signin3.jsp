@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 	<head>	
-	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 	  <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
 <title>회원가입완료</title>

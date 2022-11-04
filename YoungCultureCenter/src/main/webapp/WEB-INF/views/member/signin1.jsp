@@ -6,7 +6,6 @@
 	<head>	
 		    <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
-	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 	<script type="text/javascript" src="/ycc/resources/js/singnincheck.js"></script>
 	
 
