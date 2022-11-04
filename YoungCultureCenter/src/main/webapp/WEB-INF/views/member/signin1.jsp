@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 	<head>	
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-	    <!-- head & meta tag include -->
+		    <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
+	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+	<script type="text/javascript" src="/ycc/resources/js/singnincheck.js"></script>
+	
+
  <title>회원가입약관동의</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
                 style="width: 3.5rem; height:3.5rem;">Step3</button>
         </div>
 
-        <p class="col-lg-3 control-label pt-5 fs-4 pb-3">회원가입약관</p>
+        <p class="col-lg-3 control-label pt-5 fs-4 fw-bold pb-3 ">회원가입약관</p>
 
         <label for="memberInfo" class="col-lg-3 control-label pt-2 pb-2 fw-bold fs-5">이용약관</label>
         <div class="row">
@@ -133,19 +133,14 @@
 부    칙
 이 약관은 2022년 1월 4일부터 시행합니다. 
         </textarea>
-    </div>
-            <div class="form-check pt-3">
-                <input class="form-check-input" type="checkbox" value="" id="provisionYn" >
-                <label class="form-check-label" for="provision">
-                    (필수)동의합니다.
-                </label>
-            </div>
-        </div>
+       <input type="checkbox" name="check" value="check1" onclick="checkSelectAll()" />(필수)동의합니다<br />
+          </div>
+   </div>
 
-        <div class="form-group">
-            <label for="memberInfo" class="col-lg-3 control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
-            <div class="col-lg-10" id="memberInfo">
-                <textarea class="form-control" rows="8" style="width: 120%;">개인정보수집 및 이용에 대한 안내
+    <div class="form-group">
+        <label for="memberInfo" class="col-lg-3 control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
+          <div class="col-lg-10" id="memberInfo">
+            <textarea class="form-control" rows="8" style="width: 120%;">개인정보수집 및 이용에 대한 안내
 1. 개인정보의 수집 및 이용 목적 : 회원가입 및 관리
 
 2. 수집하는 개인정보의 항목
@@ -155,48 +150,21 @@
 3. 개인정보의 보유 · 이용 기간 : 회원가입일로부터 회원 탈퇴 시까지
 
 4. 귀하는 개인정보 수집 · 이용에 동의하지 않으실 수 있습니다. 동의 거부시에도 회원가입은 가능하나 서비스는제한될 수 있습니다. (단, 회원가입을 위한 최소한의 정보인 필수정보는 미입력시 회원가입 불가)
-  </textarea>
-                <div class="form-check pt-3">
-                    <input class="form-check-input" type="checkbox" value="" id="memberInfoYn" >
-                    <label class="form-check-label" for="memberInfo">
-                        (필수) 동의합니다.
-                    </label>
-                </div>
-                <div class="form-check pt-3">
-                    <input class="form-check-input" type="checkbox" value="" id="TmemberInfoYn" >
-                    <label class="form-check-label" for="memberInfo">
-                        모든 약관에 동의합니다.
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <a href="/ycc/member/signin2" class="btn btn-primary" role="button">확인</a>
-                    <a href="/ycc/" class="btn btn-secondary" role="button">취소</a>
-                </div>
-            </div>
-        </div>
+  			</textarea>
+		<input type="checkbox" name="check" value="check2" onclick="checkSelectAll()" />(필수)동의합니다<br />
+      	<input type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)" /> <b>모든 약관에 동의합니다.</b>
+   </div>
+   <div class="row">
+       <div class="col text-center">
+           <a href="/ycc/member/signin2" class="btn btn-primary" role="button">확인</a>
+           <a href="/ycc/" class="btn btn-secondary" role="button">취소</a>
+       </div>
+     </div>
     </div>
-    <script>
-        // 클래스 변경
-        function changeClassName() {
-            document.getElementById("change").classList.replace("col-4", "col-8");
-        }
-
-        function changeClassName2() {
-            document.getElementById("change").classList.replace("col-8", "col-4");
-        }
-
-        window.onresize = function (event) {
-            var innerWidth = window.innerWidth;
-            innerWidth <= "1280" ? changeClassName() : changeClassName2();
-        };
-        
-        <script src="resources/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-
-   
-		<!-- footer inlcude -->
+    </div>  
+    <script src="resources/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+			<!-- footer inlcude -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-    
+	
 </body>
 </html>
