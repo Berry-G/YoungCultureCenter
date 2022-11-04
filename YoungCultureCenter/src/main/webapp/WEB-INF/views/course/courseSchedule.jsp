@@ -27,11 +27,10 @@
 	
 	
 	<div class="container">
-		<h3>강좌일정</h3>
+		<h3 style="margin: 15px 0px 8px 10px;">강좌일정</h3>
 		<hr>
 	 	<div id='calendar' class="container"></div>
 	</div>
-	
 	 
 	 
 	<!-- footer inlcude -->
