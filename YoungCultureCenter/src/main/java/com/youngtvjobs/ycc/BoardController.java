@@ -45,9 +45,9 @@ public class BoardController
 	}
 	
 	//1:1 문의 작성 페이지
-	@RequestMapping("/board/inquiry/edit")
+	@RequestMapping("/board/inquiry/write")
 	public String inquiryEdit() {
-		return "board/inquiryEdit";
+		return "board/inquiryWrite";
 	}
 	
 	//자주 묻는 질문(FAQ)
