@@ -181,7 +181,7 @@
             <td>09:20 ~ 18:00</td>
             <td>추호진</td>
             <td>6,851,200 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href="#" onclick="alert('이미 마감된 강좌입니다.')">배드민턴 기초반</a></td>
@@ -190,7 +190,7 @@
             <td>18:30 ~ 19:30</td>
             <td>최선혜</td>
             <td>66,000 원</td>
-            <td><button type="button" class="btn btn-secondary btn-sm" value="접수마감" disabled>접수마감</button></td>
+            <td><span class="badge text-bg-secondary">접수마감</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -198,7 +198,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -206,7 +206,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -214,7 +214,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -222,7 +222,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -230,7 +230,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -238,7 +238,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -246,7 +246,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
           <tr>
             <td class="al"><a href=''>수영 기초반</a></td>
@@ -254,7 +254,7 @@
             <td>07:00 ~ 07:50</td>
             <td>김지호</td>
             <td>89,000 원</td>
-            <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
+            <td><span class="badge text-bg-primary">접수가능</span></td>
           </tr>
         </tbody>
       </table>

@@ -1,7 +1,4 @@
 
-
-    
-
 .logo{
     width: 40px;
     height: 40px;
@@ -16,8 +13,6 @@
     pointer-events: none;
 }
 
-
-
 #header_navi > li {
     display: inline-block;
     position: relative;
@@ -31,16 +26,6 @@
 }
 #header_navi > li > a > span {
     position:absolute; bottom:0; left:50%; color:#666; line-height:1.462em; white-space:nowrap; transform:translate(-50%, 0)
-}
-
-
-
-
-
-
-
-:root {
-    --bs-body-font-size: 0.9rem;
 }
 
 
@@ -59,6 +44,12 @@
 #header {
     border-bottom: 1px solid black ; height:90px;
 }
+
+
+.badge {
+	--bs-badge-font-size: 1em !important;
+}
+
 
 .sub_top {background:#fff; border-bottom:1px solid black; height: 220px;}
 
