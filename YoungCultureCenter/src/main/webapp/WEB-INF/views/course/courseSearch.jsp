@@ -6,8 +6,22 @@
 <head>
 	<!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
+    
     <!-- 커스텀 스타일 (재정의) -->
     <link rel="stylesheet" href="<c:url value='/resources/css/courseSearch.css' />">
+	
+	<!-- JavaScript Bundle with Popper -->
+    <script type="text/javascript" src="/js/default.js"></script>
+
+	<script>
+		const myModal = document.getElementById('myModal')
+		const myInput = document.getElementById('myInput')
+		
+		myModal.addEventListener('shown.bs.modal', () => {
+		  myInput.focus()
+		})
+	</script>
+
 <title>YOUNG문화체육센터</title>
 </head>
 
@@ -162,11 +176,11 @@
         </thead>
         <tbody class="table-group-divider">
           <tr>
-            <td class="al"><a href="<c:url value='/course/courseDetail' />">초코칩 스콘 만들기</a></td>
-            <td>월</td>
-            <td>11:30 ~ 12:30</td>
-            <td>전수정</td>
-            <td>66,000 원</td>
+            <td class="al"><a href="/ycc/course/detail">(산대특)_AI플랫폼 활용 이커머스 웹서비스 개발_육성</a></td>
+            <td>월, 화, 수, 목, 금</td>
+            <td>09:20 ~ 18:00</td>
+            <td>추호진</td>
+            <td>6,851,200 원</td>
             <td><button type="button" class="btn btn-primary btn-sm" value="접수가능">접수가능</button></td>
           </tr>
           <tr>
@@ -273,20 +287,5 @@
 
 <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
-
-
-    <!-- JavaScript Bundle with Popper -->
-    
-    <script type="text/javascript" src="/js/default.js"></script>
-
-	<script>
-		const myModal = document.getElementById('myModal')
-		const myInput = document.getElementById('myInput')
-		
-		myModal.addEventListener('shown.bs.modal', () => {
-		  myInput.focus()
-		})
-	</script>
-
 </body>
 </html>
