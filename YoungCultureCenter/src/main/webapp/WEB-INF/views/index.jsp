@@ -13,7 +13,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<!-- 부트스트랩 실행 코드 -->
-	<script src="resources/js/bootstrap.bundle.min.js"></script>
+	<script src="/ycc/resources/js/bootstrap.bundle.min.js"></script>
 	<link href="/ycc/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
 	
     	
