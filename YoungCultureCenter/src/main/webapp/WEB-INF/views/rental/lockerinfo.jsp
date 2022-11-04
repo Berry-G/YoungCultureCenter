@@ -65,7 +65,7 @@
     </div> <!--col-->
   </div> <!--row-->
 </div> <!--container-->
-<div class="container w-50">
+<div class="container ">
   <h3 class="card-header fw-bold text-center p-5">사물함 이용 시 유의사항</h3>
   <table class="table border-2 fw-normal pt-3 ">
     <tr>

@@ -11,6 +11,36 @@
 } */
 
 
+/*  {
+	.fc .fc-button {
+		font-size: 0.5em;
+	}
+}
+ */
+
+
+@media (max-width: 900px) {
+	.fc .fc-button {
+		font-size: 0.5em !important;
+	}
+	
+	.fc tbody {
+		font-size: 0.5em;
+	}
+	
+	.fc .fc-toolbar-title {
+		font-size: 1.1em !important; 
+	}
+	
+	.fc h3 {
+		margin-top: 15px; 
+	}
+}
+
+
+
+
+
 .fc h3 {
 	margin-top: 30px;
 	margin-bottom: 30px;
