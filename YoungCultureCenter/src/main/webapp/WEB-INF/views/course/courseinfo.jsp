@@ -14,7 +14,7 @@
 	
 
 <body>
-  <div class="container pt-5 w-50">
+  <div class="container pt-5 w-100">
     <div class="input-form col-md-12 mx-auto">
       <p class="fw-bolder fs-4">수강안내</p>
       <div class="accordion" id="accordionExample">
