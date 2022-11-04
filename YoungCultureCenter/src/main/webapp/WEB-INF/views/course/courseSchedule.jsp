@@ -6,8 +6,8 @@
 	<!-- head & meta tag include -->
 	<%@include file="/WEB-INF/views/metahead.jsp"%>
     
-    <link href='/ycc/resources/fullcalendar/main.css' rel='stylesheet' />
-    <script src='/ycc/resources/fullcalendar/main.js'></script>
+    <link href='/ycc/resources/css/courseSchedule.css' rel='stylesheet' />
+    <script src='/ycc/resources/js/courseSchedule.js'></script>
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
@@ -19,13 +19,15 @@
       });
 
     </script>
-<title>Insert title here</title>
+<title>YOUNG문화체육센터</title>
 </head>
 <body>
 	<!-- header inlcude -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
+	
+	
 	<div class="container">
-		<h1>강좌일정</h1>
+		<h3>강좌일정</h3>
 		<hr>
 	 	<div id='calendar' class="container"></div>
 	</div>
