@@ -34,11 +34,11 @@
                 style="width: 3.5rem; height:3.5rem;">Step3</button>
         </div>
 
-        <p class="col-lg-3 control-label pt-5 fs-4 fw-bold pb-3 ">회원가입약관</p>
+        <p class="col control-label pt-5 fs-4 fw-bold pb-3 ">회원가입약관</p>
 
-        <label for="memberInfo" class="col-lg-3 control-label pt-2 pb-2 fw-bold fs-5">이용약관</label>
+        <label for="memberInfo" class="col control-label pt-2 pb-2 fw-bold fs-5">이용약관</label>
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col">
             <textarea class="form-control " rows="8" style="width: 120%;">
 약관동의
 홈페이지 서비스 이용약관
@@ -133,13 +133,13 @@
 부    칙
 이 약관은 2022년 1월 4일부터 시행합니다. 
         </textarea>
-       <input type="checkbox" name="check" value="check1" onclick="checkSelectAll()" />(필수)동의합니다<br />
+       <input class="inputcheck" type="checkbox" name="check" value="check1" onclick="checkSelectAll()" />(필수)동의합니다<br />
           </div>
    </div>
 
     <div class="form-group">
-        <label for="memberInfo" class="col-lg-3 control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
-          <div class="col-lg-10" id="memberInfo">
+        <label for="memberInfo" class="col control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
+          <div class="col" id="memberInfo">
             <textarea class="form-control" rows="8" style="width: 120%;">개인정보수집 및 이용에 대한 안내
 1. 개인정보의 수집 및 이용 목적 : 회원가입 및 관리
 
@@ -151,8 +151,8 @@
 
 4. 귀하는 개인정보 수집 · 이용에 동의하지 않으실 수 있습니다. 동의 거부시에도 회원가입은 가능하나 서비스는제한될 수 있습니다. (단, 회원가입을 위한 최소한의 정보인 필수정보는 미입력시 회원가입 불가)
   			</textarea>
-		<input type="checkbox" name="check" value="check2" onclick="checkSelectAll()" />(필수)동의합니다<br />
-      	<input type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)" /> <b>모든 약관에 동의합니다.</b>
+		<input class="inputcheck" type="checkbox" name="check" value="check2" onclick="checkSelectAll()" />(필수)동의합니다<br />
+      	<input class="inputcheck" type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)" /> <b>모든 약관에 동의합니다.</b>
    </div>
    <div class="row">
        <div class="col text-center">
