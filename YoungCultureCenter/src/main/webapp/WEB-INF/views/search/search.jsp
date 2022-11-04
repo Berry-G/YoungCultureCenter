@@ -28,7 +28,7 @@
       </form>
     </div>
 
-    <div class="row" style="text-align: center; justify-content: space-between;">
+    <div class="row pb-4" style="text-align: center; justify-content: space-between;">
       <div class="col-4 col-md-2">
         <button type="button" class="btn btn-primary">전체보기</button>
       </div>
@@ -38,29 +38,26 @@
       <div class="col-4 col-md-2">
         <button type="button" class="btn btn-primary">이벤트</button>
       </div>
-      <div class="col-4 col-md-2">
+      <div class="col-4 col-md-2 pt-2">
         <button type="button" class="btn btn-primary">강좌</button>
       </div>
-      <div class="col-4 col-md-2">
+      <div class="col-4 col-md-2 pt-2">
         <button type="button" class="btn btn-primary">동아리</button>
       </div>
-      <div class="col-4 col-md-2">
+      <div class="col-4 col-md-2 pt-2">
         <button type="button" class="btn btn-primary">FAQ</button>
       </div>
-      <div class="container">
-        <select class="form-select" aria-label="Default select example"
-          style="width: 20%; float: right; margin-top: 10px;">
-          <option selected>정렬기준</option>
-          <option value="1">최신순</option>
-          <option value="2">조회순</option>
-          <option value="3">인기순</option>
-        </select>
-      </div>
+      <div class="input-group ms-auto pt-2" style="width: 20%;">
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+        style="width: 90px; margin-right: 10px;">
+        <option value="1">최신순</option>
+        <option value="2">조회순</option>
+        <option value="3">관련순</option>
+      </select>
+    	</div>
+      
     </div>
-  </div>
 
-
-  <div class="container">
     <table class="table table-hover">
       <h1>전체보기</h1>
       <h3 style="float: right;"><a href="search/all">더보기</a></h3>
