@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <header>
-	
+	<!-- 부트스트랩 실행 코드 -->
+	<script src="resources/js/bootstrap.bundle.min.js"></script>
 
 	<!-- header -->
 	<nav class="navbar navbar-expand-lg bg-light">
