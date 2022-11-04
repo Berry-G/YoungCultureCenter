@@ -4,14 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="Content-Script-Type" content="text/javascript" />
-		<meta http-equiv="Content-Style-Type" content="text/css" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+			  <!-- head & meta tag include -->
+    	<%@include file="/WEB-INF/views/metahead.jsp"%>
 		<title>YOUNG문화체육센터</title>
-		<!-- 부트스트랩 실행 코드 -->
-		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+
 		<link rel="stylesheet" type="text/css" href="resources/css/main_page.css">
 		<!-- 슬라이드 배너 -->
 		<style>
@@ -28,8 +24,6 @@
 	<body>
 	<!-- header inlcude -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
-		<!-- 부트스트랩 실행 코드 -->
-		<script src="resources/js/bootstrap.bundle.min.js"></script>
 
 		<!-- 슬라이드 배너 -->
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
