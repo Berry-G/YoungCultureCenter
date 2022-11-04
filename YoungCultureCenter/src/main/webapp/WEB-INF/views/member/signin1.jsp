@@ -39,7 +39,7 @@
         <label for="memberInfo" class="col control-label pt-2 pb-2 fw-bold fs-5">이용약관</label>
         <div class="row">
             <div class="col">
-            <textarea class="form-control " rows="8" style="width: 120%;">
+            <textarea class="form-control " rows="8" style="width: 100%;">
 약관동의
 홈페이지 서비스 이용약관
 제1장   총  칙
@@ -140,7 +140,7 @@
     <div class="form-group">
         <label for="memberInfo" class="col control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
           <div class="col" id="memberInfo">
-            <textarea class="form-control" rows="8" style="width: 120%;">개인정보수집 및 이용에 대한 안내
+            <textarea class="form-control" rows="8" style="width: 100%;">개인정보수집 및 이용에 대한 안내
 1. 개인정보의 수집 및 이용 목적 : 회원가입 및 관리
 
 2. 수집하는 개인정보의 항목
