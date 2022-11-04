@@ -418,6 +418,6 @@
   	
 		<!-- footer inlcude -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<script src="resources/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
 </body>
 </html>
