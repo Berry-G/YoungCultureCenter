@@ -40,7 +40,7 @@
 						<div class="club-info px-2">
 							<h2 style="font-size: 2vw">고양이 매니아</h2>
 							<p style="font-size: 0.8vw">
-								동아리장 : 최선혜 | 맴버 수 : 50명 |<br>생성일 : 2022-10-23
+								동아리장 : 최선혜 | 멤버 수 : 50명 |<br>생성일 : 2022-10-23
 							</p>
 						</div>
 					</div>
@@ -56,7 +56,7 @@
 						<div class="club-info px-2">
 							<h2 style="font-size: 2vw">수영 동아리</h2>
 							<p style="font-size: 0.8vw">
-								동아리장 : 최나리 | 맴버 수 : 10명 |<br>생성일 : 2022-10-24
+								동아리장 : 최나리 | 멤버 수 : 10명 |<br>생성일 : 2022-10-24
 							</p>
 						</div>
 					</div>
@@ -86,7 +86,7 @@
 					<a href="#"
 					style="text-decoration: none; text-decoration-color: none;">
 					<h4>영 문화센터 동아리</h4>
-					<small class="text-muted">동아리장 : 김영채 | 맴버수 : 7 | 생성일 : 2022-09-07</small> </a>
+					<small class="text-muted">동아리장 : 김영채 | 멤버수 : 7 | 생성일 : 2022-09-07</small> </a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">가입 인사 합니다.</p></a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">게시글 제목 2</p></a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~</p></a>
@@ -104,7 +104,7 @@
 					<a href="#"
 					style="text-decoration: none; text-decoration-color: none;">
 					<h4>수영 동아리</h4>
-					<small class="text-muted">동아리장 : 최나리 | 맴버수 : 22 | 생성일 : 2022-10-07</small> </a>
+					<small class="text-muted">동아리장 : 최나리 | 멤버수 : 22 | 생성일 : 2022-10-07</small> </a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">가입 인사 합니다. 수영 처음해봐요!</p></a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">방가방가 가입인사</p></a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~</p></a>
@@ -122,7 +122,7 @@
 					<a href="#"
 					style="text-decoration: none; text-decoration-color: none;">
 					<h4>고양이 매니아</h4>
-					<small class="text-muted">동아리장 : 최선혜 | 맴버수 : 50 | 생성일 : 2022-09-07</small> </a>
+					<small class="text-muted">동아리장 : 최선혜 | 멤버수 : 50 | 생성일 : 2022-09-07</small> </a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">우리집 고양이가 너무 귀여워 버린 건에 대하여</p></a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">털 날리는데 로봇 청소기를 사야할까요? 매일 청소하기 힘들어요</p></a>
 					<a href="#" class="text-reset text-decoration-none"><p class="mb-2">안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~안녕하세요~</p></a>
@@ -148,7 +148,7 @@
 	          <tr>
 	            <th scope="col">동아리명</th>
 	            <th scope="col">동아리장</th>
-	            <th scope="col">맴버수</th>
+	            <th scope="col">멤버수</th>
 	            <th scope="col">생성일</th>
 	          </tr>
 	        </thead>
