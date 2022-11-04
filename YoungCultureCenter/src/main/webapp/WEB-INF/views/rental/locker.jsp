@@ -9,24 +9,25 @@
 	  <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
 <title>사물함 신청</title>
+</head>
 		<!-- header inlcude -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
 
 <body>
 
   <div class="container w-100 pt-5">
-    <form class="form w-auto ">
+    <form class="form w-100 h-50 p-2 px-4">
       <div class="col fs-3 fw-bold">사물함 신청
         <hr>
       </div>
       <!--col 사물함 신청-->
       <div class="row justify-content-md-start">
-        <div class="col-md-3 fs-4 ">사물함 위치
+        <div class="col fs-5 ">사물함 위치
         </div>
         <!--col 사물함 위치-->
         <div class="row">
           <div class="col ">
-        <select class="form-select-lg col-md-6 w-70" id="location" aria-label="lockerLo">
+        <select class="form-select-md col-5 w-auto fs-5 p-2"  id="location" aria-label="lockerLo">
           <option selected>본관 1층</option>
           <option value="1">본관 2층</option>
           <option value="2">본관 3층</option>
@@ -38,14 +39,14 @@
       </div>
       <!--row 사물함 위치-->
       <!-- 기간별 조회 박스 -->
-      <div class="row">
-        <h4 class="col pt-3">신청일자</h4>
+      <div class="row">  
+        <h4 class="col-sm-3 fs-5 pt-3">신청일자</h4>
         <div class="row">
           <div class="col-md-7 mb-3">
             <div class="row">
-              <input class="form-control-sm col-5 w-auto" id="date1" type="date" value="startDate" />
+              <input class="form-control-md col-6 w-auto" id="date1" type="date" value="startDate" />
               <label class="col-1 pl-2">~</label>
-              <input class="form-control-sm col-5 w-auto" id="date2" type="date" value="endDate" />
+              <input class="form-control-md col-6 w-auto" id="date2" type="date" value="endDate" />
             </div>
           </div>
           </div>
