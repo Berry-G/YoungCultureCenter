@@ -39,13 +39,13 @@
           <div class="col-md-7 mb-3">
             <div class="row">
               <input
-              class="form-control-md col-5"
+              class="form-control-md col-5 fs-5"
               type="date"
               value="startDate"
             />
             <label class="col-2">~</label>
             <input
-              class="form-control-md col-5"
+              class="form-control-md col-5 fs-5"
               type="date"
               value="endDate"
             />
@@ -125,7 +125,7 @@
         </tbody>
       </table>
 
-      <button class="btn btn-primary mt-3 mb-3" onclick="location.href='./edit'">글쓰기</button>
+      <button class="btn btn-primary mt-3 mb-3" onclick="location.href='./write'">글쓰기</button>
     </div>
 
     <!-- 페이지 네비게이션 -->

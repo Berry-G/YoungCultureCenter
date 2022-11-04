@@ -23,7 +23,7 @@
   <!-- header inlcude -->
 <%@include file="/WEB-INF/views/header.jsp"%>
   <!--container start-->
-  <div class="container">
+  <div class="container mt-5">
     <h3 class="posttitle pt-3">글 작성하기</h3>
     <br>
     <input type="text" class="form-control mb-3" placeholder="제목을 입력해주세요" aria-label="title"
