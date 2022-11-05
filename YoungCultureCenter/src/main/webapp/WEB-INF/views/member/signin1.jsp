@@ -4,41 +4,43 @@
 <!DOCTYPE html>
 <html>
 	<head>	
-		    <!-- head & meta tag include -->
+		<!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
 	<script type="text/javascript" src="/ycc/resources/js/singnincheck.js"></script>
-	
-
  <title>회원가입약관동의</title>
 </head>
 <body>
-		<!-- header inlcude -->
+	<!-- header inlcude -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
+  <!--step container -->
 <div class="container w-50">
-        <h2 class="p-5" style="text-align: center;">회원가입</h2>
-
-        <div class="position-relative m-4">
-            <div class="progress" style="height: 5px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                    aria-valuemin="0" aria-valuemax="100"></div>
+  <h2 class="p-5" style="text-align: center;">회원가입</h2>
+    <div class="position-relative m-4">
+        <div class="progress" style="height: 5px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="50"
+                aria-valuemin="0" aria-valuemax="100">
             </div>
-            <button type="button"
-                class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill"
-                style="width: 3.5rem; height:3.5rem;">Step1</button>
-            <button type="button"
-                class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill"
-                style="width: 3.5rem; height:3.5rem;">Step2</button>
-            <button type="button"
-                class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill"
-                style="width: 3.5rem; height:3.5rem;">Step3</button>
         </div>
+        <button type="button"
+            class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill"
+            style="width: 3.5rem; height:3.5rem;">Step1</button>
+        <button type="button"
+            class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill"
+            style="width: 3.5rem; height:3.5rem;">Step2</button>
+        <button type="button"
+            class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill"
+            style="width: 3.5rem; height:3.5rem;">Step3</button>
+    </div>
+   
 
-        <p class="col control-label pt-5 fs-4 fw-bold pb-3 ">회원가입약관</p>
 
-        <label for="memberInfo" class="col control-label pt-2 pb-2 fw-bold fs-5">이용약관</label>
-        <div class="row">
-            <div class="col">
-            <textarea class="form-control " rows="8" style="width: 100%;">
+    <p class="col control-label pt-5 fs-4 fw-bold pb-3 ">회원가입약관</p>
+    <label for="memberInfo" class="col control-label pt-2 pb-2 fw-bold fs-5">이용약관</label>
+  
+
+    <div class="row">
+      <div class="col">
+        <textarea class="form-control" rows="8" style="width: 100%;">
 약관동의
 홈페이지 서비스 이용약관
 제1장   총  칙
@@ -132,14 +134,14 @@
 부    칙
 이 약관은 2022년 1월 4일부터 시행합니다. 
         </textarea>
-       <input class="inputcheck" type="checkbox" name="check" value="check1" onclick="checkSelectAll()" />(필수)동의합니다<br />
-          </div>
-   </div>
+      <input class="inputcheck" type="checkbox" name="check" value="check1" onclick="checkSelectAll()" />(필수)동의합니다<br />
+    </div>
+  </div>
 
-    <div class="form-group">
-        <label for="memberInfo" class="col control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
-          <div class="col" id="memberInfo">
-            <textarea class="form-control" rows="8" style="width: 100%;">개인정보수집 및 이용에 대한 안내
+  <div class="form-group">
+    <label for="memberInfo" class="col control-label pt-5 pb-2 fw-bold fs-5">개인정보취급방침</label>
+      <div class="col" id="memberInfo">
+        <textarea class="form-control" rows="8" style="width: 100%;">개인정보수집 및 이용에 대한 안내
 1. 개인정보의 수집 및 이용 목적 : 회원가입 및 관리
 
 2. 수집하는 개인정보의 항목
@@ -149,21 +151,22 @@
 3. 개인정보의 보유 · 이용 기간 : 회원가입일로부터 회원 탈퇴 시까지
 
 4. 귀하는 개인정보 수집 · 이용에 동의하지 않으실 수 있습니다. 동의 거부시에도 회원가입은 가능하나 서비스는제한될 수 있습니다. (단, 회원가입을 위한 최소한의 정보인 필수정보는 미입력시 회원가입 불가)
-  			</textarea>
-		<input class="inputcheck" type="checkbox" name="check" value="check2" onclick="checkSelectAll()" />(필수)동의합니다<br />
-      	<input class="inputcheck" type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)" /> <b>모든 약관에 동의합니다.</b>
-   </div>
-   <div class="row">
-       <div class="col text-center">
-           <a href="/ycc/member/signin2" class="btn btn-primary" role="button">확인</a>
-           <a href="/ycc/" class="btn btn-secondary" role="button">취소</a>
-       </div>
-     </div>
+  		</textarea>
+	<input class="inputcheck" type="checkbox" name="check" value="check2" onclick="checkSelectAll()" />(필수)동의합니다<br />
+    <input class="inputcheck" type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)" /> <b>모든 약관에 동의합니다.</b>
+  	</div>
+  
+  <div class="row">
+    <div class="col text-center">
+      <a href="/ycc/member/signin2" class="btn btn-primary" role="button">확인</a>
+      <a href="/ycc/" class="btn btn-secondary" role="button">취소</a>
     </div>
-    </div>  
+  </div>
+  </div>
+</div>  
 
-			<!-- footer inlcude -->
-	<%@include file="/WEB-INF/views/footer.jsp"%>
+<!-- footer inlcude -->
+<%@include file="/WEB-INF/views/footer.jsp"%>
 	
 </body>
 </html>
