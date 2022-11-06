@@ -8,10 +8,8 @@
     <%@include file="/WEB-INF/views/metahead.jsp"%>
 <title>강좌안내</title>
 </head>
-			<!-- header inlcude -->
-	<%@include file="/WEB-INF/views/header.jsp"%>
-	
-
+		<!-- header inlcude -->
+	  <%@include file="/WEB-INF/views/header.jsp"%>
 <body>
   <div class="container pt-5 w-100">
     <div class="input-form col-md-12 mx-auto">
@@ -62,11 +60,8 @@
                   (※여신전문금융업법 제 27조 4에 의거)</li>
               </ul>
             </div>
-            <!--accordion-body -->
           </div>
-          <!--collapseTwo-->
         </div>
-        <!--accordion-item-->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse"
@@ -79,57 +74,51 @@
             <div class="accordion-body">
               <div class="d-flex justify-content-around">
                 <div class="row">
-                <div class="col p-5">
-                    <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg01.gif"
-                      class="card-img-top  " alt="...">
-                    <p class="card-text fs-6 pt-3 ">1.로그인</p>
-                </div>
-                <div class="col p-5">
-                    <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg02.gif"
-                      class="card-img-top " alt="...">
-                    <p class="card-text fs-6 pt-2 ">2.강좌선택</p>
-                </div>
-                <div class="col p-5">
-                    <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg03.gif"
-                      class="card-img-top " alt="...">
-                    <p class="card-text fs-6 pt-4 ">3.강좌확인</p>
-                </div>
-                <div class="col p-5">
-                    <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg04.gif"
-                      class="card-img-top " alt="...">
-                    <p class="card-text fs-6 pt-3 ">4.신청</p>
+                  <div class="col p-5">
+                      <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg01.gif"
+                        class="card-img-top  " alt="...">
+                      <p class="card-text fs-6 pt-3 ">1.로그인</p>
+                  </div>
+                  <div class="col p-5">
+                      <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg02.gif"
+                        class="card-img-top " alt="...">
+                      <p class="card-text fs-6 pt-2 ">2.강좌선택</p>
+                  </div>
+                  <div class="col p-5">
+                      <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg03.gif"
+                        class="card-img-top " alt="...">
+                      <p class="card-text fs-6 pt-4 ">3.강좌확인</p>
+                  </div>
+                  <div class="col p-5">
+                      <img src="https://www.mapo.go.kr/design/theme/mll/images/mll-img-list_bg04.gif"
+                        class="card-img-top " alt="...">
+                      <p class="card-text fs-6 pt-3 ">4.신청</p>
+                  </div>
                 </div>
               </div>
+            <div>
+              <p class="fs-5 pt-5 mb-1">로그인</p>
+              <p class="fs-6">YOUNG문화센터 수강신청 시 로그인 후 이용가능합니다.</p>
             </div>
-              <!--d-flex flex-row justify-content-around-->
-              <div>
-                  <p class="fs-5 pt-5 mb-1">로그인</p>
-                  <p class="fs-6">YOUNG문화센터 수강신청 시 로그인 후 이용가능합니다.</p>
-                </div>
-                <div>
-                  <p class="fs-5 mb-1">강좌 선택</p>
-                  <p class="fs-6">원하는 강좌를 선택합니다.</p>
-                </div>
-                <div>
-                  <p class="fs-5 mb-1">강좌 확인</p>
-                  <p class="fs-6">강좌 선택 후 시간, 장소 등 강좌정보를 확인합니다.</p>
-                </div>
-                <div>
-                  <p class="fs-5 mb-1">강좌 신청</p>
-                  <p class="fs-6">유료수강인 경우 온라인 결제가 가능합니다.</p>
-                </div>
+            <div>
+              <p class="fs-5 mb-1">강좌 선택</p>
+              <p class="fs-6">원하는 강좌를 선택합니다.</p>
             </div>
-            <!--accordion-body -->
+            <div>
+              <p class="fs-5 mb-1">강좌 확인</p>
+              <p class="fs-6">강좌 선택 후 시간, 장소 등 강좌정보를 확인합니다.</p>
+            </div>
+            <div>
+              <p class="fs-5 mb-1">강좌 신청</p>
+              <p class="fs-6">유료수강인 경우 온라인 결제가 가능합니다.</p>
+            </div>
+            </div>
           </div>
-          <!--collapseThree-->
         </div>
-        <!--accordion-item-->
       </div>
-      <!--accordionExample-->
     </div>
-    <!--input-form col-md-12 mx-auto-->
   </div>
-  <!--container-->
+    <!-- footer inlcude -->
   	<%@include file="/WEB-INF/views/footer.jsp"%>
 	
 </body>
