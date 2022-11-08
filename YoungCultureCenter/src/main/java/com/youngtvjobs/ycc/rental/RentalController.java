@@ -1,4 +1,4 @@
-package com.youngtvjobs.ycc;
+package com.youngtvjobs.ycc.rental;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

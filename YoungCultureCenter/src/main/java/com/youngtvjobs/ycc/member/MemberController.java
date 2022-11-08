@@ -1,4 +1,4 @@
-package com.youngtvjobs.ycc;
+package com.youngtvjobs.ycc.member;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +21,13 @@ public class MemberController {
 	public String joinresult()	{
 		return "member/signin3";
 	}
-	//로그인
-	@RequestMapping("/login")
-	public String login()	{
-		return "member/loginForm";
-	}
+
+	/*
+	 * //로그인
+	 * 
+	 * @RequestMapping("/login") public String login() { return "member/loginForm";
+	 * }
+	 */
 	//마이페이지1 : 본인인증
 	@RequestMapping("/mypage")
 	public String mypage1()	{
