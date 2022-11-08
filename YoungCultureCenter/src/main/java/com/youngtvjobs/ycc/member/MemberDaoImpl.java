@@ -13,7 +13,7 @@ public class MemberDaoImpl implements MemberDao
 	
 
 	@Override
-	public MemberDto selectUser(String id) throws Exception
+	public MemberDto loginSelect(String id) throws Exception
 	{
 		// 로그인 셀렉트 
 		return session.selectOne(namespace + "loginSelect", id);
