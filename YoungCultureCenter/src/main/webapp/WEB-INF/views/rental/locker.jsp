@@ -201,9 +201,10 @@
     </ol>
   </div>
     
+ <!-- 좌석 선택 정보 이미지 -->
   <div class="row">
     <div class="col-md-2">
-      <div class="fs-4 pt-3 mb-4">
+      <div class="fs-6 pt-3 mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #39adffed;"
           class="bi bi-square-fill" viewBox="0 0 16 16">
           <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
@@ -212,7 +213,7 @@
       </div>
     </div>
     <div class="col-md-2">
-      <div class="fs-4 pt-3  mb-3">
+      <div class="fs-6 pt-3  mb-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #dddddd" class="bi bi-square-fill"
           viewBox="0 0 16 16">
           <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
@@ -221,7 +222,7 @@
       </div>
     </div>
     <div class="col-md-2">
-      <div class="fs-4 pt-3  mb-3">
+      <div class="fs-6 pt-3  mb-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #bada55;"
           class="bi bi-square-fill" viewBox="0 0 16 16">
           <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>

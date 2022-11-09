@@ -27,16 +27,15 @@
         
  
 <div class="container mt-3">
-  <h2>독서실 예약</h2>
+  <h4 class= "fw-bold">독서실 예약</h4>
+  <hr>
 </div>
     <!-- 좌석 선택 폼 -->
-    <div class="d-flex p-2" >
-      <div
-        class="container-lg"
-        style="border: solid 1px gray; border-radius: 10px; overflow: scroll;"
+    <div class="container w-100 pt-1" >
+      <div class="container-lg" style="border: solid 1px gray; border-radius: 10px; overflow: scroll;"
       >
         <ol class="rRoomTotal" style="margin-top: 3%">
-          <ol class="rRoomUpper">
+          <ol class="rRoomUpper mb-5">
           <li class="row row--1">
             <ol class="seats" type="A">
               <li class="seat">
@@ -103,16 +102,17 @@
                 />
                 <label for="07">07</label>
               </li>
+              
               <li class="seat">
                 <input
                   type="checkbox"
-                  id="8"
+                  id="08"
                   name="indvSeat"
                   onclick="checkOnlyOne(this)"
                 />
-                <label for="08">08</label>
+              <label for="08">08</label>
               </li>
-
+              
               <li class="seat">
                 <input
                   type="checkbox"
@@ -268,9 +268,6 @@
             </ol>
           </li>
           </ol>
-          <br />
-          <br />
-          <br />
 
           <ol class="rRoomUnder" style="margin-bottom: 2%">
             <li class="row row--3">
@@ -505,8 +502,44 @@
           </ol>
         </ol>
       </div>
+
+      	<!-- 좌석 선택 정보 이미지 -->
+	<div class="row">
+    <div class="col-md-2">
+      <div class="fs-6 pt-3 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #39adffed;"
+          class="bi bi-square-fill" viewBox="0 0 16 16">
+          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+        </svg>
+        사용가능
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="fs-6 pt-3  mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #dddddd" class="bi bi-square-fill"
+          viewBox="0 0 16 16">
+          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+        </svg>
+        사용중
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="fs-6 pt-3  mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #bada55;"
+          class="bi bi-square-fill" viewBox="0 0 16 16">
+          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+        </svg>
+        선택
+      </div>
+    </div>
+  </div>
+	
     </div>
 
+
+
+	
+	
     <!-- 예약 정보 폼 -->
     <form>
       <div class="container mt-5">

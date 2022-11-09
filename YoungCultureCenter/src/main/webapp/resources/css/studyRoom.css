@@ -2,19 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 16px;
-}
-
-/* 컨테이너 추후 100%로 변경해 줄 것? 체크박스의 크기가 변한다면 고정값으로 해도 좋을 듯*/
-
-
-
-ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
 .seats {
   display: flex;
