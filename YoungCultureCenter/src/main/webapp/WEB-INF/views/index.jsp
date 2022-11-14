@@ -16,6 +16,11 @@
 		height: 450px;
 		width: 100%;
 	}
+	
+	li
+	{
+		list-style: none;
+	}
 	</style>
 
 <title>YOUNG문화체육센터</title>
@@ -25,38 +30,39 @@
 	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
 	
-	<!-- 슬라이드 배너 -->
-	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-				aria-current="true" aria-label="Slide 1"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-				aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-				aria-label="Slide 3"></button>
+	<div class="container">
+		<!-- 슬라이드 배너 캐러셀1 -->
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+					aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+					aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+					aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="resources\img\slide\Youngculturecenter.png" class="img_size01" alt="Youngculture바로가기">
+				</div>
+				<div class="carousel-item">
+					<img src="resources\img\slide\baking.jpg" class="img_size01" alt="베이킹 수업 바로가기">
+				</div>
+				<div class="carousel-item">
+					<img src="resources\img\slide\coingclass.png" class="img_size01" alt="코딩수업 바로가기">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
 		</div>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="resources\img\slide\Youngculturecenter.png" class="img_size01" alt="Youngculture바로가기">
-			</div>
-			<div class="carousel-item">
-				<img src="resources\img\slide\baking.jpg" class="img_size01" alt="베이킹 수업 바로가기">
-			</div>
-			<div class="carousel-item">
-				<img src="resources\img\slide\coingclass.png" class="img_size01" alt="코딩수업 바로가기">
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-			data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-			data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-	</div>
 
 
 
@@ -65,30 +71,72 @@
 		<div class="banner_list">
 			<ul id="header_navi" style="text-align: center;">
 				<li><a href="/ycc/course/courseinfo"><img class="quik_img" src="resources\img\main_img\application_icon.png"
-							alt="수강신청" /><span>강좌신청안내</span></a></li>
+							alt="수강신청" /><span>수강신청</span></a></li>
 				<li><a href="/ycc/rental/place"><img class="quik_img" src="resources\img\main_img\rental_icon.png"
-							alt="대관신청" /><span>대관신청</span></a></li>
+							alt="대관신청" /><span>대관 신청</span></a></li>
+				<li><a href="/ycc/rental/locker"><img class="quik_img" src="resources\img\main_img\studyroom_icon.png"
+							alt="독서실예약" /><span>독서실 예약</span></a></li>
+				<li><a href="/ycc/rental/locker"><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
+							alt="사물함신청" /><span>사물함 신청</span></a></li>
 				<li><a href="/ycc/club"><img class="quik_img" src="resources\img\main_img\club_icon.png"
 							alt="동아리" /><span>동아리</span></a></li>
-				<li><a href="/ycc/rental/locker"><img class="quik_img" src="resources\img\main_img\Locker_icon.png"
-							alt="사물함신청" /><span>사물함신청</span></a></li>
 				<li><a href="/ycc/map"><img class="quik_img" src="resources\img\main_img\map_icon.png"
 							alt="찾아오시는 길" /><span>찾아오시는 길</span></a></li>
 			</ul>
 		</div><!-- // banner_list -->
 	</div><!-- // bannergroup -->
 
-	<!-- 통합검색 -->
-				
+	<div class="row" >
+		<div class="col-6 shadow p-3 border mb-2 border-opacity-25">
+			<div class="d-flex align-items-center">
+				<div>
+					<span class="fs-4">공지사항<span>
+				</div>
+				<div class="ms-auto">
+					<span><a href="/ycc/board/notice">더보기</a></span>
+				</div>
+			</div>
+		<hr class="my-2">
+			<ul class="ms-0">
+				<li>
+					<a href="/ycc/board/post" target="_self">저 오늘 치과갑니다</a>
+				</li>
+				<li>
+					<a href="/office/gfac/board/gfac_notice/482/view.do" target="_self">2022
+						강남페스티벌 별마당패션쇼 운영업체 선정 공고</a>
+				</li>
+				<li>
+					<a href="/office/gfac/board/gfac_notice/480/view.do" target="_self">2022년
+						강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월 선정결과 안내</a>
+				</li>
+				<li>
+					<a href="/office/gfac/board/gfac_notice/479/view.do" target="_self">렌티큘러와
+						홀로그램으로 본 세상 - 기술입은 문화교육 프로그램 참가 어린이/청소년 모집(기간연장 ~7/20까지)</a>
+				</li>
+				<li>
+					<a href="/office/gfac/board/gfac_notice/479/view.do" target="_blank">서울 강남도
+						DMZ로...강남문화재단 문화체험 프로그램</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-6">
+			컬럼2
+		</div>
+	</div>
 
+	
 	<!-- 공지사항, 행사/이벤트, 캘린더 -->
 	<div class="container" style="display: flex; ">
 		<div class="row">
 
 			<!-- 컬럼1 -->
-			<div class="col-md-6 shadow p-3 border border-success mb-2 border-opacity-25">
-				<div class="mcgs-box">
-					<div class="mcgs_bg mc-height">
+			<div class="col-md-6 shadow p-3 border mb-2 border-opacity-25">
+			
+			
+			
+			
+				<div>
+					<div>
 						<!-- 공지사항 탭 -->
 						<ul class="nav nav-tabs" style="margin-bottom: 10px;">
 							<li class="nav-item" style="font-size: 15px;">
@@ -172,6 +220,8 @@
 
 		</div>
 	</div> <!-- <div class="container" style="display: flex; "> 끝 -->
+	</div>
+	
 	<!-- footer inlcude -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	</body>
