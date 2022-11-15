@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<c:set var="loginvis" value="${sessionScope.id==null ? 'visually-hidden' : ''}" />
+<c:set var="logoutvis" value="${sessionScope.id==null ? '' : 'visually-hidden'}" />
+
+
 <header>
 	<!-- header -->
 	<nav class="navbar navbar-expand-lg bg-light">
@@ -22,7 +26,7 @@
 		  </div>
 		</nav>
 	    
-			<!-- 헤더 드롭다운 -->
+		<!-- 헤더 드롭다운 -->
 	    <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
 	      <ul class="navbar-nav mx-auto">
 	        <li class="nav-item dropdown">
@@ -34,10 +38,9 @@
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">교육강좌</a>
 						<ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="/ycc/course/courseinfo">강좌신청안내</a></li>
-	            <li><a class="dropdown-item" href="/ycc/course/schedule">강좌일정</a></li>
-	            <li><a class="dropdown-item" href="/ycc/course/search">강좌검색</a></li>
-				<li><a class="dropdown-item" href="/ycc/search">통합검색</a></li>
+	            <li><a class="dropdown-item" href="/ycc/course/courseinfo">수강 신청 안내</a></li>
+	            <li><a class="dropdown-item" href="/ycc/course/schedule">수강 캘린더</a></li>
+	            <li><a class="dropdown-item" href="/ycc/course/search">수강 신청</a></li>
 	          </ul>
 	        </li>
 					<li class="nav-item dropdown">
@@ -45,13 +48,12 @@
 						<ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="/ycc/rental/place">대관신청</a></li>
 	            <li><a class="dropdown-item" href="/ycc/rental/studyroom">독서실예약</a></li>
-							<li><a class="dropdown-item" href="/ycc/rental/locker">사물함신청</a></li>
+				<li><a class="dropdown-item" href="/ycc/rental/locker">사물함신청</a></li>
 	          </ul>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
 	          <ul class="dropdown-menu">
-	            <!-- <li><a class="dropdown-item" href="/ycc/course/detail">수강목록</a></li> -->
 	            <li><a class="dropdown-item" href="/ycc/club">동아리</a></li>
 	          </ul>
 	        </li>
@@ -66,23 +68,29 @@
 	        </li>
 	      </ul>
 	      
-	      	<!-- 로그인 / 회원가입 -->
-			<ul class="nav justify-content-end ms-auto">
+	      	<!-- 로그인 세션이 있을 시 드롭다운 버튼 보여주기 / 회원가입, 로그인버튼 hidden -->
+	      	<div class="dropdown ms-auto ${loginvis}">
+     			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+					${sessionScope.id} 님!
+				</button>
+				<ul class="dropdown-menu dropdown-menu-lg-end">
+				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">마이페이지</button></li>
+				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 수강목록</button></li>
+				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 문의내역</button></li>
+				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/logout'">로그아웃</button></li>
+				</ul>
+			</div>
+			<!-- 로그인 되지 않았을 때 출력되는 부분 -->
+			<ul class="nav justify-content-end ${logoutvis}">
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="/ycc/login">로그인</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/ycc/mypage">마이페이지</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/ycc/member/signin1">회원가입</a>
 				</li>
 			</ul>
-	    </div>
-	
 
-	
-	  </div>
+			</div>
+	    </div>
 	</nav>
-	
 </header>
