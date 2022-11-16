@@ -12,6 +12,5 @@
 
 <!-- 부트스트랩 실행 코드 -->
 <link href="/ycc/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
-<script src="/ycc/resources/js/bootstrap.min.js"></script>
 <script src="/ycc/resources/js/bootstrap.bundle.min.js"></script>
 <!-- metahead end -->
