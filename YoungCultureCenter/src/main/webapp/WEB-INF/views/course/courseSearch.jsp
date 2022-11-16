@@ -117,9 +117,6 @@
 		<nav aria-label="Page navigation example">
 			<c:if test="${totalCnt == null || totalCnt == 0}">
 				<div class="text-center mb-5">게시물이 없습니다.</div>
-				<div class="text-center mb-5">${ totalCnt }</div>
-				<div class="text-center mb-5">${ totalCnt != null }</div>
-				<div class="text-center mb-5">${ totalCnt != 0 }</div>
 			</c:if>
 			<c:if test="${totalCnt != null && totalCnt != 0}">
 				<ul class="pagination justify-content-center">
