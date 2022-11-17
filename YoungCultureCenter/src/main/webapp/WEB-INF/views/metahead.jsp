@@ -17,3 +17,18 @@
 <!-- 파비콘 추가 -->
 <link rel="shortcut icon" href="/ycc/resources/favicon/favicon.ico">
 <!-- metahead end -->
+
+<!-- 드롭다운 메뉴 스타일 -->
+<style>
+.dropdown-item-danger {
+  color: var(--bs-red);
+}
+.dropdown-item-danger:hover,
+.dropdown-item-danger:focus {
+  color: #fff;
+  background-color: var(--bs-red);
+}
+.dropdown-item-danger.active {
+  background-color: var(--bs-red);
+}
+</style>

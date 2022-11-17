@@ -9,22 +9,26 @@
 	<!-- header -->
 	<nav class="navbar navbar-expand-lg bg-light">
 	  <div class="container-fluid">
-			<!-- 로고 이미지 -->
-			<a href="/ycc/"><img src="/ycc/resources/img/main_img/logo.png" alt="Young문화센터로고" style="width: 40px; height: 40px;"></a> 
-	    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
+		
+		<!-- 로고 이미지 -->
+		<a href="/ycc/"><img src="/ycc/resources/img/main_img/logo.png" alt="Young문화센터로고" style="width: 40px; height: 40px;"></a> 
 	    
-	    <!-- 헤더 search창 -->
+	    <!-- 헤더 search 폼 -->
 	    <nav class="navbar bg-light">
 		  <div class="container-fluid">
 		    <form class="d-flex" action="/ycc/search">
 		      <input class="form-control me-2" placeholder="Search" aria-label="Search">
 		      <button class="btn btn-outline-success" type="submit">Search</button>
 		    </form>
-		      
 		  </div>
 		</nav>
+
+	    <!-- 화면 작아졌을 때 햄버거버튼 나오는 부분 -->
+	    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+
 	    
 		<!-- 헤더 드롭다운 -->
 	    <div class="collapse navbar-collapse nav justify-content-center" id="navbarNavDropdown">
@@ -63,7 +67,7 @@
 	            <li><a class="dropdown-item" href="/ycc/board/notice">공지사항</a></li>
 	            <li><a class="dropdown-item" href="/ycc/board/event">이벤트/행사</a></li>
 	            <li><a class="dropdown-item" href="/ycc/board/faq">자주하는질문</a></li>
-							<li><a class="dropdown-item" href="/ycc/board/inquiry/history">1:1문의</a></li>
+				<li><a class="dropdown-item" href="/ycc/board/inquiry/history">1:1문의</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -77,7 +81,8 @@
 				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">마이페이지</button></li>
 				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 수강목록</button></li>
 				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 문의내역</button></li>
-				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/logout'">로그아웃</button></li>
+				    <li><hr class="dropdown-divider"></li>
+				    <li><button class="dropdown-item dropdown-item-danger" type="button" onclick="location.href='/ycc/logout'">로그아웃</button></li>
 				</ul>
 			</div>
 			<!-- 로그인 되지 않았을 때 출력되는 부분 -->
