@@ -13,4 +13,7 @@
 <!-- 부트스트랩 실행 코드 -->
 <link href="/ycc/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <script src="/ycc/resources/js/bootstrap.bundle.min.js"></script>
+
+<!-- 파비콘 추가 -->
+<link rel="shortcut icon" href="/ycc/resources/favicon/favicon.ico">
 <!-- metahead end -->
