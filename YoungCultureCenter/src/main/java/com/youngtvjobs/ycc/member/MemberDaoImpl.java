@@ -1,5 +1,7 @@
 package com.youngtvjobs.ycc.member;
 
+import java.sql.Date;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,22 +23,44 @@ public class MemberDaoImpl implements MemberDao
 	
 	
 	@Override
-	public void deleteAll() throws Exception
-	{
-		// TODO Auto-generated method stub
+	public void signinMember(MemberDto dto) throws Exception {
+		
+		//String -> Date 변경
+		String year = dto.getBirthYear();
+		String month = dto.getBirthMonth();
+		String day = dto.getBirthDay();
+		
+		Date birth = Date.valueOf(year+"-"+month+"-"+day);
+		dto.setUser_birth_date(birth);
+		
+		session.insert(namespace + "signinMember", dto);
 		
 	}
+
 	@Override
-	public int insertUser(MemberDto user) throws Exception
+	public int update(MemberDto memberDto) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		// 회원 정보 수정
+		return session.update(namespace+"update", memberDto);
+	}
+
+
+	@Override
+	public int delete(String id) throws Exception {
+		//회원 탈퇴
+		return session.delete(namespace+"delete", id);
 	}
 	@Override
-	public int updateUser(MemberDto user) throws Exception
+	public int deleteAll() throws Exception
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return session.delete(namespace+"deleteAll");
+		
 	}
+
+
+
+
+
+
 
 }
