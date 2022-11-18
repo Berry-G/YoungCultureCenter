@@ -18,7 +18,7 @@
 	<div class="container mt-5">
 		<h2>회원정보수정</h2><hr>
 		<!-- 회원정보수정 -->
-		<form action="<c:url value='/mypage2'/>"  method="post" onsubmit="return validPW(this);">
+		<form action="<c:url value='/mypage/modify'/>"  method="post" onsubmit="return validPW(this);">
 		<table class="table table-group-divider text-center">
 			<tbody>
 			<colgroup><col width="15%" class="bg-light" id="w-28"></colgroup>
