@@ -4,7 +4,6 @@
 <c:set var="loginvis" value="${sessionScope.id==null ? 'visually-hidden' : ''}" />
 <c:set var="logoutvis" value="${sessionScope.id==null ? '' : 'visually-hidden'}" />
 
-
 <header>
 	<!-- header -->
 	<nav class="navbar navbar-expand-lg bg-light">
@@ -71,8 +70,8 @@
 	          </ul>
 	        </li>
 	      </ul>
-	      
-	      	<!-- 로그인 세션이 있을 시 드롭다운 버튼 보여주기 / 회원가입, 로그인버튼 hidden -->
+			</div>
+				      	<!-- 로그인 세션이 있을 시 드롭다운 버튼 보여주기 / 회원가입, 로그인버튼 hidden -->
 	      	<div class="dropdown ms-auto ${loginvis}">
      			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					${sessionScope.id} 님!
@@ -81,6 +80,12 @@
 				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">마이페이지</button></li>
 				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 수강목록</button></li>
 				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 문의내역</button></li>
+				    
+				    <!-- 관리자 일떄 접근 가능한 관리자 페이지 버튼 -->
+				    <c:if test="${sessionScope.grade=='관리자'}">
+				    <li><hr class="dropdown-divider"></li>
+				    <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/adminpage'">관리자 페이지</button></li>
+				    </c:if>
 				    <li><hr class="dropdown-divider"></li>
 				    <li><button class="dropdown-item dropdown-item-danger" type="button" onclick="location.href='/ycc/logout'">로그아웃</button></li>
 				</ul>
@@ -94,8 +99,6 @@
 					<a class="nav-link" href="/ycc/member/signin1">회원가입</a>
 				</li>
 			</ul>
-
-			</div>
 	    </div>
 	</nav>
 </header>

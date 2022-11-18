@@ -31,6 +31,8 @@ public class LoginController
 			String msg = URLEncoder.encode("id 또는 pwd가 일치하지 않습니다.", "utf-8"); 
 			return "redirect:/login?msg="+msg;
 		}
+		
+		//아이디 저장 기능
 		if(save_id) {
 			Cookie cookie = new Cookie("id", id);
 			response.addCookie(cookie);
@@ -42,8 +44,14 @@ public class LoginController
 		
 		HttpSession session = request.getSession();
 		
+		//유저 정보를 세션에 저장하기 위한 객체 생성
+		MemberDto userDB = memberDao.loginSelect(id);		//로그인 한 id로 WHERE 조회한 데이터 저장
+
+		//세션에 아이디와 유저 등급 저장
 		session.setAttribute("id", id);
-		System.out.println(session.getAttribute("id"));
+		System.out.println(session.getAttribute("id"));		//세션에 저장된 id 체크
+		session.setAttribute("grade", userDB.getUser_grade());
+		System.out.println(session.getAttribute("grade"));	//세션에 저장된 grade 체크
 		
 		toURL = toURL==null || toURL.equals("") ? "/" : toURL;
 		return "redirect:" + toURL;
@@ -53,12 +61,9 @@ public class LoginController
 	{
 		// TODO Auto-generated method stub
 		MemberDto user = memberDao.loginSelect(id);
-		System.out.println(user.getUser_pw());
-		System.out.println(pw);
+
 		if(user == null) 
 			return false;
-		
-		System.out.println(user.getUser_pw().equals(pw));
 		return user.getUser_pw().equals(pw);
 	}
 	

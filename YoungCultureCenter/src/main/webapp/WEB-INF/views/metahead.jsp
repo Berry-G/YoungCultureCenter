@@ -14,21 +14,9 @@
 <link href="/ycc/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <script src="/ycc/resources/js/bootstrap.bundle.min.js"></script>
 
+<!-- 헤더 네비바 스타일 시트 -->
+<link href="/ycc/resources/css/header.css" rel="stylesheet" type="text/css" >
+
 <!-- 파비콘 추가 -->
 <link rel="shortcut icon" href="/ycc/resources/favicon/favicon.ico">
 <!-- metahead end -->
-
-<!-- 드롭다운 메뉴 스타일 -->
-<style>
-.dropdown-item-danger {
-  color: var(--bs-red);
-}
-.dropdown-item-danger:hover,
-.dropdown-item-danger:focus {
-  color: #fff;
-  background-color: var(--bs-red);
-}
-.dropdown-item-danger.active {
-  background-color: var(--bs-red);
-}
-</style>

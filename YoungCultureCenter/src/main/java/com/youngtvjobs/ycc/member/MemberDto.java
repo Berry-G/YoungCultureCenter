@@ -6,8 +6,7 @@ import java.util.Objects;
 public class MemberDto
 {
 	/**
-	 * 
-	 *     user_id    character(16) NOT NULL,
+	user_id    character(16) NOT NULL,
     user_name    character(25) NOT NULL,
     user_pw    character(16) NOT NULL,
     user_gender    character(1) NOT NULL,
@@ -189,6 +188,15 @@ public class MemberDto
 	public void setUser_social_type(String user_social_type)
 	{
 		this.user_social_type = user_social_type;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "MemberDto [user_id=" + user_id + ", user_name=" + user_name + ", user_pw=" + user_pw + ", user_gender="
+				+ user_gender + ", user_birth_date=" + user_birth_date + ", user_email=" + user_email
+				+ ", user_phone_number=" + user_phone_number + ", user_addr=" + user_addr + ", user_regdate="
+				+ user_regdate + ", user_grade=" + user_grade + ", user_social_type=" + user_social_type + "]";
 	}
 	
 	

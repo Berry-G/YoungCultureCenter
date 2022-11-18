@@ -20,14 +20,6 @@ public class MemberDaoImpl implements MemberDao
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void deleteAll() throws Exception
 	{
@@ -46,7 +38,5 @@ public class MemberDaoImpl implements MemberDao
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 
 }
