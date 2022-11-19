@@ -1,14 +1,20 @@
 ------------------------------------------------------공통------------------------------------------------------
 -- tb_user dummy data
+--관리자
 INSERT INTO public.tb_user
-(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, user_addr, user_regdate, user_grade, user_social_type)
-VALUES('admin', '이젠', '0111', 'm', '2022-11-09', 'ezen@gmail.com', '01012345678', '강남', '2022-11-09', '관리자'::bpchar, '');
-
+(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, user_postcode, user_rnameaddr, user_detailaddr, user_regdate, user_grade, user_social_type)
+VALUES('admin', '어드민', '0111', 'F', '960305', 'admin@gmail.com', '01012345678', '06035', '강남구 도산대로34길', '상세주소입니당', now(), '관리자', 'N');
+--강사
 INSERT INTO public.tb_user
-(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, user_addr, user_regdate, user_grade, user_social_type)
-VALUES('ezen', '이젠', '0111', 'm', '2022-11-12', 'ezenT@gmail.com', '01012345678', '강남', 'now()', '강사', '');
-
-
+(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, user_postcode, user_rnameaddr, user_detailaddr, user_regdate, user_grade, user_social_type)
+VALUES('inst', '최강사', '0111', 'M', '960305', 'instructor@gmail.com', '01012345678', '06035', '강남구 도산대로34길', '상세주소입니당', now(), '강사', 'G');
+--일반회원(2)
+INSERT INTO public.tb_user
+(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, user_postcode, user_rnameaddr, user_detailaddr, user_regdate, user_grade, user_social_type)
+VALUES('ezen', '김이젠', '0111', 'M', '960305', 'ezenkim@gmail.com', '01012345678', '06035', '강남구 도산대로34길', '상세주소입니당', now(), '일반회원', 'K');
+INSERT INTO public.tb_user
+(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, user_postcode, user_rnameaddr, user_detailaddr, user_regdate, user_grade, user_social_type)
+VALUES('ezen1', '전이젠', '0111', 'F', '960305', 'ezenjeon@gmail.com', '01012345678', '06035', '강남구 도산대로34길', '상세주소입니당', now(), '일반회원', 'N');
 
 ------------------------------------------------------지호------------------------------------------------------
 -- classroom dummy data
@@ -124,21 +130,24 @@ VALUES(1, now(), '공지사항입니다', 'notice', 'admin', '23년 수영장 �
 INSERT INTO public.article (article_id, article_date, artilce_contents, article_board_type, user_id, article_title) 
 VALUES(2, now(), '이벤트입니다', 'event', 'admin', '헬스장 이벤트 안내');
 
+-----------------------------------------------------나리-----------------------------------------------------------
+--inquiry dummy data
+-- inq_id : 문의 작성날짜(6자리) + 001~999
+INSERT INTO public.inq_board
+(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
+VALUES('교육강좌', 'ezen', 220203001, '수강 관련 문의', '수강 관련 문의 내용', now(), true);
 
+INSERT INTO public.inq_board
+(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
+VALUES('결제', 'ezen', 220203002, '결제 관련 문의', '결제 관련 문의 내용', now(), false);
 
+INSERT INTO public.inq_board
+(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
+VALUES('결제', 'ezen1', 221124001, '영수증 문의', '현금영수증 추후발급 되나요?', now(), false);
 
-
-
-
-
-
-
-
-
-
-
-
-
+INSERT INTO public.inq_board
+(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
+VALUES('교육강좌', 'ezen1', 221125001, '수강 신청 변경 문의', '수강 신청 변경 문의 내용', now(), true);
 
 
 
