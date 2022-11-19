@@ -6,7 +6,6 @@ DROP TABLE IF EXISTS attend CASCADE;
 DROP TABLE IF EXISTS class_comment CASCADE;
 DROP TABLE IF EXISTS classroom CASCADE;
 DROP TABLE IF EXISTS CLUB CASCADE;
-DROP TABLE IF EXISTS club_attach CASCADE;
 DROP TABLE IF EXISTS CLUB_BOARD CASCADE;
 DROP TABLE IF EXISTS club_board_comment CASCADE;
 DROP TABLE IF EXISTS CLUB_member CASCADE;
@@ -16,7 +15,6 @@ DROP TABLE IF EXISTS main_banner CASCADE;
 DROP TABLE IF EXISTS main_modal CASCADE;
 DROP TABLE IF EXISTS prental_info CASCADE;
 DROP TABLE IF EXISTS studyroom CASCADE;
-DROP TABLE IF EXISTS tb_attach CASCADE;
 DROP TABLE IF EXISTS tb_course CASCADE;
 DROP TABLE IF EXISTS tb_permission CASCADE;
 DROP TABLE IF EXISTS tb_rental_locker CASCADE;
@@ -30,10 +28,11 @@ CREATE TABLE admin_section (
 CREATE TABLE ARTICLE (
     article_id    integer NOT NULL,
     article_date    timestamp without time zone NOT NULL,
-    artilce_contents    character varying(5000) NOT NULL,
     article_Board_type    character(30) NOT NULL,
     user_id    character(16) NOT NULL,
-    article_title    character varying(50) NOT NULL
+    article_title    character varying(100) NOT null,
+    article_contents    text NOT NULL,
+    article_viewcnt integer not NULL
 );
 ALTER TABLE ARTICLE ADD CONSTRAINT ARTICLE_PK PRIMARY KEY ( article_id );
 
@@ -75,18 +74,12 @@ CREATE TABLE CLUB (
 
 ALTER TABLE CLUB ADD CONSTRAINT CLUB_PK PRIMARY KEY ( club_id );
 
-CREATE TABLE club_attach (
-    club_file_name    character varying(255) NOT NULL,
-    club_reg_date    timestamp without time zone NOT NULL,
-    club_article_id    integer
-);
-ALTER TABLE club_attach ADD CONSTRAINT club_attach_PK PRIMARY KEY ( club_file_name );
-
 CREATE TABLE CLUB_BOARD (
     club_article_id    integer NOT NULL,
     club_article_title    character varying(100) NOT NULL,
+    club_article_content text  not null,
     club_board_upload_time    timestamp without time zone NOT NULL,
-    club_article_cnt    integer DEFAULT 0 NOT NULL,
+    club_article_viewcnt    integer DEFAULT 0 NOT NULL,
     club_id    integer NOT NULL,
     user_id    character(16) NOT NULL
 );
@@ -94,6 +87,7 @@ ALTER TABLE CLUB_BOARD ADD CONSTRAINT CLUB_BOARD_PK PRIMARY KEY ( club_article_i
 
 CREATE TABLE club_board_comment (
     club_comment_id    integer NOT NULL,
+    club_comment	character varying(1000) NOT NULL,
     club_comment_time    timestamp without time zone NOT NULL,
     user_id    character(16) NOT NULL,
     club_article_id    integer NOT NULL
@@ -114,10 +108,13 @@ CREATE TABLE course_type (
 ALTER TABLE course_type ADD CONSTRAINT course_type_PK PRIMARY KEY ( course_cate_cd );
 
 CREATE TABLE inq_board (
-    inq_cate    character(30) NOT NULL,
-    inq_YN    boolean NOT NULL,
-    user_id    character(16) NOT NULL,
-    inq_id    integer NOT NULL
+    inq_cate    varchar(30) NOT NULL,
+    user_id    varchar(16) NOT NULL,
+    inq_id    integer NOT null,
+    inq_title varchar(100) not null,
+    inq_content text not null,
+    inq_date date not null,
+    inq_YN    boolean NOT NULL
 );
 ALTER TABLE inq_board ADD CONSTRAINT inq_board_PK PRIMARY KEY ( inq_id );
 
@@ -152,12 +149,6 @@ CREATE TABLE studyroom (
 );
 ALTER TABLE studyroom ADD CONSTRAINT studyroom_PK PRIMARY KEY ( sroom_seat_id );
 alter table studyroom add column use_yn boolean not null;
-
-CREATE TABLE tb_attach (
-    article_file_name   character varying(255) NOT NULL,
-    article_id    		integer
-);
-ALTER TABLE tb_attach ADD CONSTRAINT tb_attach_PK PRIMARY KEY ( article_file_name );
 
 CREATE TABLE tb_course (
     course_id    integer NOT NULL,
@@ -196,17 +187,19 @@ ALTER TABLE tb_rental_locker ADD CONSTRAINT tb_rental_locker_PK PRIMARY KEY ( lo
 
 CREATE TABLE tb_user
 (
-    user_id    			varchar(16) NOT NULL,
-    user_name    		varchar(25) NOT NULL,
-    user_pw    			varchar(16) NOT NULL,
-    user_gender    		character(1) NOT NULL,
-    user_birth_date    	date NOT NULL,
-    user_email    		varchar(50) NOT NULL,
-    user_phone_number   character(11) NOT NULL,
-    user_addr    		varchar(100),
-    user_regdate    	date NOT NULL,
-    user_grade    		varchar(10) DEFAULT '일반회원' NOT NULL,
-    user_social_type    character(1) NOT NULL
+    user_id    varchar(16) NOT null ,
+    user_name    varchar(25) NOT NULL,
+    user_pw    varchar(16) NOT NULL,
+    user_gender    character(1) NOT NULL,
+    user_birth_date date not null,
+    user_email    varchar(50) NOT NULL,
+    user_phone_number    character(11) NOT NULL,
+    user_postcode    character(5)    not null,
+    user_rNameAddr    varchar(100)    not null,
+    user_detailAddr    varchar (100),
+    user_regdate    date NOT NULL,
+    user_grade    varchar(10) DEFAULT '일반회원' NOT NULL,
+    user_social_type    character(1)
 );
 
 ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
@@ -221,8 +214,6 @@ alter table club_board_comment add FOREIGN KEY(club_article_id) REFERENCES club_
 alter table club_member add FOREIGN KEY(club_id) REFERENCES club(club_id) ON DELETE CASCADE;
 alter table club_member add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
-alter table club_attach add FOREIGN KEY(club_article_id) REFERENCES club_board(club_article_id) ON DELETE CASCADE;
-
 --렌탈
 alter table prental_info add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 alter table prental_info add FOREIGN KEY(croom_id) REFERENCES classroom(croom_id) ON DELETE CASCADE;
@@ -233,8 +224,6 @@ alter table studyroom add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DE
 
 --게시글, 첨부파일, 문의게시판 테이블 fk생성
 alter table ARTICLE add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
-
-alter table tb_attach add FOREIGN KEY(article_id) REFERENCES ARTICLE(article_id) ON DELETE CASCADE;
 
 alter table inq_board add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
