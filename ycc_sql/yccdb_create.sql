@@ -19,6 +19,9 @@ DROP TABLE IF EXISTS tb_course CASCADE;
 DROP TABLE IF EXISTS tb_permission CASCADE;
 DROP TABLE IF EXISTS tb_rental_locker CASCADE;
 DROP TABLE IF EXISTS tb_user CASCADE;
+DROP TABLE IF EXISTS club_attach CASCADE;
+DROP TABLE IF EXISTS tb_attach CASCADE;
+
 
 CREATE TABLE admin_section (
     top_logo_img    character varying(255) NOT NULL,
@@ -168,6 +171,8 @@ CREATE TABLE tb_course (
     course_cate_cd varchar(10) NOT NULL
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
+-- tb_course에 신청인원(course_applicants) 컬럼 추가
+alter table tb_course add column course_applicants integer;
 
 CREATE TABLE tb_permission (
     user_id    character(16) NOT NULL,
@@ -204,6 +209,8 @@ CREATE TABLE tb_user
 
 ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
 
+
+--FK============================================================================================================
 --동아리
 alter table club_board add FOREIGN KEY(club_id) REFERENCES club(club_id) ON DELETE CASCADE;
 alter table club_board add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
@@ -241,3 +248,5 @@ alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELET
 alter table tb_permission add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 -- END------------------- create, drop table & add pk and fk & add column--------------------------------------
+
+
