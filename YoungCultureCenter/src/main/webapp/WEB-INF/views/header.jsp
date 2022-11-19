@@ -56,7 +56,6 @@
                             <li><a class="dropdown-item" href="/ycc/board/notice">공지사항</a></li>
                             <li><a class="dropdown-item" href="/ycc/board/event">이벤트/행사</a></li>
                             <li><a class="dropdown-item" href="/ycc/board/faq">자주하는 질문</a></li>
-                            <li><a class="dropdown-item" href="/ycc/board/inquiry/history">1:1문의</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -79,9 +78,9 @@
                         ${sessionScope.name} 님!</button>
                     <ul class="dropdown-menu dropdown-menu-lg-end">
                         <li><button class="dropdown-item" type="button"
-                                onclick="location.href='/ycc/mypage'">마이페이지</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 수강목록</button></li>
-                        <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage'">나의 문의내역</button></li>
+                                onclick="location.href='/ycc/mypage/pwcheck'">마이페이지</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage/mycourse'">나의 수강목록</button></li>
+                        <li><button class="dropdown-item" type="button" onclick="location.href='/ycc/mypage/inquiry'">나의 문의내역</button></li>
 
                         <!-- 관리자 일떄 접근 가능한 관리자 페이지 버튼 -->
                         <c:if test="${sessionScope.grade=='관리자'}">

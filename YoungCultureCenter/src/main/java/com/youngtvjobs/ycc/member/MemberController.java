@@ -163,18 +163,18 @@ public class MemberController {
 	//나의 문의 내역
 	@RequestMapping("/mypage/inquiry")
 	public String inquiryHistory() {
-		return "mypage/inquiryHistory";
+		return "member/inquiryHistory";
 	}
 	
 	//1:1 문의 작성 페이지
 	@RequestMapping("/mypage/inquiry/write")
 	public String inquiryWrite() {
-		return "mypage/inquiryWrite";
+		return "member/inquiryWrite";
 	}
 	//1:1 문의글 읽기 페이지
 	@RequestMapping("/mypage/inquiry/read")
 	public String inquiryRead() {
-		return "mypage/inquiryWrite";
+		return "member/inquiryWrite";
 	}
 	
     private boolean logincheck(HttpServletRequest request) {
