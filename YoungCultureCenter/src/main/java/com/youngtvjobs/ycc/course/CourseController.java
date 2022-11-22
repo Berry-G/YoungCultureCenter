@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.youngtvjobs.ycc.common.YccMethod;
+
 @Controller
 public class CourseController {
 	
@@ -34,7 +36,7 @@ public class CourseController {
 	
 	@GetMapping("/course/detail")
 	public String coursedetail(Integer course_id, CourseSearchItem sc, Model m, HttpServletRequest request) {
-		if(!logincheck(request)) 
+		if(!YccMethod.loginSessionCheck(request)) 
 			return "redirect:/login?toURL="+request.getRequestURL();
 		
 		try {
@@ -75,11 +77,5 @@ public class CourseController {
 		}
 		
 		return "/course/courseSearch";
-	}
-	
-	private boolean logincheck(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		return session != null && session.getAttribute("id") != null;
 	}
 }

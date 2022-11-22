@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.youngtvjobs.ycc.common.YccMethod;
+
 //회원관리 컨트롤러
 @Controller
 public class MemberController {
@@ -75,7 +77,7 @@ public class MemberController {
 
 	@GetMapping("/mypage/pwcheck")
 	public String pwCheck(HttpSession session, HttpServletRequest request, String inputPassword) throws Exception	{
-	    if(!logincheck(request)) 
+	    if(!YccMethod.loginSessionCheck(request)) 
 	    	return "redirect:/login?toURL="+request.getRequestURL();
 
 		return "member/pwCheck";
@@ -176,11 +178,4 @@ public class MemberController {
 	public String inquiryRead() {
 		return "member/inquiryWrite";
 	}
-	
-    private boolean logincheck(HttpServletRequest request) {
-    	
-        HttpSession session = request.getSession(false);
-        
-        return session != null && session.getAttribute("id") != null;
-     }
 }
