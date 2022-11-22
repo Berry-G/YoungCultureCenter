@@ -36,6 +36,7 @@ public class CourseController {
 	
 	@GetMapping("/course/detail")
 	public String coursedetail(Integer course_id, CourseSearchItem sc, Model m, HttpServletRequest request) {
+		//로그인 여부 확인
 		if(!YccMethod.loginSessionCheck(request)) 
 			return "redirect:/login?toURL="+request.getRequestURL();
 		
