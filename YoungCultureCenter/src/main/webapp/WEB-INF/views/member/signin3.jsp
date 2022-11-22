@@ -9,7 +9,7 @@
 <title>회원가입완료</title>
 </head>
 <body>
-	<!-- header inlcude -->
+	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
   	<!--step container -->
 	<div class="container w-50">
@@ -49,7 +49,7 @@
    </script>
 -->	
 	
-	<!-- footer inlcude -->
+	<!-- footer include -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 
 </body>

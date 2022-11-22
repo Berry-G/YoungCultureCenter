@@ -10,14 +10,14 @@
 </head>
 
 <body>
-	<!-- header inlcude -->
+	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
 	
 	
 	
 	
 	
-	<!-- footer inlcude -->
+	<!-- footer include -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 
 </body>

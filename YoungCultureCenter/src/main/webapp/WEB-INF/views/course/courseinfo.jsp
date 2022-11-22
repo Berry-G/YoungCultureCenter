@@ -8,7 +8,7 @@
     <%@include file="/WEB-INF/views/metahead.jsp"%>
 <title>강좌안내</title>
 </head>
-		<!-- header inlcude -->
+		<!-- header include -->
 	  <%@include file="/WEB-INF/views/header.jsp"%>
 <body>
   <div class="container pt-5 w-100">
@@ -118,7 +118,7 @@
       </div>
     </div>
   </div>
-    <!-- footer inlcude -->
+    <!-- footer include -->
   	<%@include file="/WEB-INF/views/footer.jsp"%>
 	
 </body>
