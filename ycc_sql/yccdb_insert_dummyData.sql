@@ -147,8 +147,8 @@ VALUES('sqld 개발자 과정', '', '2022-11-15', '2022-11-30', '2022-12-05', '2
 
 
 -- course_review dummy data
-INSERT INTO course_review (review_content, review_datetime, review_rating, course_id, user_id)
-VALUES('1번 강좌 리뷰', now(), 5, 1, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('1번 강좌 리뷰', now(), now(), 5, 1, 'ezen');
 
 
 
