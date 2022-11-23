@@ -12,7 +12,7 @@ public class AdminController
 {
 	//관리자페이지 메인메뉴
 	@RequestMapping("/admin")
-	public String adminmain(HttpServletRequest request)
+	public String adminmain(HttpServletRequest request) throws Exception
 	{
 		// 관리자 권한이 없을 때 동작
 		if (!YccMethod.permissionCheck("관리자", request))

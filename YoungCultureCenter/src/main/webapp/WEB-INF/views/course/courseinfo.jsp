@@ -6,11 +6,12 @@
 <head>	
 	  <!-- head & meta tag include -->
     <%@include file="/WEB-INF/views/metahead.jsp"%>
-<title>강좌안내</title>
+	<title>강좌안내</title>
 </head>
-		<!-- header include -->
-	  <%@include file="/WEB-INF/views/header.jsp"%>
+
 <body>
+	<!-- header include -->
+	<%@include file="/WEB-INF/views/header.jsp"%>
   <div class="container pt-5 w-100">
     <div class="input-form col-md-12 mx-auto">
       <p class="fw-bolder fs-4">수강안내</p>

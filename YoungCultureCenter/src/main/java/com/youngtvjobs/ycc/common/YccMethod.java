@@ -20,9 +20,10 @@ public class YccMethod
 	 * @return
 	 * 		세션이 없거나 등급이 다르면 FALSE 반환합니다.
 	 */
-	public static boolean permissionCheck(String grade, HttpServletRequest request)
+	public static boolean permissionCheck(String grade, HttpServletRequest request) throws Exception
 	{
 		HttpSession session = request.getSession(false);
-		return session != null && session.getAttribute("grade") == grade;
+		//주의 : eqauls 사용 시 null값을 비교하는 값이 있으면 Nullpoint Exception 뜨고 500 ERROR로 뱉음.
+		return session.getAttribute("grade") == null ? false : session.getAttribute("grade").equals(grade);
 	}
 }
