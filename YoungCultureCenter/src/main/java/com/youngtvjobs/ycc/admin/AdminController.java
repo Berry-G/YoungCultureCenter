@@ -14,11 +14,8 @@ public class AdminController
 	@RequestMapping("/admin")
 	public String adminmain(HttpServletRequest request)
 	{
-		// 로그인 여부 확인
-		if (!YccMethod.loginSessionCheck(request))
-			return "redirect:/login?toURL=" + request.getRequestURL();
 		// 관리자 권한이 없을 때 동작
-		if (!YccMethod.loginPermissionCheck("관리자", request))
+		if (!YccMethod.permissionCheck("관리자", request))
 		{
 			return "redirect:/error/403";
 		}
