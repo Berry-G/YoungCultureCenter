@@ -38,6 +38,7 @@ CREATE TABLE ARTICLE (
     article_contents    text NOT NULL,
     article_viewcnt integer not NULL
 );
+
 ALTER TABLE ARTICLE ADD CONSTRAINT ARTICLE_PK PRIMARY KEY ( article_id );
 
 CREATE TABLE attend (
@@ -140,13 +141,14 @@ CREATE TABLE main_modal (
     modal_url    character varying(500)
 );
 ALTER TABLE main_modal ADD CONSTRAINT main_modal_PK PRIMARY KEY ( modal_id );
-
+--user_id, croom_id -> varchar로 수정
+--prental_id 타입 변경 = integer -> serial
 CREATE TABLE prental_info (
-    prental_id    integer NOT NULL,
+    prental_id    serial NOT NULL,
     prental_de    timestamp without time zone NOT NULL,
     prental_duration    integer NOT NULL,
-    user_id    character(16) NOT NULL,
-    croom_id    character(10) NOT NULL
+    user_id    varchar(16) NOT NULL,
+    croom_id    varchar(10) NOT NULL
 );
 ALTER TABLE prental_info ADD CONSTRAINT prental_info_PK PRIMARY KEY ( prental_id );
 
@@ -154,7 +156,7 @@ CREATE TABLE studyroom (
     sroom_seat_id    integer NOT NULL,
     sroom_entry_time    timestamp without time zone NOT NULL,
     sroom_checkout_time    timestamp without time zone NOT NULL,
-    user_id    character(16) NOT NULL
+    user_id    varchar(16) NOT NULL
 );
 ALTER TABLE studyroom ADD CONSTRAINT studyroom_PK PRIMARY KEY ( sroom_seat_id );
 alter table studyroom add column use_yn boolean not null;
@@ -255,5 +257,4 @@ alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELET
 alter table tb_permission add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 -- END------------------- create, drop table & add pk and fk & add column--------------------------------------
-
 
