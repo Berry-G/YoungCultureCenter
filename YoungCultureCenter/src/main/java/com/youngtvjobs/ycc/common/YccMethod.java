@@ -10,4 +10,11 @@ public class YccMethod
 		HttpSession session = request.getSession(false);
 		return session != null && session.getAttribute("id") != null;
 	}
+	
+	//세션의 권한 체크
+	public static boolean loginPermissionCheck(String grade, HttpServletRequest request)
+	{
+		HttpSession session = request.getSession(false);
+		return session != null && session.getAttribute("grade") == grade;
+	}
 }
