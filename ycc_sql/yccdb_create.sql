@@ -32,7 +32,7 @@ CREATE TABLE admin_section (
 CREATE TABLE ARTICLE (
     article_id    integer NOT NULL,
     article_date    timestamp without time zone NOT NULL,
-    article_Board_type    character(30) NOT NULL,
+    article_board_type    varchar(30) NOT NULL,
     user_id    character(16) NOT NULL,
     article_title    character varying(100) NOT null,
     article_contents    text NOT NULL,

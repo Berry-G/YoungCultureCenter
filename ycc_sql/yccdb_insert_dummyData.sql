@@ -154,11 +154,13 @@ VALUES('1번 강좌 리뷰', now(), now(), 5, 1, 'ezen');
 
 ------------------------------------------------------연희------------------------------------------------------
 -- article dummy data 
-INSERT INTO public.article (article_id, article_date, article_contents, article_board_type, user_id, article_title, article_viewcnt) 
-VALUES(1, now(), '공지사항입니다', 'notice', 'admin', '23년 수영장 일정 공지', 0);  
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(1,  now(), '공지사항', 'admin', '23년 수영장 일정 공지', '공지사항입니다', 0);
 
-INSERT INTO public.article (article_id, article_date, article_contents, article_board_type, user_id, article_title, article_viewcnt) 
-VALUES(2, now(), '이벤트입니다', 'event', 'admin', '헬스장 이벤트 안내', 0);
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(2,  now(), '이벤트', 'admin', '헬스장 이벤트 안내', '이벤트입니다', 0);
 
 
 
