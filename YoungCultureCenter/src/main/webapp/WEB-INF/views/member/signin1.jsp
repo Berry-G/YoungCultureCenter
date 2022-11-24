@@ -12,7 +12,7 @@
  <title>회원가입약관동의</title>
 </head>
 <body>
-	<!-- header inlcude -->
+	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
 
 <div class="container w-50">
@@ -193,7 +193,7 @@ $(document).ready(function(){
 })
 </script>
 
-<!-- footer inlcude -->
+<!-- footer include -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
 	
 </body>

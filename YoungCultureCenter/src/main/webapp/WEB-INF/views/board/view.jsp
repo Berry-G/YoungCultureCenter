@@ -19,7 +19,7 @@
     <title>게시글 보기</title>
 </head>
 <body>
-    <!-- header inlcude -->
+    <!-- header include -->
 <%@include file="/WEB-INF/views/header.jsp"%>
     
     <div class="container">
@@ -52,7 +52,7 @@
         </main>
     </div>
     
-    <!-- footer inlcude -->
+    <!-- footer include -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
     <script>
         $('.summernote').summernote({

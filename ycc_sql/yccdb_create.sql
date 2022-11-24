@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS admin_section CASCADE;
 DROP TABLE IF EXISTS ARTICLE CASCADE;
 DROP TABLE IF EXISTS attend CASCADE;
+DROP TABLE IF EXISTS course_review CASCADE;
 DROP TABLE IF EXISTS class_comment CASCADE;
 DROP TABLE IF EXISTS classroom CASCADE;
 DROP TABLE IF EXISTS CLUB CASCADE;
@@ -31,12 +32,13 @@ CREATE TABLE admin_section (
 CREATE TABLE ARTICLE (
     article_id    integer NOT NULL,
     article_date    timestamp without time zone NOT NULL,
-    article_Board_type    character(30) NOT NULL,
+    article_board_type    varchar(30) NOT NULL,
     user_id    character(16) NOT NULL,
     article_title    character varying(100) NOT null,
     article_contents    text NOT NULL,
     article_viewcnt integer not NULL
 );
+
 ALTER TABLE ARTICLE ADD CONSTRAINT ARTICLE_PK PRIMARY KEY ( article_id );
 
 CREATE TABLE attend (
@@ -48,16 +50,21 @@ CREATE TABLE attend (
 );
 ALTER TABLE attend ADD CONSTRAINT attend_PK PRIMARY KEY ( attend_code );
 
-CREATE TABLE class_comment (
-    review_id    integer NOT NULL,
-    review_content    character varying(1000) NOT NULL,
-    review_datetime    timestamp without time zone NOT NULL,
-    review_updated_datetime    timestamp without time zone NOT NULL,
-    review_rating    numeric(3),
-    course_id    integer NOT NULL,
-    user_id    character(16) NOT NULL
+-- class_comment -> course_review 테이블 이름 변경
+-- review_id type변경 Integer-> serial
+-- starrating 타입변경 numeric -> Integer
+-- user_id 타입변경 char -> varchar
+-- review_updated_datetime : not null 삭제
+CREATE TABLE course_review (
+    review_id    serial NOT NULL, -- cno
+    review_content    character varying(1000) NOT NULL, -- review
+    review_datetime    timestamp without time zone NOT NULL, -- reg_date
+    review_updated_datetime    timestamp without time zone, -- up_date
+    review_rating    integer, -- starrating
+    course_id    integer NOT NULL, -- bno
+    user_id    varchar(16) NOT null -- reviewer
 );
-ALTER TABLE class_comment ADD CONSTRAINT class_comment_PK PRIMARY KEY ( review_id );
+ALTER TABLE course_review ADD CONSTRAINT course_review_PK PRIMARY KEY ( review_id );
 
 CREATE TABLE classroom (
     croom_id    varchar(10) NOT NULL,
@@ -134,13 +141,14 @@ CREATE TABLE main_modal (
     modal_url    character varying(500)
 );
 ALTER TABLE main_modal ADD CONSTRAINT main_modal_PK PRIMARY KEY ( modal_id );
-
+--user_id, croom_id -> varchar로 수정
+--prental_id 타입 변경 = integer -> serial
 CREATE TABLE prental_info (
-    prental_id    integer NOT NULL,
+    prental_id    serial NOT NULL,
     prental_de    timestamp without time zone NOT NULL,
     prental_duration    integer NOT NULL,
-    user_id    character(16) NOT NULL,
-    croom_id    character(10) NOT NULL
+    user_id    varchar(16) NOT NULL,
+    croom_id    varchar(10) NOT NULL
 );
 ALTER TABLE prental_info ADD CONSTRAINT prental_info_PK PRIMARY KEY ( prental_id );
 
@@ -148,13 +156,14 @@ CREATE TABLE studyroom (
     sroom_seat_id    integer NOT NULL,
     sroom_entry_time    timestamp without time zone NOT NULL,
     sroom_checkout_time    timestamp without time zone NOT NULL,
-    user_id    character(16) NOT NULL
+    user_id    varchar(16) NOT NULL
 );
 ALTER TABLE studyroom ADD CONSTRAINT studyroom_PK PRIMARY KEY ( sroom_seat_id );
 alter table studyroom add column use_yn boolean not null;
 
+-- course_id 타입 변경 Integer -> serial 
 CREATE TABLE tb_course (
-    course_id    integer NOT NULL,
+    course_id    serial NOT NULL,
     course_nm    character varying(255) NOT NULL,
     course_image    character varying(255),
     course_reg_start_date    date NOT NULL,
@@ -168,11 +177,11 @@ CREATE TABLE tb_course (
     course_info    character varying(5000) NOT NULL,
     user_id    varchar(16) NOT NULL,
     croom_id    varchar(10) NOT null,
-    course_cate_cd varchar(10) NOT NULL
+    course_cate_cd varchar(10) NOT null,
+    course_applicants integer,
+    course_rating numeric(3, 2)
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
--- tb_course에 신청인원(course_applicants) 컬럼 추가
-alter table tb_course add column course_applicants integer;
 
 CREATE TABLE tb_permission (
     user_id    character(16) NOT NULL,
@@ -239,8 +248,8 @@ alter table tb_course add FOREIGN KEY(croom_id) REFERENCES classroom(croom_id) O
 alter table tb_course add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 alter table tb_course add FOREIGN KEY(course_cate_cd) REFERENCES course_type(course_cate_cd) ON DELETE CASCADE;
 
-alter table class_comment add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON DELETE CASCADE; 
-alter table class_comment  add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
+alter table course_review add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON DELETE CASCADE; 
+alter table course_review  add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 alter table attend add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON DELETE CASCADE;
 alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
@@ -248,5 +257,4 @@ alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELET
 alter table tb_permission add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 -- END------------------- create, drop table & add pk and fk & add column--------------------------------------
-
 

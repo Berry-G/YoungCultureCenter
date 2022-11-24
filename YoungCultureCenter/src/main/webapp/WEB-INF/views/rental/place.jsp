@@ -17,7 +17,7 @@ td {
 </style>
 </head>
 <body>
-	<!-- header inlcude -->
+	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
 
 
@@ -315,7 +315,7 @@ td {
 	})
   </script>
 
-	<!-- footer inlcude -->
+	<!-- footer include -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

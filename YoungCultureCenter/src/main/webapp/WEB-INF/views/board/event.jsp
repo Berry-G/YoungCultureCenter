@@ -10,7 +10,7 @@
 </head>
 
   <body>
-  <!-- header inlcude -->
+  <!-- header include -->
 <%@include file="/WEB-INF/views/header.jsp"%>
   <!--start container-->
   <div class="container">
@@ -125,7 +125,7 @@
       <button type="button" class="btn btn-primary" style="margin-left: 10px;">검색</button>
     </div> -->
   </div> <!--end of container-->
-  <!-- footer inlcude -->
+  <!-- footer include -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
   
   

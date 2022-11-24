@@ -10,7 +10,7 @@
 <title>Young문화센터 - 통합검색</title>
 </head>
 <body>
-<!-- header inlcude -->
+<!-- header include -->
 <%@include file="/WEB-INF/views/header.jsp"%>
 
 <body>
@@ -121,7 +121,7 @@
     </table>
     <hr class="pb-5">
   </div>
-  <!-- footer inlcude -->
+  <!-- footer include -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
   
 </body>

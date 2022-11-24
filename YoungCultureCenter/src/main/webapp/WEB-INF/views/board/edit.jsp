@@ -24,7 +24,7 @@
 <title>Young문화센터 - 게시글 수정</title>
 </head>
 <body>
-  <!-- header inlcude -->
+  <!-- header include -->
 <%@include file="/WEB-INF/views/header.jsp"%>
   <div class="container mt-5">
                 <h1>공지사항</h1>
@@ -49,7 +49,7 @@
 
 
     </div><!--container end-->
-    <!-- footer inlcude -->
+    <!-- footer include -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
 
  

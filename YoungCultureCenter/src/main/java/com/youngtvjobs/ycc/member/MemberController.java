@@ -16,15 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.youngtvjobs.ycc.common.YccMethod;
+
 //회원관리 컨트롤러
 @Controller
 public class MemberController {
 	
 	MemberDao memberDao;
 	MemberService memberService;
-	
-	
-	
 	
 	@Autowired
 	public MemberController(MemberDao memberDao, MemberService memberService) {
@@ -38,8 +37,6 @@ public class MemberController {
 	public String joincheck() {
 		return "member/signin1";
 	}
-	
-
 	
 	//회원가입
 	@RequestMapping(value = "/member/signin2", method = RequestMethod.GET)
@@ -57,7 +54,6 @@ public class MemberController {
 		return "member/signin3";
 	}
 	
-	
 	//회원가입 결과
 	@RequestMapping("/member/signin3")
 	public String joinresult()	{
@@ -72,10 +68,10 @@ public class MemberController {
 	 */
 	
 	//마이페이지1 : 본인인증
-
 	@GetMapping("/mypage/pwcheck")
 	public String pwCheck(HttpSession session, HttpServletRequest request, String inputPassword) throws Exception	{
-	    if(!logincheck(request)) 
+	    //비 로그인 시 접근 불가
+		if(!YccMethod.loginSessionCheck(request)) 
 	    	return "redirect:/login?toURL="+request.getRequestURL();
 
 		return "member/pwCheck";
@@ -84,24 +80,27 @@ public class MemberController {
 	@PostMapping("/mypage/pwcheck")
 	public String pwCheck(String inputPassword, HttpSession session, Model m) throws Exception	{
 		
-//		System.out.println(inputPassword);
-		
 		MemberDto memberDto = memberDao.loginSelect((String)session.getAttribute("id"));
 		
 		//DB의 pw와 입력된 pw가 같으면 modify로 리다이렉트, 그렇지 않으면 pwCheck로 돌아감
-			if(memberDto.getUser_pw().equals(inputPassword)){
+		if (memberDto.getUser_pw().equals(inputPassword))
+		{
 
 			return "redirect:/mypage/modify";
-			}
+		}
 			
-			m.addAttribute("alert", "<script>alert('비밀번호가 일치하지 않습니다.')</script>");
+		m.addAttribute("alert", "<script>alert('비밀번호가 일치하지 않습니다.')</script>");
 			
 		return "member/pwCheck";
 	}
 
 	//마이페이지 2: 회원 정보 수정
 	@GetMapping("/mypage/modify")
-	public String modify(HttpSession session, Model m) throws Exception {
+	public String modify(HttpServletRequest request, HttpSession session, Model m) throws Exception {
+		// 비 로그인 시 접근 불가
+		if (!YccMethod.loginSessionCheck(request))
+			return "redirect:/login?toURL=" + request.getRequestURL();
+
 		MemberDto memberDto = memberDao.loginSelect((String)session.getAttribute("id"));
 		
 		m.addAttribute("memberDto", memberDto);
@@ -124,7 +123,6 @@ public class MemberController {
 	
 	@PostMapping("/mypage/modify")
 	public String modify(String id, String pw, String tel, String postCode, String rNameAddr, String detailAddr) throws Exception {
-		
 		//회원정보 수정란에서 받은 정보를 dto에 저장하여 전달(db UPDATE)후 메인페이지로 이동
 		MemberDto dto= new MemberDto(); 
 		dto.setUser_id(id);
@@ -143,7 +141,11 @@ public class MemberController {
 
 	//마이페이지3 : 회원탈퇴 완료
 	@RequestMapping("/mypage/withdraw")
-	public String withdraw(HttpSession session) throws Exception	{
+	public String withdraw(HttpSession session, HttpServletRequest request) throws Exception {
+		//비 정상적 접근 차단
+		if (!YccMethod.loginSessionCheck(request))
+			return "redirect:/login?toURL=" + request.getRequestURL();
+		
 		//tb_user테이블에서 session에 저장된 id와 같은 user_id를 가진 회원을 삭제시킨후 세션을 종료시킴
 		memberService.withdraw((String) session.getAttribute("id"));
 		session.invalidate();
@@ -151,36 +153,37 @@ public class MemberController {
 	}
 	//마이페이지4 : 내 수강목록
 	@RequestMapping("/mypage/mycourse")
-	public String mypage4()	{
+	public String myCourse(HttpServletRequest request)	{
+		if(!YccMethod.loginSessionCheck(request)) 
+			return "redirect:/login?toURL="+request.getRequestURL();
 		return "member/mypage4";
 	}
 	//마이페이지5 : id/pw 찾기
-	@RequestMapping("/mypage/mypage5")
-	public String mypage5() {
-		return "member/mypage5";
-	}
+	@RequestMapping("/mypage/forget")
+	public String forget() {
+		return "member/forget";
+ 	}
 	
 	//나의 문의 내역
 	@RequestMapping("/mypage/inquiry")
-	public String inquiryHistory() {
+	public String inquiryHistory(HttpServletRequest request) {
+		if(!YccMethod.loginSessionCheck(request)) 
+			return "redirect:/login?toURL="+request.getRequestURL();
 		return "member/inquiryHistory";
 	}
 	
 	//1:1 문의 작성 페이지
 	@RequestMapping("/mypage/inquiry/write")
-	public String inquiryWrite() {
+	public String inquiryWrite(HttpServletRequest request) {
+		if(!YccMethod.loginSessionCheck(request)) 
+			return "redirect:/login?toURL="+request.getRequestURL();
 		return "member/inquiryWrite";
 	}
 	//1:1 문의글 읽기 페이지
 	@RequestMapping("/mypage/inquiry/read")
-	public String inquiryRead() {
+	public String inquiryRead(HttpServletRequest request) {
+		if(!YccMethod.loginSessionCheck(request)) 
+			return "redirect:/login?toURL="+request.getRequestURL();
 		return "member/inquiryWrite";
 	}
-	
-    private boolean logincheck(HttpServletRequest request) {
-    	
-        HttpSession session = request.getSession(false);
-        
-        return session != null && session.getAttribute("id") != null;
-     }
 }

@@ -74,8 +74,11 @@
 													<select class="form-select form-select-sm" aria-label=".form-select-sm example" required>
 														<option selected></option>
 														<option value="1">naver.com</option>
-														<option value="2">hanmail.net</option>
-														<option value="3">google.com</option>
+														<option value="2">daum.net</option>
+														<option value="3">gmail.com</option>
+														<option value="4">nate.com</option>
+														<option value="5">kakao.com</option>
+														<option value="6">outlook.com</option>
 													</select>
 													<!-- <input type="text" class="form-control" placeholder="example.com" aria-label="Server"> -->
 												</div>
