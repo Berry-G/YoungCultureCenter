@@ -7,4 +7,7 @@ public interface MemberService {
 	int withdraw(String id) throws Exception;
 	//회원정보수정
 	int ModifyMemberInfo(MemberDto dto) throws Exception;
+	
+	//이메일 인증
+	String insertMember(String user_email) throws Exception;
 }

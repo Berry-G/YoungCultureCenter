@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.youngtvjobs.ycc.common.YccMethod;
 
@@ -24,18 +27,22 @@ public class MemberController {
 	
 	MemberDao memberDao;
 	MemberService memberService;
+
+	InquiryService inquiryService;
+	InquiryDao inquiryDao;		
 	
+	JavaMailSender mailSender;
+	
+
 	@Autowired
-	public MemberController(MemberDao memberDao, MemberService memberService) {
-		super();
+	public MemberController(MemberDao memberDao, MemberService memberService, InquiryService inquiryService,
+			InquiryDao inquiryDao, JavaMailSender mailSender) {
+		//super();
 		this.memberDao = memberDao;
 		this.memberService = memberService;
-	}
-
-	//회원약관동의
-	@RequestMapping("/member/signin1")
-	public String joincheck() {
-		return "member/signin1";
+		this.inquiryService = inquiryService;
+		this.inquiryDao = inquiryDao;
+		this.mailSender = mailSender;
 	}
 	
 	//회원가입
@@ -66,6 +73,14 @@ public class MemberController {
 	 * @RequestMapping("/login") public String login() { return "member/loginForm";
 	 * }
 	 */
+	
+	//이메일 인증 : siForm.jsp에서 넘겨받은 값을 memberService.java에 memberdto.getUser_email()에 담아서 전달해줌
+		@PostMapping("/signin/registerEmail")
+		@ResponseBody
+		public String emailConfirm1(@RequestBody MemberDto memberdto) throws Exception {
+			
+			return memberService.insertMember(memberdto.getUser_email());
+		}
 	
 	//마이페이지1 : 본인인증
 	@GetMapping("/mypage/pwcheck")
