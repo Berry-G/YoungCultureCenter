@@ -60,7 +60,7 @@ CREATE TABLE course_review (
     review_content    character varying(1000) NOT NULL, -- review
     review_datetime    timestamp without time zone NOT NULL, -- reg_date
     review_updated_datetime    timestamp without time zone, -- up_date
-    review_rating    integer, -- starrating
+    review_rating    integer NOT NULL, -- starrating
     course_id    integer NOT NULL, -- bno
     user_id    varchar(16) NOT null -- reviewer
 );
@@ -179,8 +179,8 @@ CREATE TABLE tb_course (
     user_id    varchar(16) NOT NULL,
     croom_id    varchar(10) NOT null,
     course_cate_cd varchar(10) NOT null,
-    course_applicants integer,
-    course_rating numeric(3, 2),
+    course_applicants integer default 0,
+    course_rating numeric(3, 2) default 0,
     course_viewcnt integer not NULL
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
