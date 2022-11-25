@@ -181,6 +181,7 @@ CREATE TABLE tb_course (
     course_cate_cd varchar(10) NOT null,
     course_applicants integer default 0,
     course_rating numeric(3, 2) default 0,
+    review_cnt integer default 0,
     course_viewcnt integer default 0
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
