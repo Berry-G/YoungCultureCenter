@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>	
-  <!-- head & meta tag include -->
-  <%@include file="/WEB-INF/views/metahead.jsp"%>
-  <style type="text/css">
-  
+<!-- head & meta tag include -->
+<%@include file="/WEB-INF/views/metahead.jsp"%>
+	<style type="text/css">
+	 
 	.img_size01 {
 	/* 슬라이드에 들어가는 이미지 크기 조절*/
 	height: 450px;
 	width: 100%;
 	}
 	
-  	.boardlist > li
+	 	.boardlist > li
 	{
 		list-style: none;
 		overflow: hidden;
@@ -29,7 +29,7 @@
 		color: graytext;
 	}
 	
-  	.quickIcon
+	 	.quickIcon
 	{
 		width: 50px;
 		height: 50px;
@@ -59,12 +59,63 @@
 		white-space:nowrap;
 		transform:translate(-50%, 0);
 	}
-  </style>
-  
+	</style>
+  	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<!-- 쿠키 저장 자바스크립트 -->
+	<script type="text/javascript">
+	/* 스토리지 제어 함수 정의 */
+	var handleStorage = {
+	  // 스토리지에 데이터 쓰기(이름, 만료일)
+	  setStorage: function (name, exp) {
+	    // 만료 시간 구하기(exp를 ms단위로 변경)
+	    var date = new Date();
+	    date = date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+
+	    // 로컬 스토리지에 저장하기
+	        // (값을 따로 저장하지 않고 만료 시간을 저장)
+	    localStorage.setItem(name, date)
+	  },
+	  // 스토리지 읽어오기
+	  getStorage: function (name) {
+	    var now = new Date();
+	    now = now.setTime(now.getTime());
+	    // 현재 시각과 스토리지에 저장된 시각을 각각 비교하여
+	    // 시간이 남아 있으면 true, 아니면 false 리턴
+	    return parseInt(localStorage.getItem(name)) > now
+	  }
+	};
+	</script>
 
 <title>YOUNG문화체육센터</title>
 </head>
 <body>
+	<!-- 모달#1 띄우기 -->
+	<script type="text/javascript">
+		$(window).on('load', function() {
+			$('#modal1').modal('show');
+		});
+	</script>
+
+	<!-- 모달#1 콘텐츠 -->
+	<div class="modal fade" id="modal1" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: inline-block;">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" style="width: auto;">
+				<div class="modal-body p-0">
+					<a href="/ycc/board/notice">
+					<img alt="" src="/ycc/resources/modal/modal1.jpg">
+					</a>
+				</div>
+				<div class="p-1 px-2 text-bg-dark d-flex">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">오늘 하루 보지 않기</button>
+					<button type="button" class="btn btn-primary ms-auto">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
 	
@@ -187,6 +238,7 @@
 	<!-- container END -->
 	</div> 
 	
+
 	<!-- footer include -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 
