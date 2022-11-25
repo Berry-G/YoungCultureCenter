@@ -150,11 +150,31 @@ VALUES('sqld 개발자 과정', '', '2022-11-15', '2022-11-30', '2022-12-05', '2
 -- article dummy data 
 INSERT INTO public.article
 (article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
-VALUES(1,  now(), '공지사항', 'admin', '23년 수영장 일정 공지', '공지사항입니다', 0);
+VALUES(1, '2022-11-15', '공지사항', 'admin', '23년 수영장 일정 공지', '공지사항입니다', 13);
 
 INSERT INTO public.article
 (article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
-VALUES(2,  now(), '이벤트', 'admin', '헬스장 이벤트 안내', '이벤트입니다', 0);
+VALUES(2,  '2022-11-26', '이벤트', 'admin', '헬스장 이벤트 안내', '이벤트입니다', 7);
+
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(3, '2022-11-17', '공지사항', 'admin', '23년 수영장 일정', '공지사항입니다', 21);
+
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(4,  '2022-11-26', '이벤트', 'admin', '헬스장 이벤트 안내', '이벤트입니다', 2);
+
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(5, '2022-11-15', '공지사항', 'admin', '수영장', '공지사항입니다', 16);
+
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(6, '2022-11-27', '공지사항', 'admin', '23년 수영장', '공지사항입니다', 32);
+
+INSERT INTO public.article
+(article_id, article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(7, '2022-11-17', '공지사항', 'admin', '23년 수영장 일정 공지', '공지사항입니다', 41);
 
 
 
