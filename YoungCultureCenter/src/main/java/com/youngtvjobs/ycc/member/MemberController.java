@@ -2,7 +2,8 @@ package com.youngtvjobs.ycc.member;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,7 +33,7 @@ public class MemberController {
 	InquiryDao inquiryDao;		
 	
 	JavaMailSender mailSender;
-	
+
 
 	@Autowired
 	public MemberController(MemberDao memberDao, MemberService memberService, InquiryService inquiryService,
@@ -127,12 +128,11 @@ public class MemberController {
 		m.addAttribute("emailId", emailId);
 		m.addAttribute("emailDomain", emailDomain);
 		
-		//생년월일 String으로 형변환 & 포맷 지정하여 모델에 저장 (회원정보수정 생년월일란에 출력)
-	    DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    String birth_date = sdFormat.format(memberDto.getUser_birth_date());
-
-		m.addAttribute("birth_date", birth_date);
+		// 생년월일 String으로 형변환 & 포맷 지정하여 모델에 저장 (회원정보수정 생년월일란에 출력)		
+		String birth_date = YccMethod.date_toString(memberDto.getUser_birth_date());
 		
+		m.addAttribute("birth_date", birth_date);
+
 		return "member/modify";
 	}
 	
@@ -179,13 +179,59 @@ public class MemberController {
 		return "member/forget";
  	}
 	
-	//나의 문의 내역
-	@RequestMapping("/mypage/inquiry")
-	public String inquiryHistory(HttpServletRequest request) {
-		if(!YccMethod.loginSessionCheck(request)) 
-			return "redirect:/login?toURL="+request.getRequestURL();
-		return "member/inquiryHistory";
-	}
+	// 나의 문의 내역 - 기간별 조회
+			@GetMapping("/mypage/inquiry")
+			public String inquiryHistory(String settedInterval,HttpSession session, Model m, 
+					HttpServletRequest request, String startDate, String endDate) {
+				//로그인 여부 확인
+				if (!YccMethod.loginSessionCheck(request))
+					return "redirect:/login/login?toURL=" + request.getRequestURL();
+				
+				
+				try {
+					//서비스 메소드에 파라미터로 넣어줄 id,디폴트 settedInterval(1개월) 불러오기
+					String id = (String) session.getAttribute("id");
+					InquiryDto inquiryDto = new InquiryDto();
+					
+					if(settedInterval == null) {
+						settedInterval = inquiryDto.getSettedInterval();
+					}
+					//1개월,3개월 버튼을 클릭했을 때 동작(name="settedInterval")
+					if (settedInterval.equals("3month") || settedInterval.equals("6month")) {
+						
+						
+						List<InquiryDto> inqList = inquiryService.getPage(id, settedInterval);
+						m.addAttribute("inqList", inqList);
+						
+						return "member/inquiryHistory";
+					}
+					else if (startDate != null && endDate != null &&!startDate.equals("") && !endDate.equals("")) {
+					
+						//String으로 받은 날짜를 Date로 형변환
+						Date sd =YccMethod.str_toDate(startDate);
+						Date ed = YccMethod.str_toDate(endDate);
+						
+						List<InquiryDto> inqList = inquiryService.getPageByInput(id, sd, ed);
+						
+						m.addAttribute("inqList", inqList);
+						m.addAttribute("startDate",startDate);
+						m.addAttribute("endDate",endDate);
+						
+
+						return "member/inquiryHistory";
+					}
+					
+					List<InquiryDto> inqList = inquiryService.getPage(id, inquiryDto.getSettedInterval());
+					m.addAttribute("inqList", inqList);
+					
+					return "member/inquiryHistory";
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				return "member/inquiryHistory";
+			}
 	
 	//1:1 문의 작성 페이지
 	@RequestMapping("/mypage/inquiry/write")
