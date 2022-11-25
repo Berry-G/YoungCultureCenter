@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.youngtvjobs.ycc.member.inquiryMapper">
+  
+    <!-- 아이디가 일치하는 문의 결과 조회 -->
+  <sql id="selectFromInquiry">
+  	select * from inq_board
+  	where user_id = #{id}
+  </sql>
+  
+    <!-- 최신순 정렬 -->
+  <sql id="orderByNew">
+ 	order by inq_date desc, inq_id desc
+  </sql>
+
+    <!-- 지정된 기간(버튼)으로 조회 -->
+  <select id ="selectPage" parameterType="map" resultType="InquiryDto">
+  	<include refid="selectFromInquiry" />
+  	<if test='"settedInterval"!=null'>
+	  	and 
+	  	inq_date between (now() - CAST(#{settedInterval} AS INTERVAL)) and now()
+  	</if>
+  	<include refid="orderByNew" />
+  </select>
+    
+    <!-- 직접 입력된 기간 조회 -->
+  <select id ="selectPageByInput" parameterType="map" resultType="InquiryDto">
+  	<include refid="selectFromInquiry" />
+  	and 
+  	inq_date between #{startDate} and #{endDate}
+	<include refid="orderByNew" />  
+  </select>
+  
+  
+  </mapper>
