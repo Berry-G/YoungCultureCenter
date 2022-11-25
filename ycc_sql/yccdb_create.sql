@@ -79,7 +79,8 @@ CREATE TABLE CLUB (
     club_title    character varying(50) NOT NULL,
     club_create_time    timestamp without time zone NOT NULL,
     club_info    character varying(3000) NOT NULL,
-    club_master_id    character(16) NOT NULL
+    club_master_id    character(16) NOT NULL,
+    club_viewcnt integer not NULL
 );
 
 ALTER TABLE CLUB ADD CONSTRAINT CLUB_PK PRIMARY KEY ( club_id );
@@ -179,7 +180,8 @@ CREATE TABLE tb_course (
     croom_id    varchar(10) NOT null,
     course_cate_cd varchar(10) NOT null,
     course_applicants integer,
-    course_rating numeric(3, 2)
+    course_rating numeric(3, 2),
+    course_viewcnt integer not NULL
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
 
