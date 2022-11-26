@@ -58,31 +58,31 @@ INSERT INTO public.course_type (course_cate_cd, course_cate_name) VALUES('Edu', 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('차범근축구교실', '', '2022-11-01', '2022-11-15', '2022-12-01', '2022-12-15'
+VALUES('차범근축구교실', '', '2022-12-01', '2022-12-15', '2023-01-15', '2023-01-30'
 , '월화수목금', '14:00~17:00', '청소년', 100000, '드리블에 대해서', 'ezen', '축구장', 'Spo');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('한국사바로알기', '', '2022-11-02', '2022-11-16', '2022-12-02', '2022-12-16'
+VALUES('한국사바로알기', '', '2022-12-02', '2022-12-16', '2023-01-16', '2023-01-31'
 , '월수금', '18:00~21:00', '성인', 50000, '자바앱개발과정', 'ezen', '101', 'Cul');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('이젠웹개발1', '', '2022-01-03', '2022-05-17', '2022-06-03', '2022-12-17'
+VALUES('이젠웹개발1', '', '2022-12-03', '2022-12-17', '2023-01-17', '2023-02-01'
 , '월목', '09:00~12:00', '성인', 30000, '자바웹개발과정', 'ezen', '301', 'Edu');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('박지성축구교실', '', '2022-11-04', '2022-11-28', '2022-12-04', '2023-02-28'
+VALUES('박지성축구교실', '', '2022-12-04', '2022-12-18', '2023-01-18', '2023-02-02'
 , '월화수목금', '18:00~22:00', '청소년', 80000, '미드필더란', 'ezen', '축구장', 'Spo');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('공예교실', '', '2022-11-05', '2022-11-19', '2022-12-05', '2022-12-19'
+VALUES('공예교실', '', '2022-12-05', '2022-12-19', '2023-01-19', '2023-02-03'
 , '토일', '09:00~18:00', '노인', 80000, '치매예방', 'ezen', '201', 'Cul');
 
 INSERT INTO public.tb_course
@@ -94,25 +94,25 @@ VALUES('이젠앱개발1', '', '2022-01-06', '2022-06-20', '2022-07-01', '2022-1
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('우생순', '', '2022-11-07', '2022-11-21', '2022-12-07', '2022-12-21'
+VALUES('우생순', '', '2022-12-06', '2022-12-20', '2023-01-20', '2023-02-04'
 , '월화수목금', '14:00~15:00', '노인', 30000, '우리 생의 최고의 순간', 'ezen', '풋살장', 'Spo');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('NBA로 가자', '', '2022-11-08', '2022-11-22', '2022-12-08', '2022-12-22'
+VALUES('NBA로 가자', '', '2022-12-07', '2022-12-21', '2023-01-21', '2023-02-05'
 , '월수금', '10:00~13:00', '청소년', 30000, 'NBA와 KBA의 차이', 'ezen', '풋살장', 'Spo');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('이젠웹개발2', '', '2022-05-09', '2022-11-23', '2022-12-09', '2023-06-23'
+VALUES('이젠웹개발2', '', '2022-05-09', '2022-12-23', '2023-01-09', '2023-06-23'
 , '월화수목금', '09:00~18:00', '성인', 100000, '자바웹개발과정', 'ezen', '303', 'Edu');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('이젠앱개발2', '', '2022-05-10', '2022-11-24', '2022-12-10', '2023-06-24'
+VALUES('이젠앱개발2', '', '2022-05-10', '2022-12-24', '2023-01-10', '2023-06-24'
 , '월수금', '10:00~13:00', '청소년', 20000, '안드로이드앱개발과정', 'ezen', '301', 'Edu');
 
 INSERT INTO public.tb_course
@@ -124,13 +124,13 @@ VALUES('크리스마스', '', '2022-12-01', '2023-12-31', '2023-01-01', '2023-01
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('당일시작 당일마감하는 강좌', '', '2022-11-19', '2022-11-19', '2022-11-20', '2022-11-20'
+VALUES('당일시작 당일마감하는 강좌', '', '2022-12-08', '2022-12-08', '2023-01-08', '2023-01-08'
 , '일', '18:00~21:00', '성인', 20000, 'mapper확인용', 'ezen', '103', 'Cul');
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('당일시작 당일마감하는 강좌2', '', '2022-11-20', '2022-11-20', '2022-11-21', '2022-11-21'
+VALUES('당일시작 당일마감하는 강좌2', '', '2022-12-09', '2022-12-09', '2023-01-09', '2023-01-09'
 , '월', '18:00~21:00', '성인', 20000, 'mapper확인용', 'ezen', '202', 'Cul');
 
 INSERT INTO public.tb_course
@@ -142,7 +142,7 @@ VALUES('안드로이드 앱 개발', '', '2022-11-28', '2023-02-20', '2023-03-05
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 , course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-VALUES('sqld 개발자 과정', '', '2022-11-15', '2022-11-30', '2022-12-05', '2022-12-23'
+VALUES('sqld 개발자 과정', '', '2022-12-10', '2022-12-24', '2023-01-24', '2023-02-06'
 , '월수금', '18:00~21:00', '성인', 80000, 'DB 마스터 과정', 'ezen', '302', 'Edu');
 
 
