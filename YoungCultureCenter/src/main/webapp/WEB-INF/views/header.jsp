@@ -67,7 +67,7 @@
                 <!-- 로그인 세션이 없을 떄 출력되는 부분 -->
                 <div class="nav p-2 ${logoutvis} d-flex" style="justify-content: center; flex-wrap: nowrap;">
                     <a class="btn btn-primary mx-2 text-nowrap" href="/ycc/login">로그인</a>
-                    <a class="btn btn-outline-primary text-nowrap" href="/ycc/member/signin1">회원가입</a>
+                    <a class="btn btn-outline-primary text-nowrap" href="/ycc/signin/agree">회원가입</a>
                 </div>
 
                 <!-- 로그인 세션이 있을 시 드롭다운 버튼 보여주기 / 회원가입, 로그인버튼 hidden -->
