@@ -107,9 +107,8 @@
 					</a>
 				</div>
 				<div class="p-1 px-2 text-bg-dark d-flex">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">오늘 하루 보지 않기</button>
-					<button type="button" class="btn btn-primary ms-auto">닫기</button>
+					<button type="button" class="btn btn-secondary"	data-bs-dismiss="modal">오늘 하루 보지 않기</button>
+					<button type="button" class="btn btn-primary ms-auto" data-bs-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
