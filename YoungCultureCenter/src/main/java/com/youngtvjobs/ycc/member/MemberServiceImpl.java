@@ -1,5 +1,7 @@
 package com.youngtvjobs.ycc.member;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,21 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	JavaMailSender mailSender;
 
+
 	@Override	//회원 가입
 	public void signinMember(MemberDto dto) throws Exception {
-		memberDao.signinMember(dto);
-
+		String year = dto.getBirthYear();
+		String month = dto.getBirthMonth();
+		String day = dto.getBirthDay();
 		
+		Date birth = Date.valueOf(year +"-"+ month +"-"+ day);
+		dto.setUser_birth_date(birth);
+		
+		memberDao.signinMember(dto);
+	}
+	@Override	//아이디체크 
+	public int idCheck(MemberDto dto) throws Exception {
+		return memberDao.idCheck(dto);
 	}
 
 	@Override	//회원 탈퇴

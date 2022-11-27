@@ -1,11 +1,17 @@
 package com.youngtvjobs.ycc.member;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface MemberDao
 {
 	MemberDto loginSelect(String id) throws Exception ;
 	
 	//회원가입 insert 
-	void signinMember(MemberDto dto) throws Exception;
+		void signinMember(MemberDto dto) throws Exception;
+
+	//회원가입 아이디중복체크
+	int idCheck(MemberDto dto) throws Exception;
 	
 	int delete(String id) throws Exception;
 	int deleteAll() throws Exception;

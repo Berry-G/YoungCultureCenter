@@ -1,9 +1,8 @@
 package com.youngtvjobs.ycc.member;
 
-import java.sql.Date;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -12,6 +11,8 @@ public class MemberDaoImpl implements MemberDao
 	@Autowired
 	private SqlSession session;
 	private static String namespace = "com.youngtvjobs.ycc.member.memberMapper.";
+	MemberDto memberDto;
+	JavaMailSender mailSender;
 	
 
 	@Override
@@ -22,18 +23,19 @@ public class MemberDaoImpl implements MemberDao
 	}
 	
 	
+	//회원가입_아이디중복체크 
+		@Override
+		public int idCheck(MemberDto dto) throws Exception {
+			
+			return session.selectOne(namespace + "idCheck", dto);
+		}
+
+		
+	//회원가입_INSERT
 	@Override
 	public void signinMember(MemberDto dto) throws Exception {
-		
-		//String -> Date 변경
-		String year = dto.getBirthYear();
-		String month = dto.getBirthMonth();
-		String day = dto.getBirthDay();
-		
-		Date birth = Date.valueOf(year+"-"+month+"-"+day);
-		dto.setUser_birth_date(birth);
-		
-		session.insert(namespace + "signinMember", dto);
+
+		session.insert(namespace + "signinMember" , dto);
 		
 	}
 
