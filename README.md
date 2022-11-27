@@ -53,3 +53,9 @@
 ![image](https://user-images.githubusercontent.com/69233747/203011146-645fac1c-cacd-4013-96c2-20c471f3044b.png)
 
 ## :memo: 사이트 설명
+* 수강신청
+* 대관신청
+* 독서실 예약
+* 사물함 신청
+* 동아리
+* 찾아오시는 길
