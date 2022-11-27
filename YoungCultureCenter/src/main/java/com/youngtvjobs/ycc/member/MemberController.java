@@ -46,34 +46,40 @@ public class MemberController {
 		this.mailSender = mailSender;
 	}
 	
-	//회원가입
-	@RequestMapping(value = "/member/signin2", method = RequestMethod.GET)
-	public String signinmember() throws Exception	{
-		return "member/signin2";
-	}
-	
-	@RequestMapping(value = "/member/signin2", method = RequestMethod.POST)
-	public String signinmember(@ModelAttribute MemberDto dto, Model m) throws Exception	{
-		
-		//System.out.println(dto.toString());
-		memberService.signinMember(dto);
-		m.addAttribute("memberDto", dto);
-		
-		return "member/signin3";
-	}
-	
-	//회원가입 결과
-	@RequestMapping("/member/signin3")
-	public String joinresult()	{
-		return "member/signin3";
-	}
+	// 회원약관동의
+		@GetMapping("/signin/agree")
+		public String siagree() {
+			return "member/siAgree";
+		}
 
-	/*
-	 * //로그인
-	 * 
-	 * @RequestMapping("/login") public String login() { return "member/loginForm";
-	 * }
-	 */
+		// 회원가입
+		@GetMapping("/signin/form")
+		public String siform() throws Exception {
+			System.out.println("get signin");
+			return "member/siForm";
+		}
+
+		@PostMapping("/signin/form")
+		public String siform(MemberDto dto, Model m) throws Exception {
+			//System.out.println(dto.toString());
+			memberService.signinMember(dto);
+			m.addAttribute(dto);
+			return "member/siComple";
+
+		}
+
+		// 아이디중복체크
+		@PostMapping("/signin/idcheck")
+		@ResponseBody
+		public int idcheck(MemberDto dto, Model m) throws Exception {
+
+			// System.out.println(dto.toString());
+			// 중복확인 체크 버튼을 누루지않고 회원가입버튼을 할 경우
+			int result = memberService.idCheck(dto);
+			System.out.println(result);
+			return result;
+		}
+
 	
 	//이메일 인증 : siForm.jsp에서 넘겨받은 값을 memberService.java에 memberdto.getUser_email()에 담아서 전달해줌
 		@PostMapping("/signin/registerEmail")
