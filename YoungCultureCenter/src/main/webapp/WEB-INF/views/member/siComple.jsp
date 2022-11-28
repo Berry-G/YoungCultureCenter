@@ -9,7 +9,7 @@
 <title>회원가입완료</title>
 </head>
 <body>
-	<!-- header include -->
+	<!-- header inlcude -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
   	<!--step container -->
 	<div class="container w-50">
@@ -31,15 +31,18 @@
     </div>
    	</div>
   <!--회원가입완료문구  -->
+   <form action= "member/sicomple" name="signincomple" method="post">
   <div class="container w-150 ">
     <div class="bg-light p-5 rounded justify-content-center text-center">
       <img src="/ycc/resources/img/joinmember/check.png" style="width: 50px; height: 50px;">
         <p class="col display-5 fs-3 fw-bold text-primary pt-4 mb-0" id="name"></p>
+        <p class="col display-5 fs-3" id="user_id" >${sessionScope.id }</p>
         <p class="col display-5 fs-3 fw-bold ">회원가입이 완료되었습니다.</p>
         <p class="fs-5"> YOUNG문화센터 회원가입을 축하합니다.<br />로그인 후 서비스를 이용하실 수 있습니다. </p>
         <a class="btn btn-primary col-4" href="/ycc/login" role="button">로그인페이지로 이동 &raquo;</a>
     </div>
   </div>
+  </form>
 
  <!--  
     <script charset="utf-8">
@@ -49,7 +52,7 @@
    </script>
 -->	
 	
-	<!-- footer include -->
+	<!-- footer inlcude -->
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 
 </body>
