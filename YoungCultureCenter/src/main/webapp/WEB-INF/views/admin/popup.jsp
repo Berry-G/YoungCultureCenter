@@ -12,10 +12,7 @@
 	</style>
 	
 	<script type="text/javascript">
-	function deleteCard(x) {
-		  const div = document.getElementById('card'+x);
-		  div.remove();
-		} 
+
 	</script>
 	<title>YOUNG문화체육센터 - 팝업 설정</title>
 </head>
@@ -95,6 +92,12 @@
 						}
 				  });
 				});
+				
+				function deleteCard(x) {
+					  const div = document.getElementById('card'+x);
+					  div.remove();
+					  i--;
+					} 
 			</script>
 			
 			<!-- 저장/취소 버튼 -->

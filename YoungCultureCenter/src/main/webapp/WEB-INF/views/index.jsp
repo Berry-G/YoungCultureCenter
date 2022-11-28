@@ -93,6 +93,9 @@
 	<script type="text/javascript">
 		$(window).on('load', function() {
 			$('#modal1').modal('show');
+			$('#modal2').modal('show');
+			$('#modal3').modal('show');
+			$('#modal4').modal('show');
 		});
 	</script>
 
@@ -109,12 +112,68 @@
 				<div class="p-1 px-2 text-bg-dark d-flex">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">오늘 하루 보지 않기</button>
-					<button type="button" class="btn btn-primary ms-auto">닫기</button>
+					<button type="button" class="btn btn-primary ms-auto" data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 모달#2 콘텐츠 -->
+	<div class="modal fade" id="modal2" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: inline-block;">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" style="width: auto;">
+				<div class="modal-body p-0">
+					<a href="/ycc/board/notice">
+					<img alt="" src="/ycc/resources/modal/b67128cb0f19daa18c4dc11659d6764d.gif">
+					</a>
+				</div>
+				<div class="p-1 px-2 text-bg-dark d-flex">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">오늘 하루 보지 않기</button>
+					<button type="button" class="btn btn-primary ms-auto" data-bs-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- 모달#3 콘텐츠 -->
+	<div class="modal fade" id="modal3" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: inline-block;">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" style="width: auto;">
+				<div class="modal-body p-0">
+					<a href="/ycc/board/notice">
+					<img alt="" src="/ycc/resources/modal/i014104791013.gif">
+					</a>
+				</div>
+				<div class="p-1 px-2 text-bg-dark d-flex">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">오늘 하루 보지 않기</button>
+					<button type="button" class="btn btn-primary ms-auto" data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 모달#4 콘텐츠 -->
+	<div class="modal fade" id="modal4" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: inline-block;">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" style="width: auto;">
+				<div class="modal-body p-0">
+					<a href="/ycc/board/notice">
+					<img alt="" src="/ycc/resources/modal/i014126361567.gif">
+					</a>
+				</div>
+				<div class="p-1 px-2 text-bg-dark d-flex">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">오늘 하루 보지 않기</button>
+					<button type="button" class="btn btn-primary ms-auto" data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- header include -->
 	<%@include file="/WEB-INF/views/header.jsp"%>
