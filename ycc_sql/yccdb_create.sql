@@ -41,12 +41,15 @@ CREATE TABLE ARTICLE (
 
 ALTER TABLE ARTICLE ADD CONSTRAINT ARTICLE_PK PRIMARY KEY ( article_id );
 
+-- 2022-11-28 KimSeongho
+-- attend_code serial로 타입변경
+-- ateend_status 삭제 
+-- user_id varchar로 타입변경
 CREATE TABLE attend (
-    attend_code    character(10) NOT NULL,
+    attend_code    serial NOT NULL,
     course_id    integer NOT NULL,
-    user_id    character(16) NOT NULL,
-    attend_datetime    timestamp without time zone NOT NULL,
-    attend_status    character(6) NOT NULL
+    user_id    varchar(16) NOT NULL,
+    attend_datetime    timestamp without time zone NOT NULL
 );
 ALTER TABLE attend ADD CONSTRAINT attend_PK PRIMARY KEY ( attend_code );
 
