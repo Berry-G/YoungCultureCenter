@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,12 +83,19 @@ public class MemberController {
 
 	
 	//이메일 인증 : siForm.jsp에서 넘겨받은 값을 memberService.java에 memberdto.getUser_email()에 담아서 전달해줌
-		@PostMapping("/signin/registerEmail")
-		@ResponseBody
-		public String emailConfirm1(@RequestBody MemberDto memberdto) throws Exception {
-			
-			return memberService.insertMember(memberdto.getUser_email());
-		}
+	@PostMapping("/signin/registerEmail")
+	@ResponseBody
+	public String emailConfirm1(@RequestBody MemberDto memberdto) throws Exception {
+		
+		return memberService.insertMember(memberdto.getUser_email());
+	}
+		
+	// 비밀번호 보내기
+	@PostMapping("/signin/pwEmail")
+	@ResponseBody
+	public String emailSendPw(@RequestBody MemberDto memberdto) throws Exception {
+		return memberService.pwSendEmail(memberdto.getUser_email());
+	}
 	
 	//마이페이지1 : 본인인증
 	@GetMapping("/mypage/pwcheck")
@@ -184,6 +192,21 @@ public class MemberController {
 	public String forget() {
 		return "member/forget";
  	}
+	
+	//아이디 찾기
+	@PostMapping("/mypage/findId")
+	@ResponseBody
+	public String findId(HttpServletResponse response, @RequestBody MemberDto memberDto) throws Exception{
+		
+		return memberService.findId(response, memberDto.getUser_email(), memberDto.getUser_name());
+	}
+	//패스워드 찾기
+	@PostMapping("/mypage/findPw")
+	@ResponseBody
+	public String findPw(HttpServletResponse response, @RequestBody MemberDto memberDto) throws Exception{
+		
+		return memberService.findPw(response, memberDto.getUser_id(), memberDto.getUser_name());
+	}
 	
 	// 나의 문의 내역 - 기간별 조회
 			@GetMapping("/mypage/inquiry")

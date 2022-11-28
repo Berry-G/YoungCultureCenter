@@ -17,4 +17,12 @@ public interface MemberDao
 	int deleteAll() throws Exception;
 	
 	int update(MemberDto memberDto) throws Exception;
+	
+	//아이디 찾기
+	String findId(String user_email, String user_name) throws Exception;
+	
+	//패스워드 찾기
+	String findPw(String user_id, String user_name) throws Exception;
+	//패스워드 이메일로 발송
+	String findPword(String user_email) throws Exception;
 }
