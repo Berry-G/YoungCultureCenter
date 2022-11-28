@@ -60,7 +60,7 @@ CREATE TABLE course_review (
     review_content    character varying(1000) NOT NULL, -- review
     review_datetime    timestamp without time zone NOT NULL, -- reg_date
     review_updated_datetime    timestamp without time zone, -- up_date
-    review_rating    integer, -- starrating
+    review_rating    integer NOT NULL, -- starrating
     course_id    integer NOT NULL, -- bno
     user_id    varchar(16) NOT null -- reviewer
 );
@@ -79,8 +79,7 @@ CREATE TABLE CLUB (
     club_title    character varying(50) NOT NULL,
     club_create_time    timestamp without time zone NOT NULL,
     club_info    character varying(3000) NOT NULL,
-    club_master_id    character(16) NOT NULL,
-    club_viewcnt integer not NULL
+    club_master_id    character(16) NOT NULL
 );
 
 ALTER TABLE CLUB ADD CONSTRAINT CLUB_PK PRIMARY KEY ( club_id );
@@ -121,13 +120,15 @@ ALTER TABLE course_type ADD CONSTRAINT course_type_PK PRIMARY KEY ( course_cate_
 CREATE TABLE inq_board (
     inq_cate    varchar(30) NOT NULL,
     user_id    varchar(16) NOT NULL,
-    inq_id    integer NOT null,
+    inq_id    serial NOT null,
     inq_title varchar(100) not null,
     inq_content text not null,
     inq_date date not null,
-    inq_YN    boolean NOT NULL
+    inq_YN    boolean NOT null
+    
 );
 ALTER TABLE inq_board ADD CONSTRAINT inq_board_PK PRIMARY KEY ( inq_id );
+alter table inq_board add column inq_ans text;
 
 CREATE TABLE main_banner (
     banner_id    integer NOT NULL,
@@ -179,9 +180,9 @@ CREATE TABLE tb_course (
     user_id    varchar(16) NOT NULL,
     croom_id    varchar(10) NOT null,
     course_cate_cd varchar(10) NOT null,
-    course_applicants integer,
-    course_rating numeric(3, 2),
-    course_viewcnt integer not NULL
+    course_applicants integer default 0,
+    course_rating numeric(3, 2) default 0,
+    review_cnt integer default 0
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
 
