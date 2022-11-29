@@ -25,11 +25,11 @@
 				<col width="15%">
 			</colgroup>
 			<thead>
-		 		<tr>
-				     <th scope="col" class="title" style="text-align: center;">제목</th>
-					 <th scope="col" class="writer" style="text-align: center;">작성자</th>
-					 <th scope="col" class="regdate" style="text-align: center;">작성일</th>
-					 <th scope="col" class="viewcnt" style="text-align: center;">조회수</th>
+		 		<tr class="table-primary">
+				     <th scope="col" class="title" style="text-align: center; ">제목</th>
+					 <th scope="col" class="writer" style="text-align: center; ">작성자</th>
+					 <th scope="col" class="regdate" style="text-align: center; ">작성일</th>
+					 <th scope="col" class="viewcnt" style="text-align: center; ">조회수</th>
 				</tr>
 			</thead>
 	
@@ -65,22 +65,22 @@
 				</c:if>
 				<c:if test="${totalCnt != null || totalCnt != 0}">
 					<c:if test="${pr.showPrev}">
-						<a class="page-link " href="/ycc/board/notice${pr.sc.getQueryString(pr.beginPage-1)}">이전</a>
+						<a class="page-link " href="/ycc/board/event${pr.sc.getQueryString(pr.beginPage-1)}">이전</a>
 					</c:if>
 					<c:forEach var="i" begin="${pr.beginPage}" end="${pr.endPage}">
 					<c:if test="${pr.sc.page == i }">
 						<c:if test="${pr.sc.page > 0 }">
-							<li class="page-item active"><a class="page-link" href="/ycc/board/notice${pr.sc.getQueryString(i)}">${i}</a></li>
+							<li class="page-item active"><a class="page-link" href="/ycc/board/event${pr.sc.getQueryString(i)}">${i}</a></li>
 						</c:if>
 					</c:if>
 					<c:if test="${pr.sc.page != i }">
 						<c:if test="${pr.sc.page > 0 }">
-							<li class="page-item"><a class="page-link" href="/ycc/board/notice${pr.sc.getQueryString(i)}">${i}</a></li>
+							<li class="page-item"><a class="page-link" href="/ycc/board/event{pr.sc.getQueryString(i)}">${i}</a></li>
 						</c:if>
 					</c:if>
 					</c:forEach>
 					<c:if test="${pr.showNext }">
-						<a class="page-link" href="<c:url value="/board/notice${pr.sc.getQueryString(pr.endPage + 1) }" />">다음</a>
+						<a class="page-link" href="<c:url value="/board/event${pr.sc.getQueryString(pr.endPage + 1) }" />">다음</a>
 					</c:if>
 				</c:if>
 			</ul>
@@ -89,7 +89,7 @@
 	
 		<!-- 검색 -->
 		<div class="container text-center">
-			<form action="<c:url value= "/board/notice"/>" class="searchForm" method="get">
+			<form action="<c:url value= "/board/event"/>" class="searchForm" method="get">
 				<div class="row justify-content-md-center pt-5 pb-5">
 					<div class = "col-sm-auto px-1">
 						<select class="form-select" name="option" style="width: 150px;">

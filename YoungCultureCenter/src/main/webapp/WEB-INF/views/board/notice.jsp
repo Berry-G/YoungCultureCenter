@@ -7,7 +7,7 @@
 <head>
 <!-- head & meta tag include -->
    <%@include file="/WEB-INF/views/metahead.jsp"%>
-<title>공지사항 게시판</title>
+<title>공지사항</title>
 </head>
 <body>
   <!-- header inlcude -->
@@ -17,7 +17,8 @@
   <h3>공지사항</h3>
   <!-- 게시판 테이블 -->
 		
-		<table class="table table-group-divider mt-5" >
+				
+		<table class="table table-group-divider table table-striped mt-5" >
 			<colgroup>
 				<col width="50%">
 				<col width="15%">
@@ -25,13 +26,14 @@
 				<col width="15%">
 			</colgroup>
 			<thead>
-		 		<tr>
-				     <th scope="col" class="title" style="text-align: center; background-color: #DCDCDC ;">제목</th>
-					 <th scope="col" class="writer" style="text-align: center; background-color: #DCDCDC;">작성자</th>
-					 <th scope="col" class="regdate" style="text-align: center; background-color: #DCDCDC;">작성일</th>
-					 <th scope="col" class="viewcnt" style="text-align: center; background-color: #DCDCDC; ">조회수</th>
+		 		<tr class="table-primary">
+				     <th scope="col" class="title" style="text-align: center;">제목</th>
+					 <th scope="col" class="writer" style="text-align: center; ">작성자</th>
+					 <th scope="col" class="regdate" style="text-align: center; ">작성일</th>
+					 <th scope="col" class="viewcnt" style="text-align: center;  ">조회수</th>
 				</tr>
 			</thead>
+	
 	
 			<c:forEach var="boardDto" items="${nList }">
 				<tr>
