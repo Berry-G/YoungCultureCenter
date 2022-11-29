@@ -29,7 +29,7 @@ public class BoardController
 	}
 	
 	//공지사항 게시판 
-	@GetMapping("/board/notice")
+	@GetMapping("/notice")
 	public String noticeBoard(Model model, SearchItem sc) {
 		
 		try {
@@ -50,7 +50,7 @@ public class BoardController
 		return "board/notice";
 	}
 	//이벤트 게시판 
-	@GetMapping("/board/event")
+	@GetMapping("/event")
 	public String eventBoard(Model model, SearchItem sc) {
 		
 		try {
@@ -71,7 +71,7 @@ public class BoardController
 	}
 	
 	//게시글 상세 보기 
-	@GetMapping("/board/post")
+	@GetMapping("/post")
 	public String postSelect(SearchItem sc,
 			@RequestParam ("article_id") Integer article_id, Model m) {
 	
