@@ -45,8 +45,27 @@ values(303, '3층', '30', '303호');
 insert INTO classroom (croom_id, croom_location, croom_mpop, croom_name)
 values('풋살장', '외부', '20', '풋살장');
 
+INSERT INTO public.rental_time
+(prtime_schedule)
+VALUES('08:10 ~ 10:00');
+INSERT INTO public.rental_time
+(prtime_schedule)
+VALUES('10:10 ~ 12:00');
+INSERT INTO public.rental_time
+(prtime_schedule)
+VALUES('12:10 ~ 14:00');
+INSERT INTO public.rental_time
+(prtime_schedule)
+VALUES('14:10 ~ 16:00');
+INSERT INTO public.rental_time
+(prtime_schedule)
+VALUES('16:10 ~ 18:00');
+INSERT INTO public.rental_time
+(prtime_schedule)
+VALUES('18:10 ~ 20:00');
+
 INSERT INTO public.prental_info
-(prtime_schedule , user_id, croom_id)
+(prental_de, prtime_schedule, user_id, croom_id)
 VALUES('2022-11-21', '08:10 ~ 10:00', 'admin', '101');
 INSERT INTO public.prental_info
 (prental_de, prtime_schedule, user_id, croom_id)
@@ -80,25 +99,6 @@ values('2022-11-24', '14:10 ~ 16:00', 'admin', '풋살장');
 INSERT INTO prental_info
 (prental_de, prtime_schedule, user_id, croom_id)
 VALUES('2022-11-27', '14:10 ~ 16:00', 'admin', '101');
-
-INSERT INTO public.rental_time
-(prtime_schedule)
-VALUES('08:10 ~ 10:00');
-INSERT INTO public.rental_time
-(prtime_schedule)
-VALUES('10:10 ~ 12:00');
-INSERT INTO public.rental_time
-(prtime_schedule)
-VALUES('12:10 ~ 14:00');
-INSERT INTO public.rental_time
-(prtime_schedule)
-VALUES('14:10 ~ 16:00');
-INSERT INTO public.rental_time
-(prtime_schedule)
-VALUES('16:10 ~ 18:00');
-INSERT INTO public.rental_time
-(prtime_schedule)
-VALUES('18:10 ~ 20:00');
 
 ------------------------------------------------------성호------------------------------------------------------
 -- course_type dummy data
