@@ -68,7 +68,7 @@
 				<button type="button"  class="flat-menu border border-0 w-100 wisteria fs-5" onclick="location.href='/ycc/admin/club'">동아리 관리</button>
 			</div>
 			<div class="col-md-3 mb-3">
-				<button type="button"  class="flat-menu border border-0 w-100 peterriver fs-5" onclick="location.href='/ycc/admin'">이용약관 관리</button>
+				<button type="button"  class="flat-menu border border-0 w-100 peterriver fs-5" onclick="location.href='/ycc/admin/agreement'">이용약관 관리</button>
 			</div>
 			<div class="col-md-3 mb-3">
 				<button type="button"  class="flat-menu border border-0 w-100 turquoise fs-5" onclick="location.href='/ycc/admin'">대관신청 관리</button>

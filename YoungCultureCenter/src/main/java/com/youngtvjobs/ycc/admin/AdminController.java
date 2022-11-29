@@ -52,5 +52,18 @@ public class AdminController
 		System.out.println("post 구문 시작");
 		return "redirect:/admin/popup";
 	}
+	
+	//이용약관 관리
+	@GetMapping("/admin/agreement")
+	public String agreement(HttpServletRequest request) throws Exception
+	{
+		// 관리자 권한이 없을 때 동작
+		if (!YccMethod.permissionCheck("관리자", request))
+		{
+			return "redirect:/error/403";
+		}
+		return "admin/agreement";
+	}
+	
 
 }
