@@ -29,7 +29,7 @@ public class BoardController
 	}
 	
 	//공지사항 게시판 
-	@GetMapping("/notice")
+	@GetMapping("/board/notice")
 	public String noticeBoard(Model model, SearchItem sc) {
 		
 		try {
@@ -49,9 +49,8 @@ public class BoardController
 		
 		return "board/notice";
 	}
-	
 	//이벤트 게시판 
-	@GetMapping("/event")
+	@GetMapping("/board/event")
 	public String eventBoard(Model model, SearchItem sc) {
 		
 		try {
@@ -72,16 +71,19 @@ public class BoardController
 	}
 	
 	//게시글 상세 보기 
-	@GetMapping("/post")
+	@GetMapping("/board/post")
 	public String postSelect(SearchItem sc,
 			@RequestParam ("article_id") Integer article_id, Model m) {
 	
 		try {
 			BoardDto boardDto = boardService.postSelect(article_id);
 			m.addAttribute("boardDto", boardDto);
-			//이전글, 다음글 
+			
+			//이전글: article_id를 boardService의 movePage를 model에 담음 
 			m.addAttribute("preView", boardService.movePage(article_id));
+			//다음글: article_id를 boardService의 movePage를 model에 담음
 			m.addAttribute("nextView", boardService.movePage(article_id));
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 			//예외 발생시 게시판 페이지로 이동 요청 
@@ -92,16 +94,17 @@ public class BoardController
 	}
 	
 	//게시글 작성 접속 
-	@GetMapping("/write")
+	@GetMapping("/board/write")
 	public String write(BoardDto boardDto, Model model ,HttpServletRequest request) {
 		
 			return "board/write";
 	}
 	
+
 	//게시글 작성 
-	@PostMapping("/write")
-	public String writePage(BoardDto boardDto, RedirectAttributes rttr, Model model,
-			HttpSession session	) throws Exception {		
+	@PostMapping("/board/write")
+	public String writePage(BoardDto boardDto, RedirectAttributes rttr, 
+			Model model, HttpSession session) throws Exception {		
 			
 			//session에 저장된 user_id를 저장 
         	String user_id = (String)session.getAttribute("id");
@@ -118,7 +121,6 @@ public class BoardController
 			
 		return "redirect:/board/notice";
 	}
-	
 	//게시글 삭제
 	@PostMapping("/remove")
 	public String remove(Integer article_id, Integer page, Integer pageSize, 
