@@ -28,7 +28,10 @@ CREATE TABLE admin_section (
     top_logo_img    character varying(255) NOT NULL,
     footer_logo_img    character varying(255) NOT NULL
 );
-
+-- article_user_id : character -> varchar 타입 변경
+-- article_id : serial로 변경 
+-- article_title : character -> varchar 타입 변경
+-- article_viewcnt : integer -> int 타입변경, notnull 
 CREATE TABLE ARTICLE (
     article_id    integer NOT NULL,
     article_date    timestamp without time zone NOT NULL,
