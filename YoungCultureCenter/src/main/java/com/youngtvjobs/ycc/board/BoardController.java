@@ -94,7 +94,7 @@ public class BoardController
 	}
 	
 	//게시글 작성 접속 
-	@GetMapping("/board/write")
+	@GetMapping("/write")
 	public String write(BoardDto boardDto, Model model ,HttpServletRequest request) {
 		
 			return "board/write";
@@ -102,7 +102,7 @@ public class BoardController
 	
 
 	//게시글 작성 
-	@PostMapping("/board/write")
+	@PostMapping("/write")
 	public String writePage(BoardDto boardDto, RedirectAttributes rttr, 
 			Model model, HttpSession session) throws Exception {		
 			
