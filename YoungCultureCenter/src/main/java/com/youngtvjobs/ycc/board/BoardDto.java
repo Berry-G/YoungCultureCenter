@@ -27,6 +27,7 @@ public class BoardDto {
 	private int nextId;						// 다음글 no
 	private String preTitle;				// 이전글 Title
 	private String nextTitle;				// 다음글 Title
+	private int count;
 	
 	
 	public BoardDto() {
@@ -36,7 +37,7 @@ public class BoardDto {
 	//article Constructor
 	public BoardDto(Integer article_id, Date article_date, String article_Board_type, String user_id,
 			String article_title, String article_contents, int article_viewcnt, int preId, int nextId, String preTitle,
-			String nextTitle) {
+			String nextTitle, int count) {
 		super();
 		this.article_id = article_id;
 		this.article_date = article_date;
@@ -49,6 +50,7 @@ public class BoardDto {
 		this.nextId = nextId;
 		this.preTitle = preTitle;
 		this.nextTitle = nextTitle;
+		this.count = count;
 	}
 
 	//inq_board Constructor
@@ -221,6 +223,14 @@ public class BoardDto {
 
 	public void setNextTitle(String nextTitle) {
 		this.nextTitle = nextTitle;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 

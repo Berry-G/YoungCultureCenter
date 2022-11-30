@@ -93,22 +93,28 @@
 			 }
 		 })
 		 
-		 
-		 
-		 
 		// 탭 클릭시 해당되는 탭의 검색결과만 보이게 하는 기능
+		// 각각의 분류별 출력결과(공지사항, 이벤트, ...)를 감싸고 있는 div 태그에 .cont 클래스를 줌 ==> .cont{display:none;}
 		const content = document.querySelectorAll('.cont');
+		
+		// 각 탭 클릭시 해당 탭이 active(활성화)되게 함 
 		const active = document.querySelectorAll('.tab_menu .list li a');
 		
+		// 각 탭을 클릭하면
 		$(".nav-link").click(function(e) {
 			
-			e.preventDefault();
+			e.preventDefault();	// 페이지로의 이동을 막아줌
+
+			// 탭 클릭시 is on, active 클래스 요소를 삭제(초기화시킴)
 			for(var j = 0; j < content.length; j++){
 		        content[j].classList.remove('is_on');
 		      }
 			for(var i = 0; i <= content.length; i++){
 		        active[i].classList.remove('active');
 		      }
+			
+			// 각 탭을 클릭했을 때 is on 요소를 줌 ==> .is_on.cont{display:block;} 가 되면서 해당 컨텐츠 부분이 나타남
+			// 각 탭 활성화
 			if($(this).hasClass("notice") === true){
 				$("#notice").addClass("is_on")
 				$(".nav-link.notice").addClass("active")
@@ -121,7 +127,7 @@
 			} else if($(this).hasClass("course") === true) {
 				$("#course").addClass("is_on")
 				$(".nav-link.course").addClass("active")
-			} else {
+			} else {	// 전체 탭
 				$("#notice").addClass("is_on")
 				$("#event").addClass("is_on")
 				$("#club").addClass("is_on")
@@ -133,7 +139,7 @@
 
 </script>	
 	
-	<!-- <input id="searchInput"> -->
+	<input id="searchInput">
 	
 	<!-- 검색창 -->
 	<div class="m-5">
@@ -196,9 +202,9 @@
 				<h4 class="text-start fw-bold">공지사항 (${noticeList[0].count == null ? "0" : noticeList[0].count }건)</h4>
 				<hr>
 					<!-- 더보기 버튼 클릭시 type="공지사항" 파라미터 넘김 -> all 페이지에서 파라미터 받고 그에 공지사항 결과만 가져오게끔 함 -->
-					<form action="<c:url value="/search/all?type=${noticeList[0].article_board_type }" />">
+					<form action="<c:url value="/search/all?type=${noticeList[0].article_Board_type }" />">
 						<input type="hidden" name="type"
-							value="${noticeList[0].article_board_type }" /> 
+							value="${noticeList[0].article_Board_type }" /> 
 							<input type="hidden" name="keyword" value="${param.keyword }" />
 							
 							<!-- choose 태그로 검색결과가 없을 때는 결과 없다는 문구만 출력, 검색결과가 있으면 검색결과 출력 -->
@@ -250,9 +256,9 @@
 				<h4 class="text-start fw-bold">이벤트 (${eventList[0].count == null ? "0" : eventList[0].count }건)</h4>
 				<hr>
 					<form
-						action="<c:url value="/search/all?type=${eventList[0].article_board_type }" />">
+						action="<c:url value="/search/all?type=${eventList[0].article_Board_type }" />">
 						<input type="hidden" name="type"
-							value="${eventList[0].article_board_type }" /> 
+							value="${eventList[0].article_Board_type }" /> 
 							<input type="hidden" name="keyword" value="${param.keyword }" />
 							<c:choose>
 								<c:when test="${eventList[0].count == 0 || eventList[0].count == null}">
