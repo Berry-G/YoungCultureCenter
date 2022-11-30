@@ -11,18 +11,42 @@ public class InquiryServiceImpl implements InquiryService{
 
 	@Autowired
 	InquiryDao inquiryDao;
-	
+	//설정된 기간(버튼) 조회
 	@Override
-	public List<InquiryDto> getPage(String id, String settedInterval) throws Exception {
+	public List<InquiryDto> getPage(String id, SearchByPeriod sp) throws Exception {
 
-		return inquiryDao.selectPage(id,settedInterval);
+		return inquiryDao.selectPage(id, sp);
+	}
+	@Override
+	public int getPageCnt(String id, SearchByPeriod sp) throws Exception {
+		return inquiryDao.selectPageCnt(id, sp);
+	}
+	//기간 직접입력 조회
+	@Override
+	public List<InquiryDto> getPageByInput(String id, SearchByPeriod sp) throws Exception {
+
+		return inquiryDao.selectPageByInput(id, sp);
+	}
+	@Override
+	public int getPageByInputCnt(String id, SearchByPeriod sp) throws Exception {
+		return inquiryDao.selectPageByInputCnt(id, sp);
+	}
+	//문의글 쓰기
+	@Override
+	public int wirteInq(InquiryDto inquiryDto) throws Exception {
+
+		return inquiryDao.insert(inquiryDto);
+	}
+	//문의글 읽기
+	@Override
+	public InquiryDto read(String id, Integer inq_id) {
+
+		return inquiryDao.select(id, inq_id);
 	}
 
-	@Override
-	public List<InquiryDto> getPageByInput(String id, Date startDate, Date endDate) throws Exception {
 
-		return inquiryDao.selectPageByInput(id, startDate, endDate);
-	}
+
+
 
 	
 
