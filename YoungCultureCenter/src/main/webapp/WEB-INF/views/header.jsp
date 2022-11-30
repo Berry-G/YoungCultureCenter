@@ -73,7 +73,7 @@
                 <!-- 로그인 세션이 있을 시 드롭다운 버튼 보여주기 / 회원가입, 로그인버튼 hidden -->
                 <div class="navbar-nav ${loginvis} d-flex" style="justify-content: center; flex-wrap: nowrap;">
                 	<script type="text/javascript" charset="utf-8" src="/ycc/resources/js/timeoutchk.js"></script>
-                	<button class="btn btn-outline-success btn-sm me-2 hover-timer" style="white-space: nowrap;" onclick="javascript:refreshTimer()"><span id="timer"></span><p></p></button>
+                	<button class="btn btn-outline-success btn-sm me-2 hover-timer" style="white-space: nowrap;" onclick="javascript:refreshTimer()"><span id="timer"></span><p class="mb-0"></p></button>
                 	<div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">

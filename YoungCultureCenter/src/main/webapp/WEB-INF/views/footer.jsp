@@ -3,11 +3,38 @@
 
 
 <!-- footer 시작 -->
+
+		<!-- 상단 이동하기 버튼 -->
+		<script>
+		$(document).ready(function(){
+			$(function() {
+		        $(window).scroll(function() {
+		            if ($(this).scrollTop() > 500) {
+		                $('#btn_gotop').fadeIn();
+		            } else {
+		                $('#btn_gotop').fadeOut();
+		            }
+		        });
+		        
+		        $("#btn_gotop").click(function() {
+		            $('html, body').animate({
+		                scrollTop : 0
+		            }, 400);
+		            return false;
+		        });
+		    });
+		});
+		</script>
+		<div style="position:fixed; bottom:150px; right:150px; z-index:99;">
+			<a href="#" id="btn_gotop" >
+			  <img src="/ycc/resources/img/top-button.png" style="width:80px;height:80px;">
+			</a>
+		</div>	
+
 <div class="bg-light mt-5 border-top border-1">
 	<div class="container">
 	
 		<footer	class="d-flex flex-wrap justify-content-between align-items-center my-1">
-
 			<p class="col-md-4 mb-0 text-muted">
 				<img class="img-fluid" src="/ycc/resources/img/main_img/logo.png" style="width: 100px; height: 100px;"><br> 
 				서울특별시 서초구 서초4 서초대로77길<br> Tel : 02-123-1234 / Fax : 02-123-1235<br>
