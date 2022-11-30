@@ -1,12 +1,15 @@
 package com.youngtvjobs.ycc.search;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.youngtvjobs.ycc.board.BoardDto;
+import com.youngtvjobs.ycc.club.ClubDto;
+import com.youngtvjobs.ycc.course.CourseDto;
 import com.youngtvjobs.ycc.search.SearchItem;
 @Repository
 public class SearchDaoImpl implements SearchDao {
@@ -16,50 +19,49 @@ public class SearchDaoImpl implements SearchDao {
 	private static String namespace = "com.youngtvjobs.ycc.search.SearchMapper.";
 	
 	@Override
-	public List<BoardDto> selectNoticePage() throws Exception {
-		return session.selectList(namespace+"selectNoticePage");
-	}
-	
-	@Override
-	public List<BoardDto> selectNoticePageAll() throws Exception {
-		return session.selectList(namespace+"selectNoticePageAll");
-	}
-
-	@Override
 	public int insert(BoardDto boardDto) throws Exception {
 		return session.insert(namespace+"insert", boardDto);
 	}
-
+	
 	@Override
-	public List<BoardDto> selectEventPage() throws Exception {
-		return session.selectList(namespace+"selectEventPage");
+	public List<BoardDto> selectNoticePage(SearchItem sc) throws Exception {
+		return session.selectList(namespace+"selectNoticePage", sc);
 	}
 
 	@Override
-	public List<BoardDto> selectAllPage() throws Exception {
-		return session.selectList(namespace+"selectAllPage");
+	public List<BoardDto> selectEventPage(SearchItem sc) throws Exception {
+		return session.selectList(namespace+"selectEventPage", sc);
+	}
+	
+	@Override
+	public List<ClubDto> selectClubPage(SearchItem sc) throws Exception {
+		return session.selectList(namespace+"selectClubPage", sc);
+	}
+	
+	@Override
+	public List<CourseDto> selectCoursePage(SearchItem sc) throws Exception {
+		return session.selectList(namespace+"selectCoursePage", sc);
 	}
 
 	@Override
-	public List<BoardDto> select(String article_board_type) throws Exception {
-		return session.selectList(namespace+"select", article_board_type);
+	public int searchResultCnt(Map map) throws Exception {
+		return session.selectOne(namespace+"searchResultCnt", map);
 	}
 
-	/*
-	 * @Override public BoardDto select(String article_board_type) throws Exception
-	 * { return session.selectOne(namespace + "select", article_board_type); }
-	 */
+	@Override
+	public int searchAllResultCnt(SearchItem sc) throws Exception {
+		return session.selectOne(namespace+"searchAllResultCnt", sc);
+	}
 
-//	@Override
-//	public int count() throws Exception {
-//		return session.selectOne(namespace + "count");
-//	}
-//
-//	@Override
-//	public int noticePageCnt() throws Exception {
-//		// TODO Auto-generated method stub
-//		return session.selectOne(namespace + "noticePageCnt");
-//	}
+	@Override
+	public BoardDto select(Integer article_id) throws Exception {
+		return session.selectOne(namespace + "select", article_id);
+	}
+
+	@Override
+	public int increaseViewCnt(Integer article_id) throws Exception {
+		return session.update(namespace+"increaseViewCnt", article_id);
+	}
 
 }
 

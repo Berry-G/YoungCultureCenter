@@ -1,12 +1,14 @@
 package com.youngtvjobs.ycc.search;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.youngtvjobs.ycc.board.BoardDto;
-import com.youngtvjobs.ycc.search.SearchItem;
+import com.youngtvjobs.ycc.club.ClubDto;
+import com.youngtvjobs.ycc.course.CourseDto;
 
 @Service
 public class SearchServiceImpl implements SearchService{
@@ -15,43 +17,41 @@ public class SearchServiceImpl implements SearchService{
 	SearchDao searchDao;
 
 	@Override
-	public List<BoardDto> getNoticePage() throws Exception {
-		return searchDao.selectNoticePage();
+	public List<BoardDto> getNoticePage(SearchItem sc) throws Exception {
+		return searchDao.selectNoticePage(sc);
+	}
+
+	@Override
+	public List<BoardDto> getEventPage(SearchItem sc) throws Exception {
+		return searchDao.selectEventPage(sc);
+	}
+
+	@Override
+	public List<ClubDto> getClubPage(SearchItem sc) throws Exception {
+		return searchDao.selectClubPage(sc);
+	}
+
+	@Override
+	public List<CourseDto> getCoursePage(SearchItem sc) throws Exception {
+		return searchDao.selectCoursePage(sc);
 	}
 	
 	@Override
-	public List<BoardDto> getNoticePageAll() throws Exception {
-		return searchDao.selectNoticePageAll();
+	public int getSearchResultCnt(Map map) throws Exception {
+		return searchDao.searchResultCnt(map);
 	}
 
 	@Override
-	public List<BoardDto> getEventPage() throws Exception {
-		return searchDao.selectEventPage();
+	public int getSearchAllResultCnt(SearchItem sc) throws Exception {
+		return searchDao.searchAllResultCnt(sc);
 	}
 
 	@Override
-	public List<BoardDto> getAllPage() throws Exception {
-		return searchDao.selectAllPage();
+	public BoardDto read(Integer article_id) throws Exception {
+		BoardDto boardDto = searchDao.select(article_id);
+		searchDao.increaseViewCnt(article_id);
+		
+		return boardDto;
 	}
-
-	@Override
-	public List<BoardDto> morePage(String article_board_type) throws Exception {
-		return searchDao.select(article_board_type);
-	}
-
-
-	/*
-	 * @Override public BoardDto read(String article_board_type) throws Exception {
-	 * return searchDao.select(article_board_type);
-	 * 
-	 * }
-	 */
-
-
-
-//	@Override
-//	public int getNoticePageCnt() throws Exception {
-//		return searchDao.noticePageCnt();
-//	}
 
 }
