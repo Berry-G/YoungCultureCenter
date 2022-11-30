@@ -31,7 +31,7 @@
 	<div class="container mt-5">
 	    <!-- 제목 -->
 		<h2 class="writing-header">공지사항</h2>
-		<form id="form" class="frm" action="" method="post">
+		<form id="form" class="frm" action="" method="post"> 
 			<div class="card mb-4">
 				<div class="card-body">
 					<!-- 게시글 정보 -->
