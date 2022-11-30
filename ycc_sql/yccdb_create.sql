@@ -34,13 +34,13 @@ CREATE TABLE admin_section (
 -- article_title : character -> varchar 타입 변경
 -- article_viewcnt : integer -> int 타입변경, notnull 
 CREATE TABLE ARTICLE (
-    article_id    integer NOT NULL,
-    article_date    timestamp without time zone NOT NULL,
-    article_board_type    varchar(30) NOT NULL,
-    user_id    character(16) NOT NULL,
-    article_title    character varying(100) NOT null,
+    article_id   serial primary key,
+    article_date    timestamp without time zone ,
+    article_Board_type    character(1) NOT NULL,
+    user_id    varchar(16) NOT NULL,
+    article_title    varchar NOT null,
     article_contents    text NOT NULL,
-    article_viewcnt integer not NULL
+    article_viewcnt int
 );
 
 ALTER TABLE ARTICLE ADD CONSTRAINT ARTICLE_PK PRIMARY KEY ( article_id );
