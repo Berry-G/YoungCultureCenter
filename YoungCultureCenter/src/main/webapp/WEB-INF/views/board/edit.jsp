@@ -47,7 +47,7 @@
 				</div>
 			 </div>                       
 	         <div class="mt-2 text-end">
-	         	<a class="btn btn-outline-secondary">목록</a> <!-- 버튼으로 변경 -->
+	         	<button type="button" class="btn btn-outline-secondary" id="noticeBtn" name="noticeBtn">목록</button>
 	            <button type="button" class="btn btn-outline-success" id="regBtn" name="regBtn">등록</button>
 	            <input type="hidden" name="boardDto" value="${boardDto}"> 
 	         </div>
@@ -62,6 +62,13 @@
 
 	$(document).ready(function(){
 	    
+		 $("#noticeBtn").on("click", function() { 
+				let form = $("#form")
+				form.attr("action","<c:url value='/board/notice'/>")
+				form.attr("method", "get")
+				form.submit()
+			})	
+		
 	    $("#regBtn").on("click", function() { <!-- 목록 및 등록 버튼 js추가 -->
 			if(!confirm("정말로 등록하시겠습니까?")) return;
 			
