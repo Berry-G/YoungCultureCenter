@@ -24,16 +24,18 @@ public class ReviewController {
 	ReviewService reviewService;
 	
 	@PatchMapping("/course/reviews/{review_id}")
-	public ResponseEntity<String> modify(@PathVariable Integer review_id
+	public ResponseEntity<String> modify(@PathVariable Integer review_id, String user_id
 											, @RequestBody ReviewDto reviewDto, HttpSession session) {
-		String user_id = (String) session.getAttribute("id");
+		
+		//String user_id = (String) session.getAttribute("id");
 		
 		reviewDto.setUser_id(user_id);
 		reviewDto.setReview_id(review_id);
 		
 		try {
-			if(reviewService.modify(reviewDto) != 1) 
-				throw new Exception("Update failed.");
+			if(user_id == session.getAttribute("id") || session.getAttribute("grade").equals("관리자")) {
+				if(reviewService.modify(reviewDto) != 1) throw new Exception("Update failed.");
+			}		
 				
 			return new ResponseEntity<String>("MOD_OK", HttpStatus.OK);
 			
@@ -45,14 +47,18 @@ public class ReviewController {
 	}
 		
 	@DeleteMapping("/course/reviews/{review_id}")
-	public ResponseEntity<String> remove(@PathVariable Integer review_id, Integer course_id, HttpSession session) {
-		String user_id = (String) session.getAttribute("id");
+	public ResponseEntity<String> remove(@PathVariable Integer review_id, Integer course_id, String user_id
+														, ReviewDto reviewDto, HttpSession session) {
+		reviewDto.setUser_id(user_id);
+		//String user_id = (String) session.getAttribute("id");
 		
 		try {
-			int rowCnt = reviewService.reviewDelete(review_id, course_id, user_id);
+			int rowCnt = reviewService.reviewDelete(review_id, course_id);
+			System.out.println(rowCnt);
 			
-			if(rowCnt != 1)
-				throw new Exception("Delete Failed");
+			if(user_id == session.getAttribute("id") || session.getAttribute("grade").equals("관리자")) {
+				if(rowCnt != 1) throw new Exception("Delete Failed");
+			}
 			
 			return new ResponseEntity<String>("DEL_OK", HttpStatus.OK);
 		} catch (Exception e) {

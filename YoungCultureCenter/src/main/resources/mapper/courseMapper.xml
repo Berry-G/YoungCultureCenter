@@ -175,10 +175,9 @@
 	</update>
 	
 	<!-- 등록된 강좌 삭제 -->
-	<delete id="delete" parameterType="map">
+	<delete id="delete" parameterType="int">
 		DELETE FROM tb_course
 		WHERE course_id = #{course_id}
-		AND user_id = #{user_id}
 	</delete>
 	
 	<!-- 수강신청 -->
@@ -208,12 +207,6 @@
 		VALUES(#{course_nm}, #{course_image}, #{course_reg_start_date}::date, #{course_reg_end_date}::date, #{course_start_date}::date, #{course_end_date}::date
 		, #{course_day}, #{course_time}, #{course_target}, #{course_cost}, #{course_info}, #{user_id}, #{croom_id}, #{course_cate_cd})
 	</insert>
-	<!-- <insert id="insert" parameterType="CourseDto">
-		INSERT INTO tb_course (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
-		, course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
-		VALUES(#{course_nm}, #{course_image}, now(), now(), now(), now()
-		, #{course_day}, #{course_time}, #{course_target}, 10000, #{course_info}, #{user_id}, #{croom_id}, #{course_cate_cd})
-	</insert> -->
 	
 	<!-- 테스트용 -->
 	<delete id="deleteAll">
