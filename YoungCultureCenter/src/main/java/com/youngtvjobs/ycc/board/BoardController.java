@@ -97,23 +97,26 @@ public class BoardController
 	
 	//게시글 작성 접속 
 	@GetMapping("/write")
-	public String write(BoardDto boardDto, Model model ,HttpServletRequest request) {
+	public String write(BoardDto boardDto, Model model ,HttpServletRequest request) throws Exception {
 		
+			// 관리자 권한이 없을 때 동작
+			if (!YccMethod.permissionCheck("관리자", request)) {
+				return "redirect:/error/403";  
+				}
+				
 			return "board/write";
 	}
 	
 
 	//게시글 작성 
 	@PostMapping("/write")
-	public String writePage(BoardDto boardDto, RedirectAttributes rttr, 
+	public String writePage(BoardDto boardDto, RedirectAttributes rttr, HttpServletRequest request,
 			Model model, HttpSession session) throws Exception {		
 			
-			//session에 저장된 user_id를 저장 
-        	String user_id = (String)session.getAttribute("id");
-        	//boardDto에 user_id 설정
-        	boardDto.setUser_id(user_id);
-		
+			
 			try {
+				YccMethod.permissionCheck("관리자", request);
+				
 				boardService.writeInsert(boardDto);
 				//boardDto에서 받은 board-type이 "N"이면 공지사항게시판에 insert
 				if(boardDto.getArticle_Board_type().equals("N") ) {
