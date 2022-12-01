@@ -30,11 +30,21 @@
   
 	<div class="container mt-5">
 	    <!-- 제목 -->
-		<h2 class="writing-header">공지사항</h2>
+		<c:if test="${boardDto.article_Board_type eq 'N'}">
+			<h2 class="writing-header mb-3">공지사항</h2>
+		</c:if>
+		<c:if test="${boardDto.article_Board_type eq 'E'}">
+			<h2 class="writing-header mb-3">이벤트/행사</h2>
+		</c:if>
 		<form id="form" class="frm" action="" method="post"> 
 			<div class="card mb-4">
 				<div class="card-body">
 					<!-- 게시글 정보 -->
+					<select class="form-select mb-2"  id="article_Board_type" name="article_Board_type" style="width: 180px;">
+					  <option selected disabled="disabled">선택해주세요.</option>
+					  <option value="N">공지사항</option>
+					  <option value="E">이벤트/행사</option>
+					</select>
 	    			<input type="hidden" name="article_id"  value="${boardDto.article_id }"> 		<!--값 받아오는 곳 -->
 					<input type="text" class="title" name="article_title" value="${boardDto.article_title }" />
 					<p class="writingInfo">작성자 : ${boardDto.user_id} |
@@ -61,15 +71,15 @@
 	});
 
 	$(document).ready(function(){
-	    
-		 $("#noticeBtn").on("click", function() { 
-				let form = $("#form")
-				form.attr("action","<c:url value='/board/notice'/>")
-				form.attr("method", "get")
-				form.submit()
-			})	
 		
-	    $("#regBtn").on("click", function() { <!-- 목록 및 등록 버튼 js추가 -->
+		 $("#noticeBtn").on("click", function() { 
+			let form = $("#form")
+			form.attr("action","<c:url value='/board/notice'/>")
+			form.attr("method", "get")
+			form.submit()
+		})	
+	    
+	    $("#regBtn").on("click", function() { 
 			if(!confirm("정말로 등록하시겠습니까?")) return;
 			
 			let form = $("#form")
