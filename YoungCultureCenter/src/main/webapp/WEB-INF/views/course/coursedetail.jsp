@@ -554,10 +554,11 @@
 				form.attr("action", "<c:url value='/course/write' />")
 				form.attr("method", "POST")
 				
-				/* if(formCheck()) */
+				if(formCheck())
 					form.submit()
 			})
 			
+			// 
 			let formCheck = function() {
 				let form = document.getElementById("form")
 				if(form.course_nm.value == ""){
