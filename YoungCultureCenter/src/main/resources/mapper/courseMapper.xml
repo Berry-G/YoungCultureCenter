@@ -87,7 +87,7 @@
 		<choose>
 			<!-- 접수마감일순 -->
 			<when test='orderby=="End"'>
-				ORDER BY course_reg_end_date
+				ORDER BY course_reg_start_date
 			</when>
 			<!-- 수강시작일순 -->
 			<when test='orderby=="Start"'>
@@ -201,6 +201,7 @@
 		WHERE course_id = #{course_id}
 	</update>
 	
+	<!-- 강좌생성 -->
 	<insert id="insert" parameterType="CourseDto">
 		INSERT INTO tb_course (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
 		, course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)

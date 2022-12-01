@@ -40,7 +40,7 @@ public class CourseController {
 	// 수강신청 클릭 후 이동하는 페이지
 	@GetMapping("/course/regcomplete")
 	public String courseRegComplete(Integer course_id, AttendDto attendDto, Model m
-									, HttpSession session, HttpServletRequest request) {
+									, HttpSession session, HttpServletRequest request, RedirectAttributes rattr) {
 		String user_id = (String) session.getAttribute("id"); // 세션에 저장되어 있는 id 불러오기
 		Date nowdate = new Date(); // 오늘날짜 객체 생성
 
@@ -68,28 +68,32 @@ public class CourseController {
 						&& courseDto.getCourse_reg_end_date().before(nowdate) == true)
 						|| (courseDto.getCourse_reg_start_date().before(nowdate) == true
 								&& courseDto.getCourse_reg_end_date().after(nowdate) == true)) { 
-					courseService.attendInsert(attendDto); // 수강신청 시 attend에 insert & 신청인원 1명 증가
-					// 신청인원을 총정원과 비교
+					// 수강신청 시 attend에 insert & 신청인원 1명 증가
+					courseService.attendInsert(attendDto); 
+					rattr.addFlashAttribute("msg", "REG_COMPLETE");
+				// 신청인원을 총정원과 비교	
 				} else if (courseDto.getCourse_applicants() >= courseDto.getCroom_mpop()) {
 					System.out.println("정원이 마감되었습니다.");
-
+					rattr.addFlashAttribute("msg", "overcapacity");
 					return "redirect:/course/search";
 				} else {
 					System.out.println("접수기간이 아닙니다.");
-
+					rattr.addFlashAttribute("msg", "NO_PERIOD");
 					return "redirect:/course/search";
 				}
 			} else {
 				System.out.println("중복 신청은 할 수 없습니다.");
-
+				rattr.addFlashAttribute("msg", "OVERLAP");
 				return "redirect:/course/search";
 			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 
 			return "redirect:/course/detail?toURL=" + request.getRequestURL();
 		}
-
+		
 		return "/course/courseRegComplete";
 	}
 	
@@ -203,10 +207,11 @@ public class CourseController {
 	@GetMapping("/course/detail")
 	public String coursedetail(CourseSearchItem sc, Integer course_id, Model m, HttpServletRequest request) {
 		
-		System.out.println("redirect:/login?toURL=" + request.getRequestURL()+"?"+request.getQueryString());
+		// System.out.println("redirect:/login?toURL=" + request.getRequestURL()+"?"+request.getQueryString());
 		
+		// 로그인 체크시 exception 이슈 해결
 		if (!logincheck(request)) {
-			return "redirect:/login?toURL="+request.getRequestURL()+"?"+request.getQueryString();
+			return "redirect:/login?toURL="+request.getRequestURL()+"?course_id="+course_id;
 		}
 
 		try {

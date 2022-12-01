@@ -157,8 +157,7 @@
 			</div>
 			<div class="d-grid gap-2 d-sm-block text-center mt-3">
 				<c:if test="${mode ne 'new' && mode ne 'modify'}">
-					<a class="btn  ${courseDto.course_applicants >= courseDto.croom_mpop ? 'disabled btn-secondary' : 'btn-primary' }" 
-						 href="/ycc/course/regcomplete${pr.sc.queryString }&course_id=${courseDto.course_id }" 
+					<a id="courseRegBtn" class="btn  ${courseDto.course_applicants >= courseDto.croom_mpop ? 'disabled btn-secondary' : 'btn-primary' }" 
 						 role="button" ${courseDto.course_applicants >= courseDto.croom_mpop ? 'aria-disabled="true"' : '' }>수강신청</a> 
 					<button type="button" id="listBtn" class="btn btn-primary btn-list">목록</button>
 				</c:if>
@@ -516,6 +515,13 @@
 			}
 
 			// ==============================================강좌==============================================
+			// 강좌 '수강신청'버튼 클릭
+			$("#courseRegBtn").on("click", function() {
+				if(!confirm("수강신청을 하시겠습니까?")) return
+				
+				location.href = "<c:url value='/course/regcomplete${pr.sc.queryString }&course_id=${courseDto.course_id }' />"
+			})
+				
 			// 강좌 '수정하기'버튼 클릭
 			$('#courseModifyBtn').on("click", function() {
 				let form = $("#form")
