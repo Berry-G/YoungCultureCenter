@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -143,14 +144,15 @@ public class CourseController {
 	}
 
 	@PostMapping("/course/remove")
-	public String courseRemove(Integer course_id, Integer page, Integer pageSize
+	public String courseRemove(Integer course_id, @RequestParam("user_id")String user_id, Integer page, Integer pageSize
 			, RedirectAttributes rattr, HttpSession session) {
-		String user_id = (String) session.getAttribute("id");
+		
 		String msg = "DEL_OK";
-
+		
 		try {
-			if (courseService.courseRemove(course_id, user_id) != 1)
-				throw new Exception("Delete failed.");
+			if(session.getAttribute("id").equals(user_id) || session.getAttribute("grade").equals("관리자")) {
+				if (courseService.courseRemove(course_id) != 1) throw new Exception("Delete failed.");
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

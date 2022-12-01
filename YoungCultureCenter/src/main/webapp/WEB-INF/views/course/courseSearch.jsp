@@ -43,7 +43,7 @@
 		<hr>
 		<form action="" method="get">
 			<div class="searchBox row p-3 d-flex" style="justify-content: space-around;">
-				<div class="col-md-10 row">
+				<div class="col-lg-10 row">
 					<div class="col-md-4">
 						<div class="row">
 							<label for="sidebar-position2" class="col-4 align-self-center text-center">분류</label>
@@ -87,12 +87,12 @@
 							<input class="form-control" type="text" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요" aria-label="Search" id="keyword">
 						</div>
 					</div>
-				<div class="col-md-2 align-items-center gap-2" style="display: -webkit-inline-box;">
-						<div class="col-md-6">
+				<div class="col-lg-2 align-items-center gap-2" style="display: -webkit-inline-box;">
+						<div class="col-lg-6">
 							<input type="submit" class="btn btn-primary" value="검색" style="width:100%; height:100%;">
 						</div>
-					<div class="col-md-6" >
-						<button onclick="test()" class="btn btn-outline-primary" style="width:100%; height:100%;">초기화</button>
+					<div class="col-lg-6" >
+						<button onclick="test()" class="btn btn-outline-primary" style="width:100%; height:100%; white-space: nowrap;">초기화</button>
 					</div>
 				</div>
 			
