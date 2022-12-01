@@ -113,11 +113,14 @@ public class BoardController
 	public String writePage(BoardDto boardDto, RedirectAttributes rttr, HttpServletRequest request,
 			Model model, HttpSession session) throws Exception {		
 			
+			String user_id = (String) session.getAttribute("id");
+			boardDto.setUser_id(user_id);
 			
 			try {
-				YccMethod.permissionCheck("관리자", request);
+				if(YccMethod.permissionCheck("관리자", request)) {
+					boardService.writeInsert(boardDto);
+				}
 				
-				boardService.writeInsert(boardDto);
 				//boardDto에서 받은 board-type이 "N"이면 공지사항게시판에 insert
 				if(boardDto.getArticle_Board_type().equals("N") ) {
 					//insert 후 공지사항 게시판으로 보여줌

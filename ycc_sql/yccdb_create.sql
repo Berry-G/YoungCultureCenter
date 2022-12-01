@@ -34,7 +34,7 @@ CREATE TABLE admin_section (
 -- article_title : character -> varchar 타입 변경
 -- article_viewcnt : integer -> int 타입변경, notnull 
 CREATE TABLE ARTICLE (
-    article_id   serial primary key,
+    article_id   serial,
     article_date    timestamp without time zone ,
     article_Board_type    character(1) NOT NULL,
     user_id    varchar(16) NOT NULL,
