@@ -46,8 +46,8 @@
 				</tr>
 			</c:forEach>
 		 </table>
-
-		<!-- 작성하기 버튼  -->
+		 
+		 <!-- 작성하기 버튼  -->
 		<!-- 관리자만 보이도록 구현하기 -->
 		<c:if test = "${sessionScope.grade eq '관리자'}">
 		<div class="row">
@@ -56,7 +56,8 @@
 		 	</div>
 		</div>
 		</c:if>
-		
+
+
 		<!-- 페이징 시작 -->
 		<div class="paging-container">
 			<ul class="pagination pt-3" style="justify-content: center;">
@@ -86,6 +87,9 @@
 			</ul>
 		</div>
 		<!-- 페이징 끝 -->
+		
+		
+		
 	
 		<!-- 검색 -->
 		<div class="container text-center">
