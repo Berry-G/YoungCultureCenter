@@ -234,24 +234,40 @@ VALUES('sqld 개발자 과정', '', '2022-12-10', '2022-12-24', '2023-01-24', '2
 
 
 -----------------------------------------------------나리-----------------------------------------------------------
---inquiry dummy data
--- inq_id : 문의 작성날짜(6자리) + 001~999
+-- 1개월
+INSERT INTO public.inq_board	
+(inq_cate, user_id, inq_title, inq_content, inq_date, inq_yn)
+VALUES('교육강좌', 'ezen',  '수강 관련 문의', '수강 관련 문의 내용', '2022-11-12', false);
+-- 같은 날짜
+INSERT INTO public.inq_board	
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('교육강좌', 'ezen',  '수강 관련 문의', '수강 관련 문의 내용', '2022-11-01', false);
+-- 3개월
 INSERT INTO public.inq_board
-(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
-VALUES('교육강좌', 'ezen', 220203001, '수강 관련 문의', '수강 관련 문의 내용', now(), true);
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('결제', 'ezen',  '결제 관련 문의', '결제 관련 문의 내용', '2022-09-15', false);
+-- 6개월
+INSERT INTO public.inq_board
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('결제', 'ezen',  '결제 관련 문의', '결제 관련 문의 내용', '2022-07-21', false);
+-- 1년
+INSERT INTO public.inq_board	
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('교육강좌', 'ezen',  '수강 관련 문의', '수강 관련 문의 내용', '2021-10-15', false);
+-- 1년 이상 이전
+INSERT INTO public.inq_board
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('결제', 'ezen',  '결제 관련 문의', '결제 관련 문의 내용', '2020-07-11', false);
+
+
 
 INSERT INTO public.inq_board
-(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
-VALUES('결제', 'ezen', 220203002, '결제 관련 문의', '결제 관련 문의 내용', now(), false);
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('결제', 'ezen1',  '영수증 문의', '현금영수증 추후발급 되나요?', '2022-10-15', false);
 
 INSERT INTO public.inq_board
-(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
-VALUES('결제', 'ezen1', 221124001, '영수증 문의', '현금영수증 추후발급 되나요?', now(), false);
-
-INSERT INTO public.inq_board
-(inq_cate, user_id, inq_id, inq_title, inq_content, inq_date, inq_yn)
-VALUES('교육강좌', 'ezen1', 221125001, '수강 신청 변경 문의', '수강 신청 변경 문의 내용', now(), true);
-
+(inq_cate, user_id,  inq_title, inq_content, inq_date, inq_yn)
+VALUES('교육강좌', 'ezen1',  '수강 신청 변경 문의', '수강 신청 변경 문의 내용', '2022-10-15', true);
 
 -----------------------------------------------------선혜-----------------------------------------------------------
 INSERT INTO public.article
