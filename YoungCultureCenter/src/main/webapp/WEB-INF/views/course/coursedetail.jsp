@@ -47,13 +47,10 @@
 				<input type="hidden" name="course_id" value="${courseDto.course_id }">
 				<div class="col-md-6">
 					<div class="table table-bordered h-100">
+						<input class="form-control" type="hidden" name="user_id" value="${courseDto.user_id }" ${mode=="new" || mode=="modify" ? "" : "readonly" } />
 						<table class="table h-100">
 							<tbody>
 							<colgroup><col width="25%"></colgroup>
-							<tr>
-								<th>강좌명</th>
-								<td><input class="form-control" type="hidden" name="user_id" value="${courseDto.user_id }" ${mode=="new" || mode=="modify" ? "" : "readonly" }></td>
-							</tr>
 							<tr>
 								<th>강좌명</th>
 								<td><input class="form-control" type="text" name="course_nm" value="${courseDto.course_nm }" ${mode=="new" || mode=="modify" ? "" : "readonly" }></td>
