@@ -75,8 +75,10 @@
 	          <div class="col-md-2 mb-3">
 	          		<button type="submit" class="btn btn-primary" id="periodBtn">조회</button>
 	          </div>
+	          <div class= "text-center">
 	            ${startDate != null? "조회기간 : " : ""}${startDate}${startDate != null? " ~ " : ""} 
 	      		${endDate != null? endDate : ""}
+	      	  </div>
           	</div>
           </div>
 			
