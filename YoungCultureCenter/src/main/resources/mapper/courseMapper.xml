@@ -20,7 +20,7 @@
 		ON classroom.croom_id = tb_course.croom_id 
 	</sql>
 	
-	<!-- 강좌카테고리('운동(Spo)', '문화(Cul)', '교육(Edu)') -->
+	<!-- 강좌분류('운동(Spo)', '문화(Cul)', '교육(Edu)') -->
 	<sql id="searchCate">
 		<choose>
 			<when test='cate == "Spo"'>
@@ -41,7 +41,7 @@
 		</choose>
 	</sql>
 	
-	<!-- 강의대상('성인(Adu)', '청소년(Stu)', '유아(Chd)', '노인(Old)', 'All') -->
+	<!-- 수강대상('성인(Adu)', '청소년(Stu)', '유아(Chd)', '노인(Old)', 'All') -->
 	<sql id="searchTarget">
 		<choose>
 			<when test='target == "Adu"'>
@@ -61,12 +61,12 @@
 		</choose>
 	</sql>
 	
-	<!-- 강좌상태('접수가능', '오픈예정', '오픈예정+접수가능') -->
+	<!-- 접수상태('접수가능', '오픈예정', '오픈예정+접수가능') -->
 	<sql id="searchCourseStat">
 		<choose>
 			<!-- P: '접수가능' 
-					오늘날짜 - 접수시작일 >= 0 ==> '접수가능', '접수마감'
-					오늘날짜 - 접수마감일 <= 0 ==> '오픈예정', '접수가능' -->
+					 오늘날짜 - 접수시작일 >= 0 ==> '접수가능', '접수마감'
+					 오늘날짜 - 접수마감일 <= 0 ==> '오픈예정', '접수가능' -->
 			<when test='stat == "P"'> 
 			AND current_date - course_reg_start_date::Date <![CDATA[>=]]> 0 
 			AND current_date - course_reg_end_date::Date <![CDATA[<=]]> 0
@@ -75,7 +75,7 @@
 			<when test='stat == "O"'>
 			AND current_date - course_reg_start_date::Date <![CDATA[<]]> 0
 			</when>
-			<!-- All: 오늘날짜 - 접수마감일 <= 0 ==> '오픈예정', '접수가능'  -->
+			<!-- 기본값 = All: 오늘날짜 - 접수마감일 <= 0 ==> '오픈예정', '접수가능'  -->
 			<otherwise>
 			AND current_date - course_reg_end_date::Date <![CDATA[<=]]> 0
 			</otherwise>
@@ -97,7 +97,7 @@
 			<!-- <when test='orderby=="Star"'>
 				ORDER BY AVG(review_rating) desc
 			</when> -->
-			<!-- 기본값 -->
+			<!-- 기본값 = 강좌명순 -->
 			<otherwise>
 				ORDER BY course_nm
 			</otherwise>

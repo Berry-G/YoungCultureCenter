@@ -75,27 +75,27 @@
 							<!-- 입력값 -->
 							<c:if test="${mode eq 'new' || mode eq 'modify' }">
 								<tr>
-									<th>강의실</th> <!-- 드롭박스로 변경 -->
+									<th>강의실</th> <!-- 셀렉트박스로 변경 -->
 									<td><input class="form-control w-50" type="text" name="croom_id" value="${courseDto.croom_id }"></td>
 								</tr>
 								<tr>
-									<th>카테고리</th> <!-- dropbox로 변경 -->
+									<th>카테고리</th> <!-- 셀렉트박스로로 변경 -->
 									<td><input class="form-control w-50" type="text" name="course_cate_cd" value="${courseDto.course_cate_cd }"></td>
 								</tr>
 								<tr>
-									<th>접수시작일</th> <!-- 캘린더나 드롭박스로 변경 -->
+									<th>접수시작일</th>
 									<td><input class="form-control w-75" type="date" id="date" name="course_reg_start_date" value="${courseDto.reg_sd() }"></td>
 								</tr>
 								<tr>
-									<th>접수마감일</th> <!-- 캘린더나 드롭박스로 변경 -->
+									<th>접수마감일</th>
 									<td><input class="form-control w-75" type="date" id="date" name="course_reg_end_date" value="${courseDto.reg_ed() }"></td>
 								</tr>
 								<tr>
-									<th>수강시작일</th> <!-- 캘린더나 드롭박스로 변경 -->
+									<th>수강시작일</th>
 									<td><input class="form-control w-75" type="date" id="date" name="course_start_date" value="${courseDto.course_sd() }"></td>
 								</tr>
 								<tr>
-									<th>수강종료일</th> <!-- 캘린더나 드롭박스로 변경 -->
+									<th>수강종료일</th>
 									<td><input class="form-control w-75" type="date" id="date" name="course_end_date" value="${courseDto.course_ed() }"></td>
 								</tr>
 							</c:if>
@@ -106,7 +106,7 @@
 								<td><input class="form-control w-50 d-inline" type="text" name="course_cost" value="${courseDto.course_cost }" ${mode=="new" || mode=="modify" ? "" : "readonly" }>원</td>
 							</tr>
 							<tr>
-								<th>수강대상</th> <!-- 드롭박스로 변경 -->
+								<th>수강대상</th> <!-- 셀렉트박스로 변경 -->
 								<td><input class="form-control w-50" type="text" name="course_target" value="${courseDto.course_target }" ${mode=="new" || mode=="modify" ? "" : "readonly" }></td>
 							</tr>
 							</tbody>
@@ -387,10 +387,11 @@
 			
 			// 수강후기 '삭제'버튼 클릭
 			$("#reviewList").on("click", "#delBtn", function() {
-				// alert("삭제버튼클릭")
-				var review_cnt = $("span[id=reviewCnt]" ).val()
-				
+				//alert("삭제버튼클릭")
+				var review_cnt = ${courseDto.review_cnt }
+				//alert("review_cnt="+review_cnt)
 				if(review_cnt > 0){
+					//alert("if문진입")
 					let review_id = $(this).parent().attr("data-review_id")
 					let course_id = $(this).parent().attr("data-course_id")
 					//alert(review_id)
@@ -490,7 +491,6 @@
 					tmp += ' 				<div class="col-sm-6 fs-6">작성자:'+review.user_id+'</div>'
 					tmp += ' 			 </div>'
 					tmp += ' 			</div>'
-					// tmp += " 			"+ userIdCheck + sessionGradeCheck
 					
 					if(userIdCheck || sessionGradeCheck) {
 						tmp += ' 			<hr>'

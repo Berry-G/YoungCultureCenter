@@ -23,17 +23,19 @@ public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
 	
+	// 수강후기 수정
 	@PatchMapping("/course/reviews/{review_id}")
 	public ResponseEntity<String> modify(@PathVariable Integer review_id, String user_id
 											, @RequestBody ReviewDto reviewDto, HttpSession session) {
 		
 		//String user_id = (String) session.getAttribute("id");
 		
-		reviewDto.setUser_id(user_id);
-		reviewDto.setReview_id(review_id);
+		reviewDto.setUser_id(user_id); // 작성자 id
+		reviewDto.setReview_id(review_id); // 작성된 reivew_id
 		
 		try {
-			if(user_id == session.getAttribute("id") || session.getAttribute("grade").equals("관리자")) {
+			// '작성자'와 동일한 계정이거나 '관리자'일 경우 수정 가능
+			if(session.getAttribute("id").equals(user_id) || session.getAttribute("grade").equals("관리자")) {
 				if(reviewService.modify(reviewDto) != 1) throw new Exception("Update failed.");
 			}		
 				
@@ -45,18 +47,20 @@ public class ReviewController {
 			return new ResponseEntity<String>("MOD_ERR", HttpStatus.BAD_REQUEST);
 		}
 	}
-		
+	
+	// 수강후기 삭제
 	@DeleteMapping("/course/reviews/{review_id}")
 	public ResponseEntity<String> remove(@PathVariable Integer review_id, Integer course_id, String user_id
 														, ReviewDto reviewDto, HttpSession session) {
-		reviewDto.setUser_id(user_id);
+		reviewDto.setUser_id(user_id); // 작성자 id
 		//String user_id = (String) session.getAttribute("id");
 		
 		try {
 			int rowCnt = reviewService.reviewDelete(review_id, course_id);
 			System.out.println(rowCnt);
 			
-			if(user_id == session.getAttribute("id") || session.getAttribute("grade").equals("관리자")) {
+			// '작성자'와 동일한 계정이거나 '관리자'일 경우 삭제 가능 + review_cnt 감소
+			if(session.getAttribute("id").equals(user_id) || session.getAttribute("grade").equals("관리자")) {
 				if(rowCnt != 1) throw new Exception("Delete Failed");
 			}
 			
@@ -68,6 +72,7 @@ public class ReviewController {
 		}
 	}
 	
+	// 수강후기 작성
 	@PostMapping("/course/reviews")
 	public ResponseEntity<String> write(@RequestBody ReviewDto reviewDto, Integer course_id, HttpSession session){
 		String user_id = (String) session.getAttribute("id");
@@ -78,6 +83,7 @@ public class ReviewController {
 		System.out.println("reviewDto" + reviewDto);
 		
 		try {
+			// 수강신청(attend) 테이블에 있을 경우에만 작성 가능하게 구현 '예정'
 			if(reviewService.reviewWrite(reviewDto) != 1)
 				throw new Exception("write failed");
 			
@@ -90,9 +96,10 @@ public class ReviewController {
 		}
 	}
 	
+	// 수강후기 select
 	@GetMapping("/course/reviews")
 	@ResponseBody
-	public ResponseEntity<List<ReviewDto>> list(Integer course_id, CourseSearchItem sc, Model m){
+	public ResponseEntity<List<ReviewDto>> list(Integer course_id/* , CourseSearchItem sc, Model m */){
 		List<ReviewDto> list = null;
 		
 		try {
