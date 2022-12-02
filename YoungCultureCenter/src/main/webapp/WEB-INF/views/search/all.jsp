@@ -83,7 +83,7 @@
 									<li>
 										<div class="p-3">
 											<h5 id="nTitle" class="fw-bold">
-												<a href="<c:url value="/board/post?article_id=${article_id  }" />">${BoardDto.article_title }</a>
+												<a href="<c:url value="/board/post?article_id=${BoardDto.article_id  }" />">${BoardDto.article_title }</a>
 											</h5>
 											<p>${BoardDto.article_contents }</p>
 											<div class="d-flex flex-row">
@@ -115,7 +115,7 @@
 									<li>
 										<div class="p-3">
 											<h5 id="eTitle" class="fw-bold">
-												<a href="<c:url value="/board/post?article_id=${article_id }" />">${BoardDto.article_title }</a>
+												<a href="<c:url value="/board/post?article_id=${BoardDto.article_id }" />">${BoardDto.article_title }</a>
 											</h5>
 											<p>${BoardDto.article_contents }</p>
 											<div class="d-flex flex-row">

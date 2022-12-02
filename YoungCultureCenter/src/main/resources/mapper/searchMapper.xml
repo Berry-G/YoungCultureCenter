@@ -39,14 +39,14 @@
 	<!-- article:공지사항 -->
 	<sql id="selectFromNotice">
 			select *, ( 
-			select count(*) from article where article_Board_type = 'N' 
+			select count(*) from article where article_Board_type = '공지사항' 
 			and true <include refid="searchCondition" />) as count
 			from article
 	</sql>
 	<!-- article:이벤트 -->
 	<sql id="selectFromEvent">
 			select *, ( 
-			select count(*) from article where article_Board_type = 'E' 
+			select count(*) from article where article_Board_type = '이벤트' 
 			and true <include refid="searchCondition" />) as count
 			from article
 	</sql>
@@ -177,7 +177,7 @@
 	<select id="selectNoticePage" parameterType="SearchItem" resultType="BoardDto">
 		<include refid="selectFromNotice" />
 		where
-		article_board_type = 'N' and true
+		article_board_type = '공지사항' and true
 		<include refid="searchCondition" />
 		order by
 		<include refid="arrayCondition" />
@@ -189,7 +189,7 @@
 		resultType="BoardDto">
 		<include refid="selectFromEvent" />
 		where
-		article_Board_type = 'E' and true
+		article_Board_type = '이벤트' and true
 		<include refid="searchCondition" />
 		order by
 		<include refid="arrayCondition" />
