@@ -90,11 +90,14 @@
 </head>
 <body>
 	<script>
+	//오늘 하루 다시 보지 않기 버튼 (쿠키 저장)
+		//쿠키 생성
 	function setCookie( name, value, expiredays) {
 	    var todayDate = new Date();
 	    todayDate.setDate( todayDate.getDate() + expiredays );
 	    document.cookie = name + "=" + value + "; path=/; expires=" + todayDate.toGMTString() + ";";
 	}
+		//쿠키 가져오기
 	function getCookie() {
 	    var cookiedata = document.cookie;
 	    
