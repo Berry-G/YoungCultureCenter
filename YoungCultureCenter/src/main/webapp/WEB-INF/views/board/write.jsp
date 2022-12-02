@@ -35,7 +35,7 @@
 					</select>
    					<input type="text" class="form-control mb-3" id="title" name="article_title"
    					 placeholder="제목을 입력해주세요" value="${boardDto.article_title }">
-    				<textarea class="summernote mb-3" id="contents" name="article_contents"  >
+    				<textarea class="summernote mb-5" id="contents" name="article_contents"  >
     				${boardDto.article_contents}</textarea>
     				
 				<!-- summernote 업로드 -->
@@ -44,7 +44,9 @@
 <!--       				<label class="input-group-text" for="inputGroupFile02">Upload</label> -->
 <!--     			</div> -->
     			<!-- 게시글 등록, 취소 버튼 -->
-	    		<div style="text-align: center;">
+    			
+    			
+	    		<div class="m-5" style="text-align: center;">
 	      			<input class="btn btn-primary mx-3" id="regBtn" type="button" onclick="regCheck()" value="등록하기" >
 	      			<input class="btn btn-secondary" type="button" value="취소하기">
 	    		</div>
