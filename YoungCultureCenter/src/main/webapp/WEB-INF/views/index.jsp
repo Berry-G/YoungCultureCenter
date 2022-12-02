@@ -216,7 +216,7 @@
 		<!-- 중단 퀵메뉴 -->
 		<div class="text-center" style="list-style-type: none;">
 			<ul id="quickMenu" name="quickMenu">
-				<li><a href="/ycc/course/courseinfo"><img class="quickIcon"  src="resources\img\main_img\application_icon.png"
+				<li><a href="/ycc/course/search"><img class="quickIcon"  src="resources\img\main_img\application_icon.png"
 							alt="수강신청" /><span>수강신청</span></a></li>
 				<li><a href="/ycc/rental/place"><img class="quickIcon" src="resources\img\main_img\rental_icon.png"
 							alt="대관신청" /><span>대관 신청</span></a></li>
