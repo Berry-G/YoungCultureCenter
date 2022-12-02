@@ -302,3 +302,19 @@ VALUES(now(), '공지사항', 'admin', 'YOUNG문화센터 12월 이벤트', 'YOU
 INSERT INTO public.article
 (article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
 VALUES(now(), '공지사항', 'admin', 'YOUNG문화센터 이벤트 안내', 'YOUNG문화센터 이벤트 안내', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '이벤트', 'admin', '어린이를 위한 수영 이벤트', 'YOUNG문화센터 이벤트 안내', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '이벤트', 'admin', '12월 크리스마스 행사 안내', '12월 크리스마스 이벤트', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '이벤트', 'admin', 'YOUNG문화센터 12월 이벤트', 'YOUNG문화센터 12월 이벤트', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '이벤트', 'admin', 'YOUNG문화센터 이벤트 안내', 'YOUNG문화센터 이벤트 안내', 0);
