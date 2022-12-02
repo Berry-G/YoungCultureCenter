@@ -94,10 +94,10 @@
 			<!-- 정확도순 -->
 			<otherwise>
 				case when article_title like #{keyword} then 0
-				when article_title like concat('%', #{keyword}) then 1
-				when article_title like concat('%', #{keyword}, '%') then 2
-				when article_title like concat(#{keyword}, '%') then 3
-				else 4 end, article_date desc
+				when article_title like concat(#{keyword},'%') then 1
+				when article_title like concat('%', #{keyword}) then 2
+				when article_title like concat('%', #{keyword}, '%') then 3
+				else 4 end
 			</otherwise>
 		</choose>
 	</sql>
