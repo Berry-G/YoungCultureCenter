@@ -95,20 +95,26 @@
 		 
 		// 탭 클릭시 해당되는 탭의 검색결과만 보이게 하는 기능
 		// 각각의 분류별 출력결과(공지사항, 이벤트, ...)를 감싸고 있는 div 태그에 .cont 클래스를 줌 ==> .cont{display:none;}
+		
+		// .cont 클래스를 가진 태그를 content로 선언
 		const content = document.querySelectorAll('.cont');
 		
 		// 각 탭 클릭시 해당 탭이 active(활성화)되게 함 
+		
+		// .tab_menu > .list > li > a를 active로 선언
 		const active = document.querySelectorAll('.tab_menu .list li a');
 		
 		// 각 탭을 클릭하면
 		$(".nav-link").click(function(e) {
 			
-			e.preventDefault();	// 페이지로의 이동을 막아줌
+			e.preventDefault();	// 클릭한 탭의 리스트로의 focus를 막아줌 
 
 			// 탭 클릭시 is on, active 클래스 요소를 삭제(초기화시킴)
+			// .cont 클래스를 가진 태그에서 'is_on' class를 모두 삭제
 			for(var j = 0; j < content.length; j++){
 		        content[j].classList.remove('is_on');
 		      }
+			// .tab_menu > .list > li > a에서 'active' class를 모두 삭제 
 			for(var i = 0; i <= content.length; i++){
 		        active[i].classList.remove('active');
 		      }
@@ -161,8 +167,10 @@
 		<!-- 탭 -->
 		<div class="tab_menu m-4">
 			<ul class="list nav nav-tabs">
+				<!-- Controller에서 정의된 totalCnt(select 서브쿼리로 select count 구현) -->
 				<li class="nav-item"><a class="nav-link all active" aria-current="page" href="#">전체(${totalCnt }건)</a></li>
 				<li class="nav-item">
+					<!-- dto에 count를 추가해 count 출력 ==> Mapper에서 서브쿼리로 select count(*) -->
 					<a class="nav-link notice" href="#notice">공지사항(${noticeList[0].count == null ? "0" : noticeList[0].count }건)</a>
 				</li>
 				<li class="nav-item"><a class="nav-link event" href="#event">이벤트(${eventList[0].count == null ? "0" : eventList[0].count }건)</a></li>
@@ -176,7 +184,7 @@
 				<input name="keyword" type="hidden" value="${param.keyword }" /> 
 				
 				<!-- 검색시 기본적으로 정확도순으로 정렬됨. 키워드랑 완전히 일치하는 검색결과일 경우 0점으로 가장 우선순위로 조회되고,
-				키워드 앞 뒤에 키워드 이외의 글자가 많이 붙어있을수록(1점, 2점, ...) 우선순위가 낮아지는 식 -->
+				키워드 앞 뒤에 키워드 이외의 글자가 많이 붙어있을수록(1점, 2점, ...) 우선순위가 낮아지는 식 (searchMapper) -->
 				<div class="row float-end me-4">
 					<select class="form-select form-select-sm col-auto" name="array" aria-label=".form-select-sm example" style="width: auto; margin-right: 10px;">
 						<option value="A" ${pr.sc.array=='A' || pr.sc.array=='' ? "selected" : ""}>정확도순</option>
@@ -194,7 +202,8 @@
 			<div id="notice" class="p-3 is_on cont">
 				<h4 class="text-start fw-bold">공지사항 (${noticeList[0].count == null ? "0" : noticeList[0].count }건)</h4>
 				<hr>
-					<!-- 더보기 버튼 클릭시 type="공지사항" 파라미터 넘김 -> all 페이지에서 파라미터 받고 그에 공지사항 결과만 가져오게끔 함 -->
+				
+				<!-- 더보기 버튼 클릭시 type="공지사항" 파라미터 넘김 -> all 페이지에서 파라미터 받고 그에 공지사항 결과만 가져오게끔 함 -->
 				<form action="<c:url value="/search/all?type=${noticeList[0].article_Board_type }" />">
 					<input type="hidden" name="type" value="${noticeList[0].article_Board_type }" /> 
 					<input type="hidden" name="keyword" value="${param.keyword }" />

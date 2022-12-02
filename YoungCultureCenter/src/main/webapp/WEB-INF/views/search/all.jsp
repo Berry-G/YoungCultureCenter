@@ -45,7 +45,7 @@
 				</div>
 			</form>
 		</div>
-     
+    
     <h2 class="m-4 fw-bold">${param.type }</h2>
     <hr>
      
@@ -64,7 +64,8 @@
 				</div>
 			</form>
 		</div>
-
+		
+		<!-- queryString에 입력되는 type을 type으로 선언 -->
     <c:set var ="type" value ="${param.type}"/>
 		<input class="fw-bold" type="hidden" name="type" value="${param.type}" />
 
@@ -73,12 +74,14 @@
 	
 			<!-- 파라미터로 받은 type에 따라서 해당하는 type의 검색결과만 출력 -->        
 			<c:choose>
+				<!-- 선언된 type 즉, queryString의 type이 공지사항이면 실행 -->
 				<c:when test="${fn:contains(type, '공지사항')}">
 					<div class="p-3">
 						<form action="<c:url value="/search/all?type=${noticeList[0].article_Board_type }" />">
 							<input type="hidden" name="type" value="${noticeList[0].article_Board_type }" /> 
 							<input type="hidden" name="keyword" value="${param.keyword }" />
 							<ul class="mx-3"style="padding-left: 0px;margin-bottom: 0px;">
+								<!-- 공지사항 리스트 출력 -->
 								<c:forEach var="BoardDto" items="${noticeList }">
 									<li>
 										<div class="p-3">
