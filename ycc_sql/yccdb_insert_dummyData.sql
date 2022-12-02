@@ -272,16 +272,33 @@ VALUES('교육강좌', 'ezen1',  '수강 신청 변경 문의', '수강 신청 �
 -----------------------------------------------------선혜-----------------------------------------------------------
 INSERT INTO public.article
 (article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
-VALUES(now(), 'N', 'admin', '대관신청안내', 'YOUNG문화센터 대관신청안내', 0);
+VALUES(now(), '공지사항', 'admin', '대관신청안내', 'YOUNG문화센터 대관신청안내', 0);
 
 INSERT INTO public.article
 (article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
-VALUES(now(), 'N', 'admin', '12월 휴관일 안내', 'YOUNG문화센터 12월 휴관일 안내', 0);
+VALUES(now(), '공지사항', 'admin', '12월 휴관일 안내', 'YOUNG문화센터 12월 휴관일 안내', 0);
 
 INSERT INTO public.article
 (article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
-VALUES(now(), 'N', 'admin', 'YOUNG문화센터 12월 2일 오픈', 'YOUNG문화센터 12월 12월 2일 GRAND OPEN', 0);
+VALUES(now(), '공지사항', 'admin', 'YOUNG문화센터 12월 2일 오픈', 'YOUNG문화센터 12월 12월 2일 GRAND OPEN', 0);
 
 INSERT INTO public.article
 (article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
-VALUES(now(), 'N', 'admin', 'YOUNG문화센터운영안내', 'YOUNG문화센터 운영안내', 0);
+VALUES(now(), '공지사항', 'admin', 'YOUNG문화센터운영안내', 'YOUNG문화센터 운영안내', 0);
+
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '이벤트', 'admin', '대관신청안내1', 'YOUNG문화센터 대관신청안내', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '공지사항', 'admin', '12월 크리스마스 이벤트', '12월 크리스마스 이벤트', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '공지사항', 'admin', 'YOUNG문화센터 12월 이벤트', 'YOUNG문화센터 12월 이벤트', 0);
+
+INSERT INTO public.article
+(article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
+VALUES(now(), '공지사항', 'admin', 'YOUNG문화센터 이벤트 안내', 'YOUNG문화센터 이벤트 안내', 0);

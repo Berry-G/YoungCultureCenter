@@ -36,7 +36,7 @@ CREATE TABLE admin_section (
 CREATE TABLE ARTICLE (
     article_id   serial,
     article_date    timestamp without time zone ,
-    article_Board_type    character(1) NOT NULL,
+    article_Board_type    varchar(10) NOT NULL,
     user_id    varchar(16) NOT NULL,
     article_title    varchar NOT null,
     article_contents    text NOT NULL,
