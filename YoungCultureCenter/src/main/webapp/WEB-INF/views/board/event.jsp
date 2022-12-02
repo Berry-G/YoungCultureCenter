@@ -17,7 +17,7 @@
   <h3>이벤트/행사</h3>
   <!-- 게시판 테이블 -->
 		
-		<table class="table table-group-divider mt-5" >
+		<table class="table table-group-divider  table table-striped mt-5" >
 			<colgroup>
 				<col width="50%">
 				<col width="15%">
