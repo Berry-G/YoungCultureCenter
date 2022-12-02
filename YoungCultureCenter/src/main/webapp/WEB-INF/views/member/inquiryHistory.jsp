@@ -42,7 +42,7 @@
   </div>
       <!-- 기간별 조회 박스 -->
       <form action="<c:url value='/mypage/inquiry'/>" method="get" id="frm">
-	      <div class="container p-4" style="background-color: #b0daeb;">
+	      <div class="container p-4 text-center mb-3" style="background-color: #b0daeb;">
 	        <h4 class="mb-3">기간별 조회</h4>
 	        <div class="row">
 	          <div class="col-md-3 mb-3 ">
