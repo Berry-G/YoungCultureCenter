@@ -131,11 +131,12 @@ CREATE TABLE inq_board (
     inq_title varchar(100) not null,
     inq_content text not null,
     inq_date date not null,
-    inq_YN    boolean NOT null
+    inq_YN    boolean NOT null  --답변 내용 null여부로 판단으로 변경(컬럼삭제)
     
 );
 ALTER TABLE inq_board ADD CONSTRAINT inq_board_PK PRIMARY KEY ( inq_id );
 alter table inq_board add column inq_ans text;
+alter table inq_board drop column inq_yn;
 
 CREATE TABLE main_banner (
     banner_id    integer NOT NULL,

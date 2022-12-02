@@ -11,11 +11,11 @@
 
 	<insert id="insert" parameterType="BoardDto">
 		INSERT INTO public.article
-		(article_id, article_date, article_board_type, user_id, article_title,
+		(article_id, article_date, article_Board_type, user_id, article_title,
 		article_contents, article_viewcnt)
-		VALUES
-		(#{article_id},
-		#{article_date}, #{article_board_type}, #{user_id}, #{article_title},
+		VALUES(
+		#{article_id},
+		#{article_date}, #{article_Board_type}, #{user_id}, #{article_title},
 		#{article_contents}, #{article_viewcnt})
 	</insert>
 
@@ -39,14 +39,14 @@
 	<!-- article:공지사항 -->
 	<sql id="selectFromNotice">
 			select *, ( 
-			select count(*) from article where article_board_type = '공지사항' 
+			select count(*) from article where article_Board_type = 'N' 
 			and true <include refid="searchCondition" />) as count
 			from article
 	</sql>
 	<!-- article:이벤트 -->
 	<sql id="selectFromEvent">
 			select *, ( 
-			select count(*) from article where article_board_type = '이벤트' 
+			select count(*) from article where article_Board_type = 'E' 
 			and true <include refid="searchCondition" />) as count
 			from article
 	</sql>
@@ -150,7 +150,7 @@
 			<otherwise>
 				select count(*)
 				from article
-				where article_board_type = #{article_board_type} and
+				where article_Board_type = #{article_Board_type} and
 				true
 				<include refid="searchCondition" />
 			</otherwise>
@@ -177,7 +177,7 @@
 	<select id="selectNoticePage" parameterType="SearchItem" resultType="BoardDto">
 		<include refid="selectFromNotice" />
 		where
-		article_board_type = '공지사항' and true
+		article_board_type = 'N' and true
 		<include refid="searchCondition" />
 		order by
 		<include refid="arrayCondition" />
@@ -189,7 +189,7 @@
 		resultType="BoardDto">
 		<include refid="selectFromEvent" />
 		where
-		article_board_type = '이벤트' and true
+		article_Board_type = 'E' and true
 		<include refid="searchCondition" />
 		order by
 		<include refid="arrayCondition" />
@@ -220,14 +220,14 @@
 	<!-- 	<select id="noticeSearchResultCnt" parameterType="SearchItem" resultType="int">
 		select count(*)
 		from article
-		where article_board_type = '공지사항' and true
+		where article_Board_type = 'N' and true
 		<include refid="searchCondition" />
 	</select>
 	
 	<select id="eventSearchResultCnt" parameterType="SearchItem" resultType="int">
 		select count(*)
 		from article
-		where article_board_type = '이벤트' and true
+		where article_Board_type = 'E' and true
 		<include refid="searchCondition" />
 	</select>
 	

@@ -42,7 +42,7 @@
   </div>
       <!-- 기간별 조회 박스 -->
       <form action="<c:url value='/mypage/inquiry'/>" method="get" id="frm">
-	      <div class="container p-4 text-center mb-3" style="background-color: #b0daeb;">
+	      <div class="container p-4" style="background-color: #b0daeb;">
 	        <h4 class="mb-3">기간별 조회</h4>
 	        <div class="row">
 	          <div class="col-md-3 mb-3 ">
@@ -75,10 +75,8 @@
 	          <div class="col-md-2 mb-3">
 	          		<button type="submit" class="btn btn-primary" id="periodBtn">조회</button>
 	          </div>
-	          <div>
 	            ${startDate != null? "조회기간 : " : ""}${startDate}${startDate != null? " ~ " : ""} 
 	      		${endDate != null? endDate : ""}
-	      	  </div>
           	</div>
           </div>
 			
@@ -103,7 +101,7 @@
           <td><a href="<c:url value="/mypage/inquiry/read?inq_id=${InquiryDto.inq_id }"/>" class="text-decoration-none">
           	${InquiryDto.inq_title }</a></td>
           <td>${InquiryDto.inq_date() }</td>
-          <td>${InquiryDto.inq_yn == true? "답변완료" : "답변대기" }</td>
+          <td>${InquiryDto.inq_ans != null? "답변완료" : "답변대기" }</td>
         </tr>
       </c:forEach>
         </tbody>

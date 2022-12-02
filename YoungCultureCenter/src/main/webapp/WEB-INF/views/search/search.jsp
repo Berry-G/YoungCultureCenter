@@ -139,7 +139,7 @@
 
 </script>	
 	
-	<input id="searchInput">
+	<input type="hidden" id="searchInput">
 	
 	<!-- 검색창 -->
 	<div class="m-5">
@@ -224,7 +224,7 @@
 									<c:forEach var="BoardDto" items="${noticeList }">
 									<li>
 									<div class="p-3">
-										<h5 id="aTitle" class="fw-bold"><a href="<c:url value="/board/post?article_id=${BoardDto.article_id }" />">
+										<h5 id="nTitle" class="fw-bold"><a href="<c:url value="/board/post?article_id=${BoardDto.article_id }" />">
 										${BoardDto.article_title }</a></h5>
 										<p>${BoardDto.article_contents }</p>
 										<div class="d-flex flex-row">
@@ -272,7 +272,7 @@
 								<c:forEach var="BoardDto" items="${eventList }">
 									<li>
 									<div class="p-3">
-										<h5 id="aTitle" class="fw-bold"><a href="<c:url value="/board/post" />">
+										<h5 id="eTitle" class="fw-bold"><a href="<c:url value="/board/post?article_id=${BoardDto.article_id }" />">
 										${BoardDto.article_title }</a></h5>
 										<p>${BoardDto.article_contents }</p>
 										<div class="d-flex flex-row">
@@ -363,7 +363,7 @@
 									<li>
 									<div class="p-3">
 									<c:set var="course_id" value="${CourseDto.course_id }" />
-										<h5 id="aTitle" class="fw-bold"><a href="<c:url value="/course/detail?course_id=${course_id }&keyword=${param.keyword }" />">
+										<h5 id="cTitle" class="fw-bold"><a href="<c:url value="/course/detail?course_id=${course_id }&keyword=${param.keyword }" />">
 										${CourseDto.course_nm }</a></h5>
 										<p>${CourseDto.course_info }</p>
 										<div class="d-flex flex-row">
