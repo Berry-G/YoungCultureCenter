@@ -194,9 +194,33 @@ VALUES('안드로이드 앱 개발', '', '2022-11-28', '2023-02-20', '2023-03-05
 
 INSERT INTO public.tb_course
 (course_nm, course_image, course_reg_start_date, course_reg_end_date, course_start_date, course_end_date
-, course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd)
+, course_day, course_time, course_target, course_cost, course_info, user_id, croom_id, course_cate_cd, review_cnt)
 VALUES('sqld 개발자 과정', '', '2022-12-10', '2022-12-24', '2023-01-24', '2023-02-06'
-, '월수금', '18:00~21:00', '성인', 80000, 'DB 마스터 과정', 'ezen', '302', 'Edu');
+, '월수금', '18:00~21:00', '성인', 80000, 'DB 마스터 과정', 'ezen', '302', 'Edu', 10);
+
+
+-- 수강후기 dummydata
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기1', now(), now(), 2, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기2', now(), now(), 3, 15, 'ezen1');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기3', now(), now(), 1, 15, 'ezen1');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기4', now(), now(), 4, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기5', now(), now(), 4, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기6', now(), now(), 5, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기7', now(), now(), 5, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기8', now(), now(), 3, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기9', now(), now(), 3, 15, 'ezen');
+INSERT INTO course_review (review_content, review_datetime, review_updated_datetime, review_rating, course_id, user_id)
+VALUES('후기10', now(), now(), 1, 15, 'ezen');
+
 
 
 ------------------------------------------------------연희------------------------------------------------------
