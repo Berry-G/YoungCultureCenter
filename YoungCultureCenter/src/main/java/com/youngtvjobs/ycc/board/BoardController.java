@@ -203,12 +203,12 @@ public class BoardController
 		//등록버튼 누를 시 수정됨
 		try {
 			boardService.modify(boardDto);
-			if(boardDto.getArticle_Board_type().equals("N") ) {
+			if(boardDto.getArticle_Board_type().equals("공지사항") ) {
 				//insert 후 공지사항 게시판으로 보여줌
 				return "redirect:/board/notice";					
 			}
 			//boardDto에서 받은 board-type이 "E"이면 이벤트/행사 게시판에 insert
-			else if(boardDto.getArticle_Board_type().equals("E") ) {
+			else if(boardDto.getArticle_Board_type().equals("이벤트") ) {
 				//insert 후 이벤트 게시판으로 보여줌 
 				return "redirect:/board/event";
 			}
