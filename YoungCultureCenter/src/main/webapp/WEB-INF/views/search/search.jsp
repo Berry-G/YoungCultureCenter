@@ -182,7 +182,7 @@
 						<option value="A" ${pr.sc.array=='A' || pr.sc.array=='' ? "selected" : ""}>정확도순</option>
 						<option value="V" ${pr.sc.array=='V' ? "selected" : ""}>조회순</option>
 						<option value="N" ${pr.sc.array=='N' ? "selected" : ""}>최신순</option>
-					</select> 
+					</select>  
 					<input type="submit" class="search-button btn btn-secondary col-auto" value="정렬">
 				</div>
 			</form>
