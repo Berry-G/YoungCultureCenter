@@ -19,13 +19,13 @@
 	<main class="mt-5 pt-5">
 			<div class="container px-4">
 				<!-- 제목 -->
-				<!-- insert된 article_Board_type이 'N'이면  -->
-				<c:if test="${boardDto.article_Board_type == 'N'}">
+				<!-- insert된 article_Board_type이 '공지사항'이면  -->
+				<c:if test="${boardDto.article_Board_type == '공지사항'}">
 					<!-- 제목 : 공지사항 -->
 					<h2 class="writing-header mb-3">공지사항</h2>
 				</c:if>
-				<!-- insert된 article_Board_type이 'E'이면  -->
-				<c:if test="${boardDto.article_Board_type == 'E'}">
+				<!-- insert된 article_Board_type이 '이벤트'이면  -->
+				<c:if test="${boardDto.article_Board_type == '이벤트'}">
 					<!-- 제목 : 이벤트/행사-->
 					<h2 class="writing-header mb-3">이벤트/행사</h2>
 				</c:if>

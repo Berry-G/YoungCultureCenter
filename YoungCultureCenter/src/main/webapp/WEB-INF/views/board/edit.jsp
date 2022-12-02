@@ -30,10 +30,10 @@
   
 	<div class="container mt-5">
 	    <!-- 제목 -->
-		<c:if test="${boardDto.article_Board_type eq 'N'}">
+		<c:if test="${boardDto.article_Board_type eq '공지사항'}">
 			<h2 class="writing-header mb-3">공지사항</h2>
 		</c:if>
-		<c:if test="${boardDto.article_Board_type eq 'E'}">
+		<c:if test="${boardDto.article_Board_type eq '이벤트'}">
 			<h2 class="writing-header mb-3">이벤트/행사</h2>
 		</c:if>
 		<form id="form" class="frm" action="" method="post"> 
@@ -42,8 +42,8 @@
 					<!-- 게시글 정보 -->
 					<select class="form-select mb-2"  id="boardType" name="article_Board_type" style="width: 180px;">
 					  <option selected disabled="disabled">선택해주세요.</option>
-					  <option value="N">공지사항</option>
-					  <option value="E">이벤트/행사</option>
+					  <option value="공지사항">공지사항</option>
+					  <option value="이벤트">이벤트/행사</option>
 					</select>
 	    			<input type="hidden" name="article_id"  value="${boardDto.article_id }"> 		<!--값 받아오는 곳 -->
 	    			<div class="form-floating mb-3">

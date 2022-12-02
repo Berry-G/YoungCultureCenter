@@ -46,6 +46,8 @@ public class BoardController
 			model.addAttribute("pr", pageResolver);
 			
 		}catch (Exception e) {
+			
+			
 			e.printStackTrace();
 		}
 		
@@ -121,13 +123,13 @@ public class BoardController
 					boardService.writeInsert(boardDto);
 				}
 				
-				//boardDto에서 받은 board-type이 "N"이면 공지사항게시판에 insert
-				if(boardDto.getArticle_Board_type().equals("N") ) {
+				//boardDto에서 받은 board-type이 "공지사항"이면 공지사항게시판에 insert
+				if(boardDto.getArticle_Board_type().equals("공지사항") ) {
 					//insert 후 공지사항 게시판으로 보여줌
 					return "redirect:/board/notice";					
 				}
-				//boardDto에서 받은 board-type이 "E"이면 이벤트/행사 게시판에 insert
-				else if(boardDto.getArticle_Board_type().equals("E") ) {
+				//boardDto에서 받은 board-type이 "이벤트"이면 이벤트/행사 게시판에 insert
+				else if(boardDto.getArticle_Board_type().equals("이벤트") ) {
 					//insert 후 이벤트 게시판으로 보여줌 
 					return "redirect:/board/event";
 				}
@@ -149,13 +151,13 @@ public class BoardController
 			try {
 				if(YccMethod.permissionCheck("관리자", request)) {
 					if(boardService.remove(article_id) != 1) {
-						//boardDto에서 받은 board-type이 "N"이면 공지사항게시판에 insert
-						if(boardDto.getArticle_Board_type().equals("N") ) {
+						//boardDto에서 받은 board-type이 "공지사항"이면 공지사항게시판에 update
+						if(boardDto.getArticle_Board_type().equals("공지사항") ) {
 							//insert 후 공지사항 게시판으로 보여줌
 							return "redirect:/board/notice";					
 						}
-						//boardDto에서 받은 board-type이 "E"이면 이벤트/행사 게시판에 insert
-						else if(boardDto.getArticle_Board_type().equals("E") ) {
+						//boardDto에서 받은 board-type이 "이벤트"이면 이벤트/행사 게시판에 update
+						else if(boardDto.getArticle_Board_type().equals("이벤트") ) {
 							//insert 후 이벤트 게시판으로 보여줌 
 							return "redirect:/board/event";
 						}
