@@ -149,20 +149,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/mypage/modify")
-	public String modify(String id, String pw, String tel, String postCode, String rNameAddr, String detailAddr) throws Exception {
-		//회원정보 수정란에서 받은 정보를 dto에 저장하여 전달(db UPDATE)후 메인페이지로 이동
-		MemberDto dto= new MemberDto(); 
-		dto.setUser_id(id);
-		dto.setUser_pw(pw);
-		dto.setUser_phone_number(tel);
-		dto.setUser_postcode(postCode);
-		dto.setUser_rNameAddr(rNameAddr);
-		dto.setUser_detailAddr(detailAddr);
-		
-		memberService.ModifyMemberInfo(dto);
+	public String modify(MemberDto memberDto){
+		try {
+			memberService.ModifyMemberInfo(memberDto);
+		} catch (Exception e) {e.printStackTrace();}
 
 		return "redirect:/";
-		
+
 	}
 	
 
