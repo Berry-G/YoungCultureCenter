@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS tb_user CASCADE;
 DROP TABLE IF EXISTS club_attach CASCADE;
 DROP TABLE IF EXISTS tb_attach CASCADE;
 DROP TABLE IF EXISTS rental_time CASCADE;
+DROP TABLE IF EXISTS tb_terms CASCADE;
 
 
 CREATE TABLE admin_section (
@@ -235,6 +236,12 @@ CREATE TABLE tb_user
 );
 
 ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
+
+create table tb_terms 
+(
+	join_terms	   text	--이용약관
+,	join_privacy_terms text --개인정보취급방침
+);
 
 
 --FK============================================================================================================
