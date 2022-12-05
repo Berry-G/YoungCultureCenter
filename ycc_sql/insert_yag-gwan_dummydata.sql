@@ -1,6 +1,6 @@
 --약관
 INSERT INTO public.tb_terms
-(rental_terms, join_terms, join_privacy_terms)
+(join_terms, join_privacy_terms)
 VALUES('대관 현황 메뉴에서 사용하시고자 하는 시간과 공간의 예약 현황을 먼저 확인하신 후 대관 신청해주십시오.
 사용자가 사용예정일포함 4일 전에 계약 해지를 서면으로 통보하여 승인을 얻은 경우 납부액의 100% 환불이 가능합니다.
 회비 및 참가비가 있는 수익성 사업이나 공연(1~2인 소규모 공연도 해당)이 포함된 행사 및 정치ㆍ종교성 행사는 대관할 수 없습니다.
