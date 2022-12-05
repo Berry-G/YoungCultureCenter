@@ -31,7 +31,7 @@ public class AdminDto {
 	}
 	public void setJoin_terms(String join_terms) {
 		this.join_terms = join_terms;
-	}
+	}	
 	public String getJoin_privacy_terms() {
 		return join_privacy_terms;
 	}
