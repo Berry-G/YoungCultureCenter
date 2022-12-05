@@ -14,11 +14,14 @@
 <%@include file="/WEB-INF/views/header.jsp"%>
   <!--start container-->
 <div class="container pt-5">
-  <h3>공지사항</h3>
+  
+  <h2 class="noticeTitle">
+  	<a id="noticeList" >공지사항</a>
+  </h2>
   <!-- 게시판 테이블 -->
 		
 				
-		<table class="table table-group-divider table table-striped mt-5" >
+		<table class="table table-group-divider table table-striped table table-hover mt-5" >
 			<colgroup>
 				<col width="50%">
 				<col width="15%">
@@ -116,6 +119,17 @@
 	</div>
   <!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
+
+<script type="text/javascript">
+	
+	//공지사항 클릭시 공지사항 첫 페이지로 이동 
+	$("#noticeList").on("click", function() {
+		location.href ="<c:url value='/board/notice'/>";
+	})
+
+</script>
+ 
+ 
  
 </body>
 </html>
