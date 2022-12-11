@@ -100,6 +100,14 @@ INSERT INTO prental_info
 (prental_de, prtime_schedule, user_id, croom_id)
 VALUES('2022-11-27', '14:10 ~ 16:00', 'admin', '101');
 
+do $$
+begin
+for i in 1..48 loop
+INSERT INTO studyroom ("sroom_seat_id", "sroom_rental_yn") VALUES (i,'n');
+end loop;
+end;
+$$;
+
 ------------------------------------------------------성호------------------------------------------------------
 -- course_type dummy data
 INSERT INTO public.course_type (course_cate_cd, course_cate_name) VALUES('Spo', '운동');
