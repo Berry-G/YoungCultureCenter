@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS club_attach CASCADE;
 DROP TABLE IF EXISTS tb_attach CASCADE;
 DROP TABLE IF EXISTS rental_time CASCADE;
 DROP TABLE IF EXISTS tb_terms CASCADE;
+DROP TABLE IF EXISTS sroom_rental_info CASCADE;
 
 
 CREATE TABLE admin_section (
@@ -37,7 +38,7 @@ CREATE TABLE admin_section (
 CREATE TABLE ARTICLE (
     article_id   serial,
     article_date    timestamp without time zone ,
-    article_Board_type    varchar(10) NOT NULL,
+    article_Board_type    character(1) NOT NULL,
     user_id    varchar(16) NOT NULL,
     article_title    varchar NOT null,
     article_contents    text NOT NULL,
@@ -132,12 +133,11 @@ CREATE TABLE inq_board (
     inq_title varchar(100) not null,
     inq_content text not null,
     inq_date date not null,
-    inq_YN    boolean NOT null  --답변 내용 null여부로 판단으로 변경(컬럼삭제)
+    inq_YN    boolean NOT null
     
 );
 ALTER TABLE inq_board ADD CONSTRAINT inq_board_PK PRIMARY KEY ( inq_id );
 alter table inq_board add column inq_ans text;
-alter table inq_board drop column inq_yn;
 
 CREATE TABLE main_banner (
     banner_id    integer NOT NULL,
@@ -172,12 +172,9 @@ ALTER TABLE rental_time ADD CONSTRAINT rental_time_PK PRIMARY KEY ( prtime_sched
 
 CREATE TABLE studyroom (
     sroom_seat_id    integer NOT NULL,
-    sroom_entry_time    timestamp without time zone NOT NULL,
-    sroom_checkout_time    timestamp without time zone NOT NULL,
-    user_id    varchar(16) NOT NULL
+    sroom_rental_yn  character(1) not null
 );
 ALTER TABLE studyroom ADD CONSTRAINT studyroom_PK PRIMARY KEY ( sroom_seat_id );
-alter table studyroom add column use_yn boolean not null;
 
 -- course_id 타입 변경 Integer -> serial 
 CREATE TABLE tb_course (
@@ -239,9 +236,19 @@ ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
 
 create table tb_terms 
 (
-	join_terms	   text	--이용약관
+	join_terms		text	--이용약관
 ,	join_privacy_terms text --개인정보취급방침
 );
+
+create table sroom_rental_info 
+(
+	srental_no				serial not null
+,	sroom_rental_stime		timestamp without time zone not null
+,	sroom_rental_etime		timestamp without time zone not null
+,	user_id					varchar(16) not null
+,	sroom_seat_id			integer NOT NULL
+);
+alter table sroom_rental_info add constraint sroom_rental_info_PK primary key (srental_no); 
 
 
 --FK============================================================================================================
@@ -262,7 +269,8 @@ alter table prental_info add FOREIGN KEY(prtime_schedule) REFERENCES rental_time
 
 alter table tb_rental_locker add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
-alter table studyroom add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
+alter table sroom_rental_info add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
+alter table sroom_rental_info add FOREIGN KEY(sroom_seat_id) REFERENCES studyroom(sroom_seat_id) ON DELETE CASCADE;
 
 --게시글, 첨부파일, 문의게시판 테이블 fk생성
 alter table ARTICLE add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
@@ -283,4 +291,3 @@ alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELET
 alter table tb_permission add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 -- END------------------- create, drop table & add pk and fk & add column--------------------------------------
-
