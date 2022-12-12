@@ -11,7 +11,14 @@ public interface RentalDao {
 	List<RentalDto> selectview() throws Exception;
 	List<RentalDto> selectAll(String croom_id, Date prental_de) throws Exception;
 	List<RentalDto> selectRental() throws Exception;
-
 	int insertRentalinfo(RentalDto dto)throws Exception;	//예약하는 insert 로직
 	
+	List<RentalDto> sroomview() throws Exception;
+	int insertStudyroomlentalinfo(RentalDto rentalDto) throws Exception;
+	int updateStudyroomStatusInsert(RentalDto rentalDto) throws Exception;
+	int updateStudyroomStatusDelete(RentalDto rentalDto) throws Exception;
+	int deleteStudyroom() throws Exception;
+	
+	
+
 }

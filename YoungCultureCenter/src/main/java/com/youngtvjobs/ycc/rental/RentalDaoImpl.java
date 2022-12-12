@@ -50,7 +50,32 @@ public class RentalDaoImpl implements RentalDao{
 		return session.insert(namespace + "insertRentalinfo", dto);
 	}
 
-	
+	@Override
+	public List<RentalDto> sroomview() throws Exception {
+		return session.selectList(namespace + "selectSchedule");
+	}
+
+	@Override
+	public int insertStudyroomlentalinfo(RentalDto rentalDto) throws Exception {
+		System.out.println("dao : " + rentalDto.getSroom_rental_etime());
+		return session.insert(namespace + "studyroomRental", rentalDto);
+	}
+
+	@Override
+	public int updateStudyroomStatusInsert(RentalDto rentalDto) throws Exception {
+		return session.update(namespace + "studyroomRentalupdate", rentalDto);
+	}
+
+	@Override
+	public int updateStudyroomStatusDelete(RentalDto rentalDto) throws Exception {
+		return session.update(namespace + "studyroomDeleteupdate", rentalDto);
+	}
+
+	@Override
+	public int deleteStudyroom() throws Exception {
+		return session.delete(namespace + "studyroomReset");
+	}
+
 	
 
 }
