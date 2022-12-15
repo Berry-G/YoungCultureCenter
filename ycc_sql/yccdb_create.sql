@@ -235,6 +235,14 @@ CREATE TABLE tb_user
 
 ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
 
+-- 시큐리티 권한 테이블
+create table user_auth
+(
+	user_id varchar(16) not null,
+	auth varchar(50) not null
+);
+
+
 create table tb_terms 
 (
 	join_terms		text	--이용약관
@@ -290,5 +298,8 @@ alter table attend add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON
 alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 alter table tb_permission add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
+
+-- 시큐리티 권한테이블 fk생성 
+alter table user_auth add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 -- END------------------- create, drop table & add pk and fk & add column--------------------------------------
