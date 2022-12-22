@@ -17,14 +17,17 @@ DROP TABLE IF EXISTS main_modal CASCADE;
 DROP TABLE IF EXISTS prental_info CASCADE;
 DROP TABLE IF EXISTS studyroom CASCADE;
 DROP TABLE IF EXISTS tb_course CASCADE;
+DROP TABLE IF EXISTS course_image CASCADE;
 DROP TABLE IF EXISTS tb_permission CASCADE;
+DROP TABLE IF EXISTS tb_locker CASCADE;
+DROP TABLE IF EXISTS locker_location CASCADE;
 DROP TABLE IF EXISTS tb_rental_locker CASCADE;
 DROP TABLE IF EXISTS tb_user CASCADE;
 DROP TABLE IF EXISTS club_attach CASCADE;
 DROP TABLE IF EXISTS tb_attach CASCADE;
 DROP TABLE IF EXISTS rental_time CASCADE;
 DROP TABLE IF EXISTS tb_terms CASCADE;
-DROP TABLE IF EXISTS sroom_rental_info CASCADE;
+
 
 
 CREATE TABLE admin_section (
@@ -156,32 +159,35 @@ ALTER TABLE main_modal ADD CONSTRAINT main_modal_PK PRIMARY KEY ( modal_id );
 --user_id, croom_id -> varchar로 수정
 --prental_id 타입 변경 = integer -> serial
 --이름 변경 ->  prental_time_info --> prtime_schdule 
+--prtime_schedule 컬럼 삭제 , rental_time 테이블 삭제 --> time1 ~ time6로 대체
 CREATE TABLE prental_info (
     prental_id    serial,
     prental_de    Date NOT NULL,
-    prtime_schedule    varchar(20) NOT NULL,
     user_id    varchar(16) NOT NULL,
-    croom_id    character(10) NOT NULL
+    croom_id    varchar(10) NOT NULL,
+    time1		boolean NOT NULL,
+    time2		boolean NOT NULL,
+    time3		boolean NOT NULL,
+    time4		boolean NOT NULL,
+    time5		boolean NOT NULL,
+    time6		boolean NOT NULL
 );
 ALTER TABLE prental_info ADD CONSTRAINT prental_info_PK PRIMARY KEY ( prental_id );
 
--- 대관 시간값 테이블
-create table rental_time (	
-	prtime_schedule	varchar(20)
-);
-ALTER TABLE rental_time ADD CONSTRAINT rental_time_PK PRIMARY KEY ( prtime_schedule );
-
 CREATE TABLE studyroom (
-    sroom_seat_id    integer NOT NULL,
-    sroom_rental_yn  character(1) not null
+	serial_id		  	serial
+,   	sroom_seat_id   		integer NOT NULL
+,	sroom_rental_stime		timestamp without time zone 
+,	sroom_rental_etime		timestamp without time zone 
+,	user_id				varchar(16) 
 );
-ALTER TABLE studyroom ADD CONSTRAINT studyroom_PK PRIMARY KEY ( sroom_seat_id );
+ALTER TABLE studyroom ADD CONSTRAINT studyroom_PK PRIMARY KEY ( serial_id );
 
 -- course_id 타입 변경 Integer -> serial 
+-- course_image 컬럼 삭제(2022-12-08 KimSeongho)
 CREATE TABLE tb_course (
     course_id    serial NOT NULL,
     course_nm    character varying(255) NOT NULL,
-    course_image    character varying(255),
     course_reg_start_date    date NOT NULL,
     course_reg_end_date    date NOT NULL,
     course_start_date    date NOT NULL,
@@ -200,21 +206,47 @@ CREATE TABLE tb_course (
 );
 ALTER TABLE tb_course ADD CONSTRAINT tb_course_PK PRIMARY KEY ( course_id );
 
+-- course_image 테이블 추가 (course에서 course_image 컬럼 대신 생성)(2022-12-08 KimSeongho)
+create table course_image(
+	uuid 	varchar(100) not null ,
+	fileName 	varchar(100) not null,
+	uploadPath 	varchar(200) not null,
+	course_id 	integer not null
+);
+ALTER TABLE course_image ADD CONSTRAINT course_image_PK PRIMARY KEY ( uuid );
+
 CREATE TABLE tb_permission (
     user_id    character(16) NOT NULL,
     permission    character varying(200)
 );
 ALTER TABLE tb_permission ADD CONSTRAINT tb_permission_PK PRIMARY KEY ( user_id );
 
-CREATE TABLE tb_rental_locker (
-    locker_id    character(6) NOT NULL,
-    locker_location    character(30) NOT NULL,
-    locker_start_date    timestamp without time zone NOT NULL,
-    locker_cost    integer NOT NULL,
-    user_id    character(16) NOT NULL,
-    locker_end_date    timestamp without time zone NOT NULL
+-- 2022-12-15 19:19 KimSeongho
+-- tb_rental_locker -> tb_locker 테이블명 변경
+-- locker_id 타입 변경(character -> integer)
+-- locker_location 타입 변경(character -> varchar)
+-- locker_start_date 타입 변경(timestamp without timezone -> date)
+-- user_id 타입 변경(character -> varchar)
+-- locker_end_date 타입 변경(timestamp without timezone -> date)
+CREATE TABLE tb_locker (
+    locker_id    		serial NOT NULL,
+    locker_no			integer NOT NULL,
+    locker_location_id  integer NOT NULL,
+    user_id    			varchar(16),
+    locker_cost    		integer default 0,
+    locker_start_date	date,
+    locker_end_date    	date
 );
-ALTER TABLE tb_rental_locker ADD CONSTRAINT tb_rental_locker_PK PRIMARY KEY ( locker_id );
+ALTER TABLE tb_locker ADD CONSTRAINT tb_locker_PK PRIMARY KEY ( locker_id );
+-- 2022-12-15 19:59 KimSeongho
+-- locker_location 테이블 생성
+-- tb_locker에 FK 연결
+CREATE TABLE locker_location (
+    locker_location_id	serial NOT NULL,
+    location_name 		varchar(10) NOT NULL
+);
+ALTER TABLE locker_location ADD CONSTRAINT locker_location_PK PRIMARY KEY ( locker_location_id );
+
 
 CREATE TABLE tb_user
 (
@@ -274,12 +306,11 @@ alter table club_member add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON 
 --렌탈
 alter table prental_info add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 alter table prental_info add FOREIGN KEY(croom_id) REFERENCES classroom(croom_id) ON DELETE CASCADE;
-alter table prental_info add FOREIGN KEY(prtime_schedule) REFERENCES rental_time(prtime_schedule) ON DELETE CASCADE;
 
-alter table tb_rental_locker add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
+alter table tb_locker add FOREIGN KEY(locker_location_id) REFERENCES locker_location(locker_location_id) ON DELETE CASCADE;
+alter table tb_locker add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
-alter table sroom_rental_info add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
-alter table sroom_rental_info add FOREIGN KEY(sroom_seat_id) REFERENCES studyroom(sroom_seat_id) ON DELETE CASCADE;
+alter table studyroom add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 --게시글, 첨부파일, 문의게시판 테이블 fk생성
 alter table ARTICLE add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
@@ -290,6 +321,8 @@ alter table inq_board add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DE
 alter table tb_course add FOREIGN KEY(croom_id) REFERENCES classroom(croom_id) ON DELETE CASCADE;
 alter table tb_course add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 alter table tb_course add FOREIGN KEY(course_cate_cd) REFERENCES course_type(course_cate_cd) ON DELETE CASCADE;
+
+alter table course_image add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON DELETE CASCADE;
 
 alter table course_review add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON DELETE CASCADE; 
 alter table course_review  add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
