@@ -27,19 +27,19 @@ DROP TABLE IF EXISTS club_attach CASCADE;
 DROP TABLE IF EXISTS tb_attach CASCADE;
 DROP TABLE IF EXISTS rental_time CASCADE;
 DROP TABLE IF EXISTS tb_terms CASCADE;
-DROP TABLE IF EXISTS user_auth CASCADE;
 DROP TABLE IF EXISTS sroom_rental_info CASCADE;
+DROP TABLE IF EXISTS user_auth CASCADE;
 
 
 CREATE TABLE admin_section (
     top_logo_img    character varying(255) NOT NULL,
     footer_logo_img    character varying(255) NOT NULL
 );
+
 -- article_user_id : character -> varchar 타입 변경
 -- article_id : serial로 변경 
 -- article_title : character -> varchar 타입 변경
 -- article_viewcnt : integer -> int 타입변경, notnull 
--- article_Board_type : character(1) -> varchar(10) 타입변경
 CREATE TABLE ARTICLE (
     article_id   serial,
     article_date    timestamp without time zone ,
@@ -49,7 +49,6 @@ CREATE TABLE ARTICLE (
     article_contents    text NOT NULL,
     article_viewcnt int
 );
-
 ALTER TABLE ARTICLE ADD CONSTRAINT ARTICLE_PK PRIMARY KEY ( article_id );
 
 -- 2022-11-28 KimSeongho
@@ -82,7 +81,7 @@ ALTER TABLE course_review ADD CONSTRAINT course_review_PK PRIMARY KEY ( review_i
 
 CREATE TABLE classroom (
     croom_id    varchar(10) NOT NULL,
-    croom_location    varchar(50) NOT NULL, /*김지호가 바꿀 예정*/
+    croom_location    varchar(50) NOT NULL,
     croom_mpop    integer NOT NULL,
     croom_name    varchar(30) NOT NULL
 );
@@ -95,7 +94,6 @@ CREATE TABLE CLUB (
     club_info    character varying(3000) NOT NULL,
     club_master_id    character(16) NOT NULL
 );
-
 ALTER TABLE CLUB ADD CONSTRAINT CLUB_PK PRIMARY KEY ( club_id );
 
 CREATE TABLE CLUB_BOARD (
@@ -137,10 +135,13 @@ CREATE TABLE inq_board (
     inq_id    serial NOT null,
     inq_title varchar(100) not null,
     inq_content text not null,
-    inq_date date not null,    
+    inq_date date not null,
+    inq_YN    boolean NOT null  --답변 내용 null여부로 판단으로 변경(컬럼삭제)
+    
 );
 ALTER TABLE inq_board ADD CONSTRAINT inq_board_PK PRIMARY KEY ( inq_id );
 alter table inq_board add column inq_ans text;
+alter table inq_board drop column inq_yn;
 
 CREATE TABLE main_banner (
     banner_id    integer NOT NULL,
@@ -155,6 +156,7 @@ CREATE TABLE main_modal (
     modal_url    character varying(500)
 );
 ALTER TABLE main_modal ADD CONSTRAINT main_modal_PK PRIMARY KEY ( modal_id );
+
 --user_id, croom_id -> varchar로 수정
 --prental_id 타입 변경 = integer -> serial
 --이름 변경 ->  prental_time_info --> prtime_schdule 
@@ -237,6 +239,7 @@ CREATE TABLE tb_locker (
     locker_end_date    	date
 );
 ALTER TABLE tb_locker ADD CONSTRAINT tb_locker_PK PRIMARY KEY ( locker_id );
+
 -- 2022-12-15 19:59 KimSeongho
 -- locker_location 테이블 생성
 -- tb_locker에 FK 연결
@@ -245,7 +248,6 @@ CREATE TABLE locker_location (
     location_name 		varchar(10) NOT NULL
 );
 ALTER TABLE locker_location ADD CONSTRAINT locker_location_PK PRIMARY KEY ( locker_location_id );
-
 
 CREATE TABLE tb_user
 (
@@ -266,6 +268,7 @@ CREATE TABLE tb_user
 
 ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
 
+
 -- 시큐리티 권한 테이블
 create table user_auth
 (
@@ -276,19 +279,10 @@ create table user_auth
 
 create table tb_terms 
 (
-	join_terms		text	--이용약관
+	join_terms	   text	--이용약관
 ,	join_privacy_terms text --개인정보취급방침
 );
 
-create table sroom_rental_info 
-(
-	srental_no				serial not null
-,	sroom_rental_stime		timestamp without time zone not null
-,	sroom_rental_etime		timestamp without time zone not null
-,	user_id					varchar(16) not null
-,	sroom_seat_id			integer NOT NULL
-);
-alter table sroom_rental_info add constraint sroom_rental_info_PK primary key (srental_no); 
 
 
 --FK============================================================================================================
