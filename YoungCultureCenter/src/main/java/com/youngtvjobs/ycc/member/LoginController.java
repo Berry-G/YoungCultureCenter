@@ -74,7 +74,7 @@ public class LoginController {
 		if(session.getAttribute("autoLogin")!=null) {
 		}
 
-		
+
 		toURL = toURL == null || toURL.equals("") ? "/" : toURL;
 		return "redirect:" + toURL;
 	}
