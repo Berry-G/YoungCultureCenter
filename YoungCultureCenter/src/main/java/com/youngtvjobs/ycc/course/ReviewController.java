@@ -3,11 +3,13 @@ package com.youngtvjobs.ycc.course;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,14 +35,14 @@ public class ReviewController {
 
 	// 수강후기 수정
 	@PatchMapping("/course/reviews/{review_id}")
-	public ResponseEntity<String> modify(@PathVariable Integer review_id, String user_id
-											, @RequestBody ReviewDto reviewDto, HttpSession session) {
+	public ResponseEntity<String> modify(@PathVariable Integer review_id, String user_id , HttpServletRequest request
+											, @RequestBody ReviewDto reviewDto, Authentication auth) {
 		reviewDto.setUser_id(user_id); // 작성자 id
 		reviewDto.setReview_id(review_id); // 작성된 reivew_id
 		
 		try {
 			// '작성자'와 동일한 계정이거나 '관리자'일 경우 수정 가능
-			if(session.getAttribute("id").equals(user_id) || session.getAttribute("grade").equals("관리자")) {
+			if(auth.getName().equals(user_id) || request.isUserInRole("ROLE_ADMIN")) {
 				if(reviewService.modify(reviewDto) != 1) throw new Exception("Update failed.");
 			}		
 			return new ResponseEntity<String>("MOD_OK", HttpStatus.OK);
@@ -53,8 +55,8 @@ public class ReviewController {
 	
 	// 수강후기 삭제
 	@DeleteMapping("/course/reviews/{review_id}")
-	public ResponseEntity<String> remove(@PathVariable Integer review_id, Integer course_id, String user_id
-														, ReviewDto reviewDto, HttpSession session) {
+	public ResponseEntity<String> remove(@PathVariable Integer review_id, Integer course_id, String user_id, HttpServletRequest request
+														, ReviewDto reviewDto, Authentication auth) {
 		reviewDto.setUser_id(user_id); // 작성자 id
 		
 		try {
@@ -62,7 +64,7 @@ public class ReviewController {
 			System.out.println(rowCnt);
 			
 			// '작성자'와 동일한 계정이거나 '관리자'일 경우 삭제 가능 + review_cnt 감소
-			if(session.getAttribute("id").equals(user_id) || session.getAttribute("grade").equals("관리자")) {
+			if(auth.getName().equals(user_id) || request.isUserInRole("ROLE_ADMIN")) {
 				if(rowCnt != 1) throw new Exception("Delete Failed");
 			}
 			
@@ -76,8 +78,8 @@ public class ReviewController {
 	// 수강후기 작성
 	@PostMapping("/course/reviews")
 	public ResponseEntity<String> write(@RequestBody ReviewDto reviewDto, Integer course_id
-											, HttpSession session, RedirectAttributes rattr){
-		String user_id = (String) session.getAttribute("id");
+											, Authentication auth, RedirectAttributes rattr){
+		String user_id = auth.getName();
 		Date nowdate = new Date();
 		
 		reviewDto.setUser_id(user_id);

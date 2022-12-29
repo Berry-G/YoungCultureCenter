@@ -14,7 +14,6 @@ import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +22,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -65,16 +65,12 @@ public class CourseController {
 	
 	// 수강신청 클릭 후 이동하는 페이지
 	@GetMapping("/course/regcomplete")
-	public String courseRegComplete(Integer course_id, AttendDto attendDto, Model m
-									, HttpSession session, HttpServletRequest request, RedirectAttributes rattr) {
-		String user_id = (String) session.getAttribute("id"); // 세션에 저장되어 있는 id 불러오기
+	public String courseRegComplete(Integer course_id, AttendDto attendDto, Model m , Authentication auth, RedirectAttributes rattr, HttpServletRequest request) {
+		String user_id = auth.getName(); // 세션에 저장되어 있는 id 불러오기
 		Date nowdate = new Date(); // 오늘날짜 객체 생성
 
 		attendDto.setUser_id(user_id);
 		attendDto.setCourse_id(course_id);
-
-//		System.out.println(nowdate);
-		System.out.println("attendDto" + attendDto);
 
 		try {
 			m.addAttribute("attendDto", attendDto);
@@ -281,6 +277,7 @@ public class CourseController {
 		} // 향상된 for
 		
 		ResponseEntity<List<CourseImageDto>> result = new ResponseEntity<List<CourseImageDto>>(imageList, HttpStatus.OK);
+		System.out.println("이미지 업로드 성공");
 		
 		return result;
 		
@@ -296,8 +293,8 @@ public class CourseController {
 	/* 강좌 수정 */
 	@PostMapping("/course/modify")
 	public String courseModify(CourseDto courseDto, Integer page, Integer pageSize, 
-								RedirectAttributes rattr, Model m, HttpSession session) {
-		String user_id = (String) session.getAttribute("id");
+								RedirectAttributes rattr, Model m, Authentication auth) {
+		String user_id = auth.getName();
 		courseDto.setUser_id(user_id);
 		
 		try {
@@ -325,7 +322,7 @@ public class CourseController {
 	
 	/* 강좌 수정 페이지 */
 	@GetMapping("/course/modify")
-	public String courseModify(Model m, Integer course_id, CourseSearchItem sc, HttpServletRequest request) {
+	public String courseModify(Model m, Integer course_id, CourseSearchItem sc) {
 		try {
 			CourseDto courseDto = courseService.readCourseDetail(course_id);
 			List<CourseDto> classroomList = courseService.getcroomId();
@@ -351,34 +348,35 @@ public class CourseController {
 	/* 강좌 삭제 */
 	@PostMapping("/course/remove")
 	public String courseRemove(Integer course_id, @RequestParam("user_id")String user_id, Integer page, Integer pageSize
-			, RedirectAttributes rattr, HttpSession session) {
+			, RedirectAttributes rattr, Authentication auth, HttpServletRequest request) {
 		
 		String msg = "DEL_OK";
+		System.out.println(request.isUserInRole("ROLE_ADMIN") );
 		
 		try {
-			List<CourseImageDto> fileList = courseService.getCourseImageList(course_id);
+			if(auth.getName().equals(user_id) || request.isUserInRole("ROLE_ADMIN")) {
+				List<CourseImageDto> fileList = courseService.getCourseImageList(course_id);
 			
-			// 강좌 삭제시 서버 내 원본 파일, 썸네일 파일 삭제
-			if(fileList != null) {
-				List<Path> pathList = new ArrayList();
-				
-				fileList.forEach(dto -> {
+				// 강좌 삭제시 서버 내 원본 파일, 썸네일 파일 삭제
+				if(fileList != null) {
+					List<Path> pathList = new ArrayList();
 					
-					// 원본 이미지
-					Path path = Paths.get(dto.getUploadPath(), dto.getUuid() + "_" + dto.getFileName());
-					pathList.add(path);
+					fileList.forEach(dto -> {
+						
+						// 원본 이미지
+						Path path = Paths.get(dto.getUploadPath(), dto.getUuid() + "_" + dto.getFileName());
+						pathList.add(path);
+						
+						// 썸네일 이미지
+						path = Paths.get(dto.getUploadPath(), "s_" + dto.getUuid() + "_" + dto.getFileName());
+						pathList.add(path);
+					});
 					
-					// 썸네일 이미지
-					path = Paths.get(dto.getUploadPath(), "s_" + dto.getUuid() + "_" + dto.getFileName());
-					pathList.add(path);
-				});
-				
-				pathList.forEach(path -> {
-					path.toFile().delete();
-				});
-			}
+					pathList.forEach(path -> {
+						path.toFile().delete();
+					});
+				}
 			
-			if(session.getAttribute("id").equals(user_id) || session.getAttribute("grade").equals("관리자")) {
 				if (courseService.courseRemove(course_id) != 1) 
 					throw new Exception("Delete failed.");
 			}
@@ -397,8 +395,9 @@ public class CourseController {
 	
 	/* 강좌 등록 */
 	@PostMapping("/course/write")
-	public String courseWrite(CourseDto courseDto, RedirectAttributes rattr, Model m, HttpSession session) {
-		String user_id = (String) session.getAttribute("id");
+	public String courseWrite(CourseDto courseDto, RedirectAttributes rattr, Model m, Authentication auth) {
+		String user_id = auth.getName();
+		
 		courseDto.setUser_id(user_id);
 		logger.info("writePOST........" + courseDto);
 
@@ -421,10 +420,7 @@ public class CourseController {
 
 	/* 강좌 등록 페이지 */
 	@GetMapping("/course/write")
-	public String courseWrite(Model m, HttpServletRequest request) {
-		if (!logincheck(request))
-			return "redirect:/login?toURL=" + request.getRequestURL();
-		
+	public String courseWrite(Model m) {
 		m.addAttribute("mode", "new");
 		
 		try {
@@ -455,12 +451,8 @@ public class CourseController {
 	}
 
 	@GetMapping("/course/detail")
-	public String coursedetail(CourseSearchItem sc, Integer course_id, Model m, HttpServletRequest request) {
-		// 로그인 체크시 exception 이슈 해결
-		if (!logincheck(request)) {
-			return "redirect:/login?toURL="+request.getRequestURL()+"?course_id="+course_id;
-		}
-
+	public String coursedetail(CourseSearchItem sc, Integer course_id, Model m) {
+		
 		try {
 			CourseDto courseDto = courseService.readCourseDetail(course_id);
 			m.addAttribute(courseDto);
@@ -476,7 +468,9 @@ public class CourseController {
 				m.addAttribute("rating", rating);
 			} else {
 				System.out.println("리뷰개수=" + courseDto.getReview_cnt());
+				System.out.println(course_id);
 				double rating = courseService.avgReviewRating(course_id);
+				System.out.println(rating);
 				m.addAttribute("rating", rating);
 			}
 		} catch (Exception e) {
@@ -490,7 +484,7 @@ public class CourseController {
 	}
 
 	@GetMapping("/course/search")
-	public String courseSearch(CourseSearchItem sc, Model m, HttpServletRequest request) {
+	public String courseSearch(CourseSearchItem sc, Model m) {
 		try {
 			int totalCnt = courseService.getsearchResultCnt(sc);
 			m.addAttribute("totalCnt", totalCnt);
@@ -512,11 +506,5 @@ public class CourseController {
 		}
 
 		return "/course/courseSearch";
-	}
-
-	private boolean logincheck(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		return session != null && session.getAttribute("id") != null;
 	}
 }

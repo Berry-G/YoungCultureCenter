@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<c:set var="loginId" value="${sessionScope.id }" />
+<sec:authentication property="principal" var="pinfo"/>
+<c:set var="loginId" value="${pinfo.member.user_id }" />
+<c:set var="userGrade" value="${pinfo.member.user_grade }" />
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +54,8 @@
 				<input type="hidden" name="course_id" value="${courseDto.course_id }">
 				<div class="col-md-6">
 					<div class="table table-bordered h-100">
-						<input class="form-control" type="hidden" name="user_id" value="${courseDto.user_id }" ${mode=="new" || mode=="modify" ? "" : "readonly" } />
+						<input class="form-control" type="hidden" name="user_id" value="${courseDto.user_id }"/>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<table class="table h-100">
 							<tbody>
 							<colgroup><col width="25%"></colgroup>
@@ -88,7 +92,7 @@
 										<select class="form-select w-auto" name="croom_id">
 											<option>선택</option>
 											<c:forEach var="classroom" items="${classroomList }"> 
-												<option value="${classroom.croom_id }">${classroom.croom_name }</option>
+												<option value="${classroom.croom_id }" ${courseDto.croom_id == classroom.croom_id? 'selected' : '' }>${classroom.croom_name }</option>
 											</c:forEach>
 										</select>
 									</td>
@@ -99,7 +103,7 @@
 										<select class="form-select w-auto" name="course_cate_cd">
 											<option>선택</option>
 											<c:forEach var="courseType" items="${typeList }">
-												<option value="${courseType.course_cate_cd }">${courseType.course_cate_name }</option>
+												<option value="${courseType.course_cate_cd }" ${courseDto.course_cate_cd == courseType.course_cate_cd? 'selected' : '' }>${courseType.course_cate_name }</option>
 											</c:forEach>
 										</select>
 									</td>
@@ -109,10 +113,10 @@
 									<td>
 										<select class="form-select w-auto" name="course_target">
 											<option>선택</option>
-											<option>성인</option>
-											<option>청소년</option>
-											<option>유아</option>
-											<option>노인</option>
+											<option ${courseDto.course_target.trim() == '성인'? 'selected' : '' }>성인</option>
+											<option ${courseDto.course_target.trim() == '청소년'? 'selected' : '' }>청소년</option>
+											<option ${courseDto.course_target.trim() == '유아'? 'selected' : '' }>유아</option>
+											<option ${courseDto.course_target.trim() == '노인'? 'selected' : '' }>노인</option>
 										</select>
 									</td>
 								</tr>	
@@ -154,13 +158,21 @@
 								<tr>
 									<th>수강요일</th> <!-- 체크박스로 변경 -->
 									<td>
-										<input class="form-check-input" type="checkbox" name="course_day" value="월" >월
-										<input class="form-check-input" type="checkbox" name="course_day" value="화" >화
-										<input class="form-check-input" type="checkbox" name="course_day" value="수" >수
-										<input class="form-check-input" type="checkbox" name="course_day" value="목" >목
-										<input class="form-check-input" type="checkbox" name="course_day" value="금" >금
-										<input class="form-check-input" type="checkbox" name="course_day" value="토" >토
-										<input class="form-check-input" type="checkbox" name="course_day" value="일" >일
+										<!-- courseDto.course_day.indexOf("월") != -1 ==> (해석) db에 '월'이 존재하면 -->
+										<input class="form-check-input" type="checkbox" name="course_day" value="월" 
+										${courseDto.course_day.indexOf("월") != -1 && courseDto.course_day.indexOf("월") != null  ? 'checked' : '' }>월
+										<input class="form-check-input" type="checkbox" name="course_day" value="화" 
+										${courseDto.course_day.indexOf("화") != -1 && courseDto.course_day.indexOf("화") != null ? 'checked' : '' }>화
+										<input class="form-check-input" type="checkbox" name="course_day" value="수" 
+										${courseDto.course_day.indexOf("수") != -1 && courseDto.course_day.indexOf("수") != null ? 'checked' : '' }>수
+										<input class="form-check-input" type="checkbox" name="course_day" value="목" 
+										${courseDto.course_day.indexOf("목") != -1 && courseDto.course_day.indexOf("목") != null ? 'checked' : '' }>목
+										<input class="form-check-input" type="checkbox" name="course_day" value="금" 
+										${courseDto.course_day.indexOf("금") != -1 && courseDto.course_day.indexOf("금") != null ? 'checked' : '' }>금
+										<input class="form-check-input" type="checkbox" name="course_day" value="토" 
+										${courseDto.course_day.indexOf("토") != -1 && courseDto.course_day.indexOf("토") != null ? 'checked' : '' }>토
+										<input class="form-check-input" type="checkbox" name="course_day" value="일" 
+										${courseDto.course_day.indexOf("일") != -1 && courseDto.course_day.indexOf("일") != null ? 'checked' : '' }>일
 									</td>
 								</tr>
 							</c:if>
@@ -209,9 +221,6 @@
 					<input id="" class="btn btn-primary" type="button" value="이미지업로드" onclick="showUploadImage();">
 				</div> -->
 				<div class="form_section">
-     			<div class="form_section_title">
-     				<label>상품 이미지</label>
-     			</div>
      			<div class="form_section_content">
      				<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;" multiple>
      				<div id="uploadResult"></div>
@@ -274,10 +283,7 @@
 						  </button>
 						</div> //캐러셀 -->
 						
-						<div class="col-lg-5 mb-3 form_section">
-							<div class = form_section_title>
-								<label>상품 이미지</label>
-							</div>
+						<div class="col-lg-5 mb-3 form_section align-self-center">
 							<div class="form_section_content">
 								<div id="uploadResult2"></div>
 							</div>
@@ -371,11 +377,11 @@
 							<button type="button" id="backtoSearch" class="btn btn-secondary btn-list">뒤로</button>
 						</c:if>
 						
-						<c:if test="${mode ne 'new' && sessionScope.grade == '강사' }">
+						<c:if test="${mode ne 'new' && userGrade == '강사' }">
 							<button type="button" id="writeNewBtn" class="btn btn-primary btn-write">강좌등록</button>
 						</c:if>
 						
-						<c:if test="${courseDto.user_id eq loginId || sessionScope.grade == '관리자' }"> 
+						<c:if test="${courseDto.user_id eq loginId || userGrade == '관리자' }"> 
 							<c:if test="${mode ne 'modify' && mode ne 'new'}">
 								<button type="button" id="courseModBtn" class="btn btn-primary btn-modify">수정</button>
 							</c:if>
@@ -547,9 +553,15 @@
 					formData.append("uploadFile", fileObj)
 				}
 				
+				var csrfHeaderName = "${_csrf.headerName}"
+				var csrfTokenValue= "${_csrf.token}"
+				
 				// processData와 contentType 속성의 값을 'false'로 해주어야만 첨부파일이 서버로 전송된다
 				$.ajax({
-					url : '/ycc/course/uploadAjaxAction' // 서버로 요청을 보낼 url
+					beforeSend: function(xhr){
+						  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+					}
+					, url : '/ycc/course/uploadAjaxAction' // 서버로 요청을 보낼 url
 					, processData : false // 서버로 전송할 데이터를 queryString 형태로 변환할지 여부
 					, contentType : false // 서버로 전송되는 데이터의 content-type
 					, data : formData // 서버로 전송할 데이터
@@ -626,9 +638,14 @@
 			function deleteFile() {
 				let targetFile = $(".imgDeleteBtn").data("file")
 				let targetDiv = $("#result_card");
+				var csrfHeaderName = "${_csrf.headerName}"
+				var csrfTokenValue= "${_csrf.token}"
 				
 				$.ajax({
-					url : '/ycc/course/deleteimage' // 파일 삭제를 수행하는 url 작성
+					beforeSend: function(xhr){
+						  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+					}
+					, url : '/ycc/course/deleteimage' // 파일 삭제를 수행하는 url 작성
 					, data : {fileName : targetFile} // 객체 초기자를 활용하여 fileName 속성명에 targetFile(이미지 파일 경로) 속성 값을 부여 
 					, dataType : 'text' // 전송하는 targetFile은 문자 데이터이기 때문에 'text'를 지정
 					, type : 'POST' // 서버 요청 방식
@@ -680,9 +697,9 @@
 				str += "<div id='result_card'"
 				str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'"
 				str += ">"
-				str += " <img class='img img-fluid' src='/ycc/course/imagedisplay?fileName=" + fileCallPath2 + "'>"
+				str += " <img class='w-100' src='/ycc/course/imagedisplay?fileName=" + fileCallPath2 + "'>"
 				if(modify == true) {
-					str += " <div class='imgDeleteBtn' data-file='" + fileCallPath2 + "'>x</div>"
+					str += " <div hidden class='imgDeleteBtn' data-file='" + fileCallPath2 + "'>x</div>"
 					str += " <input type='hidden' name='imageList[0].fileName' value='"+obj.fileName+"'>"
 					str += " <input type='hidden' name='imageList[0].uuid' value='"+obj.uuid+"'>"
 					str += " <input type='hidden' name='imageList[0].uploadPath' value='"+obj.uploadPath+"'>"
@@ -708,8 +725,14 @@
 					return
 				}
 				
+				var csrfHeaderName = "${_csrf.headerName}"
+				var csrfTokenValue= "${_csrf.token}"
+				
 				$.ajax({
-					type : 'PATCH'
+					beforeSend: function(xhr){
+						  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+					}
+					, type : 'PATCH'
 					, url : '/ycc/course/reviews/'+review_id
 					, headers : { "content-type" : "application/json" }
 					, data : JSON.stringify({review_id:review_id, review_content:review_content, review_rating:review_rating})
@@ -741,8 +764,14 @@
 				if(review_cnt > 0){
 					let review_id = $(this).parent().attr("data-review_id")
 					let course_id = $(this).parent().attr("data-course_id")
+					var csrfHeaderName = "${_csrf.headerName}"
+					var csrfTokenValue= "${_csrf.token}"
+					
 					$.ajax({
-						type : 'Delete'
+						beforeSend: function(xhr){
+							  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+						}
+						, type : 'Delete'
 						, url : '/ycc/course/reviews/'+review_id+'?course_id='+course_id
 						, success : function(result) {
 								alert(result)
@@ -757,6 +786,8 @@
 			$("#insertBtn").click(function() {
 				let review = $("textarea[name=review_content]").val()
 				let rating = $("select[name=review_rating]").val()
+				var csrfHeaderName = "${_csrf.headerName}"
+				var csrfTokenValue= "${_csrf.token}"
 				
 				if(review.trim()=='') {
 					alert("댓글을 입력해주세요.")
@@ -770,7 +801,10 @@
 				}
 				
 				$.ajax({
-					type : 'POST'
+					beforeSend: function(xhr){
+						  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+					}
+					, type : 'POST'
 					, url : '/ycc/course/reviews?course_id='+course_id
 					, headers : { "content-type" : "application/json" }
 					, dataType : 'text'
@@ -787,8 +821,14 @@
 			
 			// 수강후기리스트 출력
 			let showList = function(course_id) {
+				var csrfHeaderName = "${_csrf.headerName}"
+				var csrfTokenValue= "${_csrf.token}"
+				
 				$.ajax({
-					type : 'GET'
+					beforeSend: function(xhr){
+						  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+					}
+					, type : 'GET'
 					, url : '/ycc/course/reviews?course_id='+course_id
 					, success : function(result) {
 							$("#reviewList").html(toHtml(result))
@@ -811,9 +851,10 @@
 				tmp += " </thead>"
 				
 				reviews.forEach(function(review) {
-					var userId = '${loginId}'
+					var userId = '${loginId }'
 					var userIdCheck = ( review.user_id == userId )
-					var sessionGradeCheck = ${sessionScope.grade == '관리자'}
+					var GradeCheck = ${userGrade == '관리자'}
+					
 					i = review.review_id
 					tmp += '<tr>'
 					tmp += ' <td>'+i+'</td>'
@@ -833,7 +874,7 @@
 					tmp += ' 			 </div>'
 					tmp += ' 			</div>'
 					
-					if(userIdCheck || sessionGradeCheck) {
+					if(userIdCheck || GradeCheck) {
 						tmp += ' 			<hr>'
 						tmp += '   		 <div data-review_id='+review.review_id+' data-course_id='+review.course_id+' data-review_rating='+review.review_rating+' class="text-end d-grid d-md-block gap-1">'
 						tmp += '			  <button id="modBtn" class="btn btn-secondary">수정</button>'

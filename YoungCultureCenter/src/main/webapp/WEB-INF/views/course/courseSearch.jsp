@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authentication property="principal" var="pinfo"/>
+
+<c:if test="${pinfo != 'anonymousUser' }">
+	<c:set var="userGrade" value="${pinfo.member.user_grade }" />
+</c:if>
 
 <!DOCTYPE html>
 <html>
@@ -43,7 +50,7 @@
 	<div class="container mt-5">
 		<h2>수강신청</h2>
 		<hr>
-		<form action="" method="get">
+		<form method="get">
 			<div class="searchBox row p-3 d-flex" style="justify-content: space-around;">
 				<div class="col-lg-10 row">
 					<div class="col-md-4">
@@ -59,7 +66,7 @@
 							</div>
 						</div>
 					</div>
-				<div class="col-md-4">
+					<div class="col-md-4">
 						<div class="row">
 							<label for="sidebar-position2" class="col-4 align-self-center text-center">수강대상</label>
 							<div class="col-8">
@@ -85,20 +92,18 @@
 							</div>
 						</div>
 					</div>
-						<div role="search" class="col-md-12">
-							<input class="form-control" type="text" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요" aria-label="Search" id="keyword">
-						</div>
+					<div role="search" class="col-md-12">
+						<input class="form-control" type="text" name="keyword" value="${param.keyword }" placeholder="검색어를 입력해주세요" aria-label="Search" id="keyword">
 					</div>
+				</div>
 				<div class="col-lg-2 align-items-center gap-2" style="display: -webkit-inline-box;">
-						<div class="col-lg-6">
-							<input type="submit" class="btn btn-primary" value="검색" style="width:100%; height:100%;">
-						</div>
+					<div class="col-lg-6">
+						<input type="submit" class="btn btn-primary" value="검색" style="width:100%; height:100%;">
+					</div>
 					<div class="col-lg-6" >
 						<button onclick="test()" class="btn btn-outline-primary" style="width:100%; height:100%; white-space: nowrap;">초기화</button>
 					</div>
 				</div>
-			
-				
 			</div>
 			<div class="row py-3 float-end gap-1">
 				<select class="form-select col-auto" name="orderby" aria-label=".form-select-sm example" style="width: auto;">
@@ -126,8 +131,7 @@
 			<tbody class="table-group-divider align-middle">
 				<c:forEach var="courseDto" items="${list }">
 					<tr>
-						<td>
-																											<!-- detailpage에서 목록 버튼클릭시 주소를 유지시키기 위해서 -->
+						<td>																			<!-- detailpage에서 목록 버튼클릭시 주소를 유지시키기 위해서 -->
 							<a class="tdeco-none" href="<c:url value="/course/detail${pr.sc.queryString }&course_id=${courseDto.course_id }" />">
 								${courseDto.course_nm }
 							</a>
@@ -165,7 +169,7 @@
 				</ul>
 			</c:if>
 		</nav>
-		<c:if test="${sessionScope.grade == '강사' || sessionScope.grade == '관리자' }">
+		<c:if test="${userGrade == '강사' || userGrade == '관리자' }">
 			<div class="text-end">
 				<button id="writeBtn" class="btn btn-primary btn_write" onclick="location.href='<c:url value="/course/write" />' ">강좌등록</button>
 			</div>
