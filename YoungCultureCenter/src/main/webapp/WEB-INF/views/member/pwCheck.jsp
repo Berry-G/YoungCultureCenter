@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -31,6 +32,7 @@
           <div class="col-md-4">
           	<label for="inputPassword" class="visually-hidden">Password</label>
           	<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
+          	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
           </div>
           <div class="col-md-4 text-start d-grid d-md-block">
           	<button type="submit" class="btn btn-primary mb-3">확인</button>

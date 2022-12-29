@@ -71,7 +71,6 @@ public class PageResolver {
 	}
 
 
-
 	public int getBeginPage() {
 		return beginPage;
 	}

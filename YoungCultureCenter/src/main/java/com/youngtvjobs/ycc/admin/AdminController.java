@@ -21,22 +21,14 @@ public class AdminController
 	@RequestMapping("/admin")
 	public String adminmain(HttpServletRequest request) throws Exception
 	{
-		// 관리자 권한이 없을 때 동작
-		if (!YccMethod.permissionCheck("관리자", request))
-		{
-			return "redirect:/error/403";
-		}
+
 		return "admin/adminmain";
 	}
 
 	@GetMapping("/admin/profile")
 	public String adminprofile(HttpServletRequest request) throws Exception
 	{
-		// 관리자 권한이 없을 때 동작
-		if (!YccMethod.permissionCheck("관리자", request))
-		{
-			return "redirect:/error/403";
-		}
+		
 		return "admin/profile";
 	}
 
@@ -45,11 +37,7 @@ public class AdminController
 	@GetMapping("/admin/popup")
 	public String popupSetting(HttpServletRequest request) throws Exception
 	{
-		// 관리자 권한이 없을 때 동작
-		if (!YccMethod.permissionCheck("관리자", request))
-		{
-			return "redirect:/error/403";
-		}
+		
 		return "admin/popup";
 	}
 	
@@ -84,11 +72,7 @@ public class AdminController
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		// 관리자 권한이 없을 때 동작
-		if (!YccMethod.permissionCheck("관리자", request))
-		{
-			return "redirect:/error/403";
-		}
+		
 		return "admin/agreement";
 	}
 	

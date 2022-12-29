@@ -6,6 +6,7 @@
 
 <configuration>
 	<typeAliases>
+		<typeAlias alias="AuthDto" type="com.youngtvjobs.ycc.member.AuthDto"/>
 		<typeAlias alias="MemberDto" type="com.youngtvjobs.ycc.member.MemberDto" />
 		<typeAlias alias="InquiryDto" type="com.youngtvjobs.ycc.member.InquiryDto" />
 		

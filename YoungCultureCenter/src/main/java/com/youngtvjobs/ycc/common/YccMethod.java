@@ -10,11 +10,8 @@ import javax.servlet.http.HttpSession;
 
 public class YccMethod
 {
-	//세션 체크해서 로그인 여부 확인
-	public static boolean loginSessionCheck(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		return session != null && session.getAttribute("id") != null;
-	}
+
+	
 	
 	/**세션의 권한 체크
 	 * 
@@ -34,8 +31,8 @@ public class YccMethod
 	
 	// Date--> String 형변환
 	public static String date_toString(Date date) {
-		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String str_to_date = sdf.format(date);
+		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String str_to_date = sdFormat.format(date);
 		return str_to_date;	
 	}
 	
