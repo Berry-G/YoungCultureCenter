@@ -247,40 +247,42 @@ VALUES('후기10', now(), now(), 1, 15, 'ezen');
 
 
 -----------------------------------------------------나리-----------------------------------------------------------
+--inquiry dummy data
+-- inq_id : 문의 작성날짜(6자리) + 001~999
 -- 1개월
 INSERT INTO public.inq_board	
 (inq_cate, user_id, inq_title, inq_content, inq_date)
-VALUES('교육강좌', 'ezen',  '수강 관련 문의', '수강 관련 문의 내용', '2022-11-12');
+VALUES('교육강좌', 'user0',  '수강 관련 문의', '수강 관련 문의 내용', '2022-12-29');
 -- 같은 날짜
 INSERT INTO public.inq_board	
-(inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('교육강좌', 'ezen',  '수강 관련 문의', '수강 관련 문의 내용', '2022-11-01');
+(inq_cate, user_id,  inq_title, inq_content, inq_date )
+VALUES('교육강좌', 'user0',  '수강 관련 문의', '수강 관련 문의 내용', '2022-12-28');
 -- 3개월
 INSERT INTO public.inq_board
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('결제', 'ezen',  '결제 관련 문의', '결제 관련 문의 내용', '2022-09-15');
+VALUES('결제', 'user0',  '결제 관련 문의', '결제 관련 문의 내용', '2022-10-15');
 -- 6개월
 INSERT INTO public.inq_board
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('결제', 'ezen',  '결제 관련 문의', '결제 관련 문의 내용', '2022-07-21');
+VALUES('결제', 'user0',  '결제 관련 문의', '결제 관련 문의 내용', '2022-08-21');
 -- 1년
 INSERT INTO public.inq_board	
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('교육강좌', 'ezen',  '수강 관련 문의', '수강 관련 문의 내용', '2021-10-15');
+VALUES('교육강좌', 'user0',  '수강 관련 문의', '수강 관련 문의 내용', '2022-01-15');
 -- 1년 이상 이전
 INSERT INTO public.inq_board
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('결제', 'ezen',  '결제 관련 문의', '결제 관련 문의 내용', '2020-07-11');
+VALUES('결제', 'user0',  '결제 관련 문의', '결제 관련 문의 내용', '2020-07-11');
 
 
 
 INSERT INTO public.inq_board
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('결제', 'ezen1',  '영수증 문의', '현금영수증 추후발급 되나요?', '2022-10-15');
+VALUES('결제', 'user1',  '영수증 문의', '현금영수증 추후발급 되나요?', '2022-12-15');
 
 INSERT INTO public.inq_board
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
-VALUES('교육강좌', 'ezen1',  '수강 신청 변경 문의', '수강 신청 변경 문의 내용', '2022-10-15');
+VALUES('교육강좌', 'user1',  '수강 신청 변경 문의', '수강 신청 변경 문의 내용', '2022-12-16');
 
 -----------------------------------------------------선혜-----------------------------------------------------------
 INSERT INTO public.article
