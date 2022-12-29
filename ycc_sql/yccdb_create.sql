@@ -29,6 +29,7 @@ DROP TABLE IF EXISTS rental_time CASCADE;
 DROP TABLE IF EXISTS tb_terms CASCADE;
 DROP TABLE IF EXISTS sroom_rental_info CASCADE;
 DROP TABLE IF EXISTS user_auth CASCADE;
+DROP TABLE IF EXISTS persistent_logins CASCADE;
 
 
 CREATE TABLE admin_section (
@@ -274,6 +275,15 @@ create table user_auth
 (
 	user_id varchar(16) not null,
 	auth varchar(50) not null
+);
+
+-- 시큐리티 자동로그인 테이블
+create table persistent_logins 
+(
+	username varchar(16) not null,
+	series varchar(64) primary key,
+	token varchar(64) not null,
+	last_used timestamp not null
 );
 
 
