@@ -254,7 +254,7 @@ CREATE TABLE tb_user
 (
     user_id    varchar(16) NOT null ,
     user_name    varchar(25) NOT NULL,
-    user_pw    varchar(16) NOT NULL,
+    user_pw    varchar(100) NOT NULL,
     user_gender    character(1) NOT NULL,
     user_birth_date date not null,
     user_email    varchar(50) NOT NULL,
