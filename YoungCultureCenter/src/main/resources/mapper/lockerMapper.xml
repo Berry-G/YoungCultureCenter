@@ -36,7 +36,7 @@
 				AND #{locker_start_date}::date <![CDATA[<]]> locker_end_date
 			</when>
 			<otherwise>
-				AND current_date <![CDATA[>=]]> locker_start_date
+				AND current_date + 7 <![CDATA[>=]]> locker_start_date
 				AND current_date <![CDATA[<]]> locker_end_date 
 			</otherwise>
 		</choose>

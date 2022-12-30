@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<c:set var="loginId" value="${sessionScope.id }" />
+<sec:authentication property="principal" var="pinfo"/>
+
+<c:choose>
+	<c:when test="${pinfo != 'anonymousUser' }">
+		<c:set var="loginId" value="${pinfo.member.user_id }" />
+		<c:set var="userName" value="${pinfo.member.user_name }" />
+		<c:set var="userGrade" value="${pinfo.member.user_grade }" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="loginId" value="null" />
+		<c:set var="userName" value="null" />
+	</c:otherwise>
+</c:choose>
+
 
 <!DOCTYPE html>
 <html>
@@ -105,6 +119,7 @@
     
    	<form id="locationForm">
    		<div class="row mt-3 text-center g-2 align-middle">
+   			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		    <table class="col-lg-4">
 		    	<colgroup>
 		    		<col width=40%>
@@ -217,8 +232,11 @@
 	            	<tbody>
 	                <tr>
 	                  <th>이름</th>
-	                  <td hidden><input name="user_id" value="${sessionScope.id }" readonly /></td>
-	                  <td><input class="form-control-plaintext" value="${sessionScope.name }" readonly /></td>
+	                  <td hidden>
+	                  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	                  	<input name="user_id" value="${loginId }" readonly />
+	                  </td>
+	                  <td><input class="form-control-plaintext" value="${userName }" readonly /></td>
 	                </tr>
 	                <tr>
 	                  <th>사물함번호</th>
@@ -306,8 +324,8 @@
   	
   	// 종료일 전달(시작일 + 기간)
   	$("#sendBtn").click(function() {
-  		let session = '${loginId }'
-  		if(session == null || session == ''){
+  		let login = '${loginId }'
+  		if(login == 'null' || login == ''){
   			alert("로그인이 필요합니다.")
   			return false
   		}
