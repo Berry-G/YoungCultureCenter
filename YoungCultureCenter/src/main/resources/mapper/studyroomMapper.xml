@@ -22,6 +22,7 @@
 	  <select id="rentalChk" parameterType="StudyroomDto" resultType="int">
 	    select count(*)
 		from studyroom
-		where user_id = #{user_id}
+		where sroom_rental_etime <![CDATA[ > ]]> now()
+		and user_id = #{user_id}
 	  </select>
   </mapper>

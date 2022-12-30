@@ -1,6 +1,5 @@
 package com.youngtvjobs.ycc.rental;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -9,15 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class StudyroomController {
@@ -27,11 +22,7 @@ public class StudyroomController {
 
 	// 독서실 페이지로 이동했을 때 조건이 지난 부분은 삭제되고, 그 결과를 받아오는 get
 	@GetMapping("/rental/studyroom")
-	public String studyRoom(HttpServletRequest request, Model m) throws Exception {
-
-		if (!logincheck(request))
-			return "redirect:/login?toURL=" + request.getRequestURL();
-
+	public String studyRoom(Model m) throws Exception {
 		try {
 			List<StudyroomDto> list = studyroomService.sroomFix();
 			m.addAttribute("list", list);
@@ -46,13 +37,13 @@ public class StudyroomController {
 	// 독서실 페이지에서 예약을 진행했을 때 insert와 update를 진행하는 post
 	@PostMapping("/rental/studyroom")
 	public String studyRoom(HttpServletRequest request, HttpSession session, String sroom_rental_etime,
-			Integer sroom_seat_id) throws Exception {
+			Integer sroom_seat_id, Authentication auth) throws Exception {
 
 		try {
 			System.out.println("종료 시간 : " + sroom_rental_etime);
 			System.out.println("좌석 no : " + sroom_seat_id);
 			StudyroomDto studyroomDto = new StudyroomDto();
-			String user_id = (String) session.getAttribute("id");
+			String user_id = auth.getName();
 
 			studyroomDto.setSroom_seat_id(sroom_seat_id);
 
@@ -63,6 +54,7 @@ public class StudyroomController {
 			 
 
 			  studyroomDto.setUser_id(user_id);
+			  
 			  
 			  if(studyroomService.validationChkRentaled(studyroomDto) == 1) {
 				  return "redirect:/error/403";
@@ -82,13 +74,6 @@ public class StudyroomController {
 		}
 
 		return "/course/courseRegComplete";
-	}
-
-	
-	private boolean logincheck(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		return session != null && session.getAttribute("id") != null;
 	}
 
 }

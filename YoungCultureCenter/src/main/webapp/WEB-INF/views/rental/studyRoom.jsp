@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authentication property="principal" var="pinfo"/>
+<c:set var="loginId" value="${pinfo.member.user_id }" />
     
 <!DOCTYPE html>
 <html>
@@ -183,6 +187,7 @@
       </div>
     <!-- 결제 전 예약정보 확인 모달창 -->
     <form id="form" method="post" action="" >
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     <div
       class="modal fade"
       id="staticBackdrop"
@@ -223,31 +228,37 @@
 		      $("#sroom_seat_id").html(element.getAttribute("id"))*1 
 		    }
 
-		//해당 유저가 예약을 했는지 확인하는 부분
+		/*해당 유저가 예약을 했는지 확인하는 부분*/
+		
+		//jstl이 js보다 먼저 실행되므로 js에서 다룰 수 없음
+		//따라서 새 배열을 만들고 controller에서 해당 값들을 배열에 담아줌
+		//좌석의 비활성화, 유저 예약 여부 체크 동시 진행
 		var arr = new Array()	
 		<c:forEach items="${list}" var="test">
 			arr.push({user_id:"${test.user_id}"
 				,sroom_seat_id:"${test.sroom_seat_id}"})	
 		</c:forEach>
 			
+		//반복문으로 배열 안에 있는 값들 체크 후 로그인한 user_id가 DB에 있으면 중복예약으로 확인버튼, 이용시간 비활성화
 		for(var i = 0; i<arr.length; i++){
-			if(arr[i].user_id=="${sessionScope.id }"){
+			if(arr[i].user_id=="${pinfo.member.user_id }"){
 				$("#modalBtn").attr("disabled", true);
 				$("#usetime").attr("disabled", true);
-				$("#foralert").append(
+				$("#foralert").append(	//alert 대신 화면에 출력하는 방식
 					'<span class="text-primary">'
 				   +'<p class="text-center fw-bold fs-3">'
 				   +'이미 예약된 좌석이 있습니다.'
 				   +'<br>'
 				   +'예약 좌석 : '
-				   +arr[i].sroom_seat_id+'번'
+				   +arr[i].sroom_seat_id+'번'	//해당 유저가 예약한 좌석 번호
 				   +'</p>'
 				   +'</span>'
 				   
 				)
+				//버튼이 비활성화 되었으므로 버튼의 색도 파란색 -> 회색으로 변경
 				document.getElementById('modalBtn').classList.replace('btn-primary', 'btn-secondary');
 				
-			}//해당 좌석이 예약되어있는지 확인하는 부분
+			}//해당 좌석이 예약되어있는지 확인하여 예약된 좌석에 비활성화를 주는 부분
 			for(var j = 1; j <= 48; j++){
 				if(arr[i].sroom_seat_id==j){
 					document.getElementById(j).disabled = true;
@@ -328,7 +339,7 @@
 		            +'<tr>'
 		            +'<th scope="row" class="col-sm-4">이름</th>'
 		            +'<td>'
-		            +'<div class="col-sm-12">${sessionScope.name }</div>'
+		            +'<div class="col-sm-12">${pinfo.member.user_name }</div>'
 		            +'</td>'
 		            +'</tr>'
 		            +'<tr>'
