@@ -49,11 +49,12 @@ public class LockerController {
 	// 사물함 신청 페이지
 	@GetMapping("/rental/locker")
 	public String locker(String user_id, LockerDto lockerDto, Model m, Authentication auth) {
+		System.out.println(lockerDto);
 		if(auth != null) {
 			user_id = auth.getName();
 			lockerDto.setUser_id(user_id);
 		} else { user_id = null; }
-			
+		
 		LocalDate nowdate = LocalDate.now();
 		m.addAttribute("nowdate", nowdate);
 		LocalDate afterMonth = LocalDate.now().plusDays(30);
@@ -101,6 +102,7 @@ public class LockerController {
 			user_id = auth.getName();
 			lockerDto.setUser_id(user_id);
 		} else { user_id = null; }
+		
 		LocalDate nowdate = LocalDate.now();
 		m.addAttribute("nowdate", nowdate);
 		LocalDate afterMonth = LocalDate.now().plusDays(30);
@@ -131,7 +133,6 @@ public class LockerController {
 			// 나의 예약 현황 불러오기
 			List<LockerDto>myRsvStat = lockerService.getReservationStat(user_id);
 			m.addAttribute("myRsvStat", myRsvStat);
-			System.out.println(myRsvStat);
 			int myRsvCnt = lockerService.getReservationCnt(user_id);
 			m.addAttribute("myRsvCnt", myRsvCnt);
 			
