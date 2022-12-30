@@ -3,7 +3,9 @@
 
 > TEAM Young'tve jobs  
 > 문화센터 홈페이지 만들기 프로젝트 입니다.  
-> 구현 과정 및 로그, 미구현 사항은 [프로젝트](https://github.com/users/Berry-G/projects/2/views/2)를 확인해주세요.  
+> 구현 과정 및 로그, 미구현 사항은 [프로젝트](https://github.com/users/Berry-G/projects/2/views/2)를 확인해주세요.
+>
+> * 구동 시 Lombok 설치 후 Maven 업데이트가 필요합니다. https://projectlombok.org/download
 
 
 
