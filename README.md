@@ -6,7 +6,7 @@
 > 구현 과정 및 로그, 미구현 사항은 [프로젝트](https://github.com/users/Berry-G/projects/2/views/2)를 확인해주세요.
 >
 > * 구동 시 Lombok 설치 후 Maven 업데이트가 필요합니다. https://projectlombok.org/download
-
+> * PostgressSQL 데이터베이스가 필요합니다.https://github.com/Berry-G/YoungCultureCenter/tree/main/ycc_sql
 
 
 ## 목차
