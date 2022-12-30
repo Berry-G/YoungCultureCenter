@@ -7,6 +7,8 @@
 >
 > * 구동 시 Lombok 설치 후 Maven 업데이트가 필요합니다. https://projectlombok.org/download
 > * PostgressSQL 데이터베이스가 필요합니다.https://github.com/Berry-G/YoungCultureCenter/tree/main/ycc_sql
+>
+> > ### 구동 순서
 > > 1. [테이블 생성 쿼리](https://github.com/Berry-G/YoungCultureCenter/blob/main/ycc_sql/yccdb_create.sql)로 테이블을 만듭니다. 
 > > 2. [MemberTest.java](https://github.com/Berry-G/YoungCultureCenter/blob/main/YoungCultureCenter/src/test/java/MemberTest.java)를 JUnit test를 하여 회원을 생성합니다.
 > > 3. [AuthTest.java](https://github.com/Berry-G/YoungCultureCenter/blob/main/YoungCultureCenter/src/test/java/AuthTest.java)를 Junit test 하여 security 동작을 합니다.
