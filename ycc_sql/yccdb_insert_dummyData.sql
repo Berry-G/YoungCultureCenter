@@ -94,13 +94,13 @@ values('풋살장', '외부', '20', '풋살장');
 
 INSERT INTO public.prental_info
 (prental_de, user_id, croom_id, time1, time2, time3, time4, time5, time6)
-VALUES('2022-12-25', 'admin', '101', true, false, false, false ,false, false);
+VALUES('2022-12-31', 'admin', '101', true, false, false, false ,false, false);
 INSERT INTO public.prental_info
 (prental_de, user_id, croom_id, time1, time2, time3, time4, time5, time6)
-VALUES('2022-12-25', 'admin', '101', false, true, false, false ,false, false);
+VALUES('2022-12-31', 'admin', '101', false, true, false, false ,false, false);
 INSERT INTO public.prental_info
 (prental_de, user_id, croom_id, time1, time2, time3, time4, time5, time6)
-VALUES('2022-12-14', 'admin', '수영장', false, false, false, false ,false, true);
+VALUES('2022-12-30', 'admin', '수영장', false, false, false, false ,false, true);
 
 
 
