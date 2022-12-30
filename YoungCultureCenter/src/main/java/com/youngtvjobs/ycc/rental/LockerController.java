@@ -2,12 +2,10 @@ package com.youngtvjobs.ycc.rental;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +18,10 @@ public class LockerController {
 	@Autowired
 	LockerService lockerService;
 	
-	// 사물함 예
+	// 사물함 예약
 	@PostMapping("/rental/locker/reservation")
-	public String lockerReservation(LockerDto lockerDto, HttpSession session, RedirectAttributes rattr) {
-		String user_id = (String) session.getAttribute("id");
+	public String lockerReservation(LockerDto lockerDto, RedirectAttributes rattr, Authentication auth) {
+		String user_id = auth.getName();
 		lockerDto.setUser_id(user_id);
 		
 		try {
@@ -50,9 +48,12 @@ public class LockerController {
 	
 	// 사물함 신청 페이지
 	@GetMapping("/rental/locker")
-	public String locker(LockerDto lockerDto, HttpSession session, Model m) {
-		String user_id = (String) session.getAttribute("id");
-		lockerDto.setUser_id(user_id);
+	public String locker(String user_id, LockerDto lockerDto, Model m, Authentication auth) {
+		if(auth != null) {
+			user_id = auth.getName();
+			lockerDto.setUser_id(user_id);
+		} else { user_id = null; }
+			
 		LocalDate nowdate = LocalDate.now();
 		m.addAttribute("nowdate", nowdate);
 		LocalDate afterMonth = LocalDate.now().plusDays(30);
@@ -80,8 +81,6 @@ public class LockerController {
 				m.addAttribute("period", period);
 			}
 			
-			System.out.println(user_id);
-			
 			// 나의 예약 현황 불러오기
 			List<LockerDto>myRsvStat = lockerService.getReservationStat(user_id);
 			m.addAttribute("myRsvStat", myRsvStat);
@@ -97,8 +96,11 @@ public class LockerController {
 	
 	// 사물함 신청 페이지
 	@PostMapping("/rental/locker")
-	public String lockerpost(LockerDto lockerDto, HttpSession session, Model m) {
-		String user_id = (String) session.getAttribute("id");
+	public String lockerpost(String user_id, LockerDto lockerDto, Model m, Authentication auth) {
+		if(auth != null) {
+			user_id = auth.getName();
+			lockerDto.setUser_id(user_id);
+		} else { user_id = null; }
 		LocalDate nowdate = LocalDate.now();
 		m.addAttribute("nowdate", nowdate);
 		LocalDate afterMonth = LocalDate.now().plusDays(30);
