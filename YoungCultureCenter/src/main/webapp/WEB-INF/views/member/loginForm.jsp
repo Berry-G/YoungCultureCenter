@@ -70,10 +70,11 @@
 					<h3>SNS계정으로 로그인</h3>
 					<div class="d-grid gap-3">
 <!-- 						<div id="googleLoginBtn" class="g-signin2" data-onsuccess="onSignin">구글로그인</div> -->
-						<div class="google">
-							<button type="button" onclick="location.href='/ycc/login/google'"> <i class="fa fa-google" aria-hidden="true"></i>
-								구글 로그인</button>
-						</div>
+<!-- 						<div class="google"> -->
+<!-- 							<button type="button" onclick="location.href='/ycc/login/google'"> <i class="fa fa-google" aria-hidden="true"></i> -->
+<!-- 								구글 로그인</button> -->
+<!-- 						</div> -->
+						<a href="/login/google" class="btn btn-danger btn-lg">구글계정으로 로그인</a>
 						<a href="/login/naver" class="btn btn-success btn-lg">네이버계정으로 로그인</a>
 						<a href="/login/kakao" class="btn btn-warning btn-lg">카카오계정으로 로그인</a>
 					</div>

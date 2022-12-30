@@ -87,16 +87,6 @@ public class LoginController {
 	@PostMapping("/logout")
 	public String postLogout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
-		session.invalidate();
-		
-		//자동로그인 로그아웃 
-        Cookie cookie = WebUtils.getCookie(request, "remember-me");
-        if ( cookie != null ) {
-        	cookie.setMaxAge(0);
-        	response.addCookie(cookie);
-        }
-	        
-
 		return "redirect:/";
 	}
 }
