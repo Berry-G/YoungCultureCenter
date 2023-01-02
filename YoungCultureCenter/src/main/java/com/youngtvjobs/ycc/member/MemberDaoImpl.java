@@ -84,11 +84,11 @@ public class MemberDaoImpl implements MemberDao
 		return session.selectOne(namespace + "findPw", map);
 	}
 	
-	//패스워드 이메일로 발송
-	public String findPword(String user_email) throws Exception {
-		
-		return session.selectOne(namespace + "findPword", user_email);
+	//임시 비밀번호 DB 업로드
+	public String uploadPw(MemberDto dto) throws Exception {
+		return session.selectOne(namespace + "uploadPw", dto);
 	}
+
 
 	//시큐리티 
 	@Override
