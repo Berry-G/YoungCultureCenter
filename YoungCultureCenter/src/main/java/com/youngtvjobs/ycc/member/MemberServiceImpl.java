@@ -1,16 +1,16 @@
 package com.youngtvjobs.ycc.member;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.youngtvjobs.ycc.course.CourseDto;
 import com.youngtvjobs.ycc.member.mail.MailHandler;
 import com.youngtvjobs.ycc.member.mail.TempKey;
 
@@ -26,7 +26,6 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
-
 
 	@Override	//회원 가입
 	public void signinMember(MemberDto dto) throws Exception {
@@ -164,10 +163,17 @@ public class MemberServiceImpl implements MemberService{
 		sendMail.setTo(user_email);
 		sendMail.send();
 	}
-	//시큐리티 
+	
+	//권한
 	@Override
 	public MemberDto read(String user_id) throws Exception {
+		
 		return memberDao.read(user_id);
+	}
+	//나의 수강 목록
+	@Override
+	public List<CourseDto> readMyCourse(String user_id) throws Exception {
+		return memberDao.selectMyCourse(user_id);
 	}
 
 	
