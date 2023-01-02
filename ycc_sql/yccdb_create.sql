@@ -268,7 +268,8 @@ CREATE TABLE tb_user
 );
 
 ALTER TABLE tb_user ADD CONSTRAINT tb_user_PK PRIMARY KEY ( user_id );
-
+--이메일 컬럼 유니크제약조건
+ALTER TABLE tb_user ADD CONSTRAINT constraintname UNIQUE (user_email); 
 
 -- 시큐리티 권한 테이블
 create table user_auth
