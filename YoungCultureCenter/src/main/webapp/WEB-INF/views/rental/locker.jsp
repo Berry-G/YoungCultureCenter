@@ -146,7 +146,7 @@
 					  <th>시작일</th>
 					  <td class="d-grid d-md-block">
 					  	<input type="date" class="form-control w-auto" id="startDate1" name="locker_start_date" min=${nowdate } max=${afterMonth }
-					  	value="${param.locker_start_date == null ? nowdate : param.locker_start_date}" onchange="selectSDate(); changeLocation()" />
+					  	value="${param.locker_start_date }" onchange="selectSDate(); changeLocation()" />
 					  	<input type="hidden" id="endDate1" name="locker_end_date" onchange="changeLocation()">
 					  </td>
 					</tr>
@@ -237,6 +237,7 @@
 	                  	<input name="user_id" value="${loginId }" readonly />
 	                  </td>
 	                  <td><input class="form-control-plaintext" value="${userName }" readonly /></td>
+	                  
 	                </tr>
 	                <tr>
 	                  <th>사물함번호</th>
@@ -322,13 +323,8 @@
 			$("#startDateM").attr("value", ${param.locker_start_date })
 		}
   	
-  	// 종료일 전달(시작일 + 기간)
   	$("#sendBtn").click(function() {
   		let login = '${loginId }'
-  		if(login == 'null' || login == ''){
-  			alert("로그인이 필요합니다.")
-  			return false
-  		}
   		
   		let startDe = new Date($("#startDate1").val())
   		var period = $("#period").val()
@@ -342,8 +338,41 @@
   		$("#endDateM").attr("value", dateFormat(end_Date))
   		$("#lockerCostM").attr("value", cost)
   		
+  		if(login == "null" || login == ""){
+  			alert("로그인이 필요합니다.")
+  			return false
+  		} else if($("#lockerNum").val() == null || $("#lockerNum").val() == ""){
+				alert("사물함을 선택해주세요.")
+				return false
+			} else if($("#lockerLocation").val() == null || $("#lockerLocation").val() == ""){
+				alert("사물함 위치를 선택해주세요.")
+				return false
+			} else if($("#startDateM").val() == null || $("#startDateM").val() == ""){
+				alert("시작일을 선택해주세요.")
+				return false
+			} else if($("#endDateM").val() == null || $("#endDateM").val() == ""){
+				alert("사용기간을 선택해주세요.")
+				return false
+			}
+  		
   		$("#staticBackdrop").modal('show')
 		})
+		
+		
+		let formCheck = function() {
+			let form = document.getElementById("form")
+			if(form.course_nm.value == ""){
+				alert("강좌명을 입력해주세요.")
+				form.course_nm.focus()
+				return false
+			}
+			if(form.course_info.value == ""){
+				alert("강좌소개를 입력해주세요.")
+				form.course_info.focus()
+				return false
+			}
+			return true
+		}
 		
 		function dateFormat(date) {
         let month = date.getMonth() + 1;
@@ -363,19 +392,6 @@
 			form.submit()
 		})
 
-	  // 클래스 변경
-	  function changeClassName() {
-	    document.getElementById("location").classList.replace("col-md-4", "col-md-2")
-	  }
-	
-	  function changeClassName2() {
-	    document.getElementById("location").classList.replace("col-md-2", "col-md-4")
-	  }
-	
-	  window.onresize = function (event) {
-	    var innerWidth = window.innerWidth
-	    innerWidth <= "1280" ? changeClassName() : changeClassName2()
-	  }
   </script>	
   	
 	<!-- footer include -->

@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService{
 		memberDao.signinMember(dto);
 		System.out.println(dto);
 	}
+	
 	@Override	//권한 insert
 	public int insertAuth(String user_id) throws Exception {
 		return memberDao.insertAuth(user_id);
@@ -148,7 +149,6 @@ public class MemberServiceImpl implements MemberService{
 		} catch (Exception e) {e.printStackTrace();}
 
 		
-
 		return user_email;
 		
 	}
@@ -170,6 +170,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memberDao.read(user_id);
 	}
+	
 	//나의 수강 목록
 	@Override
 	public List<CourseDto> readMyCourse(String user_id) throws Exception {

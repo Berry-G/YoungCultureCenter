@@ -10,7 +10,7 @@
 	<style type="text/css">
 	
 	</style>
-	
+
 	<script type="text/javascript">
 		$("#modifyBtn").on("click", function(){
 			let form = $("#form")
@@ -28,6 +28,7 @@
 	<%@include file="/WEB-INF/views/header.jsp"%>
 
 	<form id="form" action="" method="post">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<div class="container text-center mt-5" id="original">
 			<h1 class="text-start">이용약관 관리</h1>
 			<hr>
@@ -69,10 +70,8 @@
 				<button type="button" class="btn btn-outline-secondary" onclick="location.href='/ycc/admin'" style="width: 100px">취소</button>
 			</div>
 		</div>
-		${alert}
 	</form>
 
-	
 	<!-- footer 여백 -->
 	<div style="height: 150px;"></div>
 	<!-- footer include -->

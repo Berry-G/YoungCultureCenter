@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.youngtvjobs.ycc.admin.AdminDto;
+import com.youngtvjobs.ycc.admin.AdminService;
 import com.youngtvjobs.ycc.common.YccMethod;
 import com.youngtvjobs.ycc.course.CourseDto;
 import com.youngtvjobs.ycc.member.security.CustomUser;
@@ -28,8 +29,6 @@ import com.youngtvjobs.ycc.member.security.CustomUser;
 //회원관리 컨트롤러
 @Controller
 public class MemberController {
-
-	MemberDto memberDto;
 
 	MemberDao memberDao;
 	MemberService memberService;
@@ -39,25 +38,36 @@ public class MemberController {
 
 	JavaMailSender mailSender;
 
+	AdminService adminService;
+
 	@Qualifier("BCryptPasswordEncoder")
 	BCryptPasswordEncoder passwordEncoder;
 
 	@Autowired
 	public MemberController(MemberDao memberDao, MemberService memberService, InquiryService inquiryService,
-			InquiryDao inquiryDao, JavaMailSender mailSender, BCryptPasswordEncoder passwordEncoder) {
+			InquiryDao inquiryDao, JavaMailSender mailSender, AdminService adminService,
+			BCryptPasswordEncoder passwordEncoder) {
 		super();
 		this.memberDao = memberDao;
 		this.memberService = memberService;
 		this.inquiryService = inquiryService;
 		this.inquiryDao = inquiryDao;
 		this.mailSender = mailSender;
+		this.adminService = adminService;
 		this.passwordEncoder = passwordEncoder;
-
 	}
 
+	
 	// 회원약관동의
 	@GetMapping("/signin/agree")
-	public String siagree() {
+	public String siagree(Model m) throws Exception{
+
+		AdminDto adminDto = adminService.select();
+
+		try {
+			m.addAttribute("adminDto",adminDto);
+		}catch(Exception e) {e.printStackTrace();}
+
 		return "member/siAgree";
 	}
 
@@ -70,16 +80,13 @@ public class MemberController {
 	// 아이디중복체크
 	@PostMapping("/signin/idcheck")
 	@ResponseBody
-	public int idcheck(String user_id, Model m) {
-		System.out.println(user_id);
+	public int idcheck(String user_id) {
+
 		int result = 0;
 
 		try {
 			result = memberService.idCheck(user_id);
-			System.out.println(result);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {e.printStackTrace();}
 
 		return result;
 	}
@@ -88,7 +95,6 @@ public class MemberController {
 	@PostMapping("/signin/form")
 	public String siform(MemberDto dto, String user_id) {
 
-		System.out.println(dto.getUser_pw());
 
 		try {
 			// 비밀번호 암호화
@@ -122,18 +128,19 @@ public class MemberController {
 	@PostMapping("/signin/pwEmail")
 	@ResponseBody
 	public String emailSendPw(@RequestBody MemberDto memberdto) throws Exception {
+		
 		return memberService.pwSendEmail(memberdto.getUser_email());
 	}
 
 	// 마이페이지1 : 본인인증
 	@GetMapping("/mypage/pwcheck")
-	public String pwCheck(HttpSession session) throws Exception {
+	public String pwCheck() throws Exception {
 
 		return "member/pwCheck";
 	}
 
 	@PostMapping("/mypage/pwcheck")
-	public String pwCheck(String inputPassword, Model m, String user_id, Authentication auth) throws Exception {
+	public String pwCheck(String inputPassword, Model m, Authentication auth) throws Exception {
 
 		CustomUser user = (CustomUser) auth.getPrincipal();
 		String user_pw = user.getMember().getUser_pw();
@@ -190,13 +197,15 @@ public class MemberController {
 
 	}
 
-	// 마이페이지3 : 회원탈퇴 완료
+	// 마이페이지3 : 회원탈퇴
 	@RequestMapping("/mypage/withdraw")
 	public String withdraw(Authentication auth) throws Exception {
 		String user_id = auth.getName();
 
-		// tb_user테이블에서 Authentication에 저장된 id와 같은 user_id를 가진 회원을 삭제시킨후 세션을 종료시킴
+		// tb_user테이블에서 Authentication에 저장된 id와 같은 user_id를 가진 회원을 삭제시킨후 
+		// 인증정보를 담고있는 SecurityContextHolder 객체를 삭제
 		memberService.withdraw(user_id);
+		SecurityContextHolder.clearContext();
 
 		return "member/withdraw";
 	}
@@ -252,7 +261,6 @@ public class MemberController {
 			InqPageResolver pr;
 
 			// 서비스 메소드에 파라미터로 넣어줄 id,디폴트 settedInterval(1개월) 불러오기
-			System.out.println(auth.getName());
 			String id = auth.getName();
 
 			if (settedInterval == null) {
@@ -319,8 +327,7 @@ public class MemberController {
 
 	// 1:1 문의글: 작성한 글 등록하기
 	@PostMapping("/mypage/inquiry/write")
-	public String inquiryWrite(InquiryDto inquiryDto, Authentication auth, RedirectAttributes rattr, Model m,
-			HttpSession session) {
+	public String inquiryWrite(InquiryDto inquiryDto, Authentication auth, RedirectAttributes rattr, Model m) {
 		// 글 작성자와 현재 날짜 설정
 		String id = auth.getName();
 		inquiryDto.setUser_id(id);
@@ -348,8 +355,7 @@ public class MemberController {
 
 	// 1:1 문의글 읽기 페이지
 	@GetMapping("/mypage/inquiry/read")
-	public String inquiryRead(Integer inq_id, Authentication auth, @RequestParam(defaultValue = "1") Integer page,
-			@RequestParam(defaultValue = "6") Integer pageSize, Model m, HttpSession session) {
+	public String inquiryRead(Integer inq_id, Authentication auth, Model m) {
 		try {
 			// id 와 inq_id로 문의글 내용 불러오기
 			String id = auth.getName();
@@ -364,4 +370,5 @@ public class MemberController {
 
 		return "member/inquiryRead";
 	}
+	
 }

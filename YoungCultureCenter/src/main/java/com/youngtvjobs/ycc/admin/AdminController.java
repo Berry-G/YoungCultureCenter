@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.youngtvjobs.ycc.common.YccMethod;
 
@@ -78,21 +79,24 @@ public class AdminController
 	
 	//약관 수정 후 등록
 	@PostMapping("/admin/agreement")
-	public String agreement(HttpServletRequest request, String join_privacy_terms, String join_terms) throws Exception
+	public String agreement(HttpServletRequest request, String join_privacy_terms, 
+			String join_terms, RedirectAttributes rattr) throws Exception
 	{
-		//System.out.println(join_terms);
-		//System.out.println(join_privacy_terms);
 		AdminDto adminDto = new AdminDto();
 		adminDto.setJoin_terms(join_terms);
 		adminDto.setJoin_privacy_terms(join_privacy_terms);
-		//System.out.println(adminDto);
 		
 		try {
 			
 			if(adminService.joinTermsUpdate(adminDto) != 1) {
-				throw new Exception("업데이트 에러");
+				rattr.addFlashAttribute("msg", "UPDATE_FAIL");
+				return "redirect:/admin";
+				
+
 			}else{
 				System.out.println("업데이트 성공");
+				rattr.addFlashAttribute("msg", "UPDATE_SUCCESS");
+				return "redirect:/admin";
 			}
 			
 			

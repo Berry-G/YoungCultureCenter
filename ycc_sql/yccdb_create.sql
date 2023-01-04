@@ -217,11 +217,6 @@ create table course_image(
 );
 ALTER TABLE course_image ADD CONSTRAINT course_image_PK PRIMARY KEY ( uuid );
 
-CREATE TABLE tb_permission (
-    user_id    character(16) NOT NULL,
-    permission    character varying(200)
-);
-ALTER TABLE tb_permission ADD CONSTRAINT tb_permission_PK PRIMARY KEY ( user_id );
 
 -- 2022-12-15 19:19 KimSeongho
 -- tb_rental_locker -> tb_locker 테이블명 변경
@@ -333,8 +328,6 @@ alter table course_review  add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) 
 
 alter table attend add FOREIGN KEY(course_id) REFERENCES tb_course(course_id) ON DELETE CASCADE;
 alter table attend add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
-
-alter table tb_permission add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;
 
 -- 시큐리티 권한테이블 fk생성 
 alter table user_auth add FOREIGN KEY(user_id) REFERENCES tb_user(user_id) ON DELETE CASCADE;

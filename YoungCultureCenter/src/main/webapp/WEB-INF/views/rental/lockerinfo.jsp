@@ -99,50 +99,12 @@
 <script>
 	function gotolocker() {
 		let form = $("#form1")
-		
-		let today = new Date()
-		let year = today.getFullYear() // 년도
-		let month = today.getMonth() + 1  // 월
-		let date = today.getDate()  // 날짜
-		
-		let nowdate = year + '-' + month + '-' + date
-		
-		let startDe = new Date(nowdate)
-  	let end_Date = dateFormat(new Date(startDe.setDate(startDe.getDate()+7)))
-		
-		console.log(nowdate)
+
 		form.attr("action", "<c:url value='/rental/locker'/>")
-		form.attr("method", "GET")
-		form.append($('<input/>', {type: 'hidden', name: 'locker_location_id', value:'1' }))
-		form.append($('<input/>', {type: 'hidden', name: 'locker_start_date', value: nowdate }))
-		form.append($('<input/>', {type: 'hidden', name: 'locker_end_date', value: end_Date }))
-		
-		form.submit()
+		form.attr("method", "POST")
+		form.append($('<input/>', {type : 'hidden', name : 'locker_location_id', value : '1' }))
+		form.append($('<input/>', {type : 'hidden', name : '${_csrf.parameterName}', value : '${_csrf.token}' }))
 	}
-	
-	function dateFormat(date) {
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-
-        month = month >= 10 ? month : '0' + month;
-        day = day >= 10 ? day : '0' + day;
-
-        return date.getFullYear() + '-' + month + '-' + day;
-    }
-
-  /* // 클래스 변경
-  function changeClassName() {
-    document.getElementById("change").classList.replace("col-4", "col-8");
-  }
-
-  function changeClassName2() {
-    document.getElementById("change").classList.replace("col-8", "col-4");
-  }
-
-  window.onresize = function (event) {
-    var innerWidth = window.innerWidth;
-    innerWidth <= "1280" ? changeClassName() : changeClassName2();
-  }; */
 </script>
 
 
