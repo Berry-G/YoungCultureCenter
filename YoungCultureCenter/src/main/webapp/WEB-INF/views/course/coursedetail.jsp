@@ -33,10 +33,11 @@
 </head>
 <body>
 	<script>
+		
 		x=location.hash
 		
 		 $(document).ready(function() { 
-			 
+			// hash값이 tabReview이면 수강후기탭 열기
 			 if (x == '#tabReview') {
 			   $('#review-tab').tab('show');
 			   
