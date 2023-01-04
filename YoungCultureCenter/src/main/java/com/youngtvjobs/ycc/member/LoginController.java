@@ -77,11 +77,15 @@ public class LoginController {
 		toURL = toURL == null || toURL.equals("") ? "/" : toURL;
 		return "redirect:" + toURL;
 	}
-
+	
+	/*
+	 * Spring Security 적용하면서 로그아웃 기능은 컨트롤러를 거치지 않음.
+	 * security-context 의 security:logout 속성 참조.
+	 * 
 	@GetMapping("/logout")
-	public String getLogout() {
-
-		return "redirect:/";
+	public String getLogout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		postLogout(request, response, session);
+		return "member/logout";
 	}
 	
 	@PostMapping("/logout")
@@ -89,5 +93,6 @@ public class LoginController {
 		
 		return "redirect:/";
 	}
+	*/
 }
 

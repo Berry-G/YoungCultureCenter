@@ -26,7 +26,6 @@
 <!-- 파비콘 추가 -->
 <link rel="shortcut icon" href="/ycc/resources/favicon/favicon.ico">
 <style>
-
 .hover-timer:hover span{
   display: none;
 }
@@ -34,6 +33,12 @@
 .hover-timer:hover p:after {
   content:'연장';
 }
-
 </style>
+
+<!-- 토큰 생성 -->
+<script type="text/javascript">
+	const csrfHeader = "${_csrf.headerName}"
+	const csrfToken = "${_csrf.token}"
+</script>
+
 <!-- metahead end -->

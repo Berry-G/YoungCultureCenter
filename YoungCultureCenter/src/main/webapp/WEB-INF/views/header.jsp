@@ -62,18 +62,18 @@
                     <input name= "keyword" value="${param.keyword }" class="form-control"  type="search" placeholder="검색어를 입력하세요." aria-label="Search">
                 </form>
 
-                <!-- 로그인 세션이 없을 떄 출력되는 부분 -->
+               <!-- Spring 시큐리티 객체 생성 -->
                <sec:authentication property="principal" var="pinfo"/>
                <!-- 익명의 사용자의 경우, 로그인 하지 않은 경우 해당 -->
                 <sec:authorize access="isAnonymous()">
-                <div class="nav p-2 d-flex" style="justify-content: center; flex-wrap: nowrap;">
-                    <a class="btn btn-primary mx-2 text-nowrap" href="/ycc/login">로그인</a>
-                    <a class="btn btn-outline-primary text-nowrap" href="/ycc/signin/agree">회원가입</a>
-                </div>
+	                <div class="nav p-2 d-flex" style="justify-content: center; flex-wrap: nowrap;">
+	                    <a class="btn btn-primary mx-2 text-nowrap" href="/ycc/login">로그인</a>
+	                    <a class="btn btn-outline-primary text-nowrap" href="/ycc/signin/agree">회원가입</a>
+	                </div>
                 </sec:authorize>
 
 
-                <!-- 시큐리티 : 사용자 인증되었을때 보여주기  -->
+               <!-- 시큐리티 : 사용자 인증되었을때 보여주기  -->
                <sec:authorize access="isAuthenticated()">
                 <div class="navbar-nav d-flex" style="justify-content: center; flex-wrap: nowrap;">
                 	<script type="text/javascript" charset="utf-8" src="/ycc/resources/js/timeoutchk.js"></script>
