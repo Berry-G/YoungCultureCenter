@@ -1,7 +1,9 @@
 package com.youngtvjobs.ycc.rental;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -63,10 +64,6 @@ public class LockerController {
 		m.addAttribute("afterMonth", afterMonth);
 		
 		try {
-			// 사물함 장소별 번호 불러오기
-			List<LockerDto>list = lockerService.getLockerList(lockerDto);
-			m.addAttribute("list", list);
-			
 			// 사물함 장소 불러오기
 			List<LockerDto>locList = lockerService.getLockerLocation();
 			m.addAttribute("locList", locList);
@@ -75,7 +72,7 @@ public class LockerController {
 			List<LockerDto>rsvList = lockerService.getLockerRsvList(lockerDto);
 			m.addAttribute("rsvList", rsvList);
 			
-			if(lockerDto.getLocker_start_date() != null) {
+			if(lockerDto.getLocker_start_date() != null && lockerDto.getLocker_start_date() != "") {
 				LocalDate startDate = LocalDate.parse(lockerDto.getLocker_start_date());
 				LocalDate endDate = LocalDate.parse(lockerDto.getLocker_end_date());
 				
@@ -85,10 +82,24 @@ public class LockerController {
 			}
 			
 			// 나의 예약 현황 불러오기
-			List<LockerDto>myRsvStat = lockerService.getReservationStat(user_id);
-			m.addAttribute("myRsvStat", myRsvStat);
+			List<LockerDto>myRsvList = lockerService.getReservationStat(user_id);
+			m.addAttribute("myRsvStat", myRsvList);
 			int myRsvCnt = lockerService.getReservationCnt(user_id);
 			m.addAttribute("myRsvCnt", myRsvCnt);
+			
+			Integer[] diffS = new Integer[myRsvList.size()]; // 시작일 - 현재날짜
+			Integer[] diffE = new Integer[myRsvList.size()]; // 현재날짜 - 종료일(기준 00시)
+			
+			for(int i=0; i<myRsvList.size(); i++) {
+				LockerDto dto = (LockerDto) myRsvList.toArray()[i];
+				LocalDate startDate = LocalDate.parse(dto.getLocker_start_date()); // 대여 시작일
+				LocalDate endDate = LocalDate.parse(dto.getLocker_end_date()); // 대여 종료일
+				
+				diffS[i] = Period.between(nowdate, startDate).getDays(); // 현재날짜 - 시작일 => 음수이면 대여 시작 X 
+				diffE[i] = Period.between(nowdate, endDate).getDays(); // 현재날짜 - 종료일 => 음수이면 대여 종료 O
+			}
+			m.addAttribute("diffS", diffS);
+			m.addAttribute("diffE", diffE);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

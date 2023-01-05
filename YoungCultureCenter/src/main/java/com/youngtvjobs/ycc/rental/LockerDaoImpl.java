@@ -22,7 +22,7 @@ public class LockerDaoImpl implements LockerDao{
 	@Override
 	public void lockerReservation(LockerDto lockerDto) throws Exception {
 		// TODO Auto-generated method stub
-		session.update(namespace + "insertLockerReservation", lockerDto);
+		session.insert(namespace + "insertLockerReservation", lockerDto);
 	}
 
 	@Override

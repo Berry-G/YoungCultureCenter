@@ -42,10 +42,10 @@
 	        		<li class="locker">
 		            <input class="locker_id" type="checkbox" id="${i+1 }" name="locker_id" onclick="checkOnlyOne(this)" 
 		            	<c:forEach var="j" begin="0" end="9">
-		            		${rsvList[j].locker_id == list[i].locker_id ? 'disabled' : ''}
+		            		${rsvList[j].locker_no == i+1 ? 'disabled' : ''}
 		            	</c:forEach>
-		             value="${list[i].locker_id }" /> 
-		            <label for="${i+1 }">${list[i].locker_no }</label>
+		             value="${i+1 }" /> 
+		            <label for="${i+1 }">${i+1 }</label>
 	          	</li>
 	        	</c:forEach>
 	        </ol> 
@@ -56,10 +56,10 @@
 	        		<li class="locker"> 
 		            <input type="checkbox" id="${i+1 }" name="locker_id" onclick="checkOnlyOne(this)" 
 		            	<c:forEach var="j" begin="0" end="19">
-		            		${rsvList[j].locker_id == list[i].locker_id ? 'disabled' : ''}
+		            		${rsvList[j].locker_no == i+1 ? 'disabled' : ''}
 		            	</c:forEach> 
-		            value="${list[i].locker_id }" /> 
-		            <label for="${i+1 }">${list[i].locker_no }</label> 
+		            value="${i+1 }" /> 
+		            <label for="${i+1 }">${i+1 }</label> 
 	          	</li>
 	        	</c:forEach>
 	        </ol>
@@ -70,10 +70,10 @@
 	        		<li class="locker">
 		            <input type="checkbox" id="${i+1 }" name="locker_id" onclick="checkOnlyOne(this)" 
 		            	<c:forEach var="j" begin="0" end="29">
-		            		${rsvList[j].locker_id == list[i].locker_id ? 'disabled' : ''}
+		            		${rsvList[j].locker_no == i+1 ? 'disabled' : ''}
 		            	</c:forEach> 
-		            value="${list[i].locker_id }" /> 
-		            <label for="${i+1 }">${list[i].locker_no }</label>
+		            value="${i+1 }" /> 
+		            <label for="${i+1 }">${i+1 }</label>
 	          	</li>
 	        	</c:forEach>
 	        </ol>
@@ -84,10 +84,10 @@
 	        		<li class="locker">
 		            <input type="checkbox" id="${i+1 }" name="locker_id" onclick="checkOnlyOne(this)" 
 		            	<c:forEach var="j" begin="0" end="39">
-		            		${rsvList[j].locker_id == list[i].locker_id ? 'disabled' : ''}
+		            		${rsvList[j].locker_no == i+1 ? 'disabled' : ''}
 		            	</c:forEach> 
-		            value="${list[i].locker_id }" /> 
-		            <label for="${i+1 }">${list[i].locker_no }</label>
+		            value="${i+1 }" /> 
+		            <label for="${i+1 }">${i+1 }</label>
 	          	</li>
 	        	</c:forEach>
 	        </ol>
@@ -189,17 +189,32 @@
 		    		</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="myRsvStat" items="${myRsvStat }">
+						<c:forEach begin="0" end="${myRsvStat.size()-1 }" var="i">
 							<tr class="align-middle">
-								<td>${myRsvStat.locker_no }</td>
-								<td>${myRsvStat.location_name }</td>
-								<td>${myRsvStat.user_id }</td>
-								<td>${myRsvStat.locker_start_date } <br/> ~ ${myRsvStat.locker_end_date }</td>
-								<td>${myRsvStat.locker_cost }</td>
-								<td>연장하기 버튼<br>(예정)</td>
-								<c:if test="">
-									<td></td>
-								</c:if>
+								<td>${myRsvStat[i].locker_no }</td>
+								<td>${myRsvStat[i].location_name }</td>
+								<td>${myRsvStat[i].user_id }</td>
+								<td>${myRsvStat[i].locker_start_date } <br/> ~ ${myRsvStat[i].locker_end_date }</td>
+								<td>${myRsvStat[i].locker_cost }</td>
+								<!-- diffS => 양수이면 대여 시작 X -->
+								<!-- diffE => 음수이면 대여 종료 O -->
+								<c:choose>
+									<c:when test="${diffS[i] > 0 }">
+										<td>시작일까지<br/>${diffS[i] }일 남았습니다.</td>
+									</c:when>
+									<c:when test="${diffE[i] < 3 and diffE[i] > -3 }">
+										<td>
+											<button disabled id="extensionBtn" class="btn btn-primary">연장하기</button>
+											<c:if test="${diffE[i] > 0 }"><br/>종료일까지<br/>${diffE[i] }일 남았습니다.</c:if>
+										</td>
+									</c:when>
+									<c:when test="${diffE[i] >= 3 and diffS[i] <= 0 }">
+										<td>종료일까지<br/>${diffE[i] }일 남았습니다.</td>
+									</c:when>
+									<c:otherwise>
+										<td>연장이 불가능합니다.</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -237,16 +252,15 @@
 	                  	<input name="user_id" value="${loginId }" readonly />
 	                  </td>
 	                  <td><input class="form-control-plaintext" value="${userName }" readonly /></td>
-	                  
 	                </tr>
 	                <tr>
 	                  <th>사물함번호</th>
-	                  <td hidden><input id="lockerId" name="locker_id" readonly /></td>
-	                  <td><input class="form-control-plaintext" id="lockerNum" readonly /></td>
+	                  <td hidden><input id="lockerId" readonly /></td>
+	                  <td><input class="form-control-plaintext" name="locker_no" id="lockerNum" readonly /></td>
 	                </tr>
 	                <tr>
 	                  <th>사물함 위치</th>
-	                  <td hidden><input id="lockerLocationId" readonly /></td>
+	                  <td hidden><input id="lockerLocationId" name="locker_location_id" readonly /></td>
 	                  <td><input class="form-control-plaintext" id="lockerLocation" readonly /></td>
 	                </tr>
 	                <tr>
@@ -281,6 +295,9 @@
   </script>
   
   <script type="text/javascript">
+  	$("#extensionBtn").on("click", function() {
+			
+		})
   	function changeLocation() {
   		let form = $("#locationForm")
   		let startDe = new Date($("#startDate1").val())
@@ -312,14 +329,11 @@
   	// modal창에 값 전달하기
   	// 장소 전달
 		$("#location").on("click", function() {
-			console.log(${param.locker_location_id})
-			console.log($("#location option:selected").text().trim())
 			$("#lockerLocation").attr("value", $("#location option:selected").text().trim())
 		})
 		
 		// 시작일 전달
 		function selectSDate() {
-			console.log($("#startDate1").val())
 			$("#startDateM").attr("value", ${param.locker_start_date })
 		}
   	
@@ -357,22 +371,6 @@
   		
   		$("#staticBackdrop").modal('show')
 		})
-		
-		
-		let formCheck = function() {
-			let form = document.getElementById("form")
-			if(form.course_nm.value == ""){
-				alert("강좌명을 입력해주세요.")
-				form.course_nm.focus()
-				return false
-			}
-			if(form.course_info.value == ""){
-				alert("강좌소개를 입력해주세요.")
-				form.course_info.focus()
-				return false
-			}
-			return true
-		}
 		
 		function dateFormat(date) {
         let month = date.getMonth() + 1;

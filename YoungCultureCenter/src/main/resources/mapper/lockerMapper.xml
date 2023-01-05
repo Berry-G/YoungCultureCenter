@@ -22,16 +22,25 @@
 		JOIN locker_location
 		ON tb_locker.locker_location_id = locker_location.locker_location_id
 		WHERE user_id = #{user_id }
+		ORDER BY locker_end_date DESC
 	</select>
 
 	<!-- 예약한 사물함 비활성화를 위해 예약된 사물함 SELECT -->
 	<select id="selectReservation" parameterType="LockerDto" resultType="LockerDto">
-		SELECT locker_id, user_id, locker_start_date, locker_end_date
+		SELECT locker_no, user_id, locker_start_date, locker_end_date
 		FROM tb_locker
-		WHERE locker_location_id = #{locker_location_id}
+		WHERE
+		<choose>
+			<when test="locker_location_id != 0">
+				locker_location_id = #{locker_location_id}
+			</when>
+			<otherwise>
+				locker_location_id = 1
+			</otherwise>
+		</choose>
 		AND user_id IS NOT NULL
 		<choose>
-			<when test="locker_start_date != null">
+			<when test="locker_start_date != null and !locker_start_date.equals('') ">
 				AND #{locker_end_date}::date <![CDATA[>=]]> locker_start_date
 				AND #{locker_start_date}::date <![CDATA[<]]> locker_end_date
 			</when>
@@ -47,7 +56,15 @@
 	<select id="selectLocker" parameterType="LockerDto" resultType="LockerDto">
 		SELECT *
 		FROM tb_locker
-		WHERE locker_location_id = #{locker_location_id}
+		WHERE
+		<choose>
+			<when test="locker_location_id != 0">
+				locker_location_id = #{locker_location_id}
+			</when>
+			<otherwise>
+				locker_location_id = 1
+			</otherwise>
+		</choose>
 		ORDER BY locker_id
 	</select>
 	
@@ -58,9 +75,8 @@
 	</select>
 	
 	<!-- 사물함 예약 -->
-	<update id="insertLockerReservation" parameterType="LockerDto">
-		UPDATE tb_locker
-		SET user_id=#{user_id}, locker_cost=#{locker_cost}, locker_start_date=#{locker_start_date}::date, locker_end_date=#{locker_end_date}::date
-		WHERE locker_id=#{locker_id}
-	</update>
+	<insert id="insertLockerReservation" parameterType="LockerDto">
+		INSERT INTO tb_locker(locker_no, locker_location_id, user_id, locker_cost, locker_start_date, locker_end_date)
+		VALUES(#{locker_no}, #{locker_location_id}, #{user_id}, #{locker_cost}, #{locker_start_date}::date, #{locker_end_date}::date)
+	</insert>
 </mapper>
