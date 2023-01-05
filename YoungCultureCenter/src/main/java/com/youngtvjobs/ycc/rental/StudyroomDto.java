@@ -1,21 +1,27 @@
+/*
+ * 작성자 : alwaysFinn(김지호)
+ * 최초 작성일 : '22. 12. 02
+ * 마지막 업데이트 : '23.01.05
+ * 업데이트 내용 : code clean up
+ * 파일의 역할 : DB의 studyroom table의 컬럼들과 spring 연결 
+ */
+
 package com.youngtvjobs.ycc.rental;
 
 import java.util.Date;
 import java.util.Objects;
 
-import org.springframework.web.util.UriComponentsBuilder;
 
 public class StudyroomDto {
 
 	
 	private String user_id; // 회원아이디 (fk)
-	private Integer serial_id;
-	private Integer sroom_seat_id;
-	private Date sroom_rental_stime;
-	private Date sroom_rental_etime;
-	// end of tb_studyroom(독서실)
+	private Integer serial_id;	//예약번호 (pk)
+	private Integer sroom_seat_id;	//좌석번호
+	private Date sroom_rental_stime;	//예약 시작 시간
+	private Date sroom_rental_etime;	//예약 종료 시간
 	
-	public StudyroomDto() {
+	public StudyroomDto() {	//기본 생성자
 		// TODO Auto-generated constructor stub
 	}
 

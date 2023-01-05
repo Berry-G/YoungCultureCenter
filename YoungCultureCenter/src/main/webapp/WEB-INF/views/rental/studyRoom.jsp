@@ -1,3 +1,11 @@
+
+ <!-- 작성자 : alwaysFinn(김지호)
+ 	  최초 작성일 : '22. 12. 02
+ 	  마지막 업데이트 : '23.01.05
+ 	  업데이트 내용 : code clean up
+ 	  기능 : 독서실 예약할 수 있는 view 파일 -->
+ 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -37,108 +45,108 @@
 </div>
     <!-- 좌석 선택 폼 -->
      <div class="container w-100 pt-1" >
-      <div class="container-lg d-grid" style="border: solid 1px gray; border-radius: 10px; overflow: scroll;">
-        <ol class="rRoomTotal" style="margin-top:3 %">
-          <ol class="rRoomUpper mb-5">
-          <li class="row row--1">
-            <ol class="seats" type="A">
-	            <c:forEach var="i" begin="0" end="11">
-	            	<li class="seat">
-	            		<input
-	            			type="checkbox"
-	            			id="${i+1 }"
-	            			name="indvSeat"
-	            			onclick="checkOnlyOne(this)"
-	            			
-	            		/>
-	            		<label for="${i+1 }">${i+1 }</label>
-	            	</li>
-	        	</c:forEach>
-            </ol>
-          </li>
+		<div class="container-lg d-grid" style="border: solid 1px gray; border-radius: 10px; overflow: scroll;">
+        	<ol class="rRoomTotal" style="margin-top:3 %">
+          		<ol class="rRoomUpper mb-5">
+          			<li class="row row--1">
+            			<ol class="seats" type="A">
+	            			<c:forEach var="i" begin="0" end="11">
+	            				<li class="seat">
+				            		<input
+				            			type="checkbox"
+				            			id="${i+1 }"
+				            			name="indvSeat"
+				            			onclick="checkOnlyOne(this)"
+				            			
+				            		/>
+				            		<label for="${i+1 }">${i+1 }</label>
+	            				</li>
+	        				</c:forEach>
+           				 </ol>
+         			 </li>
 
-          <li class="row row--2">
-            <ol class="seats" type="A">
-              <c:forEach var="i" begin="12" end="23">
-	            	<li class="seat">
-	            		<input
-	            			type="checkbox"
-	            			id="${i+1 }"
-	            			name="indvSeat"
-	            			onclick="checkOnlyOne(this)"
-	            		/>
-	            		<label for="${i+1 }">${i+1 }</label>
-	            	</li>
-	        	</c:forEach>
-            </ol>
-          </li>
-          </ol>
+          			<li class="row row--2">
+           				<ol class="seats" type="A">
+              				<c:forEach var="i" begin="12" end="23">
+	            				<li class="seat">
+				            		<input
+				            			type="checkbox"
+				            			id="${i+1 }"
+				            			name="indvSeat"
+				            			onclick="checkOnlyOne(this)"
+				            		/>
+				            		<label for="${i+1 }">${i+1 }</label>
+	            				</li>
+	        				</c:forEach>
+            			</ol>
+          			</li>
+				</ol>
 
-          <ol class="rRoomUnder" style="margin-bottom: 2%">
-            <li class="row row--3">
-              <ol class="seats" type="A">
-                <c:forEach var="i" begin="24" end="35">
-	            	<li class="seat">
-	            		<input
-	            			type="checkbox"
-	            			id="${i+1 }"
-	            			name="indvSeat"
-	            			onclick="checkOnlyOne(this)"
-	            		/>
-	            		<label for="${i+1 }">${i+1 }</label>
-	            	</li>
-	        	</c:forEach>
-              </ol>
-            </li>
+         		<ol class="rRoomUnder" style="margin-bottom: 2%">
+            		<li class="row row--3">
+              			<ol class="seats" type="A">
+                			<c:forEach var="i" begin="24" end="35">
+	            				<li class="seat">
+				            		<input
+				            			type="checkbox"
+				            			id="${i+1 }"
+				            			name="indvSeat"
+				            			onclick="checkOnlyOne(this)"
+				            		/>
+	            					<label for="${i+1 }">${i+1 }</label>
+	            				</li>
+	        				</c:forEach>
+             			</ol>
+            		</li>
 
-            <li class="row row--4">
-              <ol class="seats" type="A">
-                <c:forEach var="i" begin="36" end="47">
-	            	<li class="seat">
-	            		<input
-	            			type="checkbox"
-	            			id="${i+1 }"
-	            			name="indvSeat"
-	            			onclick="checkOnlyOne(this)"
-	            		/>
-	            		<label for="${i+1 }">${i+1 }</label>
-	            	</li>
-	        	</c:forEach>
-              </ol>
-            </li>
-          </ol>
-        </ol>
-      </div>
-<!-- 좌석 선택 정보 이미지 -->
-	<div class="row">
-    <div class="col-md-2">
-      <div class="fs-6 pt-3 mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #39adffed;"
-          class="bi bi-square-fill" viewBox="0 0 16 16">
-          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
-        </svg>
-        사용가능
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="fs-6 pt-3  mb-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #dddddd" class="bi bi-square-fill"
-          viewBox="0 0 16 16">
-          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
-        </svg>
-        사용중
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="fs-6 pt-3  mb-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #bada55;"
-          class="bi bi-square-fill" viewBox="0 0 16 16">
-          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
-        </svg>
-        선택
-      </div>
-    </div>
-  </div>
+            		<li class="row row--4">
+             			<ol class="seats" type="A">
+                			<c:forEach var="i" begin="36" end="47">
+	            				<li class="seat">
+				            		<input
+				            			type="checkbox"
+				            			id="${i+1 }"
+				            			name="indvSeat"
+				            			onclick="checkOnlyOne(this)"
+				            		/>
+	            					<label for="${i+1 }">${i+1 }</label>
+	            				</li>
+	        				</c:forEach>
+              			</ol>
+            		</li>
+          		</ol>
+        	</ol>
+      	</div>
+		<!-- 좌석 선택 정보 이미지 -->
+		<div class="row">
+			<div class="col-md-2">
+		      <div class="fs-6 pt-3 mb-4">
+		        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #39adffed;"
+		          class="bi bi-square-fill" viewBox="0 0 16 16">
+		          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+		        </svg>
+		        사용가능
+		      </div>
+		    </div>
+		    <div class="col-md-2">
+		      <div class="fs-6 pt-3  mb-3">
+		        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #dddddd" class="bi bi-square-fill"
+		          viewBox="0 0 16 16">
+		          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+		        </svg>
+		        사용중
+		      </div>
+		    </div>
+		    <div class="col-md-2">
+		      <div class="fs-6 pt-3  mb-3">
+		        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="fill: #bada55;"
+		          class="bi bi-square-fill" viewBox="0 0 16 16">
+		          <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"></path>
+		        </svg>
+		        선택
+		      </div>
+		    </div>
+	  	</div>
 	
     </div>
 
@@ -163,57 +171,58 @@
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
-              <option value="12">12</option>	<!-- 테스트용 -->
+              <option value="12">12</option>	<!-- 시간 유효성 테스트 테스트용 -->
             </select>
             <label for="usetime" class="col-form-label"> 시간</label>
+            <!-- 유효성 체크 #2 사용자가 입력한 사용 종료 시간이 00시를 넘길경우 예약 불가능하게 하는 기능  -->
             <div id="timealert"></div> <!-- 이용가능한 시간이 아닙니다 문구가 출력될 부분 -->
           </div>
         </div>
       </div>
 
       <br />
-      <!-- 모달 버튼  -->
-      <div id="foralert"></div>
-      <div class="text-center">
-        <button
-          id="modalBtn"
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          >
-          확인
-        </button>
-      </div>
-    <!-- 결제 전 예약정보 확인 모달창 -->
-    <form id="form" method="post" action="" >
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">
-              정보 확인 안내
-            </h1>
-          </div>
-          <div class="modal-body text-center">
-            <div class="justify-content-center">
-	           	<div id="yn">
-	           	</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </form>
+	  <!-- 모달 버튼  -->
+	  <div id="foralert"></div>	<!-- 유효성 체크 #1 이미 예약한 user일 경우 경고 메세지를 띄울 부분 -->
+	  <div class="text-center">
+	    <button
+	      id="modalBtn"
+	      type="button"
+	      class="btn btn-primary"
+	      data-bs-toggle="modal"
+	      data-bs-target="#staticBackdrop"
+	      >
+	      확인
+	    </button>
+		</div>
+		<!-- 결제 전 예약정보 확인 모달창 -->
+		<form id="form" method="post" action="" >
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<div
+			  class="modal fade"
+			  id="staticBackdrop"
+			  data-bs-backdrop="static"
+			  data-bs-keyboard="false"
+			  tabindex="-1"
+			  aria-labelledby="staticBackdropLabel"
+			  aria-hidden="true"
+			>
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">
+			          정보 확인 안내
+			        </h1>
+			      </div>
+			      <div class="modal-body text-center">
+			        <div class="justify-content-center">
+			        	<div id="yn"><!-- 사용자의 선택 결과에 따라 보여줄 화면 -->
+			        	</div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form>
 
 
 	<script type="text/javascript">
@@ -230,15 +239,17 @@
 
 		/*해당 유저가 예약을 했는지 확인하는 부분*/
 		
-		//jstl이 js보다 먼저 실행되므로 js에서 다룰 수 없음
-		//따라서 새 배열을 만들고 controller에서 해당 값들을 배열에 담아줌
-		//좌석의 비활성화, 유저 예약 여부 체크 동시 진행
-		var arr = new Array()	
-		<c:forEach items="${list}" var="test">
-			arr.push({user_id:"${test.user_id}"
-				,sroom_seat_id:"${test.sroom_seat_id}"})	
-		</c:forEach>
+		/* jstl이 js보다 먼저 실행되므로 js에서 다룰 수 없음
+		   따라서 새 배열을 만들고 controller에서 해당 값들을 배열에 담아줌
+		   좌석의 비활성화, 유저 예약 여부 체크 동시 진행 */
+		
+		   var arr = new Array()	//controller에서 넘어온 dto의 값들을 담을 js 배열	
+			<c:forEach items="${list}" var="test">	//반복문으로 모든 값 담음
+				arr.push({user_id:"${test.user_id}"	//user_id 담음
+					,sroom_seat_id:"${test.sroom_seat_id}"})	//좌석번호 담음
+			</c:forEach>
 			
+		//유효성체크 #1 해당 user가 예약한 내역이 있는지 확인하는 기능
 		//반복문으로 배열 안에 있는 값들 체크 후 로그인한 user_id가 DB에 있으면 중복예약으로 확인버튼, 이용시간 비활성화
 		for(var i = 0; i<arr.length; i++){
 			if(arr[i].user_id=="${pinfo.member.user_id }"){
@@ -264,12 +275,12 @@
 					document.getElementById(j).disabled = true;
 				}
 			}
-		}
+		}	// 유효성 체크 #1 종료
 		
-		
+		// 유효성 체크 #2 사용자가 입력한 사용 종료 시간이 00시를 넘길경우 예약 불가능하게 하는 기능
 		$("#usetime").on('click', function(){
-		        var vv = $(this).val()*1
-		        var nh = new Date().getHours()*1
+		        let vv = $(this).val()*1
+		        let nh = new Date().getHours()*1
 		        //console.log(vv)
 		        //console.log(nh)
 		        $("#disabletime").remove()
@@ -277,23 +288,22 @@
 		        document.getElementById('modalBtn').classList.replace('btn-secondary', 'btn-primary');
 		        	if(vv+nh>24 || vv+nh<6){
 		        	   $("#timealert").append(
-						'<p id ="disabletime" class="text-center text-danger fw-bold">'
-					   +'현재 이용 가능한 시간이 아닙니다.'
-					   +'</p>'
-					)
-						$("#modalBtn").attr("disabled", true);
+							'<p id ="disabletime" class="text-center text-danger fw-bold">'
+						   +'현재 이용 가능한 시간이 아닙니다.'
+						   +'</p>'
+						)
+					   $("#modalBtn").attr("disabled", true);
 			        	   if($("#modalBtn").is(":disabled") == true){
 			        		   document.getElementById('modalBtn').classList.replace('btn-primary', 'btn-secondary');
 			       			}
-						
 					}	
-				
-	    });
+	    }); // 유효성 체크 #2 종료
  
 
+	    // 사용자가 고른 값들 보여줄 modal에 대한 정의
 		$("#modalBtn").on('click', function(){
 			
-			//현재시간의 형식을 hh:mm:ss로 바꾸는 기능 
+			//DB에 보낼 예약 종료 시간 값의 형태를 DB 타입과 같게 변화하는 기능 
 			function getFormatTime(date) {
 				var yy = date.getFullYear()
 				var MM = date.getMonth()+1
@@ -309,6 +319,7 @@
 				return yy+"-"+MM+"-"+dd+" "+hh+':'+mm+':'+ss+"."+ms;
 			}
 			
+			// 사용자에게 예약 종료 시간 값 간단하게 보여주는 부분
 			function getFT(date){
 				var hh = (date.getHours()*1)+(document.getElementById("usetime").value*1)
 				hh = hh >= 10 ? hh : '0' + hh
@@ -320,18 +331,23 @@
 				return hh+':'+mm+':'+ss
 			}
 				
-			var time = getFormatTime(new Date())
-			var spantime = getFT(new Date())
+			let time = getFormatTime(new Date())	//DB에 넣는 용
+			let spantime = getFT(new Date())	//사용자에게 보여줄 용
 			
-			//선택한 좌석 번호 받아오는 변수
+			//선택한 좌석 번호 받아오는 변수 (DB에 넣는 용도)
 			let selected = $("input[name='indvSeat']:checked").attr('id')*1
+			//선택한 좌석 번호 받아오는 변수 (사용자에게 보여줄 용도)
 			let showselected = $("input[name='indvSeat']:checked").attr('id')
-
+			
+			//예약 종료시간 값 가져오는 부분
 			let rentime = document.getElementById("usetime").value*1
 		
+			//지불 금액 값 계산 (DB에 넣는 용도)
 			let pay = rentime * 1000
+			//지불 금액 값 계산 (사용자에게 보여주는 용도)
 			let spanpay = rentime * 1000
 
+			//사용자가 좌석을 선택하면 보여줄 모달 화면
 			if($("input[name='indvSeat']").is(":checked") == true){
 				$("#yn").append(
 					'<table class="table container-fluid border">'
@@ -396,7 +412,7 @@
 	        	//-->span 안에 for 보여주기식
 	        	document.getElementById("show_sroom_rental_etime").innerHTML = spantime
 			}else if($("input[name='indvSeat']").is(":checked") == false){
-				$("#yn").append(
+				$("#yn").append(//사용자가 좌석을 선택하지 않은 경우 보여줄 모달 화면
 					'<div">선택되지 않은 값이 있습니다.</div>'
 					+'<div class="modal-footer" style="justify-content: center;">'
 	                +'<button type="button" class="btn btn-secondary " data-bs-dismiss="modal" id="cencelBtn">돌아가기'
@@ -407,7 +423,7 @@
 			
 	             
 		})
-        
+        //결제 버튼 연동 기능 누를 시 post 방식으로 보냄
         $("#submitBtn").on("click", function(){
 	        	let form = $("#form")
 				form.attr("action", "<c:url value='/rental/studyroom' />")
