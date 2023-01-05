@@ -76,6 +76,14 @@
 		</div>
 	</div>
 	
+	
+	<script type="text/javascript">
+		let msg = "${msg}"
+		if(msg == "UPDATE_FAIL") alert("수정 실패")
+		if(msg == "UPDATE_SUCCESS") alert("수정 성공")		
+	</script>
+	
+	
 	<!-- footer 여백 -->
 	<div style="height: 150px;"></div>
 	<!-- footer include -->

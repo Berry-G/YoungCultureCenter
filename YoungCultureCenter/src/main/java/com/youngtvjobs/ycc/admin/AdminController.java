@@ -1,3 +1,9 @@
+/*	작성자 : alwaysFinn(김지호)
+	최초 작성일 : '22. 12. 02
+	마지막 업데이트 : '23.01.05
+	업데이트 내용 : code clean up
+ 	기능 : 회원가입 시 보여지는 약관을 관리자가 수정 및 업데이트 할 수 있는 기능으로 DB와 연결됨
+*/
 package com.youngtvjobs.ycc.admin;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.youngtvjobs.ycc.common.YccMethod;
 
 @Controller
 public class AdminController
@@ -59,7 +64,7 @@ public class AdminController
 		return "redirect:/admin/popup";
 	}
 	
-	//이용약관 관리
+	// 현재 DB에 등록되어있는 약관을 가져오는 getmapping
 	@GetMapping("/admin/agreement")
 	public String agreement(HttpServletRequest request, Model m) throws Exception
 	{
@@ -77,17 +82,17 @@ public class AdminController
 		return "admin/agreement";
 	}
 	
-	//약관 수정 후 등록
+	//약관 수정 후 등록하는 post mapping
 	@PostMapping("/admin/agreement")
 	public String agreement(HttpServletRequest request, String join_privacy_terms, 
 			String join_terms, RedirectAttributes rattr) throws Exception
 	{
-		AdminDto adminDto = new AdminDto();
+		AdminDto adminDto = new AdminDto();	//dto에 담아서 보내기 위해 dto 선언
 		adminDto.setJoin_terms(join_terms);
 		adminDto.setJoin_privacy_terms(join_privacy_terms);
 		
 		try {
-			
+			// 업데이트가 제대로 되지 않으면 fail 메세지 보냄
 			if(adminService.joinTermsUpdate(adminDto) != 1) {
 				rattr.addFlashAttribute("msg", "UPDATE_FAIL");
 				return "redirect:/admin";
