@@ -3,10 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+<!-- article mapper -->  
 <mapper namespace="com.youngtvjobs.ycc.board.boardMapper" >
 
-<!-- article mapper -->
-	
 	<sql id="selectFromBoard">
 		SELECT article_id, article_date, article_Board_type, user_id, 
 		article_title, article_contents, article_viewcnt
@@ -56,7 +55,6 @@
 		delete from article 
 		where article_id = #{article_id}	
 	</delete>
-	
 	
 	<!-- 상세보기 : article 테이블에 select하여 게시글 상세보기  -->
 	<select id="postSelect" parameterType="int" resultType="BoardDto">
@@ -133,9 +131,8 @@
 		from article 
 		) as f
 		where article_id = #{article_id}
-		order by article_id  desc;
+		order by article_id  desc
 	</select>
-	
 	
 	<!-- 조회수 증가 : 상세보기 클릭 시 article 테이블에 조회수 증가 update  -->
 	<update id="PlusViewCnt" parameterType="int">
