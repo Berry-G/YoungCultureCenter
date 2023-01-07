@@ -274,23 +274,11 @@ public class MemberController {
 			if (settedInterval == null) {
 				settedInterval = sp.getSettedInterval();
 			}
-
-			// 1개월,3개월 버튼을 클릭했을 때 동작(name="settedInterval")
-			if (settedInterval.equals("3month") || settedInterval.equals("6month")) {
-				// list
-				List<InquiryDto> inqList = inquiryService.getPage(id, sp);
-				m.addAttribute("inqList", inqList);
-
-				// pagination
-				totalCnt = inquiryService.getPageCnt(id, sp);
-				pr = new InqPageResolver(sp, totalCnt);
-				m.addAttribute("pr", pr);
-				m.addAttribute("totalCnt", totalCnt);
-
-				return "member/inquiryHistory";
-			}
 			// 조회기간을 직접 설정해 주었을 때 동작
-			else if (startDate != null && endDate != null && !startDate.equals("") && !endDate.equals("")) {
+			if (startDate != null && endDate != null && !startDate.equals("") && !endDate.equals("")) {
+				
+				settedInterval = null;
+				
 				// list
 				List<InquiryDto> inqList = inquiryService.getPageByInput(id, sp);
 
@@ -305,7 +293,22 @@ public class MemberController {
 				m.addAttribute("totalCnt", totalCnt);
 
 				return "member/inquiryHistory";
+			}			
+			// 1개월,3개월 버튼을 클릭했을 때 동작(name="settedInterval")
+			else if (settedInterval.equals("3month") || settedInterval.equals("6month")) {
+				// list
+				List<InquiryDto> inqList = inquiryService.getPage(id, sp);
+				m.addAttribute("inqList", inqList);
+
+				// pagination
+				totalCnt = inquiryService.getPageCnt(id, sp);
+				pr = new InqPageResolver(sp, totalCnt);
+				m.addAttribute("pr", pr);
+				m.addAttribute("totalCnt", totalCnt);
+
+				return "member/inquiryHistory";
 			}
+			
 			// 버튼조작, 기간설정 없을시 기본 1개월 조회 동작
 			// list
 			List<InquiryDto> inqList = inquiryService.getPage(id, sp);
