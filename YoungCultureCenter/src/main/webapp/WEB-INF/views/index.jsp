@@ -110,11 +110,11 @@
 	}
 		$(function() {
 			getCookie();
-			
+			//모달 닫기버튼
 			$('#btn_close').click(function(){
 				$('#modal1').hide();	
 			})
-			
+			//모달 오늘하루 보지 않기
 		    $(".btn_today_close").click(function () {
 		        setCookie("noMoreToday", "done" , 1);
 		        $("#modal1").hide();
@@ -125,7 +125,7 @@
 	</script>
 	
 	<!-- 모달#1 콘텐츠 -->
-	<div class="modal fade" id="modal1" tabindex="-1"
+	<div class="modal" id="modal1" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: inline-block;">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content" style="width: auto;">
@@ -137,7 +137,7 @@
 				<div class="p-1 px-2 text-bg-dark d-flex">
 <!-- 					<button type="button" class="btn btn-secondary btn_today_close"
 						data-bs-dismiss="modal">오늘 하루 보지 않기</button> -->
-						<a href="javascript:;" class="btn btn-secondary btn_today_close" data-bs-dismiss="modal">오늘 하루 보지 않기</a>
+						<a href="" class="btn btn-secondary btn_today_close" data-bs-dismiss="modal">오늘 하루 보지 않기</a>
 					<button type="button" class="btn btn-primary ms-auto" id="btn_close" data-bs-dismiss="modal">닫기</button>
 				</div>
 			</div>

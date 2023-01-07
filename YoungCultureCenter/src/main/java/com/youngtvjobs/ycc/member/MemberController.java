@@ -1,5 +1,6 @@
 package com.youngtvjobs.ycc.member;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -255,7 +256,14 @@ public class MemberController {
 	@GetMapping("/mypage/inquiry")
 	public String inquiryHistory(SearchByPeriod sp, String settedInterval, Model m, Authentication auth,
 			String startDate, String endDate) {
-
+		
+		// startDate / endDate 유효성체크를 위한 값 (최대 1년 전 ~ 오늘)
+		LocalDate nowdate = LocalDate.now();
+		m.addAttribute("nowdate", nowdate);
+		LocalDate aYearAgo = LocalDate.now().minusYears(1);
+		m.addAttribute("aYearAgo",aYearAgo);
+		
+		
 		try {
 			int totalCnt;
 			InqPageResolver pr;
