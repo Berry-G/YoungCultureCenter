@@ -30,16 +30,14 @@ public class LoginController {
 	MemberDto user;
 	
 	
-	@PreAuthorize("isAnonymous()")
 	@GetMapping("/login")
 	public String login(HttpServletRequest request) {
 		
-		// 이전 페이지에 대한 uri 받아옴 
-		// Referer 헤더값을 세션의 prevPage로 저장 
-		String uri = request.getHeader("Referer");
-		// 이전 페이지가 null이 아니라면 session에 uri의 값을 저장한다
-		if(uri != null) {
-			request.getSession().setAttribute("prevPage", uri);
+		// Referer 헤더값을 통해 이전 페이지에 대한 정보를 가져옴 
+		String referer = request.getHeader("Referer");
+		// 이전페이지에 대한 정보가 있다면 세션에 prevPage로 저장 
+		if(referer != null && !referer.contains("/login")) {
+			request.getSession().setAttribute("prevPage", referer);
 		}
 		return "member/loginForm";
 	}
