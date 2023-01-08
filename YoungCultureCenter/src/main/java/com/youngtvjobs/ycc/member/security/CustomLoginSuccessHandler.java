@@ -39,8 +39,8 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 	private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
-			throws IOException, ServletException {
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response
+			, Authentication auth) throws IOException, ServletException {
 
 		/*	
 		 *  사용자가 접근 권한이 없는 페이지 요청 후 로그인 페이지로 이동시 
@@ -55,9 +55,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 		 *   → 세션에 이전페이지 정보가 저장된 prevPage를 prev로 설정
 		 */
 		String prev = (String) request.getSession().getAttribute("prevPage");
-		System.out.println("이전" + prev);
 
-		
 		String uri = "/";
 
 		// savedRequest의 존재여부에 따라 redirect 할 uri를 결정
@@ -65,7 +63,7 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 			uri = savedRequest.getRedirectUrl();
 		  // 회원가입, 아이디/비밀번호 찾기가 이전페이지(prev)일 때는 main으로 이동 
 		} else if (prev != null) {
-			if (prev.contains("/signin/form") || prev.contains("/mypage/forget")) {
+			if (prev.contains("/signup/form") || prev.contains("/mypage/forget")) {
 				uri = "/";
 			} else {
 

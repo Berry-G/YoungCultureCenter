@@ -16,7 +16,7 @@
 	</select>
 	
 	<!-- 회원가입 : tb_user 테이블에 회원 추가-->
-	 <insert id="signinMember" parameterType="MemberDto" >
+	 <insert id="signupMember" parameterType="MemberDto" >
 	 	INSERT INTO tb_user
 		(user_id, user_name, user_pw, user_gender, user_birth_date, user_email, user_phone_number, 
 		user_postcode, user_rnameaddr, user_detailaddr, user_regdate, user_grade, user_social_type)

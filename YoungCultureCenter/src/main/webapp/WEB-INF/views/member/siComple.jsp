@@ -31,7 +31,7 @@
     </div>
    	</div>
   <!--회원가입완료문구  -->
-   <form action= "member/sicomple" name="signincomple" method="post">
+   <form action= "member/sicomple" name="signupcomple" method="post">
   <div class="container w-150 ">
     <div class="bg-light p-5 rounded justify-content-center text-center">
       <img src="/ycc/resources/img/joinmember/check.png" style="width: 50px; height: 50px;">

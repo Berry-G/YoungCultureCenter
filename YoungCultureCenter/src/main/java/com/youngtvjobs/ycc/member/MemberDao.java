@@ -11,7 +11,7 @@ public interface MemberDao {
 	MemberDto loginSelect(String id) throws Exception;
 
 	// 회원가입 insert
-	void signinMember(MemberDto dto) throws Exception;
+	void signupMember(MemberDto dto) throws Exception;
 
 	// 권한 insert
 	int insertAuth(String user_id) throws Exception;

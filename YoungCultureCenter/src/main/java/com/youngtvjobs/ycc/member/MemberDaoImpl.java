@@ -42,9 +42,9 @@ public class MemberDaoImpl implements MemberDao
 	
 	//회원가입_INSERT
 	@Override
-	public void signinMember(MemberDto dto) throws Exception {
+	public void signupMember(MemberDto dto) throws Exception {
 
-		session.insert(namespace + "signinMember" , dto);
+		session.insert(namespace + "signupMember" , dto);
 		
 	}
 

@@ -60,7 +60,7 @@ public class MemberController {
 
 	
 	// 회원약관동의
-	@GetMapping("/signin/agree")
+	@GetMapping("/signup/agree")
 	public String siagree(Model m) throws Exception{
 
 		AdminDto adminDto = adminService.select();
@@ -73,13 +73,13 @@ public class MemberController {
 	}
 
 	// 회원가입
-	@GetMapping("/signin/form")
+	@GetMapping("/signup/form")
 	public String siform() {
 		return "member/siForm";
 	}
 
 	// 아이디중복체크
-	@PostMapping("/signin/idcheck")
+	@PostMapping("/signup/idcheck")
 	@ResponseBody
 	public int idcheck(String user_id) {
 
@@ -93,7 +93,7 @@ public class MemberController {
 	}
 
 	// 회원가입
-	@PostMapping("/signin/form")
+	@PostMapping("/signup/form")
 	public String siform(MemberDto dto, String user_id) {
 
 
@@ -102,7 +102,7 @@ public class MemberController {
 			String inputPass = dto.getUser_pw();
 			String pwd = passwordEncoder.encode(inputPass);
 			dto.setUser_pw(pwd);
-			memberService.signinMember(dto);
+			memberService.signupMember(dto);
 			// 권한 insert
 			memberService.insertAuth(user_id);
 

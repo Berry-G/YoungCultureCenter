@@ -28,7 +28,7 @@ public class MemberServiceImpl implements MemberService{
 	BCryptPasswordEncoder passwordEncoder;
 
 	@Override	//회원 가입
-	public void signinMember(MemberDto dto) throws Exception {
+	public void signupMember(MemberDto dto) throws Exception {
 		String year = dto.getBirthYear();
 		String month = dto.getBirthMonth();
 		String day = dto.getBirthDay();
@@ -37,7 +37,7 @@ public class MemberServiceImpl implements MemberService{
 		dto.setUser_birth_date(birth);
 		
 		
-		memberDao.signinMember(dto);
+		memberDao.signupMember(dto);
 		System.out.println(dto);
 	}
 	

@@ -80,7 +80,7 @@ $(document).ready(function(){
       
         } 
         else if($("#selectall").is(":checked") != false){
-            $(location).attr('href', '<c:url value='/signin/form'/>');
+            $(location).attr('href', '<c:url value='/signup/form'/>');
             return true;
       
         }
