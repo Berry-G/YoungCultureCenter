@@ -251,6 +251,9 @@ VALUES('후기10', now(), now(), 1, 15, 'ezen');
 -- inq_id : 문의 작성날짜(6자리) + 001~999
 -- 1개월
 INSERT INTO public.inq_board	
+(inq_cate, user_id, inq_title, inq_content, inq_date, inq_ans)
+VALUES('교육강좌', 'user0',  '수강 관련 문의', '수강 관련 문의 내용', '2023-01-08','네. 답변은 다음과 같습니다.');
+INSERT INTO public.inq_board	
 (inq_cate, user_id, inq_title, inq_content, inq_date)
 VALUES('교육강좌', 'user0',  '수강 관련 문의', '수강 관련 문의 내용', '2022-12-29');
 -- 같은 날짜
@@ -284,6 +287,10 @@ INSERT INTO public.inq_board
 (inq_cate, user_id,  inq_title, inq_content, inq_date)
 VALUES('교육강좌', 'user1',  '수강 신청 변경 문의', '수강 신청 변경 문의 내용', '2022-12-16');
 
+-- attend dummy data (후기작성버튼 활성화용)
+INSERT INTO public.attend
+(course_id, user_id, attend_datetime)
+VALUES(6, 'user0', now());
 -----------------------------------------------------선혜-----------------------------------------------------------
 INSERT INTO public.article
 (article_date, article_board_type, user_id, article_title, article_contents, article_viewcnt)
