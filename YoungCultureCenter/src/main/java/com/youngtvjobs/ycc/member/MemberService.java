@@ -9,7 +9,7 @@ import com.youngtvjobs.ycc.course.CourseDto;
 public interface MemberService {
 
 	// 회원가입
-	void signinMember(MemberDto dto) throws Exception;
+	void signupMember(MemberDto dto) throws Exception;
 
 	// 권한 삽입
 	int insertAuth(String user_id) throws Exception;
