@@ -193,9 +193,7 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return "redirect:/";
-
 	}
 
 	// 마이페이지3 : 회원탈퇴
@@ -268,7 +266,7 @@ public class MemberController {
 			int totalCnt;
 			InqPageResolver pr;
 
-			// 서비스 메소드에 파라미터로 넣어줄 id,디폴트 settedInterval(1개월) 불러오기
+			// 서비스 메소드에 파라미터로 넣어줄 id 
 			String id = auth.getName();
 
 			if (settedInterval == null) {
@@ -279,7 +277,7 @@ public class MemberController {
 				
 				settedInterval = null;
 				
-				// list
+				// 나의 문의내역 목록 
 				List<InquiryDto> inqList = inquiryService.getPageByInput(id, sp);
 
 				m.addAttribute("inqList", inqList);
@@ -296,7 +294,7 @@ public class MemberController {
 			}			
 			// 1개월,3개월 버튼을 클릭했을 때 동작(name="settedInterval")
 			else if (settedInterval.equals("3month") || settedInterval.equals("6month")) {
-				// list
+				// 나의 문의내역 목록 
 				List<InquiryDto> inqList = inquiryService.getPage(id, sp);
 				m.addAttribute("inqList", inqList);
 
@@ -310,7 +308,7 @@ public class MemberController {
 			}
 			
 			// 버튼조작, 기간설정 없을시 기본 1개월 조회 동작
-			// list
+			// 나의 문의내역 목록 
 			List<InquiryDto> inqList = inquiryService.getPage(id, sp);
 			m.addAttribute("inqList", inqList);
 

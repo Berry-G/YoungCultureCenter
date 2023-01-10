@@ -16,9 +16,7 @@
     <title>1:1 문의 작성하기</title>
   </head>
   <body>
-  
-  
-  
+ 
       <!-- include header -->
 <%@include file="/WEB-INF/views/header.jsp"%>
 
@@ -116,7 +114,6 @@
                    ['insert',['picture','link','video']],
                    ['view',['help']]
                  ]
-
            });
        }) 
        </script>
@@ -127,8 +124,6 @@
            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
       </div>
 	</form>
-
-
 
 	<!-- footer inlcude -->
 <%@include file="/WEB-INF/views/footer.jsp"%>
