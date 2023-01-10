@@ -5,17 +5,17 @@ public class PageResolver {
 	
 	private SearchItem sc;	
 	
-	private int totalCnt;			//게시물 총 갯수
-	//private int pageSize = 10;		//한 페이지당 게시물 갯수 //SearchItem 에 포함되어있기 때문에 필요없어서 주석 
-	public final int NAV_SIZE = 10;	//page navigatin size
+	private int totalCnt;			// 게시물 총 갯수
+	//private int pageSize = 10;		// 한 페이지당 게시물 갯수 //SearchItem 에 포함되어있기 때문에 필요없어서 주석 
+	public final int NAV_SIZE = 10;	// page navigatin size
 	
-	private int totalPage; 			//전체 페이지 갯수 
-	//private int page;				//현재 페이지 //SearchItem 에 포함되어있기 때문에 필요없어서 주석 
+	private int totalPage; 			// 전체 페이지 갯수 
+	//private int page;				// 현재 페이지 //SearchItem 에 포함되어있기 때문에 필요없어서 주석 
 	
-	private int beginPage;			//화면에 보여줄 첫 페이지
-	private int endPage;			//화면에 보여줄 마지막 페이지 
-	private boolean showNext = false;	//이후를 보여줄지 여부 (endPage==totalPage 이면 showNext는 false)
-	private boolean showPrev = false;	//이전을 보여줄지 여부 (beginPage==1 아니면 showPrev는 true)
+	private int beginPage;			// 네비게이션 첫 페이지
+	private int endPage;			// 네비게이션 마지막 페이지 
+	private boolean showNext = false;	//   이후를 보여줄지 여부 (endPage==totalPage 이면 showNext는 false)
+	private boolean showPrev = false;	// 이전을 보여줄지 여부 (beginPage==1 아니면 showPrev는 true)
 	
 	
 	public PageResolver(int totalCnt, Integer page) {

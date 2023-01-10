@@ -37,12 +37,7 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return session.delete(namespace+"delete", article_id);
 	}
-	
-	//공지사항 : 게시글 리스트
-	@Override
-	public List<BoardDto> nSelectPage(SearchItem sc) throws Exception {
-		return session.selectList(namespace +"nSelectPage", sc);
-	}
+
 	//공지사항 : 검색 결과 개수 
 	@Override
 	public int nSearchResultCnt(SearchItem sc) throws Exception {
@@ -53,11 +48,7 @@ public class BoardDaoImpl implements BoardDao{
 	public List<BoardDto> nSearchSelectPage(SearchItem sc) throws Exception {
 		return session.selectList(namespace + "nSearchSelectPage" , sc);
 	}
-	//이벤트-행사 : 게시글 리스트
-	@Override
-	public List<BoardDto> eSelectPage(SearchItem sc) throws Exception {
-		return session.selectList(namespace + "eSelectPage", sc);
-	}
+
 	//이벤트-행사 : 검색 결과 개수 
 	@Override
 	public int eSearchResultCnt(SearchItem sc) throws Exception {

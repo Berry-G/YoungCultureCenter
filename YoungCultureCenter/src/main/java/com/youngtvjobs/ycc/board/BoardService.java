@@ -10,18 +10,13 @@ public interface BoardService {
 	void modify(BoardDto boardDto) throws Exception;
 	BoardDto getArticleEdit(Integer article_id) throws Exception;
 	
-	
-	//공지사항 : 게시글 리스트
-	List<BoardDto> nSelectPage (SearchItem sc) throws Exception;
+
 	
 	//공지사항 : 검색 결과 개수 
 	int nSearchResultCnt(SearchItem sc) throws Exception;
 	
 	//공지사항 : 검색 결과 페이지 
 	List<BoardDto> nSearchSelectPage(SearchItem sc) throws Exception;
-	
-	//이벤트-행사 : 게시글 리스트
-	List<BoardDto> eSelectPage (SearchItem sc) throws Exception;
 	
 	//이벤트-행사 : 검색 결과 개수 
 	int eSearchResultCnt(SearchItem sc) throws Exception;

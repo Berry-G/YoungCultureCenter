@@ -39,12 +39,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return boardDao.delete(article_id);
 	}
-	
-	//공지사항 : 게시글 리스트
-	@Override
-	public List<BoardDto> nSelectPage(SearchItem sc) throws Exception {
-		return boardDao.nSelectPage(sc);
-	}
+
 
 	//공지사항 : 검색 결과 개수 
 	@Override
@@ -56,11 +51,7 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDto> nSearchSelectPage(SearchItem sc) throws Exception {
 		return boardDao.nSearchSelectPage(sc);
 	}
-	//이벤트-행사 : 게시글 리스트
-	@Override
-	public List<BoardDto> eSelectPage(SearchItem sc) throws Exception {
-		return boardDao.eSearchSelectPage(sc);
-	}
+
 	//이벤트-행사 : 검색 결과 개수 
 	@Override
 	public int eSearchResultCnt(SearchItem sc) throws Exception {

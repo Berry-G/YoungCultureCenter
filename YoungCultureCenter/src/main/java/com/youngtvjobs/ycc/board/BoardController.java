@@ -33,14 +33,15 @@ public class BoardController
 	public String noticeBoard(Model model, SearchItem sc) {
 		
 		try {
+			//전체 게시글 갯수 
 			int totalCnt = boardService.nSearchResultCnt(sc);
 			model.addAttribute("totalCnt", totalCnt);
-			//총 게시글 개수 
-			//System.out.println(totalCnt);
+	
 			PageResolver pageResolver = new PageResolver(totalCnt, sc);
 			
 			List<BoardDto> nList = boardService.nSearchSelectPage(sc);
 			model.addAttribute("nList", nList);
+			// pageResolver가 값을 가지고있기때문에 jsp로 넘겨주면 페이징이됨 
 			model.addAttribute("pr", pageResolver);
 			
 		}catch (Exception e) {
@@ -74,16 +75,16 @@ public class BoardController
 	
 	//게시글 상세 보기 
 	@GetMapping("/post")
-	public String postSelect(Integer article_id, Model m) {
+	public String postSelect(Integer article_id, Model model) {
 	
 		try {
 			BoardDto boardDto = boardService.postSelect(article_id);
-			m.addAttribute("boardDto", boardDto);
+			model.addAttribute("boardDto", boardDto);
 			
 			//이전글: article_id를 boardService의 movePage를 model에 담음 
-			m.addAttribute("preView", boardService.movePage(article_id));
+			model.addAttribute("preView", boardService.movePage(article_id));
 			//다음글: article_id를 boardService의 movePage를 model에 담음
-			m.addAttribute("nextView", boardService.movePage(article_id));
+			model.addAttribute("nextView", boardService.movePage(article_id));
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -104,27 +105,26 @@ public class BoardController
 	//게시글 작성 
 	@PostMapping("/write")
 	public String writePage(BoardDto boardDto, Principal principal) throws Exception {		
-
+			
+			// principal으로 사용자의 아이디를 가져와서 boardDto user_id에 저장 
 			boardDto.setUser_id(principal.getName());
-
 			try {		
+				
 				boardService.writeInsert(boardDto);
 
-				//boardDto에서 받은 board-type이 "공지사항"이면 공지사항게시판에 insert
+				//boardDto에서 받은 board-type이 "공지사항"이면 공지사항게시판으로 리턴 
 				if(boardDto.getArticle_Board_type().equals("공지사항") ) {
-					//insert 후 공지사항 게시판으로 보여줌
 					return "redirect:/board/notice";					
 				}
-				//boardDto에서 받은 board-type이 "이벤트"이면 이벤트/행사 게시판에 insert
+				//boardDto에서 받은 board-type이 "이벤트"이면 이벤트/행사 게시판으로 리턴 
 				else if(boardDto.getArticle_Board_type().equals("이벤트") ) {
-					//insert 후 이벤트 게시판으로 보여줌 
 					return "redirect:/board/event";
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+		
 		return "redirect:/board/notice";
 	}
 	

@@ -10,7 +10,8 @@ public class SearchItem {
 	public static final int MIN_PAGE_SIZE = 5;
 	public static final int MAX_PAGE_SIZE = 50;
 	
-	//필요한 요소들을 mapper에서 사용 
+	// 필요한 요소들을 mapper에서 사용 
+	// controller 통해서 값이 안들어올때 기본값을 사용함 
 	private Integer page =1;
 	private Integer pageSize = DEFAULT_PAGE_SIZE;
 	private String option = "";
@@ -35,14 +36,16 @@ public class SearchItem {
 		//offset은 계산해서 들어가기 때문에 생성자 필요 없음 
 	}
 	
+	// 페이지를 지정해주지 않으면 SearchItem의 page를 쓰게 사용 
 	public String getQueryString() {
 		return getQueryString(page);
 	}
 	
 
 	// ?page=10&pageSize=10&option=A&keyword=title
-	// page를 기준으로 만듦 파라미터로 page를 받는 
-	// QuertyString을 만들어주는 
+	// page를 기준으로 만듦 파라미터로 page를 받는  QuertyString을 만들어줌
+	// getQueryString메소드를 호출하면 쿼리스트링을 반환하게 하도록 
+	// UriComponentsBuilder를 사용해서 쿼리스트링을 만들어줍니다. 
 	public String getQueryString(Integer page) {
 		return UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
