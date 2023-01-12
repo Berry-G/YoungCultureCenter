@@ -78,14 +78,13 @@
 <body>
 
 <script type="text/javascript">
-
+	var csrfHeaderName = "${_csrf.headerName}"
+	var csrfTokenValue= "${_csrf.token}"
 	$(document).ready(function() {
-		
 		const url = new URL(window.location.href)	//현재 페이지의 url 객체 생성
-    	const urlParams = url.searchParams;		//url의 파라미터를 가져옴
-    	const param = urlParams.get('type')		//url의 파라미터들 중, type의 값
-    	const keyword = urlParams.get('keyword')
-    	console.log(keyword)
+    	const urlParams = url.searchParams;			//url의 파라미터를 가져옴
+    	const param = urlParams.get('type')			//url의 type 파라미터 값
+    	const keyword = urlParams.get('keyword')	//url의 keyword 파라미터 값
 		$.ajax({
 			type : 'get',
 		    url: '/ycc/search/array',
@@ -104,37 +103,34 @@
  
 		// 검색어 자동완성
 		$('#search').autocomplete({
-			source : function(request, response) { //source: 입력시 보일 목록
+			source : function(request, response) { //source: 글자 입력시 보일 목록
 			     $.ajax({
+			 		beforeSend: function(xhr) {
+						console.log("beforeSend")
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+					},
 			           url : "/ycc/search/autocomplete"   
 			         , type : "POST"
 			         , dataType: "JSON"
 					 , data : {value: request.term, type: param}	
-			     		// value: request.term => 검색 키워드. '수영'을 입력했을 때 request.term의 값이 '수영'이 됨
-			         	// url: http://localhost:8080/ycc/autocomplete?value=수영 (GET방식일때)
 			         	// type: param => url의 type 파라미터
 			         , success : function(data){
-			        	 
-						var arr = [];
-						
+						let arr = [];
  						for(var i = 0; i < data.resultList.length; i++) {
 							arr.push(data.resultList[i].article_title)
 							arr.push(data.resultList[i].course_nm)
 						} 
-						
-						const set = new Set(arr);	//중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,
- 						const setToArr = [...set];	//Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환
- 						
+						let set = new Set(arr);		//중복값이 있는 배열을 Set 객체로 만들어서 중복을 제거한 후,
+ 						let setToArr = [...set];	//Spread Operator(전개연산자)를 사용하여 Set 객체를 다시 배열로 변환
  						// 위 반복문에서 생성되는 undefined를 필터링해서 제거해줌
- 						var arrUnique = setToArr.filter((element) => element !== undefined);
- 						
-						response(
+ 						let arrUnique = setToArr.filter((element) => element !== undefined);
+							response(
+								// $.map : arrUnique 배열을 label, value의 형태로 변경
 								$.map(arrUnique, function(item) {
 									return { label:item, value:item }
 								})
-						)	//response
-						
-			         } //success
+							)								
+			         	}
 			         ,error : function(){ //실패
 			             alert("오류가 발생했습니다.");
 			         }
@@ -262,32 +258,20 @@
 	 		return tmp += ''
  		}
 
-		// 탭 클릭시 해당되는 탭의 검색결과만 보이게 하는 기능
-		// 각각의 분류별 출력결과(공지사항, 이벤트, ...)를 감싸고 있는 div 태그에 .cont 클래스를 줌 ==> .cont{display:none;}
-		
-		// .cont 클래스를 가진 태그를 content로 선언
 		const content = document.querySelectorAll('.cont');
-		
-		// 각 탭 클릭시 해당 탭이 active(활성화)되게 함 
-		
-		// .tab_menu > .list > li > a를 active로 선언
 		const active = document.querySelectorAll('.tab_menu .list li a');
-		
 		// 각 탭을 클릭하면
 		$(".nav-link").click(function(e) {
-			
-			e.preventDefault();	// 클릭한 탭의 리스트로의 focus를 막아줌 
-
+			e.preventDefault();
 			// 탭 클릭시 is on, active 클래스 요소를 삭제(초기화시킴)
-			// .cont 클래스를 가진 태그에서 'is_on' class를 모두 삭제
 			for(var j = 0; j < content.length; j++){
+				// .cont 클래스를 가진 태그에서 'is_on' class를 모두 삭제
 		        content[j].classList.remove('is_on');
 		      }
-			// .tab_menu > .list > li > a에서 'active' class를 모두 삭제 
 			for(var i = 0; i <= content.length; i++){
+				// 탭의 a 태그에서 'active' class를 모두 삭제 
 		        active[i].classList.remove('active');
 		      }
-			
 			// 각 탭을 클릭했을 때 is on 요소를 줌 ==> .is_on.cont{display:block;} 가 되면서 해당 컨텐츠 부분이 나타남
 			// 각 탭 활성화
 			if($(this).hasClass("notice") === true){
@@ -296,17 +280,17 @@
 			} else if($(this).hasClass("event") === true) {
 				$("#event").addClass("is_on")
 				$(".nav-link.event").addClass("active")
-			} else if($(this).hasClass("club") === true) {
-				$("#club").addClass("is_on")
-				$(".nav-link.club").addClass("active")
 			} else if($(this).hasClass("course") === true) {
 				$("#course").addClass("is_on")
 				$(".nav-link.course").addClass("active")
-			} else {	// 전체 탭
+			} /* else if($(this).hasClass("club") === true) {
+				$("#club").addClass("is_on")
+				$(".nav-link.club").addClass("active")
+			} */ else {	// 전체 탭
 				$("#notice").addClass("is_on")
 				$("#event").addClass("is_on")
-				$("#club").addClass("is_on")
 				$("#course").addClass("is_on")
+				/* $("#club").addClass("is_on") */
 				$(".nav-link.all").addClass("active")
 			}
 		})
@@ -320,8 +304,8 @@
 				<form action="<c:url value="/search" />" class="search-form" method="get">
 					<div class="row">
 						<div class="col-10">
-							<input id="search" name="keyword" type="text" class="form-control" value="${param.keyword }" placeholder="검색어를 입력해주세요."
-								aria-label="search" aria-describedby="button-addon2">
+							<input id="search" name="keyword" type="text" class="form-control" value="${param.keyword }" 
+							 placeholder="검색어를 입력해주세요." aria-label="search" aria-describedby="button-addon2">
 						</div>
 						<div class="col-2">
 							<button class="btn btn-success" type="submit" id="button-addon2" style="width: 100%;">검색</button>
@@ -334,21 +318,25 @@
 		<div class="tab_menu m-4">
 			<ul class="list nav nav-tabs">
 				<!-- Controller에서 정의된 totalCnt(select 서브쿼리로 select count 구현) -->
-				<li class="nav-item"><a class="nav-link all active" aria-current="page" href="#">전체(${totalCnt }건)</a></li>
+				<li class="nav-item"><a class="nav-link all active" aria-current="page" href="#">
+					전체(${totalCnt }건)</a></li>
 				<li class="nav-item">
 					<!-- dto에 count를 추가해 count 출력 ==> Mapper에서 서브쿼리로 select count(*) -->
-					<a class="nav-link notice" href="#notice">공지사항(${noticeList[0].count == null ? "0" : noticeList[0].count }건)</a>
+					<a class="nav-link notice" href="#notice">
+						공지사항(${noticeList[0].count == null ? "0" : noticeList[0].count }건)</a>
 				</li>
-				<li class="nav-item"><a class="nav-link event" href="#event">이벤트(${eventList[0].count == null ? "0" : eventList[0].count }건)</a></li>
-				<li class="nav-item"><a class="nav-link club" href="#club">동아리(${clubList[0].count == null ? "0" : clubList[0].count }건)</a></li>
-				<li class="nav-item"><a class="nav-link course" href="#course">강좌(${courseList[0].count == null ? "0" : courseList[0].count }건)</a></li>
+				<li class="nav-item"><a class="nav-link event" href="#event">
+					이벤트(${eventList[0].count == null ? "0" : eventList[0].count }건)</a></li>
+<%-- 				<li class="nav-item"><a class="nav-link club" href="#club">
+					동아리(${clubList[0].count == null ? "0" : clubList[0].count }건)</a></li> --%>
+				<li class="nav-item"><a class="nav-link course" href="#course">
+					강좌(${courseList[0].count == null ? "0" : courseList[0].count }건)</a></li>
 			</ul>
 		</div>
 
 		<div>
 			<form id="frm" action="<c:url value="/search" />" class="search-form" method="get">
 				<input name="keyword" type="hidden" value="${param.keyword }" /> 
-				
 				<!-- 검색시 기본적으로 정확도순으로 정렬됨. 키워드랑 완전히 일치하는 검색결과일 경우 0점으로 가장 우선순위로 조회되고,
 				키워드 앞 뒤에 키워드 이외의 글자가 많이 붙어있을수록(1점, 2점, ...) 우선순위가 낮아지는 식 (searchMapper) -->
 				<div class="row float-end me-4 array">
@@ -413,7 +401,7 @@
 			</div>
 			
 			<!-- 동아리 -->
-			<div id="club" class="p-3 is_on cont">
+<%-- 			<div id="club" class="p-3 is_on cont">
 				<h4 class="text-start fw-bold">동아리 (${clubList[0].count == null ? "0" : clubList[0].count }건)</h4>
 				<hr>
 				<c:set var="club" value="동아리" />
@@ -451,7 +439,7 @@
 						</c:otherwise>
 					</c:choose>
 				</form>
-			</div>
+			</div> --%>
 
 			<!-- 강좌 -->
 			<div id="course" class="p-3 is_on cont">
