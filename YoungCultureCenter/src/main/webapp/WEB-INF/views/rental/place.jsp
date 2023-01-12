@@ -3,6 +3,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<%-- <sec:authentication property="principal" var="pinfo"/>
+<c:set var="userName" value="${pinfo.member.user_name }" />
+<c:set var="loginId" value="${pinfo.member.user_id }" /> --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +173,8 @@
 							<table class="table">
 							<tr>
 								<th>이름</th>
-								<td id="customer" colspan="3">${sessionScope.name }</td>
+								<td id="customer" colspan="3">${loginId }</td>
+								<td id="customer" colspan="3"></td>
 							</tr>
 							<tr>
 								<th>시설명</th> <!-- croom_name -->
@@ -222,6 +229,10 @@ let checkedTimeList = []
 let checkedTime
 const time = document.getElementById('Chktime')
 
+var csrfHeaderName = "${_csrf.headerName}"
+var csrfTokenValue= "${_csrf.token}"
+
+
 // 장소랑 날짜 선택했는지 체크
 function nullCheck() {
 	let croom_id = document.getElementById("pickplace").value
@@ -259,56 +270,96 @@ $("#datetime-local").datepicker({
 
 // 장소 선택시 
 function placeSelect() {
-	var croom_id = document.getElementById("pickplace").value
-	console.log(croom_id)
-	
 	// 배열 초기화
 	filteredList.length = 0
 	closedDate.length = 0
-	
+	let filteredDate;
+	// 장소 선택 셀렉트박스의 값(수영장, 101호, ...)
+	let croom_id = document.getElementById("pickplace").value	
 	$.ajax({
-		type: 'get',			//요청 메서드
-		url: '/ycc/rental/place.select',		//요청 URI
-		headers: { "content-type" : "application/json" },		//요청 헤더
-		dataType: 'json',	//전송받을 데이터의 타입(서버에서 반환되는 데이터 형식)
-		data: {croom_id:croom_id},		//서버로 전송할 데이터. stringify()로 직렬화 필요
-		success : function(data) {		//서버로부터 응답이 도착하면 호출될 함수
-			console.log(data)
+		beforeSend: function(xhr) {
+			console.log("beforeSend")
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+		},
+		type: 'get',			
+		url: '/ycc/rental/place/select',		
+		headers: { "content-type" : "application/json" },		
+		dataType: 'json',	
+		data: {croom_id:croom_id},		
+		success : function(data) {
+			console.log("data.placeList=",data.placeList)
+			// 해당 장소의 모든 예약 데이터들의 개수만큼 반복해서, prental_de 의 값을 infoDate 배열에 추가 (예약이 되어 있는 날짜만 골라내기 위해서)
  			for(var i=0; i<data.placeList.length; i++) {
 				infoDate.push(data.placeList[i].prental_de)
 			}
-			let infoDateSet = new Set(infoDate);
-			const infoDateList = [...infoDateSet];
-			console.log("infoDateList = ", infoDateList)
+			let infoDateSet = new Set(infoDate);	// Set을 이용해 infoDate의 중복값 제거
+			infoDate = [...infoDateSet];			// Set을 다시 배열 형태로 변환해서 infoDate에 재할당
+			console.log("infoDate = ", infoDate)
+			console.log("infoDate.length = " , infoDate.length)
 			
-			for( var i = 0; i< data.placeList.length; i++ ) {
-			function find(element) {
-				if(element.prental_de === infoDateList[i]) {
-					return true
+			for(var i=0; i<infoDate.length; i++) {
+				console.log("i=",i,"infoDate=",infoDate[i])
+				// 모든 예약리스트를 불러와서 각각의 prental_de와 infoDate의 값이 같으면 true 반환
+				// ex) 총 4개의 예약리스트가 있음. 1/22에 1개, 1/31에 3개
+				function find(element) {	
+					console.log("element=", element)	
+					// infoDate[0]==1/22와 모든 예약리스트의 prental_de와 비교했을 때는 1개의 true와 3개의 false
+					// infoDate[1]==1/31과 비교했을 때는 1개의 false와 3개의 true
+					if(element.prental_de === infoDate[i]) {
+						return true
+					}
 				}
+				// filter 함수로 true값을 반환한 예약리스트만 filteredDate에 할당
+				filteredDate = data.placeList.filter(find)
+				// filteredDate를 filteredList 배열에 담아줌 
+				// ==> filteredList[0]에는 prental_de가 1/22인 예약리스트 1개가,
+				// 	   filteredList[1]에는 prental_de가 1/31인 예약리스트 3개가 담기게 됌
+				filteredList.push(filteredDate)
+				console.log("filteredDate=",filteredDate)
+				console.log("filteredList=",filteredList)
 			}
+			console.log("최종filteredList=",filteredList)
 			
-			let filteredDate = data.placeList.filter(find)
-			filteredList.push(filteredDate)
-			}
-
-			// filteredList의 빈 값 제거
-			for(var i = 0; i < filteredList.length; i++){ 
-				  if (filteredList[i].length === 0) { 
-				    filteredList.splice(i, 1); 
-				    i--; 
-				  }
-			}
-			
-			// filteredList의 배열 길이가 6이면 closedDate 리스트에 추가
- 			for(var i = 0; i < filteredList.length; i++){ 
-				  if (filteredList[i].length === 6) { 
-					  closedDate.push(filteredList[i][0].prental_de)
-				  }
+			let count
+			for(let i=0; i < filteredList.length; i++) {	// 날짜별로 분류한 리스트의 길이만큼(1/22, 1/31 => filteredList.length = 2)
+				count = 0
+				console.log("filteredList[i] = ", i)
+				for(let j=0; j < filteredList[i].length; j++) {	// 한 날짜의 예약 리스트의 개수만큼(1/22의 예약 개수 : 1 => filteredList[0].length = 1, 1/31의 예약 개수 3 => filteredList[1].length = 3)
+					console.log("filteredList[i][j] = ", i, j)
+					if(filteredList[i][j].time1 === true)  {
+						console.log("time1 true")
+					    count++;
+					}
+					if(filteredList[i][j].time2 === true) {
+						console.log("time2 true")
+						count++;
+					}
+					if(filteredList[i][j].time3 === true) {
+						console.log("time3 true")
+						count++;
+					}
+					if(filteredList[i][j].time4 === true) {
+						console.log("time4 true")
+						count++;
+					}
+					if(filteredList[i][j].time5 === true) {
+						console.log("time5 true")
+						count++;
+					}
+					if(filteredList[i][j].time6 === true) {
+						console.log("time6 true")
+						count++;
+					}
+					console.log("count=",count)
+					if(count == 6) {
+						closedDate.push(filteredList[i][0].prental_de)
+					}
+					
+				}
 			}
 			console.log("filteredList = ", filteredList)
 			console.log("closedDate = ", closedDate)
-		},
+		},		//success
 		error : function(data) { 
 			alert("error") 
 			console.log(data) 
@@ -327,10 +378,11 @@ function loginCheck(){
 		return true
 }
 
-const area = document.getElementById('Chkplace')
+let area = document.getElementById('Chkplace')
 area.innerHTML = document.getElementById("pickplace").value
-const date = document.getElementById('Chkdate')
+let date = document.getElementById('Chkdate')
 date.innerHTML = document.getElementById("datetime-local").value
+/* let userName = document.getElementById('customer') */
 
 // 시간테이블 출력
 let toTimeList = function(data) {
@@ -356,8 +408,8 @@ let toTimeList = function(data) {
 }
 
 $(document).ready(function(){
-	
-	$('#modalBtn').hide();	// 예약하기 버튼 숨김
+	// 예약하기 버튼 숨김
+	$('#modalBtn').hide();	
 	
 	// 예약하기 버튼 클릭시 모달창 뜸
 	$("#modalBtn").on("click", function(){
@@ -385,11 +437,13 @@ $(document).ready(function(){
 			
 		$('input:checkbox').each(function (index) {
 			if($(this).is(":checked")==true){		// 선택된 체크박스
-				if($('input:checkbox:checked').length == 1) {	// 선택된 체크박스가 한 개면 해당 시간을 그대로 모달창에 출력
+				// 선택된 체크박스가 한 개면 해당 시간을 그대로 모달창에 출력
+				if($('input:checkbox:checked').length == 1) {	
 					checkedTime = $(this).parent().prev().text()
 					time.innerHTML = checkedTime
-				} else {	// 선택된 체크박스가 한 개 이상이면 해당되는 시간들을 checkedTimeList 배열에 넣고 
-							// startTime과 endTime을 배열에서 꺼내온 다음 모달창에 출력
+				// 선택된 체크박스가 한 개 이상이면 해당되는 시간들을 checkedTimeList 배열에 넣고 
+				// startTime과 endTime을 배열에서 꺼내온 다음 모달창에 출력
+				} else {	
 					checkedTimeList.push($(this).parent().prev().text())
 					let startTime = checkedTimeList[0]
 					startTime = startTime.substr(0, 6)
@@ -403,12 +457,9 @@ $(document).ready(function(){
 	
 	// 모달창에서 확인 버튼 눌렀을 때
 	$("#renBtn").click(function(){
-		
-		const user_id = '<%=(String)session.getAttribute("id")%>';
-		const date = document.getElementById("datetime-local").value
-		const croom_id = document.getElementById("pickplace").value
-		let key	
-		
+		<%-- let user_id = '<%=(String)session.getAttribute("id")%>'; --%>
+		let date = document.getElementById("datetime-local").value
+		let croom_id = document.getElementById("pickplace").value
  		timeList = {	
 			time1: time1,
 			time2: time2,
@@ -417,16 +468,20 @@ $(document).ready(function(){
 			time5: time5,
 			time6: time6
 		}; 
-
-		$('input:checkbox').each(function (index) {
-			if($(this).is(":checked")==true){
-				checkedTime = $(this).parent().prev().text()	// 체크된 시간 텍스트(08:10 ~ 10:00)를 checkedTime에 할당
-				if($('input:checkbox:checked').length == 1) {	// 시간 하나만 체크했을 때
-					for(var k in timeList) {
-						if(checkedTime == timeList[k]) {
-							timeList[k] = "true"
-						} else {
-							timeList[k] = "false"
+		console.log("timeList = ", timeList)
+		
+		$('input:checkbox').each(function (index) {		// (시간대)체크박스 개수만큼
+			if($(this).is(":checked")==true){	// 체크되어 있다면
+				// 체크된 시간 텍스트(08:10 ~ 10:00)를 checkedTime에 할당
+				checkedTime = $(this).parent().prev().text()
+				// 시간 하나만 체크했을 때 (단일 예약)
+				if($('input:checkbox:checked').length == 1) {	
+					for(var i in timeList) {
+						// checkedTime이 timeList의 value값과 같으면 true, 아니면 false로 값을 재할당
+						if(checkedTime == timeList[i]) {		
+							timeList[i] = "true"
+						} else {								
+							timeList[i] = "false"
 						}
 					}
 				} 
@@ -438,16 +493,18 @@ $(document).ready(function(){
 			return Object.keys(obj).find(key => obj[key] === value);
 		}
 		
+		let key	
 		// 한 번에 시간 여러개 선택했을 때
 		if($('input:checkbox:checked').length > 1) {
 			for(var i = 0; i < checkedTimeList.length; i++) {
-				for (var j = 0; j < Object.values(timeList).length; j++) {	// checkedTimeList의 값을 timeList의 모든 값과 비교(time1~6)
+				// checkedTimeList의 값을 timeList의 모든 값과 비교(time1~6)
+				for (var j = 0; j < Object.values(timeList).length; j++) {	
 					console.log("checkedTimeList[i]", checkedTimeList[i])
 					console.log("Object.values(timeList)[j]", Object.values(timeList)[j])
-					
-					if (checkedTimeList[i] == Object.values(timeList)[j]) {			// 그러다가 일치하면
+					if (checkedTimeList[i] == Object.values(timeList)[j]) {	// 그러다가 일치하면
 						console.log("일치")
-						key = getKeyByValue(timeList, Object.values(timeList)[j]);	// 해당 값을 가진 key를 key에 할당
+						// 해당 값을 가진 key를 key에 할당
+						key = getKeyByValue(timeList, Object.values(timeList)[j]);	
 						console.log("key = ", key)
 						timeList[key] = "true"
 						if( i != checkedTimeList.length - 1) {
@@ -466,15 +523,21 @@ $(document).ready(function(){
 				}
 			}
 		}
-		
+
 		if (!confirm("예약하시겠습니까?")) {
 			$('#exampleModal').modal('hide')
 		} else {
+			/* var loginId = ${loginId } */
 			$.ajax({
-				type: 'post',			//요청 메서드
-				url: '/ycc/rental/place.do',		//요청 URI
-				data: {user_id:user_id, date:date, croom_id:croom_id, timeList:JSON.stringify(timeList)},		//서버로 전송할 데이터. stringify()로 직렬화 필요
-				success : function(data) {		//서버로부터 응답이 도착하면 호출될 함수
+				beforeSend: function(xhr) {
+					console.log("beforeSend")
+					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+				},
+				type: 'post',			
+				url: '/ycc/rental/place/do',		
+				data: {date:date, croom_id:croom_id, 
+					   timeList:JSON.stringify(timeList)},		
+				success : function(data) {	
 				},
 				error : function(data) { 
 					alert("error") 
@@ -487,45 +550,75 @@ $(document).ready(function(){
 		}
 	})
                         	
-    // 조회하기 버튼 눌렀을 때                    	
+    // 조회하기              	
 	$("#viewBtn").click(function(){
 		if(!nullCheck()){
 			$('#modalBtn').show();
 		}
-		var date = document.getElementById("datetime-local").value
-		var croom_id = document.getElementById("pickplace").value
-		const area = document.getElementById('Chkplace')
+		let date = document.getElementById("datetime-local").value
+		let croom_id = document.getElementById("pickplace").value
+		let area = document.getElementById('Chkplace')
 		console.log(date)
 		$.ajax({
+			beforeSend: function(xhr) {
+				console.log("beforeSend")
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
+			},
 			type: 'GET',
-			url: '/ycc/rental/place.send', //수정요망
+			url: '/ycc/rental/place/send',
 			headers: { 'content-type': 'application/json' },
 			data: {croom_id:croom_id , date:date},
 			dataType: 'json',
 			success: function(data){
 				// 모달창의 장소 부분에 croom_id가 아닌 croom_name을 출력
 				area.innerHTML = $('option[value='+croom_id+']').first().text()
+				console.log(data.user_id)
+				/* userName.innerHTML = user_id */
 				if(closedDate.includes(date)) {
 					alert("예약 가능한 시간이 없습니다.")
 				}
 		
 				$("#timeTable").html(toTimeList(data))
 				
-				let today = new Date();
-				let month = today.getMonth()+1;
-				let tdDate = today.getDate();
-				
-				let calDateFm = new Date(date);		// 선택된 날짜를 date 타입으로 포맷
-				let calYear = calDateFm.getFullYear();
-				let calMonth = calDateFm.getMonth();
-				let calDate = calDateFm.getDate();
-				
+				// 각 타임별 체크박스 값
 				let time1Chk = $("#time1").children().eq(1).children().first()
 				let time2Chk = $("#time2").children().eq(1).children().first()
 				let time3Chk = $("#time3").children().eq(1).children().first()
 				let time4Chk = $("#time4").children().eq(1).children().first()
 				let time5Chk = $("#time5").children().eq(1).children().first()
 				let time6Chk = $("#time6").children().eq(1).children().first()
+				
+				for(i in data.infoList) {
+					if(data.infoList[i].time1 == true) {
+						time1Chk[0].disabled = true
+					}
+					if(data.infoList[i].time2 == true) {
+						time2Chk[0].disabled = true
+					}
+					if(data.infoList[i].time3 == true) {
+						time3Chk[0].disabled = true
+					}
+					if(data.infoList[i].time4 == true) {
+						time4Chk[0].disabled = true
+					}
+					if(data.infoList[i].time5 == true) {
+						time5Chk[0].disabled = true
+					}
+					if(data.infoList[i].time6 == true) {
+						time6Chk[0].disabled = true
+					}
+				}
+				
+				// 오늘 날짜(월, 일)
+				let today = new Date();
+				let month = today.getMonth()+1;
+				let tdDate = today.getDate();
+				
+				// 캘린더에서 선택된 날짜를 date 타입으로 포맷
+				let calDateFm = new Date(date);		
+				let calYear = calDateFm.getFullYear();
+				let calMonth = calDateFm.getMonth();
+				let calDate = calDateFm.getDate();
 				
 				time1 = $('#time1').children().first().text()
 				time2 = $('#time2').children().first().text()
@@ -534,19 +627,17 @@ $(document).ready(function(){
 			    time5 = $('#time5').children().first().text()
 			    time6 = $('#time6').children().first().text()
 			  	
-				startHours1 = time1.slice(0, 2)
-				startMinutes1 = time1.slice(3, 5)
+			    // time1의 시간과 분을 슬라이싱해서 값을 뽑아낸 뒤, 
+				startHours1 = time1.slice(0, 2)		// 08
+				startMinutes1 = time1.slice(3, 5)   // 10
+				// 그 값으로 time1의 date 객체(time1NDate) 생성 
 				let time1NDate = new Date(calYear, calMonth, calDate, startHours1, startMinutes1)
-				const time1Month = time1NDate.getMonth()+1
-				const time1Date = time1NDate.getDate()
+				// getTime메서드로 오늘의 date객체와 time1의 date객체(time1NDate)를 밀리세컨드로 변환 후,
+				// 현재시간의 밀리세컨드 값에서 time1의 밀리세컨드를 빼서 시간차를 얻음 ==> elapsedMSec1
 				const elapsedMSec1 = today.getTime() - time1NDate.getTime()
+				// 밀리세컨드 값을 다시 시간과 분 단위로 변환
 				const elapsedHour1 = Math.floor(((elapsedMSec1 / (1000 * 60 * 60 )) % 24));
 				const elapsedMin1 = Math.floor(((elapsedMSec1 / (1000 * 60 )) % 60 ));
-				
-				console.log("today=",today)
-				console.log("time1NDate=",time1NDate)
-				console.log("elapsedHour1=",elapsedHour1)
-				console.log("elapsedMin1=",elapsedMin1)
 				
  				startHours2 = time2.slice(0, 2)
 				startMinutes2 = time2.slice(3, 5)
@@ -583,10 +674,9 @@ $(document).ready(function(){
 				const elapsedHour6 = Math.floor(((elapsedMSec6 / (1000 * 60 * 60 )) % 24));
 				const elapsedMin6 = Math.floor(((elapsedMSec6 / (1000 * 60 )) % 60 ));
 				
-				/* let testDate = new Date(2022, 11, 27, 15, 15)
-				console.log("testDate=",testDate) */
-			
- 				if(time1Month == month && time1Date == tdDate) {
+				const selectedMonth = time1NDate.getMonth()+1
+				const selectedDate = time1NDate.getDate()
+ 				if(selectedMonth == month && selectedDate == tdDate) {
 					if(elapsedHour1 > 0 || elapsedMin1 > 0) {
 						time1Chk[0].disabled = true
 					}			 	
@@ -606,28 +696,6 @@ $(document).ready(function(){
 						time6Chk[0].disabled = true
 					}
 				}
-				
-				for(i in data.infoList) {
-					if(data.infoList[i].time1 == true) {
-						time1Chk[0].disabled = true
-					}
-					if(data.infoList[i].time2 == true) {
-						time2Chk[0].disabled = true
-					}
-					if(data.infoList[i].time3 == true) {
-						time3Chk[0].disabled = true
-					}
-					if(data.infoList[i].time4 == true) {
-						time4Chk[0].disabled = true
-					}
-					if(data.infoList[i].time5 == true) {
-						time5Chk[0].disabled = true
-					}
-					if(data.infoList[i].time6 == true) {
-						time6Chk[0].disabled = true
-					}
-				}
-				
 				const chkDate = document.getElementById('Chkdate')
 				chkDate.innerHTML = document.getElementById("datetime-local").value
 				console.log(closedDate)
@@ -637,10 +705,10 @@ $(document).ready(function(){
     
 	// 로그인이 안되어 있으면 모달창이 열리는 걸 막음
 	$("#exampleModal").on('show.bs.modal', function(e){
-		loginCheck();
+/* 		loginCheck();
 		if (loginCheck() == false) {
 			e.preventDefault();
-		}
+		} */
 		if ($('input:checkbox:checked').length == 0) {
 			alert("시간을 선택해주세요.")
 			e.preventDefault();
