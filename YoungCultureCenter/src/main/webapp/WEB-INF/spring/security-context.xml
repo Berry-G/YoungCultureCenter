@@ -33,9 +33,9 @@
 		<security:intercept-url pattern="/rental/locker" access="permitAll" />
 		<security:intercept-url pattern="/rental/locker/reservation" access="isAuthenticated()" />
 		<security:intercept-url pattern="/rental/studyroom" access="isAuthenticated()" />
-		<security:intercept-url pattern="/rental/place" access="permitAll" />
-		<security:intercept-url pattern="/rental/place/do" access="isAuthenticated()" />
-		
+		<security:intercept-url pattern="/rental/place" access="isAuthenticated()" />
+		<!-- <security:intercept-url pattern="/rental/place/do" access="isAuthenticated()" /> -->
+		<security:intercept-url pattern="/search/**" access="permitAll" />
 		<!-- 접근 후 에러페이지  -->
 		<security:access-denied-handler ref="customAccessDenied"/>
 		<!-- 로그인페이지 -->

@@ -31,12 +31,15 @@ public class PlaceController {
 
 		@GetMapping("/rental/place")
 		// Dto에서 장소들 이름 받아와 selectBox에 출력해주는 메서드
-		public String placeRental(Model m, PlaceDto placeDto) {
+		public String placeRental(Model m, PlaceDto placeDto, Authentication auth) {
 			try {
 				// 대관 장소 (classroom) 리스트 출력
 				List<PlaceDto> placelist = placeService.selectRentalPlace();
 				m.addAttribute("placelist", placelist);
 				System.out.println("placelist = " + placelist);
+				
+				String user_id = auth.getName();
+				m.addAttribute("user_id", user_id);
 				
 			} catch (Exception e) {
 				e.printStackTrace();

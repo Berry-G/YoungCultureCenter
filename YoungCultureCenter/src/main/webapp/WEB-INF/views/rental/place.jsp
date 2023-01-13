@@ -5,10 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<%-- <sec:authentication property="principal" var="pinfo"/>
-<c:set var="userName" value="${pinfo.member.user_name }" />
-<c:set var="loginId" value="${pinfo.member.user_id }" /> --%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -173,7 +169,6 @@
 							<table class="table">
 							<tr>
 								<th>이름</th>
-								<td id="customer" colspan="3">${loginId }</td>
 								<td id="customer" colspan="3"></td>
 							</tr>
 							<tr>
@@ -227,11 +222,11 @@ let time5 = $('#time5').children().first().text()
 let time6 = $('#time6').children().first().text()
 let checkedTimeList = []
 let checkedTime
-const time = document.getElementById('Chktime')
+let time = document.getElementById('Chktime')
+let user_id = "${user_id}"
 
 var csrfHeaderName = "${_csrf.headerName}"
 var csrfTokenValue= "${_csrf.token}"
-
 
 // 장소랑 날짜 선택했는지 체크
 function nullCheck() {
@@ -361,8 +356,7 @@ function placeSelect() {
 			console.log("closedDate = ", closedDate)
 		},		//success
 		error : function(data) { 
-			alert("error") 
-			console.log(data) 
+			console.log("error")
 		}
 	}) 
 }
@@ -382,7 +376,8 @@ let area = document.getElementById('Chkplace')
 area.innerHTML = document.getElementById("pickplace").value
 let date = document.getElementById('Chkdate')
 date.innerHTML = document.getElementById("datetime-local").value
-/* let userName = document.getElementById('customer') */
+let userName = document.getElementById('customer')
+userName.innerHTML = user_id
 
 // 시간테이블 출력
 let toTimeList = function(data) {
@@ -537,11 +532,10 @@ $(document).ready(function(){
 				url: '/ycc/rental/place/do',		
 				data: {date:date, croom_id:croom_id, 
 					   timeList:JSON.stringify(timeList)},		
-				success : function(data) {	
+				success : function(data) {
 				},
 				error : function(data) { 
-					alert("error") 
-					console.log(data) 
+					console.log("error") 
 				}
 			}) 
 			alert("예약이 완료되었습니다.")
