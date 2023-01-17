@@ -101,9 +101,11 @@
 	function getCookie() {
 	    var cookiedata = document.cookie;
 	    
+	    //쿠기가 없는 경우, 모달 출력
 	    if ( cookiedata.indexOf("noMoreToday=done") < 0 ){
 	         $("#modal1").modal('show');
 	    }
+	    //그 외에, 모달 숨기기
 	    else {
 	        $("#modal1").hide();
 	    }
@@ -115,8 +117,8 @@
 				$('#modal1').hide();	
 			})
 			//모달 오늘하루 보지 않기
-		    $(".btn_today_close").click(function () {
-		        setCookie("noMoreToday", "done" , 1);
+		    $(".btn_today_close").click(function () {		    		
+		        setCookie("noMoreToday", "done" , 1);		//이름, 값, 만료시간
 		        $("#modal1").hide();
 		    });
 		});
@@ -137,7 +139,7 @@
 				<div class="p-1 px-2 text-bg-dark d-flex">
 <!-- 					<button type="button" class="btn btn-secondary btn_today_close"
 						data-bs-dismiss="modal">오늘 하루 보지 않기</button> -->
-						<a href="" class="btn btn-secondary btn_today_close" data-bs-dismiss="modal">오늘 하루 보지 않기</a>
+					<a class="btn btn-secondary btn_today_close" data-bs-dismiss="modal">오늘 하루 보지 않기</a>
 					<button type="button" class="btn btn-primary ms-auto" id="btn_close" data-bs-dismiss="modal">닫기</button>
 				</div>
 			</div>
