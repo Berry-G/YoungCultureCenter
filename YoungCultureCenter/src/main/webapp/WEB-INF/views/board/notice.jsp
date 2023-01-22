@@ -36,7 +36,6 @@
 				</tr>
 			</thead>
 	
-		 <sec:authentication property="principal" var="pinfo"/>
 			<c:forEach var="boardDto" items="${nList }">
 				<tr>
 					<td class="title"  >
