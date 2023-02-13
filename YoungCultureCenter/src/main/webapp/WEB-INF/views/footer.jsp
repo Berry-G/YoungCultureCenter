@@ -35,8 +35,25 @@
 				김영채 최나리 전수정 김성호 최선혜 김지호 최연희<br><br>
 			 	&copy; YOUNG’teve Jobs All rights reserved
 			</p>
-			<a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-				스크롤하는 이미지 구현 부 <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap" /></svg></a>
+			
+			<div class="col-md-4 overflow-hidden">
+				<div>
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/bootstrap.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/css.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/github.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/html.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/java.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/jquery.gif">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/js.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/maven.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/mybatis.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/postgres.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/spring.png">
+					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/tomcat.png">
+				</div>
+			</div>
+				
+				
 			<ul class="nav col-md-4 justify-content-end">
 				<li class="nav-item"><a href="/ycc" class="nav-link px-2 text-muted">Home</a></li>
 				<li class="nav-item"><a href="/ycc/board/faq" class="nav-link px-2 text-muted">FAQs</a></li>
