@@ -37,7 +37,7 @@
 			</p>
 			
 			<div class="col-md-4 overflow-hidden">
-				<div>
+				<div class="scroll-banner">
 					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/bootstrap.png">
 					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/css.png">
 					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/github.png">
