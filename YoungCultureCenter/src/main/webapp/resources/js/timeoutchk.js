@@ -77,3 +77,5 @@ function refreshTimer() {
     xhr.send();
     clearTimer();
 }
+
+

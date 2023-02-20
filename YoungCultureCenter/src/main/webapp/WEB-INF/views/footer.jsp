@@ -35,7 +35,7 @@
 				김영채 최나리 전수정 김성호 최선혜 김지호 최연희<br><br>
 			 	&copy; YOUNG’teve Jobs All rights reserved
 			</p>
-			
+			<script type="text/javascript" charset="utf-8" src="/ycc/resources/js/infi_scroll.js"></script>
 			<div class="col-md-4 overflow-hidden">
 				<div class="scroll-banner">
 					<img class="infi-img" src="/ycc/resources/img/main_img/infi_scroll/bootstrap.png">

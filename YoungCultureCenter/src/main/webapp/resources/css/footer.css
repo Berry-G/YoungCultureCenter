@@ -1,4 +1,4 @@
-.infi-img {
+.scroll-banner img{
   height: 50px;
   width: 50px;
   position: absolute;
@@ -7,7 +7,7 @@
 .scroll-banner
 {
 	height: 60px;
-	width: 1130px;
+	width: 500px;
 	position: absolute;
 	overflow: hidden;
 }
